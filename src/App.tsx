@@ -1,24 +1,30 @@
 import * as React from 'react';
 import './App.css';
+import {engine} from "./demo/main";
+import {loader} from "./demo/resources";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+    componentDidMount() {
+        setTimeout(async() => {
+            try {
+                await engine.start(loader);
+            } catch (e) {
+                console.error(e);
+            }
+        })
+    }
+
+    render() {
+        return (
+            <div className="App">
+                <div className="App-StatusBar"></div>
+                <div className="App-Content"></div>
+                <div className="App-Menu">
+                    <h1>Hello :)</h1>
+                </div>
+            </div>
+        );
+    }
 }
 
 export default App;
