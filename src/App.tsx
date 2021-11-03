@@ -17,11 +17,9 @@ class App extends React.Component {
     render() {
         return (
             <div className="App">
-                <div className="App-StatusBar"></div>
-                <div className="App-Content"></div>
-                <div className="App-Menu">
-                    <h1>Hello :)</h1>
-                </div>
+               <div style={{textAlign: "center"}}>
+
+               </div>
             </div>
         );
     }

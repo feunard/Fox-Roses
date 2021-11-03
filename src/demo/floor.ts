@@ -1,5 +1,4 @@
 import * as ex from 'excalibur';
-import { ExcaliburGraphicsContext } from 'excalibur';
 import { blockSprite } from './resources';
 
 export class Floor extends ex.Actor {

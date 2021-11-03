@@ -1,4 +1,4 @@
-import * as ex from 'excalibur';
+import {Color, ImageSource, Loader, Sound, SpriteSheet} from "excalibur";
 
 const botFile = require('../res/excalibot.png').default;
 const botRedFile = require('../res/excalibot-red.png').default;
@@ -9,51 +9,92 @@ const jumpSound = require('../res/jump.wav').default;
 const hitSound = require('../res/hurt.wav').default;
 const gotEmSound = require('../res/gottem.wav').default;
 
-const Resources = {
-    bot: new ex.ImageSource(botFile),
-    botRed: new ex.ImageSource(botRedFile),
-    baddie: new ex.ImageSource(baddieFile),
-    block: new ex.ImageSource(blockFile),
-    npc: new ex.ImageSource(npcFile),
-    jump: new ex.Sound(jumpSound),
-    hit: new ex.Sound(hitSound),
-    gotEm: new ex.Sound(gotEmSound)
+const images: { [key: string]: ImageSource } = {
+    bot: new ImageSource(botFile),
+    botRed: new ImageSource(botRedFile),
+    baddie: new ImageSource(baddieFile),
+    block: new ImageSource(blockFile),
+    npc: new ImageSource(npcFile),
+    hero_idle: new ImageSource(require("../res/hero_idle.png").default),
+    hero_run: new ImageSource(require("../res/hero_run.png").default),
+    hero_jump: new ImageSource(require("../res/hero_jump.png").default),
 }
 
-const loader = new ex.Loader();
+const default_grid = {
+    columns: 1,
+    rows: 8,
+    spriteWidth: 56,
+    spriteHeight: 48
+};
 
-const botSpriteSheet = ex.SpriteSheet.fromImageSource({
-    image:Resources.bot, 
-    grid: { 
+export const hero_idle_sheet = SpriteSheet.fromImageSource({
+    image: images.hero_idle,
+    grid: default_grid
+});
+
+export const hero_run_sheet = SpriteSheet.fromImageSource({
+    image: images.hero_run,
+    grid: default_grid
+});
+
+export const hero_jump_sheet = SpriteSheet.fromImageSource({
+    image: images.hero_jump,
+    grid: {...default_grid, rows: 12}
+});
+
+export const sounds: { [key: string]: Sound } = {
+    jump: new Sound(jumpSound),
+    hit: new Sound(hitSound),
+    gotEm: new Sound(gotEmSound)
+}
+
+export class CustomLoader extends Loader {
+    draw(ctx: CanvasRenderingContext2D) {
+        super.draw(ctx);
+    }
+}
+
+export const loader = new CustomLoader();
+loader.playButtonText = '';
+loader.backgroundColor = '#ffffff'
+loader.logo = '';
+loader.loadingBarColor = Color.fromHex("#666666")
+
+const botSpriteSheet = SpriteSheet.fromImageSource({
+    image: images.bot,
+    grid: {
         columns: 8,
-        rows: 1, 
-        spriteWidth: 32,
-        spriteHeight: 32
-    }
-});
-const botRedSpriteSheet = ex.SpriteSheet.fromImageSource({
-    image: Resources.botRed,
-    grid: {
-        columns: 8, 
         rows: 1,
         spriteWidth: 32,
         spriteHeight: 32
     }
 });
-const baddieSpriteSheet = ex.SpriteSheet.fromImageSource({
-    image: Resources.baddie,
+const botRedSpriteSheet = SpriteSheet.fromImageSource({
+    image: images.botRed,
     grid: {
-        columns: 6, 
+        columns: 8,
         rows: 1,
         spriteWidth: 32,
         spriteHeight: 32
     }
 });
-const blockSprite = Resources.block.toSprite();
-const npcSprite = Resources.npc.toSprite();
+const baddieSpriteSheet = SpriteSheet.fromImageSource({
+    image: images.baddie,
+    grid: {
+        columns: 6,
+        rows: 1,
+        spriteWidth: 32,
+        spriteHeight: 32
+    }
+});
+const blockSprite = images.block.toSprite();
+const npcSprite = images.npc.toSprite();
 
-for (const res in Resources) {
-    loader.addResource((Resources as any)[res]);
+for (const res in images) {
+    loader.addResource(images[res]);
+}
+for (const res in sounds) {
+    loader.addResource(sounds[res]);
 }
 
-export { Resources, loader, botSpriteSheet, botRedSpriteSheet, baddieSpriteSheet, blockSprite, npcSprite }
+export {botSpriteSheet, botRedSpriteSheet, baddieSpriteSheet, blockSprite, npcSprite}
