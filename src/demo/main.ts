@@ -17,6 +17,8 @@ export const engine = new Engine({
 Physics.acc = new Vector(0, 1000);
 engine.showDebug(true);
 
+Physics.gravity=new Vector(0,1000)
+
 engine.add('level1', new Level());
 engine.add('level2', new Level2());
 

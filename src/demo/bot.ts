@@ -1,5 +1,5 @@
 import * as ex from 'excalibur';
-import {Actor, Color, Input, Shape, Vector} from 'excalibur';
+import {Actor, Color, Engine, Input, Shape, Vector} from 'excalibur';
 import {hero_down_sheet, hero_idle_sheet, hero_jump_sheet, hero_run_sheet, sounds} from './resources';
 import {Bolt, Direction} from "./Bolt";
 
@@ -16,15 +16,17 @@ export class Bot extends Actor {
     doubleJump = false;
     planJump = false;
     plan = false;
+    sit = false;
 
-    constructor(height: number = 48, width = 56) {
+
+    constructor(private _height = 48, private _width = 56) {
         super({
-            width,
-            height,
+            width: _width,
+            height: _height,
             color: Color.Cyan,
             name: 'Bot',
             pos: new ex.Vector(0, -500),
-            collider: Shape.Box(width - 6, height * 2),
+            collider: Shape.Box(_width - 6, _height * 2 - 32, Vector.Half, ex.vec(0, 16)),
             collisionType: ex.CollisionType.Active,
             collisionGroup: ex.CollisionGroupManager.groupByName("player"),
         });
@@ -104,8 +106,14 @@ export class Bot extends Actor {
                 engine.input.keyboard.isHeld(ex.Input.Keys.S) ||
                 engine.input.keyboard.isHeld(ex.Input.Keys.Down)
             ) {
+                this.sit = true;
                 this.graphics.use(this.down);
+                this.collider.useBoxCollider(this._width - 6, this._height * 2 - 48, Vector.Half, ex.vec(0, 24))
+                this.handleRightLeft(engine, 50);
                 return;
+            } else {
+                this.sit = false;
+                this.collider.useBoxCollider(this._width - 6, this._height * 2 - 32, Vector.Half, ex.vec(0, 16))
             }
         }
 
@@ -117,28 +125,7 @@ export class Bot extends Actor {
         }
 
         // Player input
-        if (engine.input.keyboard.isHeld(ex.Input.Keys.A)
-            || engine.input.keyboard.isHeld(ex.Input.Keys.Q)
-            || engine.input.keyboard.isHeld(ex.Input.Keys.Left)
-        ) {
-            this.vel.x = -300;
-            this.idle.flipHorizontal = true;
-            this.jump_up.flipHorizontal = true;
-            this.jump_down.flipHorizontal = true;
-            this.down.flipHorizontal = true;
-            this.direction = Direction.LEFT;
-        }
-
-        if (engine.input.keyboard.isHeld(ex.Input.Keys.D) ||
-            engine.input.keyboard.isHeld(ex.Input.Keys.Right)
-        ) {
-            this.vel.x = 300;
-            this.idle.flipHorizontal = false;
-            this.jump_up.flipHorizontal = false;
-            this.jump_down.flipHorizontal = false;
-            this.down.flipHorizontal = false;
-            this.direction = Direction.RIGHT;
-        }
+        this.handleRightLeft(engine, 300);
 
         if (
             engine.input.keyboard.isHeld(ex.Input.Keys.Space) ||
@@ -197,6 +184,31 @@ export class Bot extends Actor {
         }
         if (this.vel.y > 0) {
             this.graphics.use(this.jump_down);
+        }
+    }
+
+    private handleRightLeft(engine: Engine, speed: number) {
+        if (engine.input.keyboard.isHeld(ex.Input.Keys.A)
+            || engine.input.keyboard.isHeld(ex.Input.Keys.Q)
+            || engine.input.keyboard.isHeld(ex.Input.Keys.Left)
+        ) {
+            this.vel.x = -speed;
+            this.idle.flipHorizontal = true;
+            this.jump_up.flipHorizontal = true;
+            this.jump_down.flipHorizontal = true;
+            this.down.flipHorizontal = true;
+            this.direction = Direction.LEFT;
+        }
+
+        if (engine.input.keyboard.isHeld(ex.Input.Keys.D) ||
+            engine.input.keyboard.isHeld(ex.Input.Keys.Right)
+        ) {
+            this.vel.x = speed;
+            this.idle.flipHorizontal = false;
+            this.jump_up.flipHorizontal = false;
+            this.jump_down.flipHorizontal = false;
+            this.down.flipHorizontal = false;
+            this.direction = Direction.RIGHT;
         }
     }
 }
