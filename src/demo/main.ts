@@ -1,8 +1,9 @@
 import * as ex from 'excalibur';
 import { Level } from './level';
+import {Color, Physics} from "excalibur";
 
 export const engine = new ex.Engine({
-    backgroundColor: ex.Color.Transparent,
+    backgroundColor: Color.Transparent,
     width: 1200,
     height: 600,
     suppressPlayButton: true,
@@ -13,20 +14,7 @@ export const engine = new ex.Engine({
 });
 
 // Set global gravity, 800 pixels/sec^2
-ex.Physics.acc = new ex.Vector(0, 800);
+Physics.acc = new ex.Vector(0, 1000);
 
-// Setup first level as a custom scene
-engine.add('level', new Level());
-
-engine.goToScene('level');
-
-// Game events to handle
-engine.on('hidden', () => {
-    console.log('pause');
-    //engine.stop();
-});
-
-engine.on('visible', () => {
-    console.log('start');
-    engine.start();
-});
+engine.add('level1', new Level());
+engine.goToScene('level1');

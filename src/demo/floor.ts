@@ -1,25 +1,21 @@
 import * as ex from 'excalibur';
-import { blockSprite } from './resources';
+import {blockSprite} from './resources';
+import {Actor, CollisionGroupManager, CollisionType, Color, Shape, Vector} from "excalibur";
 
-export class Floor extends ex.Actor {
-    constructor(x: number, y: number, public cols: number, public rows: number) {
+const height = 100;
+
+export class Floor extends Actor {
+    static n = 0;
+
+    constructor(x: number, y: number, width: number, height: number) {
         super({
-            name: 'Floor',
-            pos: new ex.Vector(x, y),
-            scale: new ex.Vector(2, 2),
-            anchor: ex.Vector.Zero,
-            collider: ex.Shape.Box(20 * cols, 15 * rows, ex.Vector.Zero),
-            collisionType: ex.CollisionType.Fixed,
-            collisionGroup: ex.CollisionGroupManager.groupByName("floor"),
+            name: 'Floor' + (Floor.n++),
+            pos: new Vector(x, y),
+            collider: Shape.Box(width, height),
+            collisionType: CollisionType.Fixed,
+            color: Color.White,
+            width,
+            height: height,
         });
-
-        for (let i = 0; i < this.cols; i++) {
-            for (let j = 0; j < this.rows; j++) {
-                this.graphics.show(blockSprite, { 
-                    anchor: ex.Vector.Zero,
-                    offset: ex.vec(i * blockSprite.width, j * blockSprite.height)
-                })
-            }
-        }
     }
 }

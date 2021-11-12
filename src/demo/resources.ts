@@ -18,6 +18,7 @@ const images: { [key: string]: ImageSource } = {
     hero_idle: new ImageSource(require("../res/hero_idle.png").default),
     hero_run: new ImageSource(require("../res/hero_run.png").default),
     hero_jump: new ImageSource(require("../res/hero_jump.png").default),
+    hero_down: new ImageSource(require("../res/hero_down.png").default),
 }
 
 const default_grid = {
@@ -31,6 +32,12 @@ export const hero_idle_sheet = SpriteSheet.fromImageSource({
     image: images.hero_idle,
     grid: default_grid
 });
+
+export const hero_down_sheet = SpriteSheet.fromImageSource({
+    image: images.hero_down,
+    grid: default_grid
+});
+
 
 export const hero_run_sheet = SpriteSheet.fromImageSource({
     image: images.hero_run,

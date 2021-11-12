@@ -7,19 +7,17 @@ export class Level extends Scene {
     onInitialize(engine: Engine) {
 
         // Create collision groups for the game
-        CollisionGroupManager.create("player");
-        CollisionGroupManager.create("floor");
 
         // Compose actors in scene
         const actor = new Bot(engine.halfDrawWidth, 0);
 
-        const floor = new Floor(0, 320, 60, 10);
+        const floor = new Floor(0, 320, 60, 6);
 
         engine.add(actor);
         engine.add(floor);
 
         const emitter = new ParticleEmitter({
-            x: 0,
+            x: -1000,
             y: 0,
             width: 2000,
             height: 300,
@@ -45,9 +43,13 @@ export class Level extends Scene {
 
         engine.add(emitter);
 
-
         // Create camera strategy
         this.camera.clearAllStrategies();
         this.camera.strategy.elasticToActor(actor, 0.05, 0.1);
+        this.camera.zoom = 0.1;
+        this.camera.zoomOverTime(1, 2000);
+
+        // @ts-ignore
+        window["l"] = this;
     }
 }
