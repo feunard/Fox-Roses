@@ -17,6 +17,7 @@ export class Bot extends Actor {
     planJump = false;
     plan = false;
     sit = false;
+    forceSit = "";
 
 
     constructor(private _height = 48, private _width = 56) {
@@ -100,21 +101,26 @@ export class Bot extends Actor {
         // Reset x velocity
         this.vel.x = 0;
 
-        if (this.onGround) {
-            if
-            (
-                engine.input.keyboard.isHeld(ex.Input.Keys.S) ||
-                engine.input.keyboard.isHeld(ex.Input.Keys.Down)
-            ) {
+
+        if
+        (
+            engine.input.keyboard.isHeld(ex.Input.Keys.S) ||
+            engine.input.keyboard.isHeld(ex.Input.Keys.Down)
+        ) {
+            if (this.onGround) {
                 this.sit = true;
-                this.graphics.use(this.down);
-                this.collider.useBoxCollider(this._width - 6, this._height * 2 - 48, Vector.Half, ex.vec(0, 24))
-                this.handleRightLeft(engine, 50);
-                return;
-            } else {
-                this.sit = false;
-                this.collider.useBoxCollider(this._width - 6, this._height * 2 - 32, Vector.Half, ex.vec(0, 16))
             }
+        } else {
+            this.sit = false;
+        }
+
+        if (this.sit || this.forceSit !== "") {
+            this.graphics.use(this.down);
+            this.collider.useBoxCollider(this._width - 6, this._height * 2 - 48, Vector.Half, ex.vec(0, 24))
+            this.handleRightLeft(engine, 50);
+            return;
+        } else {
+            this.collider.useBoxCollider(this._width - 6, this._height * 2 - 32, Vector.Half, ex.vec(0, 16));
         }
 
         if (engine.input.keyboard.wasPressed(Input.Keys.E)) {
