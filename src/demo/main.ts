@@ -15,7 +15,6 @@ export const engine = new Engine({
 
 // Set global gravity, 800 pixels/sec^2
 Physics.acc = new Vector(0, 1000);
-engine.showDebug(true);
 
 Physics.gravity=new Vector(0,1000)
 

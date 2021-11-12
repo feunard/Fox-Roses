@@ -5,7 +5,6 @@ const botFile = require('../res/excalibot.png').default;
 const botRedFile = require('../res/excalibot-red.png').default;
 const baddieFile = require('../res/baddie.png').default;
 const blockFile = require('../res/block.png').default;
-const npcFile = require('../res/npc.png').default;
 const jumpSound = require('../res/jump.wav').default;
 const hitSound = require('../res/hurt.wav').default;
 const gotEmSound = require('../res/gottem.wav').default;
@@ -16,7 +15,6 @@ export const images: { [key: string]: ImageSource } = {
     botRed: new ImageSource(botRedFile),
     baddie: new ImageSource(baddieFile),
     block: new ImageSource(blockFile),
-    npc: new ImageSource(npcFile),
     hero_idle: new ImageSource(require("../res/hero_idle.png").default),
     hero_run: new ImageSource(require("../res/hero_run.png").default),
     hero_jump: new ImageSource(require("../res/hero_jump.png").default),
@@ -29,7 +27,6 @@ const default_grid = {
     spriteWidth: 56,
     spriteHeight: 48
 };
-
 
 export const bolt_sheet = SpriteSheet.fromImageSource({
     image: images.bolt,
@@ -51,7 +48,6 @@ export const hero_down_sheet = SpriteSheet.fromImageSource({
     image: images.hero_down,
     grid: default_grid
 });
-
 
 export const hero_run_sheet = SpriteSheet.fromImageSource({
     image: images.hero_run,
@@ -76,40 +72,11 @@ export class CustomLoader extends Loader {
 }
 
 export const loader = new CustomLoader();
+
 loader.playButtonText = '';
 loader.backgroundColor = '#ffffff'
 loader.logo = '';
 loader.loadingBarColor = Color.fromHex("#666666")
-
-const botSpriteSheet = SpriteSheet.fromImageSource({
-    image: images.bot,
-    grid: {
-        columns: 8,
-        rows: 1,
-        spriteWidth: 32,
-        spriteHeight: 32
-    }
-});
-const botRedSpriteSheet = SpriteSheet.fromImageSource({
-    image: images.botRed,
-    grid: {
-        columns: 8,
-        rows: 1,
-        spriteWidth: 32,
-        spriteHeight: 32
-    }
-});
-const baddieSpriteSheet = SpriteSheet.fromImageSource({
-    image: images.baddie,
-    grid: {
-        columns: 6,
-        rows: 1,
-        spriteWidth: 32,
-        spriteHeight: 32
-    }
-});
-const blockSprite = images.block.toSprite();
-const npcSprite = images.npc.toSprite();
 
 for (const res in images) {
     loader.addResource(images[res]);
@@ -118,4 +85,3 @@ for (const res in sounds) {
     loader.addResource(sounds[res]);
 }
 
-export {botSpriteSheet, botRedSpriteSheet, baddieSpriteSheet, blockSprite, npcSprite}

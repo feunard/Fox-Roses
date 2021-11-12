@@ -2,6 +2,7 @@ import * as ex from 'excalibur';
 import {Actor, Color, Engine, Input, Shape, Vector} from 'excalibur';
 import {hero_down_sheet, hero_idle_sheet, hero_jump_sheet, hero_run_sheet, sounds} from './resources';
 import {Bolt, Direction} from "./Bolt";
+import {engine} from "./main";
 
 export class Bot extends Actor {
     public onGround = true;
@@ -54,7 +55,6 @@ export class Bot extends Actor {
         this.idle = ex.Animation.fromSpriteSheet(hero_idle_sheet, default_frame, default_duration);
         this.idle.scale = default_scale;
         this.idle.origin = default_origin;
-        this.idle.showDebug = true;
 
         const left = ex.Animation.fromSpriteSheet(hero_run_sheet, default_frame, default_duration);
         left.scale = default_scale;
@@ -155,6 +155,18 @@ export class Bot extends Actor {
             this.down.flipHorizontal = false;
             this.direction = Direction.RIGHT;
         }
+
+        if (
+            engine.input.keyboard.wasPressed(ex.Input.Keys.J)
+        ) {
+            engine.showDebug(true);
+        }
+        if (
+            engine.input.keyboard.wasPressed(ex.Input.Keys.K)
+        ) {
+            engine.showDebug(false);
+        }
+
 
         if (
             engine.input.keyboard.isHeld(ex.Input.Keys.Space) ||
