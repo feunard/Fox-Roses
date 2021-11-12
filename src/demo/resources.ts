@@ -1,5 +1,6 @@
 import {Color, ImageSource, Loader, Sound, SpriteSheet} from "excalibur";
 
+const boltFile = require("../res/bolt.png").default;
 const botFile = require('../res/excalibot.png').default;
 const botRedFile = require('../res/excalibot-red.png').default;
 const baddieFile = require('../res/baddie.png').default;
@@ -9,7 +10,8 @@ const jumpSound = require('../res/jump.wav').default;
 const hitSound = require('../res/hurt.wav').default;
 const gotEmSound = require('../res/gottem.wav').default;
 
-const images: { [key: string]: ImageSource } = {
+export const images: { [key: string]: ImageSource } = {
+    bolt: new ImageSource(boltFile),
     bot: new ImageSource(botFile),
     botRed: new ImageSource(botRedFile),
     baddie: new ImageSource(baddieFile),
@@ -28,9 +30,21 @@ const default_grid = {
     spriteHeight: 48
 };
 
+
+export const bolt_sheet = SpriteSheet.fromImageSource({
+    image: images.bolt,
+    grid: {
+        columns: 1,
+        rows: 1,
+        spriteWidth: 32,
+        spriteHeight: 32
+    }
+});
+
 export const hero_idle_sheet = SpriteSheet.fromImageSource({
     image: images.hero_idle,
-    grid: default_grid
+    grid: default_grid,
+
 });
 
 export const hero_down_sheet = SpriteSheet.fromImageSource({

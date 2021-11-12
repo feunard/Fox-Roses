@@ -1,20 +1,32 @@
 import * as ex from 'excalibur';
-import {botSpriteSheet, hero_down_sheet, hero_idle_sheet, hero_jump_sheet, hero_run_sheet, sounds} from './resources';
-import {CollisionGroupManager, Shape, Vector} from "excalibur";
+import {Actor, Color, Input, Shape, Vector} from 'excalibur';
+import {hero_down_sheet, hero_idle_sheet, hero_jump_sheet, hero_run_sheet, sounds} from './resources';
+import {Bolt, Direction} from "./Bolt";
 
-export class Bot extends ex.Actor {
+export class Bot extends Actor {
     public onGround = true;
     public jumped = false;
     public hurt = false;
     public hurtTime: number = 0;
+    public direction: Direction = Direction.RIGHT;
+    down!: ex.Animation;
+    idle!: ex.Animation;
+    jump_up!: ex.Animation;
+    jump_down!: ex.Animation;
+    doubleJump = false;
+    planJump = false;
+    plan = false;
 
-    constructor(x: number, y: number) {
+    constructor(height: number = 48, width = 56) {
         super({
+            width,
+            height,
+            color: Color.Cyan,
             name: 'Bot',
-            pos: new ex.Vector(0, -50),
+            pos: new ex.Vector(0, -500),
+            collider: Shape.Box(width - 6, height * 2),
             collisionType: ex.CollisionType.Active,
             collisionGroup: ex.CollisionGroupManager.groupByName("player"),
-            collider: ex.Shape.Box(56, 48, ex.Vector.Half, ex.vec(0, 48 / 2))
         });
     }
 
@@ -22,29 +34,27 @@ export class Bot extends ex.Actor {
     onInitialize(engine: ex.Engine) {
         // Initialize actor
 
-        // Setup visuals
-        const hurtleft = ex.Animation.fromSpriteSheet(botSpriteSheet, [0, 1, 0, 1, 0, 1], 150);
-        hurtleft.scale = new ex.Vector(2, 2);
-
-        const hurtright = ex.Animation.fromSpriteSheet(botSpriteSheet, [0, 1, 0, 1, 0, 1], 150);
-        hurtright.scale = new ex.Vector(2, 2);
-        hurtright.flipHorizontal = true;
-
         const default_frame = [0, 1, 2, 3, 4, 5, 6, 7];
         const default_duration = 80;
         const default_scale = new Vector(2, 2);
+        const default_origin = new Vector(10, 0);
 
         this.jump_down = ex.Animation.fromSpriteSheet(hero_jump_sheet, [5, 6, 7], 500);
         this.jump_down.scale = default_scale;
+        this.jump_down.origin = default_origin;
 
         this.jump_up = ex.Animation.fromSpriteSheet(hero_jump_sheet, [1, 2, 3, 4], 500);
         this.jump_up.scale = default_scale;
+        this.jump_up.origin = default_origin;
 
         this.down = ex.Animation.fromSpriteSheet(hero_down_sheet, [5, 6, 7, 8], default_duration);
         this.down.scale = default_scale;
+        this.down.origin = default_origin;
 
         this.idle = ex.Animation.fromSpriteSheet(hero_idle_sheet, default_frame, default_duration);
         this.idle.scale = default_scale;
+        this.idle.origin = default_origin;
+        this.idle.showDebug = true;
 
         const left = ex.Animation.fromSpriteSheet(hero_run_sheet, default_frame, default_duration);
         left.scale = default_scale;
@@ -54,8 +64,6 @@ export class Bot extends ex.Actor {
         right.scale = default_scale;
 
         // Register animations with actor
-        this.graphics.add("hurtleft", hurtleft);
-        this.graphics.add("hurtright", hurtright);
         this.graphics.add("idle", this.idle);
         this.graphics.add("left", left);
         this.graphics.add("right", right);
@@ -99,6 +107,13 @@ export class Bot extends ex.Actor {
                 this.graphics.use(this.down);
                 return;
             }
+        }
+
+        if (engine.input.keyboard.wasPressed(Input.Keys.E)) {
+            this.scene.engine.add(new Bolt(
+                this.pos,
+                this.direction
+            ))
         }
 
         // Player input

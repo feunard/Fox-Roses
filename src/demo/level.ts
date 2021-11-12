@@ -46,7 +46,7 @@ export class Level extends Scene {
         emitter.beginColor = Color.Transparent;
         emitter.endColor = Color.Transparent;
 
-        engine.add(emitter);
+        this.add(emitter);
 
         // Create camera strategy
         this.camera.clearAllStrategies();
