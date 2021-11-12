@@ -14,11 +14,8 @@ export class Bot extends Actor {
     jump_up!: ex.Animation;
     jump_down!: ex.Animation;
     doubleJump = false;
-    planJump = false;
     plan = false;
     sit = false;
-    forceSit = "";
-
 
     constructor(private _height = 48, private _width = 56) {
         super({
@@ -41,28 +38,6 @@ export class Bot extends Actor {
         const default_duration = 80;
         const default_scale = new Vector(2, 2);
         const default_origin = new Vector(10, 0);
-
-        setInterval(() => {
-            this.forceSit = "";
-        }, 1000)
-
-        this.on('precollision', (ev) => {
-
-            if (!this.sit) {
-                if (this.collider.bounds.top - 5 < ev.other.collider.bounds.bottom
-                    && this.collider.bounds.bottom > ev.other.collider.bounds.bottom
-                ) {
-                    console.log("FORCE BY", ev.other.id)
-                    this.forceSit = ev.other.name;
-                }
-            }
-        })
-        this.on('collisionend', (ev) => {
-            if (ev.other.name === this.forceSit) {
-                console.log("END lol")
-                this.forceSit = "";
-            }
-        })
 
         this.jump_down = ex.Animation.fromSpriteSheet(hero_jump_sheet, [5, 6, 7], 500);
         this.jump_down.scale = default_scale;
@@ -126,7 +101,8 @@ export class Bot extends Actor {
         if
         (
             engine.input.keyboard.isHeld(ex.Input.Keys.S) ||
-            engine.input.keyboard.isHeld(ex.Input.Keys.Down)
+            engine.input.keyboard.isHeld(ex.Input.Keys.Down) ||
+            engine.input.keyboard.isHeld(ex.Input.Keys.ShiftLeft)
         ) {
             if (this.onGround) {
                 this.sit = true;
@@ -135,17 +111,50 @@ export class Bot extends Actor {
             this.sit = false;
         }
 
-        if (this.sit || this.forceSit !== "") {
+        if (this.sit) {
             this.graphics.use(this.down);
             this.collider.useBoxCollider(this._width - 6, this._height * 2 - 48, Vector.Half, ex.vec(0, 24))
-            this.handleRightLeft(engine, 50);
+            if (engine.input.keyboard.wasPressed(Input.Keys.E)) {
+                this.scene.engine.add(new Bolt(
+                    new Vector(this.pos.x, this.pos.y + this._height / 2),
+                    this.direction
+                ))
+            }
             return;
         } else {
             this.collider.useBoxCollider(this._width - 6, this._height * 2 - 32, Vector.Half, ex.vec(0, 16));
         }
 
         // Player input
-        this.handleRightLeft(engine, 300);
+        if (engine.input.keyboard.wasPressed(Input.Keys.E)) {
+            this.scene.engine.add(new Bolt(
+                this.pos,
+                this.direction
+            ))
+        }
+
+        if (engine.input.keyboard.isHeld(ex.Input.Keys.A)
+            || engine.input.keyboard.isHeld(ex.Input.Keys.Q)
+            || engine.input.keyboard.isHeld(ex.Input.Keys.Left)
+        ) {
+            this.vel.x = -300;
+            this.idle.flipHorizontal = true;
+            this.jump_up.flipHorizontal = true;
+            this.jump_down.flipHorizontal = true;
+            this.down.flipHorizontal = true;
+            this.direction = Direction.LEFT;
+        }
+
+        if (engine.input.keyboard.isHeld(ex.Input.Keys.D) ||
+            engine.input.keyboard.isHeld(ex.Input.Keys.Right)
+        ) {
+            this.vel.x = 300;
+            this.idle.flipHorizontal = false;
+            this.jump_up.flipHorizontal = false;
+            this.jump_down.flipHorizontal = false;
+            this.down.flipHorizontal = false;
+            this.direction = Direction.RIGHT;
+        }
 
         if (
             engine.input.keyboard.isHeld(ex.Input.Keys.Space) ||
@@ -167,7 +176,7 @@ export class Bot extends Actor {
             this.plan = false;
             if (this.onGround) {
                 console.log("JUMP 1")
-                this.vel.y = -350;
+                this.vel.y = -400;
                 this.onGround = false;
                 this.doubleJump = true;
                 sounds.jump.play(.1);
@@ -176,15 +185,6 @@ export class Bot extends Actor {
                 this.vel.y = -300;
                 this.onGround = false;
                 this.doubleJump = false;
-                this.planJump = true;
-                sounds.hit.play(.1);
-            } else if (this.planJump) {
-                console.log("JUMP 2")
-                this.vel.y = -200;
-                this.onGround = false;
-                this.doubleJump = false;
-                this.planJump = false;
-                this.plan = true;
                 sounds.hit.play(.1);
             }
         }
@@ -214,28 +214,7 @@ export class Bot extends Actor {
                 this.direction
             ))
         }
-        if (engine.input.keyboard.isHeld(ex.Input.Keys.A)
-            || engine.input.keyboard.isHeld(ex.Input.Keys.Q)
-            || engine.input.keyboard.isHeld(ex.Input.Keys.Left)
-        ) {
-            this.vel.x = -speed;
-            this.idle.flipHorizontal = true;
-            this.jump_up.flipHorizontal = true;
-            this.jump_down.flipHorizontal = true;
-            this.down.flipHorizontal = true;
-            this.direction = Direction.LEFT;
-        }
 
-        if (engine.input.keyboard.isHeld(ex.Input.Keys.D) ||
-            engine.input.keyboard.isHeld(ex.Input.Keys.Right)
-        ) {
-            this.vel.x = speed;
-            this.idle.flipHorizontal = false;
-            this.jump_up.flipHorizontal = false;
-            this.jump_down.flipHorizontal = false;
-            this.down.flipHorizontal = false;
-            this.direction = Direction.RIGHT;
-        }
     }
 }
 
