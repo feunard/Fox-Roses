@@ -1,8 +1,6 @@
-import * as ex from 'excalibur';
-import {blockSprite} from './resources';
-import {Actor, CollisionGroupManager, CollisionType, Color, Shape, Vector} from "excalibur";
+import {Actor, CollisionType, Color, Shape, Vector} from 'excalibur';
 
-const height = 100;
+
 
 export class Floor extends Actor {
     static n = 0;

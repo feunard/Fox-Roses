@@ -18,7 +18,8 @@ class App extends React.Component {
         return (
             <div className="App">
                <div style={{textAlign: "center"}}>
-
+                   <button onClick={() => {engine.goToScene("level2")}}>click2</button>
+                   <button onClick={() => {engine.goToScene("level1")}}>click1</button>
                </div>
             </div>
         );

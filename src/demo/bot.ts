@@ -18,11 +18,6 @@ export class Bot extends ex.Actor {
         });
     }
 
-    down!: ex.Animation;
-    idle!: ex.Animation;
-    jump_up!: ex.Animation;
-    jump_down!: ex.Animation;
-
     // OnInitialize is called before the 1st actor update
     onInitialize(engine: ex.Engine) {
         // Initialize actor
@@ -71,10 +66,6 @@ export class Bot extends ex.Actor {
         this.on('postcollision', this.onPostCollision);
     }
 
-    doubleJump = false;
-    planJump = false;
-    plan = false;
-
     onPostCollision(evt: ex.PostCollisionEvent) {
         if (evt.side === ex.Side.Bottom) {
             this.onGround = true;
@@ -120,6 +111,7 @@ export class Bot extends ex.Actor {
             this.jump_up.flipHorizontal = true;
             this.jump_down.flipHorizontal = true;
             this.down.flipHorizontal = true;
+            this.direction = Direction.LEFT;
         }
 
         if (engine.input.keyboard.isHeld(ex.Input.Keys.D) ||
@@ -130,6 +122,7 @@ export class Bot extends ex.Actor {
             this.jump_up.flipHorizontal = false;
             this.jump_down.flipHorizontal = false;
             this.down.flipHorizontal = false;
+            this.direction = Direction.RIGHT;
         }
 
         if (
@@ -192,3 +185,8 @@ export class Bot extends ex.Actor {
         }
     }
 }
+
+
+
+
+

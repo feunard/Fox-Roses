@@ -9,12 +9,17 @@ export class Level extends Scene {
         // Create collision groups for the game
 
         // Compose actors in scene
-        const actor = new Bot(engine.halfDrawWidth, 0);
+        const actor = new Bot();
+        const floor = new Floor(0, 0, 1000, 200);
+        const wall = new Floor(300, -200, 50, 100)
+        const wall2 = new Floor(-300, -200, 50, 100)
+        const wall3 = new Floor(-190, -100, 50, 100)
 
-        const floor = new Floor(0, 320, 1000, 200);
-
-        engine.add(actor);
-        engine.add(floor);
+        this.add(actor);
+        this.add(floor);
+        this.add(wall);
+        this.add(wall2);
+        this.add(wall3);
 
         const emitter = new ParticleEmitter({
             x: -1000,
