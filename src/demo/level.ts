@@ -1,6 +1,7 @@
 import {Bot} from './bot';
 import {Floor} from './floor';
-import {CollisionGroupManager, Color, EmitterType, Engine, ParticleEmitter, Scene, Vector} from "excalibur";
+//import {CollisionGroupManager, Color, EmitterType, Engine, ParticleEmitter, Scene, Vector} from "excalibur";
+import {Color, EmitterType, Engine, ParticleEmitter, Scene, Vector} from "excalibur";
 
 export class Level extends Scene {
 
@@ -11,7 +12,7 @@ export class Level extends Scene {
         // Compose actors in scene
         const actor = new Bot(engine.halfDrawWidth, 0);
 
-        const floor = new Floor(0, 320, 60, 6);
+        const floor = new Floor(0, 320, 1000, 200);
 
         engine.add(actor);
         engine.add(floor);
