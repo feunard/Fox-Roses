@@ -42,6 +42,28 @@ export class Bot extends Actor {
         const default_scale = new Vector(2, 2);
         const default_origin = new Vector(10, 0);
 
+        setInterval(() => {
+            this.forceSit = "";
+        }, 1000)
+
+        this.on('precollision', (ev) => {
+
+            if (!this.sit) {
+                if (this.collider.bounds.top - 5 < ev.other.collider.bounds.bottom
+                    && this.collider.bounds.bottom > ev.other.collider.bounds.bottom
+                ) {
+                    console.log("FORCE BY", ev.other.id)
+                    this.forceSit = ev.other.name;
+                }
+            }
+        })
+        this.on('collisionend', (ev) => {
+            if (ev.other.name === this.forceSit) {
+                console.log("END lol")
+                this.forceSit = "";
+            }
+        })
+
         this.jump_down = ex.Animation.fromSpriteSheet(hero_jump_sheet, [5, 6, 7], 500);
         this.jump_down.scale = default_scale;
         this.jump_down.origin = default_origin;
@@ -101,6 +123,10 @@ export class Bot extends Actor {
         // Reset x velocity
         this.vel.x = 0;
 
+        if (!this.sit) {
+            const box = Shape.Box(this._width - 6, this._height * 2 - 32, Vector.Half, ex.vec(0, 16));
+        }
+
 
         if
         (
@@ -121,13 +147,6 @@ export class Bot extends Actor {
             return;
         } else {
             this.collider.useBoxCollider(this._width - 6, this._height * 2 - 32, Vector.Half, ex.vec(0, 16));
-        }
-
-        if (engine.input.keyboard.wasPressed(Input.Keys.E)) {
-            this.scene.engine.add(new Bolt(
-                this.pos,
-                this.direction
-            ))
         }
 
         // Player input
@@ -194,6 +213,12 @@ export class Bot extends Actor {
     }
 
     private handleRightLeft(engine: Engine, speed: number) {
+        if (engine.input.keyboard.wasPressed(Input.Keys.E)) {
+            this.scene.engine.add(new Bolt(
+                new Vector(this.pos.x, this.pos.y + this._height / 2),
+                this.direction
+            ))
+        }
         if (engine.input.keyboard.isHeld(ex.Input.Keys.A)
             || engine.input.keyboard.isHeld(ex.Input.Keys.Q)
             || engine.input.keyboard.isHeld(ex.Input.Keys.Left)
