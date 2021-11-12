@@ -1,6 +1,5 @@
 import {Bot} from './bot';
 import {Floor} from './floor';
-//import {CollisionGroupManager, Color, EmitterType, Engine, ParticleEmitter, Scene, Vector} from "excalibur";
 import {Color, EmitterType, Engine, ParticleEmitter, Scene, Vector} from "excalibur";
 
 export class Level extends Scene {
