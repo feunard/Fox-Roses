@@ -123,11 +123,6 @@ export class Bot extends Actor {
         // Reset x velocity
         this.vel.x = 0;
 
-        if (!this.sit) {
-            const box = Shape.Box(this._width - 6, this._height * 2 - 32, Vector.Half, ex.vec(0, 16));
-        }
-
-
         if
         (
             engine.input.keyboard.isHeld(ex.Input.Keys.S) ||
