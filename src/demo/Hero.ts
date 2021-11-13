@@ -36,7 +36,6 @@ export class Hero extends Actor {
     jump_up!: ex.Animation;
     jump_down!: ex.Animation;
     doubleJump = false;
-    plan = false;
     sit = false;
 
     private sitPrevent: HitBox;
@@ -228,25 +227,12 @@ export class Hero extends Actor {
             engine.showDebug(false);
         }
 
-
-        if (
-            engine.input.keyboard.isHeld(ex.Input.Keys.Space) ||
-            engine.input.keyboard.isHeld(ex.Input.Keys.Up) ||
-            engine.input.keyboard.isHeld(ex.Input.Keys.KeyZ) ||
-            engine.input.keyboard.isHeld(ex.Input.Keys.KeyW)
-        ) {
-            if (this.plan) {
-                this.acc.y = 0;
-            }
-        }
-
         if (
             engine.input.keyboard.wasPressed(ex.Input.Keys.Space) ||
             engine.input.keyboard.wasPressed(ex.Input.Keys.Up) ||
             engine.input.keyboard.wasPressed(ex.Input.Keys.KeyZ) ||
             engine.input.keyboard.wasPressed(ex.Input.Keys.KeyW)
         ) {
-            this.plan = false;
             if (this.onGround) {
                 console.log("JUMP 1")
                 this.vel.y = -400;
