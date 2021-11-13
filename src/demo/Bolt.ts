@@ -1,5 +1,6 @@
 import {Actor, Animation, CollisionType, Engine, Vector} from "excalibur";
 import {bolt_sheet} from "./resources";
+import {Dir} from "fs";
 
 export enum Direction {
     LEFT = -1, RIGHT = 1
@@ -21,7 +22,8 @@ export class Bolt extends Actor {
     }
 
     onInitialize(_engine: Engine) {
-        this.anim = Animation.fromSpriteSheet(bolt_sheet, [0], 1000);
+        this.anim = Animation.fromSpriteSheet(bolt_sheet, [0, 1, 2, 3, 4], 60);
+        this.anim.flipHorizontal = this.direction === Direction.LEFT;
         this.graphics.add("bolt", this.anim);
         this.graphics.use("bolt");
         setTimeout(() => {

@@ -32,7 +32,7 @@ export const bolt_sheet = SpriteSheet.fromImageSource({
     image: images.bolt,
     grid: {
         columns: 1,
-        rows: 1,
+        rows: 5, // 5
         spriteWidth: 32,
         spriteHeight: 32
     }
