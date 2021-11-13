@@ -16,9 +16,11 @@ export const images: { [key: string]: ImageSource } = {
     baddie: new ImageSource(baddieFile),
     block: new ImageSource(blockFile),
     hero_idle: new ImageSource(require("../res/hero_idle.png").default),
+    heroExias_idle : new ImageSource(require("../res/Exias_idleV2.png").default),
     hero_run: new ImageSource(require("../res/hero_run.png").default),
     hero_jump: new ImageSource(require("../res/hero_jump.png").default),
     hero_down: new ImageSource(require("../res/hero_down.png").default),
+    hero_attack: new ImageSource(require("../res/hero_attack.png").default)
 }
 
 const default_grid = {
@@ -38,10 +40,20 @@ export const bolt_sheet = SpriteSheet.fromImageSource({
     }
 });
 
+export const hero_attack_sheet = SpriteSheet.fromImageSource({
+    image: images.hero_attack,
+    grid: {...default_grid, rows: 11}
+});
+
 export const hero_idle_sheet = SpriteSheet.fromImageSource({
     image: images.hero_idle,
     grid: default_grid,
 
+});
+
+export const heroExias_idle_sheet = SpriteSheet.fromImageSource({
+    image: images.heroExias_idle,
+    grid: default_grid,
 });
 
 export const hero_down_sheet = SpriteSheet.fromImageSource({

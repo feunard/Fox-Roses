@@ -5,7 +5,7 @@ import {
     hero_down_sheet,
     hero_idle_sheet,
     hero_jump_sheet,
-    hero_run_sheet,
+    hero_run_sheet, heroExias_idle_sheet,
     sounds
 } from './resources';
 import {Bolt, Direction} from "./Bolt";
@@ -36,7 +36,7 @@ class HitBox extends Actor {
 }
 
 
-export class Hero extends Actor {
+export class HeroExias extends Actor {
     public direction: Direction = Direction.RIGHT;
     down!: ex.Animation;
     idle!: ex.Animation;
@@ -47,6 +47,7 @@ export class Hero extends Actor {
     right!: ex.Animation;
     doubleJump = false;
     sit = false;
+    lock = false;
 
     private sitPrevent: HitBox;
     private jumpPrevent: HitBox;
@@ -107,21 +108,21 @@ export class Hero extends Actor {
         this.down.scale = default_scale;
         this.down.origin = default_origin;
 
-        this.idle = ex.Animation.fromSpriteSheet(hero_idle_sheet, default_frame, default_duration);
+        this.idle = ex.Animation.fromSpriteSheet(heroExias_idle_sheet, default_frame, default_duration);
         this.idle.scale = default_scale;
         this.idle.origin = default_origin;
 
-        const left = ex.Animation.fromSpriteSheet(hero_run_sheet, default_frame, default_duration);
-        left.scale = default_scale;
-        left.flipHorizontal = true;
+        this.left = ex.Animation.fromSpriteSheet(hero_run_sheet, default_frame, default_duration);
+        this.left.scale = default_scale;
+        this.left.flipHorizontal = true;
 
-        const right = ex.Animation.fromSpriteSheet(hero_run_sheet, default_frame, default_duration);
-        right.scale = default_scale;
+        this.right = ex.Animation.fromSpriteSheet(hero_run_sheet, default_frame, default_duration);
+        this.right.scale = default_scale;
 
         // Register animations with actor
         this.graphics.add("idle", this.idle);
-        this.graphics.add("left", left);
-        this.graphics.add("right", right);
+        this.graphics.add("left", this.left);
+        this.graphics.add("right", this.right);
         this.graphics.add("jump_up", this.jump_up);
         this.graphics.add("jump_down", this.jump_down);
         this.graphics.add("attack", this.attack);
@@ -137,7 +138,6 @@ export class Hero extends Actor {
             this.pos = new Vector(0, -200);
             this.vel = new Vector(0, 0);
         }
-
 
         // Reset x velocity
         this.vel.x = 0;
@@ -181,6 +181,7 @@ export class Hero extends Actor {
                 this.jump_up.flipHorizontal = true;
                 this.jump_down.flipHorizontal = true;
                 this.down.flipHorizontal = true;
+                this.attack.flipHorizontal = true;
                 this.direction = Direction.LEFT;
             }
 
@@ -192,6 +193,7 @@ export class Hero extends Actor {
                 this.jump_up.flipHorizontal = false;
                 this.jump_down.flipHorizontal = false;
                 this.down.flipHorizontal = false;
+                this.attack.flipHorizontal = false;
                 this.direction = Direction.RIGHT;
             }
             return;
@@ -200,9 +202,9 @@ export class Hero extends Actor {
         }
 
         // Player input
-        if (engine.input.keyboard.wasPressed(Input.Keys.E)) {
+        if (engine.input.keyboard.wasPressed(Input.Keys.E) && !this.lock) {
             this.scene.engine.add(new Bolt(
-                this.pos,
+                new Vector(this.pos.x, this.pos.y + this._height / 2-7),
                 this.direction
             ))
             this.graphics.use(this.attack);
@@ -223,6 +225,7 @@ export class Hero extends Actor {
             this.jump_up.flipHorizontal = true;
             this.jump_down.flipHorizontal = true;
             this.down.flipHorizontal = true;
+            this.attack.flipHorizontal = true;
             this.direction = Direction.LEFT;
         }
 
@@ -234,6 +237,7 @@ export class Hero extends Actor {
             this.jump_up.flipHorizontal = false;
             this.jump_down.flipHorizontal = false;
             this.down.flipHorizontal = false;
+            this.attack.flipHorizontal = false;
             this.direction = Direction.RIGHT;
         }
 
@@ -266,6 +270,8 @@ export class Hero extends Actor {
                 sounds.hit.play(.1);
             }
         }
+
+        if (this.lock) return;
 
         // Change animation based on velocity
         if (this.vel.x < 0) {

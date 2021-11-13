@@ -11,8 +11,8 @@ export class Level extends Scene {
         // Compose actors in scene
         const actor = new Hero();
         const floor = new Floor(0, 0, 1000, 200);
-        const wall = new Floor(300, -200, 50, 100)
-        const wall4 = new Floor(200, -220, 50, 100)
+        const wall = new Floor(300, -200, 50, 1000)
+        const wall4 = new Floor(200, -220, 50, 1000)
         const wall2 = new Floor(-300, -200, 50, 100)
         const wall3 = new Floor(-190, -100, 50, 100)
 
