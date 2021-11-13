@@ -22,3 +22,5 @@ engine.add('level1', new Level());
 engine.add('level2', new Level2());
 
 engine.goToScene('level1');
+
+//engine.showDebug(true);

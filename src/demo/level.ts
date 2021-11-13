@@ -1,4 +1,4 @@
-import {Bot} from './bot';
+import {Hero} from './Hero';
 import {Floor} from './floor';
 import {Color, EmitterType, Engine, ParticleEmitter, Scene, Vector} from "excalibur";
 
@@ -9,7 +9,7 @@ export class Level extends Scene {
         // Create collision groups for the game
 
         // Compose actors in scene
-        const actor = new Bot();
+        const actor = new Hero();
         const floor = new Floor(0, 0, 1000, 200);
         const wall = new Floor(300, -200, 50, 100)
         const wall4 = new Floor(200, -220, 50, 100)

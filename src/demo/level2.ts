@@ -1,4 +1,4 @@
-import {Bot} from './bot';
+import {Hero} from './Hero';
 import {Floor} from './floor';
 import {Engine, Scene} from "excalibur";
 
@@ -8,7 +8,7 @@ export class Level2 extends Scene {
      *
      * @private
      */
-    private actor!: Bot;
+    private actor!: Hero;
 
     /**
      *
@@ -21,7 +21,7 @@ export class Level2 extends Scene {
         // Create collision groups for the game
 
         // Compose actors in scene
-        this.actor = new Bot();
+        this.actor = new Hero();
         this.floor = new Floor(0, 320, 3000, 100);
 
         this.add(this.actor);

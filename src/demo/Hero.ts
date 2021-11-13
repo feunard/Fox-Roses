@@ -3,7 +3,27 @@ import {Actor, Color, Input, Shape, Vector} from 'excalibur';
 import {hero_down_sheet, hero_idle_sheet, hero_jump_sheet, hero_run_sheet, sounds} from './resources';
 import {Bolt, Direction} from "./Bolt";
 
-export class Bot extends Actor {
+class SitPrevent extends Actor {
+    contact = "";
+    constructor() {
+        super({
+            collider: Shape.Box(64 - 16, 48 * 2 - 32 - 32, Vector.Half, ex.vec(0, 0)),
+            collisionType: ex.CollisionType.Passive,
+        });
+        this.on("collisionstart", (ev) => {
+            if (ev.other?.name.includes("floor")) {
+                this.contact = ev.other.name;
+            }
+        });
+        this.on("collisionend", (ev) => {
+            if (ev.other?.name === this.contact) {
+                this.contact = "";
+            }
+        });
+    }
+}
+
+export class Hero extends Actor {
     public onGround = true;
     public direction: Direction = Direction.RIGHT;
     down!: ex.Animation;
@@ -13,6 +33,7 @@ export class Bot extends Actor {
     doubleJump = false;
     plan = false;
     sit = false;
+    sitPrevent: SitPrevent;
 
     constructor(private _height = 48, private _width = 56) {
         super({
@@ -21,10 +42,12 @@ export class Bot extends Actor {
             color: Color.Cyan,
             name: 'Bot',
             pos: new ex.Vector(0, -500),
-            collider: Shape.Box(_width - 6, _height * 2 - 32, Vector.Half, ex.vec(0, 16)),
+            collider: Shape.Box(_width - 16, _height * 2 - 32, Vector.Half, ex.vec(0, 16)),
             collisionType: ex.CollisionType.Active,
-            collisionGroup: ex.CollisionGroupManager.groupByName("player"),
         });
+        this.sitPrevent = new SitPrevent();
+        this.addChild(this.sitPrevent);
+        this.box();
     }
 
     // OnInitialize is called before the 1st actor update
@@ -70,10 +93,15 @@ export class Bot extends Actor {
         this.on('postcollision', this.onPostCollision);
     }
 
+
     onPostCollision(evt: ex.PostCollisionEvent) {
         if (evt.side === ex.Side.Bottom) {
             this.onGround = true;
         }
+    }
+
+    box(height = 32) {
+        this.collider.useBoxCollider(this._width - 16, this._height * 2 - height, Vector.Half, ex.vec(0, height / 2));
     }
 
     // After main update, once per frame execute this code
@@ -83,9 +111,11 @@ export class Bot extends Actor {
             this.vel = new Vector(0, 0);
         }
 
+
         // Reset x velocity
         this.vel.x = 0;
 
+        // sit
         if
         (
             engine.input.keyboard.isHeld(ex.Input.Keys.S) ||
@@ -93,24 +123,53 @@ export class Bot extends Actor {
             engine.input.keyboard.isHeld(ex.Input.Keys.ShiftLeft)
         ) {
             if (this.onGround) {
-                this.sit = true;
+                if (!this.sit) {
+                    this.sit = true;
+                    this.box(52);
+                }
             }
         } else {
-            this.sit = false;
+            if (this.sit) {
+                if (!this.sitPrevent.contact) {
+                    this.box();
+                    this.sit = false;
+                }
+            }
         }
 
         if (this.sit) {
             this.graphics.use(this.down);
-            this.collider.useBoxCollider(this._width - 6, this._height * 2 - 48, Vector.Half, ex.vec(0, 24))
             if (engine.input.keyboard.wasPressed(Input.Keys.E)) {
                 this.scene.engine.add(new Bolt(
                     new Vector(this.pos.x, this.pos.y + this._height / 2),
                     this.direction
                 ))
             }
+            if (engine.input.keyboard.isHeld(ex.Input.Keys.A)
+                || engine.input.keyboard.isHeld(ex.Input.Keys.Q)
+                || engine.input.keyboard.isHeld(ex.Input.Keys.Left)
+            ) {
+                this.vel.x = -50;
+                this.idle.flipHorizontal = true;
+                this.jump_up.flipHorizontal = true;
+                this.jump_down.flipHorizontal = true;
+                this.down.flipHorizontal = true;
+                this.direction = Direction.LEFT;
+            }
+
+            if (engine.input.keyboard.isHeld(ex.Input.Keys.D) ||
+                engine.input.keyboard.isHeld(ex.Input.Keys.Right)
+            ) {
+                this.vel.x = 50;
+                this.idle.flipHorizontal = false;
+                this.jump_up.flipHorizontal = false;
+                this.jump_down.flipHorizontal = false;
+                this.down.flipHorizontal = false;
+                this.direction = Direction.RIGHT;
+            }
             return;
         } else {
-            this.collider.useBoxCollider(this._width - 6, this._height * 2 - 32, Vector.Half, ex.vec(0, 16));
+            //this.collider.useBoxCollider(this._width - 6, this._height * 2 - 32, Vector.Half, ex.vec(0, 16));
         }
 
         // Player input
