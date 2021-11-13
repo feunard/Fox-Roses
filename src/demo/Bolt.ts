@@ -28,7 +28,7 @@ export class Bolt extends Actor {
             this.kill();
         }, 4000);
         this.on("collisionstart", (ev) => {
-            if (ev.other.name !== "Bot") {
+            if (ev.other.name.includes("floor")) {
                 this.kill();
             }
         });
