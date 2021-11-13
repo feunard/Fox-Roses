@@ -1,14 +1,10 @@
 import * as ex from 'excalibur';
-import {Actor, Color, Engine, Input, Shape, Vector} from 'excalibur';
+import {Actor, Color, Input, Shape, Vector} from 'excalibur';
 import {hero_down_sheet, hero_idle_sheet, hero_jump_sheet, hero_run_sheet, sounds} from './resources';
 import {Bolt, Direction} from "./Bolt";
-import {engine} from "./main";
 
 export class Bot extends Actor {
     public onGround = true;
-    public jumped = false;
-    public hurt = false;
-    public hurtTime: number = 0;
     public direction: Direction = Direction.RIGHT;
     down!: ex.Animation;
     idle!: ex.Animation;
@@ -82,14 +78,6 @@ export class Bot extends Actor {
 
     // After main update, once per frame execute this code
     onPreUpdate(engine: ex.Engine, delta: number) {
-        // If hurt, count down
-        if (this.hurtTime >= 0 && this.hurt) {
-            this.hurtTime -= delta;
-            if (this.hurtTime < 0) {
-                this.hurt = false;
-            }
-        }
-
         if (this.pos.y > 1000) {
             this.pos = new Vector(0, -200);
             this.vel = new Vector(0, 0);
@@ -202,13 +190,13 @@ export class Bot extends Actor {
         }
 
         // Change animation based on velocity
-        if (this.vel.x < 0 && !this.hurt) {
+        if (this.vel.x < 0) {
             this.graphics.use("left");
         }
-        if (this.vel.x > 0 && !this.hurt) {
+        if (this.vel.x > 0) {
             this.graphics.use("right");
         }
-        if (this.vel.x === 0 && !this.hurt) {
+        if (this.vel.x === 0) {
             this.graphics.use("idle")
         }
         if (this.vel.y < 0) {
@@ -217,16 +205,6 @@ export class Bot extends Actor {
         if (this.vel.y > 0) {
             this.graphics.use(this.jump_down);
         }
-    }
-
-    private handleRightLeft(engine: Engine, speed: number) {
-        if (engine.input.keyboard.wasPressed(Input.Keys.E)) {
-            this.scene.engine.add(new Bolt(
-                new Vector(this.pos.x, this.pos.y + this._height / 2),
-                this.direction
-            ))
-        }
-
     }
 }
 
