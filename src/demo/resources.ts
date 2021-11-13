@@ -48,7 +48,6 @@ export const hero_attack_sheet = SpriteSheet.fromImageSource({
 export const hero_idle_sheet = SpriteSheet.fromImageSource({
     image: images.hero_idle,
     grid: default_grid,
-
 });
 
 export const heroExias_idle_sheet = SpriteSheet.fromImageSource({
