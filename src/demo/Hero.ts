@@ -1,5 +1,5 @@
 import * as ex from 'excalibur';
-import {Actor, Color, Input, Shape, Vector} from 'excalibur';
+import {Actor, CollisionType, Color, Input, PolygonCollider, Shape, Side, Vector} from 'excalibur';
 import {hero_down_sheet, hero_idle_sheet, hero_jump_sheet, hero_run_sheet, sounds} from './resources';
 import {Bolt, Direction} from "./Bolt";
 
@@ -30,7 +30,6 @@ class HitBox extends Actor {
 
 
 export class Hero extends Actor {
-    public onGround = true;
     public direction: Direction = Direction.RIGHT;
     down!: ex.Animation;
     idle!: ex.Animation;
@@ -43,7 +42,10 @@ export class Hero extends Actor {
     private sitPrevent: HitBox;
     private jumpPrevent: HitBox;
 
-    constructor(private _height = 48, private _width = 56) {
+    constructor(
+        private _height = 48,
+        private _width = 56,
+    ) {
         super({
             width: _width,
             height: _height,
@@ -66,6 +68,10 @@ export class Hero extends Actor {
         this.addChild(this.sitPrevent);
         this.addChild(this.jumpPrevent);
         this.box();
+    }
+
+    get onGround(): boolean {
+        return !!this.jumpPrevent.contact;
     }
 
     // OnInitialize is called before the 1st actor update
@@ -106,16 +112,6 @@ export class Hero extends Actor {
         this.graphics.add("right", right);
         this.graphics.add("jump_up", this.jump_up);
         this.graphics.add("jump_down", this.jump_down);
-
-        // onPostCollision is an event, not a lifecycle meaning it can be subscribed to by other things
-        this.on('postcollision', this.onPostCollision);
-    }
-
-
-    onPostCollision(evt: ex.PostCollisionEvent) {
-        if (evt.side === ex.Side.Bottom) {
-            this.onGround = true;
-        }
     }
 
     box(height = 32) {
@@ -254,13 +250,11 @@ export class Hero extends Actor {
             if (this.onGround) {
                 console.log("JUMP 1")
                 this.vel.y = -400;
-                this.onGround = false;
                 this.doubleJump = true;
                 sounds.jump.play(.1);
             } else if (this.doubleJump) {
                 console.log("JUMP 2")
                 this.vel.y = -300;
-                this.onGround = false;
                 this.doubleJump = false;
                 sounds.hit.play(.1);
             }
