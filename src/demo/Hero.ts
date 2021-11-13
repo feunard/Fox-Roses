@@ -3,12 +3,16 @@ import {Actor, Color, Input, Shape, Vector} from 'excalibur';
 import {hero_down_sheet, hero_idle_sheet, hero_jump_sheet, hero_run_sheet, sounds} from './resources';
 import {Bolt, Direction} from "./Bolt";
 
-class SitPrevent extends Actor {
-    contact = "";
-    constructor() {
+class HitBox extends Actor {
+    contact: string;
+
+    constructor(
+        collider: PolygonCollider,
+        private side: Side
+    ) {
         super({
-            collider: Shape.Box(64 - 16, 48 * 2 - 32 - 32, Vector.Half, ex.vec(0, 0)),
-            collisionType: ex.CollisionType.Passive,
+            collider,
+            collisionType: CollisionType.Passive,
         });
         this.on("collisionstart", (ev) => {
             if (ev.other?.name.includes("floor")) {
@@ -20,8 +24,10 @@ class SitPrevent extends Actor {
                 this.contact = "";
             }
         });
+        this.contact = "";
     }
 }
+
 
 export class Hero extends Actor {
     public onGround = true;
@@ -33,7 +39,9 @@ export class Hero extends Actor {
     doubleJump = false;
     plan = false;
     sit = false;
-    sitPrevent: SitPrevent;
+
+    private sitPrevent: HitBox;
+    private jumpPrevent: HitBox;
 
     constructor(private _height = 48, private _width = 56) {
         super({
@@ -45,8 +53,18 @@ export class Hero extends Actor {
             collider: Shape.Box(_width - 16, _height * 2 - 32, Vector.Half, ex.vec(0, 16)),
             collisionType: ex.CollisionType.Active,
         });
-        this.sitPrevent = new SitPrevent();
+
+        this.sitPrevent = new HitBox(
+            Shape.Box(_width - 16 - 2, _height * 2 - 32 - 32, Vector.Half, ex.vec(0, 0)),
+            Side.Top
+        );
+        this.jumpPrevent = new HitBox(
+            Shape.Box(_width - 16 - 2, _height * 2 - 32 - 32, Vector.Half, ex.vec(0, 32)),
+            Side.Bottom
+        );
+
         this.addChild(this.sitPrevent);
+        this.addChild(this.jumpPrevent);
         this.box();
     }
 
