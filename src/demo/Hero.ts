@@ -149,8 +149,13 @@ export class Hero extends Actor {
 
         this.vel.x = 0;
 
-        this.handleSit(kb);
+        if (this.handleSit(kb)) {
+            return;
+        }
         this.handleFire(kb);
+        if (this.animSitLock) {
+            return;
+        }
         this.handleLeftRight(kb);
         this.handleJump(kb);
         this.handleIdle();
@@ -202,7 +207,7 @@ export class Hero extends Actor {
                 this.flip(Direction.RIGHT);
             }
 
-            return;
+            return true;
         } else {
             this.updateBoxCollider();
         }
@@ -226,6 +231,8 @@ export class Hero extends Actor {
             setTimeout(() => {
                 this.cooldownFire = false;
             }, 1000);
+
+            return true;
         }
     }
 
