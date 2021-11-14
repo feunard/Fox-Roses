@@ -137,7 +137,14 @@ export class Hero extends Actor {
 
         this.vel.x = 0;
 
-        // Handle Sit
+        this.handleSit(kb);
+        this.handleFire(kb);
+        this.handleLeftRight(kb);
+        this.handleJump(kb);
+        this.handleIdle();
+    }
+
+    handleSit(kb: Keybinds) {
 
         if (kb.isHeld("sit")) {
             if (this.onGround) {
@@ -154,14 +161,20 @@ export class Hero extends Actor {
         }
 
         if (this.sit || (this.hitboxHead.contact && this.onGround)) {
+
             this.updateBoxCollider(52);
+
             this.graphics.use(this.animSit);
+
             if (kb.wasPressed("fire") && !this.cooldownFire) {
+
                 this.scene.engine.add(new Bolt(
                     new Vector(this.pos.x, this.pos.y + this._height / 2),
                     this.direction
                 ))
+
                 this.cooldownFire = true;
+
                 setTimeout(() => {
                     this.cooldownFire = false;
                 }, 1000);
@@ -181,9 +194,9 @@ export class Hero extends Actor {
         } else {
             this.updateBoxCollider();
         }
+    }
 
-        // Handle Fire
-
+    handleFire(kb: Keybinds) {
         if (kb.wasPressed("fire") && !this.cooldownFire) {
             this.scene.engine.add(new Bolt(
                 new Vector(this.pos.x, this.pos.y + this._height / 2 - 7),
@@ -202,9 +215,9 @@ export class Hero extends Actor {
                 this.cooldownFire = false;
             }, 1000);
         }
+    }
 
-        // Handle Run Left / Right
-
+    handleLeftRight(kb: Keybinds) {
         if (kb.isHeld("left")) {
             this.vel.x = -300;
             this.flip(Direction.LEFT);
@@ -216,9 +229,9 @@ export class Hero extends Actor {
             this.flip(Direction.RIGHT);
             this.graphics.use("right");
         }
+    }
 
-        // Handle Jump
-
+    handleJump(kb: Keybinds) {
         if (kb.wasPressed("jump")) {
             if (this.onGround) {
                 this.vel.y = -400;
@@ -230,13 +243,17 @@ export class Hero extends Actor {
                 sounds.jump.play(.1);
             }
         }
+    }
 
+    handleIdle() {
         if (this.vel.x === 0) {
             this.graphics.use("idle")
         }
+
         if (this.vel.y < 0) {
             this.graphics.use(this.animJumpTop); // TODO: Move to held/jump
         }
+
         if (this.vel.y > 0) {
             this.graphics.use(this.animJumpDown);
         }
