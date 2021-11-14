@@ -1,0 +1,38 @@
+#game {
+    height: 600px;
+    background-image: linear-gradient(#1c1519, #3c2e37);
+}
+
+#root {
+    height: 0px;
+}
+
+.overlay {
+    font-family: 'Tangerine', cursive;
+    background: #ffffff;
+    width: 1200px;
+    height: 600px;
+    touch-action: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stupid {
+    color: #2f252b;
+    padding: 0 14px;
+    font-size: 64px;
+}
+
+.stupid2 {
+    color: rgba(47, 37, 43, 0.73);
+    padding: 0 14px;
+    font-size: 46px;
+}

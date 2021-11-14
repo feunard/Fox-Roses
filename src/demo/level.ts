@@ -1,5 +1,5 @@
 import {Hero} from './Hero';
-import {Floor} from './floor';
+import {Floor, FloorFixed} from './Floor';
 import {Color, EmitterType, Engine, ParticleEmitter, Scene, Vector} from "excalibur";
 
 export class Level extends Scene {
@@ -12,9 +12,9 @@ export class Level extends Scene {
         const actor = new Hero();
         const floor = new Floor(0, 0, 1000, 200);
         const wall = new Floor(300, -200, 50, 1000)
-        const wall4 = new Floor(200, -220, 50, 1000)
+        const wall4 = new Floor(-500, -220, 50, 1000)
         const wall2 = new Floor(-300, -200, 50, 100)
-        const wall3 = new Floor(-190, -100, 50, 100)
+        const wall3 = new FloorFixed(-190, -100, 50, 100)
 
         this.add(actor);
         this.add(floor);
@@ -25,7 +25,7 @@ export class Level extends Scene {
 
         const emitter = new ParticleEmitter({
             x: -1000,
-            y: 0,
+            y: -500,
             width: 2000,
             height: 300,
         });
@@ -55,8 +55,5 @@ export class Level extends Scene {
         this.camera.strategy.elasticToActor(actor, 0.05, 0.1);
         this.camera.zoom = 0.1;
         this.camera.zoomOverTime(1, 2000);
-
-        // @ts-ignore
-        window["l"] = this;
     }
 }

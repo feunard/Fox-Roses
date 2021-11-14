@@ -1,5 +1,4 @@
-import * as ex from 'excalibur';
-import {Actor, AnimationStrategy, CollisionType, Color, Input, PolygonCollider, Shape, Side, Vector} from 'excalibur';
+import {Actor, Animation, CollisionType, Color, Engine, Shape, Side, vec, Vector} from 'excalibur';
 import {
     hero_attack_sheet,
     hero_down_sheet,
@@ -9,48 +8,28 @@ import {
     sounds
 } from './resources';
 import {Bolt, Direction} from "./Bolt";
-
-class HitBox extends Actor {
-    contact: string;
-
-    constructor(
-        collider: PolygonCollider,
-        private side: Side
-    ) {
-        super({
-            collider,
-            collisionType: CollisionType.Passive,
-        });
-        this.on("collisionstart", (ev) => {
-            if (ev.other?.name.includes("floor")) {
-                this.contact = ev.other.name;
-            }
-        });
-        this.on("collisionend", (ev) => {
-            if (ev.other?.name === this.contact) {
-                this.contact = "";
-            }
-        });
-        this.contact = "";
-    }
-}
-
+import {Keybinds} from "../game/Keybinds";
+import {Hitbox} from "../game/Hitbox";
 
 export class Hero extends Actor {
-    public direction: Direction = Direction.RIGHT;
-    down!: ex.Animation;
-    idle!: ex.Animation;
-    jump_up!: ex.Animation;
-    jump_down!: ex.Animation;
-    attack!: ex.Animation;
-    left!: ex.Animation;
-    right!: ex.Animation;
+
+    direction: Direction = Direction.RIGHT;
+    animSit!: Animation;
+    animIdle!: Animation;
+    animJumpTop!: Animation;
+    animJumpDown!: Animation;
+    animAttack!: Animation;
+    animRunLeft!: Animation;
+    animRunRight!: Animation;
+    hitboxHead: Hitbox;
     doubleJump = false;
     sit = false;
-    lock = false;
+    cooldownFire = false;
+    animSitLock = false;
 
-    private sitPrevent: HitBox;
-    private jumpPrevent: HitBox;
+    // canFireBolt = true;
+    // canDoubleJump = true;
+    // canFly = true;
 
     constructor(
         private _height = 48,
@@ -60,234 +39,207 @@ export class Hero extends Actor {
             width: _width,
             height: _height,
             color: Color.Cyan,
-            name: 'Bot',
-            pos: new ex.Vector(0, -500),
-            collider: Shape.Box(_width - 16, _height * 2 - 32, Vector.Half, ex.vec(0, 16)),
-            collisionType: ex.CollisionType.Active,
+            name: 'Hero',
+            pos: new Vector(0, -500),
+            collider: Shape.Box(_width - 16, _height * 2 - 32, Vector.Half, vec(0, 16)),
+            collisionType: CollisionType.Active,
         });
 
-        this.sitPrevent = new HitBox(
-            Shape.Box(_width - 16 - 2, _height * 2 - 32 - 32, Vector.Half, ex.vec(0, 0)),
+        this.hitboxHead = new Hitbox(
+            Shape.Box(_width - 16 - 4, _height * 2 - 32 - 32, Vector.Half, vec(0, 0)),
             Side.Top
         );
-        this.jumpPrevent = new HitBox(
-            Shape.Box(_width - 16 - 2, _height * 2 - 32 - 32, Vector.Half, ex.vec(0, 32)),
-            Side.Bottom
-        );
 
-        this.addChild(this.sitPrevent);
-        this.addChild(this.jumpPrevent);
-        this.box();
+        this.addChild(this.hitboxHead);
+        this.updateBoxCollider();
     }
 
     get onGround(): boolean {
-        return !!this.jumpPrevent.contact;
+        return this.vel.y === 0;
     }
 
-    // OnInitialize is called before the 1st actor update
-    onInitialize(engine: ex.Engine) {
-        // Initialize actor
-
+    onInitialize(engine: Engine) {
         const default_frame = [0, 1, 2, 3, 4, 5, 6, 7];
         const default_duration = 80;
         const default_scale = new Vector(2, 2);
-        const default_origin = new Vector(10, 0);
 
-        this.attack = ex.Animation.fromSpriteSheet(hero_attack_sheet, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 40);
-        this.attack.scale = default_scale;
+        this.animAttack = Animation.fromSpriteSheet(hero_attack_sheet, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 40);
+        this.animAttack.scale = default_scale;
 
-        this.jump_down = ex.Animation.fromSpriteSheet(hero_jump_sheet, [5, 6, 7], 500);
-        this.jump_down.scale = default_scale;
-        this.jump_down.origin = default_origin;
+        this.animJumpDown = Animation.fromSpriteSheet(hero_jump_sheet, [5, 6, 7], 500);
+        this.animJumpDown.scale = default_scale;
 
-        this.jump_up = ex.Animation.fromSpriteSheet(hero_jump_sheet, [1, 2, 3, 4], 500);
-        this.jump_up.scale = default_scale;
-        this.jump_up.origin = default_origin;
+        this.animJumpTop = Animation.fromSpriteSheet(hero_jump_sheet, [1, 2, 3, 4], 500);
+        this.animJumpTop.scale = default_scale;
 
-        this.down = ex.Animation.fromSpriteSheet(hero_down_sheet, [5, 6, 7, 8], default_duration);
-        this.down.scale = default_scale;
-        this.down.origin = default_origin;
+        this.animSit = Animation.fromSpriteSheet(hero_down_sheet, [5, 6, 7, 8], default_duration);
+        this.animSit.scale = default_scale;
 
-        this.idle = ex.Animation.fromSpriteSheet(hero_idle_sheet, default_frame, default_duration);
-        this.idle.scale = default_scale;
-        this.idle.origin = default_origin;
+        this.animIdle = Animation.fromSpriteSheet(hero_idle_sheet, default_frame, default_duration);
+        this.animIdle.scale = default_scale;
 
-        this.left = ex.Animation.fromSpriteSheet(hero_run_sheet, default_frame, default_duration);
-        this.left.scale = default_scale;
-        this.left.flipHorizontal = true;
+        this.animRunLeft = Animation.fromSpriteSheet(hero_run_sheet, default_frame, default_duration);
+        this.animRunLeft.scale = default_scale;
+        this.animRunLeft.flipHorizontal = true;
 
-        this.right = ex.Animation.fromSpriteSheet(hero_run_sheet, default_frame, default_duration);
-        this.right.scale = default_scale;
+        this.animRunRight = Animation.fromSpriteSheet(hero_run_sheet, default_frame, default_duration);
+        this.animRunRight.scale = default_scale;
 
         // Register animations with actor
-        this.graphics.add("idle", this.idle);
-        this.graphics.add("left", this.left);
-        this.graphics.add("right", this.right);
-        this.graphics.add("jump_up", this.jump_up);
-        this.graphics.add("jump_down", this.jump_down);
-        this.graphics.add("attack", this.attack);
+        this.graphics.add("idle", this.animIdle);
+        this.graphics.add("left", this.animRunLeft);
+        this.graphics.add("right", this.animRunRight);
+        this.graphics.add("jump_up", this.animJumpTop);
+        this.graphics.add("jump_down", this.animJumpDown);
+        this.graphics.add("attack", this.animAttack);
     }
 
-    box(height = 32) {
-        this.collider.useBoxCollider(this._width - 16, this._height * 2 - height, Vector.Half, ex.vec(0, height / 2));
+    updateBoxCollider(height = 32) {
+        this.collider.useBoxCollider(this._width - 16, this._height * 2 - height, Vector.Half, vec(0, height / 2));
+    }
+
+    flip(direction: Direction) {
+        if (direction === Direction.RIGHT) {
+            this.animIdle.flipHorizontal = false
+            this.animJumpTop.flipHorizontal = false
+            this.animJumpDown.flipHorizontal = false
+            this.animSit.flipHorizontal = false
+            this.animAttack.flipHorizontal = false;
+            this.direction = Direction.RIGHT;
+        }
+        if (direction === Direction.LEFT) {
+            this.animIdle.flipHorizontal = true
+            this.animJumpTop.flipHorizontal = true
+            this.animJumpDown.flipHorizontal = true
+            this.animSit.flipHorizontal = true
+            this.animAttack.flipHorizontal = true;
+            this.direction = Direction.LEFT;
+        }
     }
 
     // After main update, once per frame execute this code
-    onPreUpdate(engine: ex.Engine, delta: number) {
+    onPreUpdate(engine: Engine, delta: number) {
+        const kb = new Keybinds(engine);
+
+        // check if dead zone
+
         if (this.pos.y > 1000) {
             this.pos = new Vector(0, -200);
             this.vel = new Vector(0, 0);
         }
 
+        if (this.pos.y < -10000) {
+            this.pos = new Vector(0, -200);
+            this.vel = new Vector(0, 0);
+        }
+
         // Reset x velocity
+
         this.vel.x = 0;
 
-        // sit
-        if
-        (
-            engine.input.keyboard.isHeld(ex.Input.Keys.S) ||
-            engine.input.keyboard.isHeld(ex.Input.Keys.Down) ||
-            engine.input.keyboard.isHeld(ex.Input.Keys.ShiftLeft)
-        ) {
+        // Handle Sit
+
+        if (kb.isHeld("sit")) {
             if (this.onGround) {
                 if (!this.sit) {
                     this.sit = true;
-                    this.box(52);
                 }
             }
         } else {
             if (this.sit) {
-                if (!this.sitPrevent.contact) {
-                    this.box();
+                if (!this.hitboxHead.contact) {
                     this.sit = false;
                 }
             }
         }
 
-        if (this.sit) {
-            this.graphics.use(this.down);
-            if (engine.input.keyboard.wasPressed(Input.Keys.E)) {
+        if (this.sit || (this.hitboxHead.contact && this.onGround)) {
+
+            this.updateBoxCollider(52);
+            this.graphics.use(this.animSit);
+            if (kb.wasPressed("fire") && !this.cooldownFire) {
                 this.scene.engine.add(new Bolt(
                     new Vector(this.pos.x, this.pos.y + this._height / 2),
                     this.direction
                 ))
-            }
-            if (engine.input.keyboard.isHeld(ex.Input.Keys.A)
-                || engine.input.keyboard.isHeld(ex.Input.Keys.Q)
-                || engine.input.keyboard.isHeld(ex.Input.Keys.Left)
-            ) {
-                this.vel.x = -50;
-                this.idle.flipHorizontal = true;
-                this.jump_up.flipHorizontal = true;
-                this.jump_down.flipHorizontal = true;
-                this.down.flipHorizontal = true;
-                this.attack.flipHorizontal = true;
-                this.direction = Direction.LEFT;
+                this.cooldownFire = true;
+                setTimeout(() => {
+                    this.cooldownFire = false;
+                }, 1000);
             }
 
-            if (engine.input.keyboard.isHeld(ex.Input.Keys.D) ||
-                engine.input.keyboard.isHeld(ex.Input.Keys.Right)
-            ) {
-                this.vel.x = 50;
-                this.idle.flipHorizontal = false;
-                this.jump_up.flipHorizontal = false;
-                this.jump_down.flipHorizontal = false;
-                this.down.flipHorizontal = false;
-                this.attack.flipHorizontal = false;
-                this.direction = Direction.RIGHT;
+            if (kb.isHeld("left")) {
+                this.vel.x = -50;
+                this.flip(Direction.LEFT);
             }
+
+            if (kb.isHeld("right")) {
+                this.vel.x = 50;
+                this.flip(Direction.RIGHT);
+            }
+
             return;
         } else {
-            //this.collider.useBoxCollider(this._width - 6, this._height * 2 - 32, Vector.Half, ex.vec(0, 16));
+            this.updateBoxCollider();
         }
 
-        // Player input
-        if (engine.input.keyboard.wasPressed(Input.Keys.E) && !this.lock) {
+        // Handle Fire
+
+        if (kb.wasPressed("fire") && !this.cooldownFire) {
             this.scene.engine.add(new Bolt(
-                new Vector(this.pos.x, this.pos.y + this._height / 2-7),
+                new Vector(this.pos.x, this.pos.y + this._height / 2 - 7),
                 this.direction
             ))
-            this.graphics.use(this.attack);
-            this.lock = true;
+            this.graphics.use(this.animAttack);
+            this.animSitLock = true;
+            this.cooldownFire = true;
+
             setTimeout(() => {
-                this.lock = false;
-                this.attack.reset();
+                this.animSitLock = false;
+                this.animAttack.reset();
             }, 440);
-            //this.graphics.show("attack");
+
+            setTimeout(() => {
+                this.cooldownFire = false;
+            }, 1000);
         }
 
-        if (engine.input.keyboard.isHeld(ex.Input.Keys.A)
-            || engine.input.keyboard.isHeld(ex.Input.Keys.Q)
-            || engine.input.keyboard.isHeld(ex.Input.Keys.Left)
-        ) {
+        // Handle Run Left / Right
+
+        if (kb.isHeld("left")) {
             this.vel.x = -300;
-            this.idle.flipHorizontal = true;
-            this.jump_up.flipHorizontal = true;
-            this.jump_down.flipHorizontal = true;
-            this.down.flipHorizontal = true;
-            this.attack.flipHorizontal = true;
-            this.direction = Direction.LEFT;
+            this.flip(Direction.LEFT);
+            this.graphics.use("left");
         }
 
-        if (engine.input.keyboard.isHeld(ex.Input.Keys.D) ||
-            engine.input.keyboard.isHeld(ex.Input.Keys.Right)
-        ) {
+        if (kb.isHeld("right")) {
             this.vel.x = 300;
-            this.idle.flipHorizontal = false;
-            this.jump_up.flipHorizontal = false;
-            this.jump_down.flipHorizontal = false;
-            this.down.flipHorizontal = false;
-            this.attack.flipHorizontal = false;
-            this.direction = Direction.RIGHT;
+            this.flip(Direction.RIGHT);
+            this.graphics.use("right");
         }
 
-        if (
-            engine.input.keyboard.wasPressed(ex.Input.Keys.J)
-        ) {
-            engine.showDebug(true);
-        }
-        if (
-            engine.input.keyboard.wasPressed(ex.Input.Keys.K)
-        ) {
-            engine.showDebug(false);
-        }
+        // Handle Jump
 
-        if (
-            engine.input.keyboard.wasPressed(ex.Input.Keys.Space) ||
-            engine.input.keyboard.wasPressed(ex.Input.Keys.Up) ||
-            engine.input.keyboard.wasPressed(ex.Input.Keys.KeyZ) ||
-            engine.input.keyboard.wasPressed(ex.Input.Keys.KeyW)
-        ) {
+        if (kb.wasPressed("jump")) {
             if (this.onGround) {
-                console.log("JUMP 1")
                 this.vel.y = -400;
                 this.doubleJump = true;
                 sounds.jump.play(.1);
             } else if (this.doubleJump) {
-                console.log("JUMP 2")
-                this.vel.y = -300;
+                this.vel.y = -400;
                 this.doubleJump = false;
-                sounds.hit.play(.1);
+                sounds.jump.play(.1);
             }
         }
 
-        if (this.lock) return;
-
-        // Change animation based on velocity
-        if (this.vel.x < 0) {
-            this.graphics.use("left");
-        }
-        if (this.vel.x > 0) {
-            this.graphics.use("right");
-        }
         if (this.vel.x === 0) {
             this.graphics.use("idle")
         }
         if (this.vel.y < 0) {
-            this.graphics.use(this.jump_up);
+            this.graphics.use(this.animJumpTop); // TODO: Move to held/jump
         }
         if (this.vel.y > 0) {
-            this.graphics.use(this.jump_down);
+            this.graphics.use(this.animJumpDown);
         }
     }
 }

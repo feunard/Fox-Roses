@@ -39,7 +39,5 @@ export class Bolt extends Actor {
         this.vel.x = this.direction * 600;
         this.vel.y = 0;
     }
-
-
 }
 
