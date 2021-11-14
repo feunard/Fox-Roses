@@ -2,7 +2,18 @@ import {Color, Engine, Loader, Physics, Vector} from "excalibur";
 import {images, sounds} from "../demo/resources";
 import {Level} from "../demo/level";
 
+export enum GameState {
+    INTRO,
+    TITLE,
+    CONTINUE,
+    LEVEL
+}
+
 export class Game {
+
+    evs: ((s: GameState) => any)[] = [];
+
+    _state = GameState.INTRO;
 
     loader = new Loader();
 
@@ -42,8 +53,22 @@ export class Game {
         return this.engine.start(this.loader);
     }
 
+    get state(): GameState {
+        return this._state;
+    }
+
+    set state(s: GameState) {
+        this._state = s;
+        this.evs.forEach(cb => cb(s));
+    }
+
+    onStateChange(cb: (s: GameState) => any) {
+        this.evs.push(cb);
+    }
+
     start() {
         this.engine.goToScene('level');
+        this.state = GameState.LEVEL;
     }
 }
 
