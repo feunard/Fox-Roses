@@ -90,8 +90,12 @@ export class Game {
         this.state = GameState.EDITOR;
     }
 
-    next() {
-        this._levelId += 1;
+    next(levelId = -1) {
+        if (levelId > -1) {
+            this._levelId = levelId;
+        } else {
+            this._levelId += 1;
+        }
 
         if (this._levelId === config.levels.length) {
             this._levelId = 0;

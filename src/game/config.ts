@@ -14,6 +14,16 @@ export const config = {
             Input.Keys.Q,
             Input.Keys.Left
         ],
+        up: [
+            Input.Keys.Up,
+            Input.Keys.W,
+            Input.Keys.Z
+        ],
+        down: [
+            Input.Keys.A,
+            Input.Keys.Down,
+            Input.Keys.S
+        ],
         right: [
             Input.Keys.D,
             Input.Keys.Right
