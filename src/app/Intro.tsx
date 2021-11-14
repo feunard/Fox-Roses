@@ -1,8 +1,8 @@
 import * as React from 'react';
 import './App.css';
-import {game, GameState} from "../game/main";
+import {game, GameState} from "../game/Game";
 
-class App extends React.Component<{}, {}> {
+export class Intro extends React.Component<{}, {}> {
 
     componentDidMount() {
         setTimeout(() => {
@@ -18,5 +18,3 @@ class App extends React.Component<{}, {}> {
         );
     }
 }
-
-export default App;

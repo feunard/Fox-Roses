@@ -154,7 +154,6 @@ export class Hero extends Actor {
         }
 
         if (this.sit || (this.hitboxHead.contact && this.onGround)) {
-
             this.updateBoxCollider(52);
             this.graphics.use(this.animSit);
             if (kb.wasPressed("fire") && !this.cooldownFire) {

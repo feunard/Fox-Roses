@@ -1,8 +1,9 @@
 import * as React from 'react';
 import './App.css';
-import {game, GameState} from "../game/main";
-import Intro from "./Intro";
-import Title from "./Title";
+import {game, GameState} from "../game/Game";
+import {Intro} from "./Intro";
+import {Title} from "./Title";
+import {Editor} from "./Editor";
 
 class App extends React.Component<{}, { overlay: boolean; gameState: GameState }> {
     state = {
@@ -24,15 +25,15 @@ class App extends React.Component<{}, { overlay: boolean; gameState: GameState }
         });
     }
 
-    start() {
-        game.start();
-    }
-
     render() {
         const gs = this.state.gameState;
 
         if (gs === GameState.LEVEL) {
             return null;
+        }
+
+        if (gs === GameState.EDITOR) {
+            return <Editor/>
         }
 
         return (

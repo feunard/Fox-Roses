@@ -1,9 +1,9 @@
 import * as React from 'react';
 import './App.css';
-import {game} from "../game/main";
+import {game} from "../game/Game";
 
-class App extends React.Component<{}, { overlay: boolean }> {
-    state = {overlay: true}
+export class Title extends React.Component<{}, {}> {
+    state = {}
 
     componentDidMount() {
         setTimeout(async () => {
@@ -15,21 +15,23 @@ class App extends React.Component<{}, { overlay: boolean }> {
         })
     }
 
-    start() {
+    newGame() {
         game.start();
-        this.setState({overlay: false});
+    }
+
+    editor() {
+        game.editor();
     }
 
     render() {
         return (
             <div>
-                {this.state.overlay && <div className={"overlay"}>
-                    <button onClick={() => this.start()}>New Game</button>
-                    <button onClick={() => this.start()}>Continue</button>
-                </div>}
+                <button onClick={() => this.newGame()}>New Game</button>
+                <button onClick={() => {
+                }}>Continue
+                </button>
+                <button onClick={() => this.editor()}>Editor</button>
             </div>
         );
     }
 }
-
-export default App;

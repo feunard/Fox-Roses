@@ -1,12 +1,15 @@
 import {Color, Engine, Loader, Physics, Vector} from "excalibur";
 import {images, sounds} from "../demo/resources";
 import {Level} from "../demo/level";
+import {Editor} from "./Editor";
 
 export enum GameState {
     INTRO,
     TITLE,
     CONTINUE,
-    LEVEL
+    LEVEL,
+    EDITOR,
+    END
 }
 
 export class Game {
@@ -42,6 +45,7 @@ export class Game {
             this.loader.addResource(sounds[res]);
         }
 
+        this.engine.addScene('editor', new Editor());
         this.engine.addScene('level', new Level());
     }
 
@@ -69,6 +73,11 @@ export class Game {
     start() {
         this.engine.goToScene('level');
         this.state = GameState.LEVEL;
+    }
+
+    editor() {
+        this.engine.goToScene('editor');
+        this.state = GameState.EDITOR;
     }
 }
 
