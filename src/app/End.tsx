@@ -8,8 +8,6 @@ export class End extends React.Component<{}, {}> {
         return (
             <div>
                 The End.
-                The End.
-                The End.
                 <button onClick={() => {
                     game.state = GameState.TITLE;
                 }}>back to title</button>

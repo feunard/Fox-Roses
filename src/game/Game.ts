@@ -2,6 +2,7 @@ import {Color, Engine, Loader, Physics, Vector} from "excalibur";
 import {images, sounds} from "../demo/resources";
 import {Level} from "../demo/level";
 import {Editor} from "./Editor";
+import {config, LevelConfig} from "./config";
 
 export enum GameState {
     INTRO,
@@ -14,12 +15,14 @@ export enum GameState {
 
 export class Game {
 
-    levels = [{}];
-
-    evs: ((s: GameState) => any)[] = [];
-
+    _cbs: ((s: GameState) => any)[] = [];
+    _cbsl: ((s: LevelConfig) => any)[] = [];
     _state = GameState.INTRO;
-    currentLevel = 0;
+    _levelId = 0;
+
+    get level() {
+        return config.levels[this._levelId];
+    }
 
     loader = new Loader();
 
@@ -66,11 +69,15 @@ export class Game {
 
     set state(s: GameState) {
         this._state = s;
-        this.evs.forEach(cb => cb(s));
+        this._cbs.forEach(cb => cb(s));
     }
 
-    onStateChange(cb: (s: GameState) => any) {
-        this.evs.push(cb);
+    onChangeLevel(cb: (s: LevelConfig) => any) {
+        this._cbsl.push(cb);
+    }
+
+    onChangeState(cb: (s: GameState) => any) {
+        this._cbs.push(cb);
     }
 
     start() {
@@ -84,10 +91,14 @@ export class Game {
     }
 
     next() {
-        if (this.currentLevel < this.levels.length - 2) {
-            this.currentLevel += 1;
-        } else {
+        this._levelId += 1;
+
+        if (this._levelId === config.levels.length) {
+            this._levelId = 0;
+            this.engine.stop();
             this.state = GameState.END;
+        } else {
+            this._cbsl.forEach(cb => cb(this.level));
         }
     }
 }

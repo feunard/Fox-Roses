@@ -11,6 +11,7 @@ import {Bolt, Direction} from "./Bolt";
 import {Keybinds} from "../game/Keybinds";
 import {Hitbox} from "../game/Hitbox";
 import {game} from "../game/Game";
+import {PreCollisionEvent} from "excalibur/build/dist/Events";
 
 export class Hero extends Actor {
 
@@ -56,11 +57,13 @@ export class Hero extends Actor {
 
         this.updateBoxCollider();
 
-        this.on("precollision", (ev) => {
+        const precollision = (ev: PreCollisionEvent) => {
             if (ev.other.name === "end") {
+                this.off("precollision", precollision);
                 game.next();
             }
-        })
+        };
+        this.on("precollision", precollision)
     }
 
     get onGround(): boolean {

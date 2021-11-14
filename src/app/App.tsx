@@ -5,11 +5,13 @@ import {Intro} from "./Intro";
 import {Title} from "./Title";
 import {Editor} from "./Editor";
 import {End} from "./End";
+import {LevelConfig} from "../game/config";
 
-class App extends React.Component<{}, { overlay: boolean; gameState: GameState }> {
+class App extends React.Component<{}, { overlay: boolean; gameState: GameState; level: LevelConfig }> {
     state = {
         overlay: true,
-        gameState: game.state
+        gameState: game.state,
+        level: game.level,
     }
 
     componentDidMount() {
@@ -20,8 +22,10 @@ class App extends React.Component<{}, { overlay: boolean; gameState: GameState }
                 console.error(e);
             }
         })
-
-        game.onStateChange((gameState) => {
+        game.onChangeLevel((level) => {
+            this.setState({level});
+        });
+        game.onChangeState((gameState) => {
             this.setState({gameState});
         });
     }
@@ -30,7 +34,7 @@ class App extends React.Component<{}, { overlay: boolean; gameState: GameState }
         const gs = this.state.gameState;
 
         if (gs === GameState.LEVEL) {
-            return null;
+            return <div>Level : {this.state.level.name}</div>;
         }
 
         if (gs === GameState.EDITOR) {
