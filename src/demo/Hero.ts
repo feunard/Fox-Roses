@@ -10,6 +10,7 @@ import {
 import {Bolt, Direction} from "./Bolt";
 import {Keybinds} from "../game/Keybinds";
 import {Hitbox} from "../game/Hitbox";
+import {game} from "../game/Game";
 
 export class Hero extends Actor {
 
@@ -32,6 +33,7 @@ export class Hero extends Actor {
     // canFly = true;
 
     constructor(
+        pos: Vector,
         private _height = 48,
         private _width = 56,
     ) {
@@ -40,7 +42,7 @@ export class Hero extends Actor {
             height: _height,
             color: Color.Cyan,
             name: 'Hero',
-            pos: new Vector(0, -500),
+            pos,
             collider: Shape.Box(_width - 16, _height * 2 - 32, Vector.Half, vec(0, 16)),
             collisionType: CollisionType.Active,
         });
@@ -51,7 +53,14 @@ export class Hero extends Actor {
         );
 
         this.addChild(this.hitboxHead);
+
         this.updateBoxCollider();
+
+        this.on("precollision", (ev) => {
+            if (ev.other.name === "end") {
+                game.next();
+            }
+        })
     }
 
     get onGround(): boolean {

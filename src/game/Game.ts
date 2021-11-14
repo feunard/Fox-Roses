@@ -14,9 +14,12 @@ export enum GameState {
 
 export class Game {
 
+    levels = [{}];
+
     evs: ((s: GameState) => any)[] = [];
 
     _state = GameState.INTRO;
+    currentLevel = 0;
 
     loader = new Loader();
 
@@ -78,6 +81,14 @@ export class Game {
     editor() {
         this.engine.goToScene('editor');
         this.state = GameState.EDITOR;
+    }
+
+    next() {
+        if (this.currentLevel < this.levels.length - 2) {
+            this.currentLevel += 1;
+        } else {
+            this.state = GameState.END;
+        }
     }
 }
 

@@ -4,6 +4,7 @@ import {game, GameState} from "../game/Game";
 import {Intro} from "./Intro";
 import {Title} from "./Title";
 import {Editor} from "./Editor";
+import {End} from "./End";
 
 class App extends React.Component<{}, { overlay: boolean; gameState: GameState }> {
     state = {
@@ -40,6 +41,7 @@ class App extends React.Component<{}, { overlay: boolean; gameState: GameState }
             <div className={"overlay"}>
                 {gs === GameState.INTRO && <Intro/>}
                 {gs === GameState.TITLE && <Title/>}
+                {gs === GameState.END && <End/>}
             </div>
         );
     }
