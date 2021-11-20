@@ -16,8 +16,8 @@ export class Intro extends React.Component<{}, IntroState> {
         setTimeout(() => {
             setTimeout(() => {
                 setTimeout(() => {
-                        game.state = GameState.TITLE
-                    },1000);
+                    game.state = GameState.TITLE
+                }, 1000);
                 this.setState({opacity: 0})
             }, 2000);
             this.setState({opacity: 1})

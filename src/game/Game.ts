@@ -16,16 +16,9 @@ export class Game {
 
     _cbs: ((s: GameState) => any)[] = [];
     _cbsl: ((s: ILevel) => any)[] = [];
-    _state = localStorage["GameState"] ? Number(localStorage["GameState"]) : GameState.INTRO;
     _levelId = 0;
     preview: boolean = false;
-
-    get level() {
-        return config.levels[this._levelId] as ILevel;
-    }
-
     loader = new Loader();
-
     engine = new Engine({
         backgroundColor: Color.Transparent,
         width: 1200,
@@ -54,6 +47,21 @@ export class Game {
         this.engine.addScene('level', new Level());
     }
 
+    _state = localStorage["GameState"] ? Number(localStorage["GameState"]) : GameState.INTRO;
+
+    get state(): GameState {
+        return this._state;
+    }
+
+    set state(s: GameState) {
+        this._state = s;
+        this._cbs.forEach(cb => cb(s));
+    }
+
+    get level() {
+        return config.levels[this._levelId] as ILevel;
+    }
+
     configure() {
         Physics.acc = new Vector(0, 800);
 
@@ -64,15 +72,6 @@ export class Game {
             this.engine.showDebug(true);
         }
         return this.engine.start(this.loader);
-    }
-
-    get state(): GameState {
-        return this._state;
-    }
-
-    set state(s: GameState) {
-        this._state = s;
-        this._cbs.forEach(cb => cb(s));
     }
 
     onChangeLevel(cb: (s: ILevel) => any) {

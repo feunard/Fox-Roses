@@ -3,6 +3,7 @@ import type {IEntityFloor} from "../config";
 
 export class Floor extends Actor {
     static n = 0;
+    dir = -1;
 
     constructor(
         private e: IEntityFloor
@@ -17,8 +18,6 @@ export class Floor extends Actor {
             height: e.height,
         });
     }
-
-    dir = -1;
 
     onPreUpdate(_engine: Engine, _delta: number) {
         if (this.e.move) {

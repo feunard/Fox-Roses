@@ -1,6 +1,6 @@
-import {Actor, Animation, CollisionType, vec} from "excalibur";
+import {Actor, CollisionType, vec} from "excalibur";
 import {IEntity} from "../config";
-import {AnimationsType, animations, bolt_sheet, rose_sheet} from "../resources";
+import {animations, AnimationsType} from "../resources";
 
 export class Graphic extends Actor {
     constructor(
