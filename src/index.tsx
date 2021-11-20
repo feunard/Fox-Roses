@@ -8,7 +8,7 @@ game.initialize()
     .catch((e) => {
         console.error(e);
     })
-
+// =
 ReactDOM.render(
     <React.StrictMode>
         <App/>
