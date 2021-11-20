@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './App.scss';
+import './App.css';
 import {game, GameState} from "../game/Game";
 import {Intro} from "./Intro";
 import {Title} from "./Title";

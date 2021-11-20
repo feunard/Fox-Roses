@@ -1,0 +1,26 @@
+/**
+=
+=
+=
+ */
+
+.Intro .title {
+  padding: 32px 64px;
+  font-weight: lighter;
+  line-height: 24px;
+  font-size: 48px;
+  transition: all 1s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Intro .sub {
+  font-size: 16px;
+}
+
+.Intro img {
+  border-radius: 50%;
+  height: 64px;
+  margin-bottom: 16px;
+}

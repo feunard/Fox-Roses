@@ -1,5 +1,5 @@
 import * as React from 'react';
-import "./Level.scss";
+import "./Level.css";
 import {ILevel} from "../game/config";
 
 interface LevelState {
@@ -8,10 +8,14 @@ interface LevelState {
 export class Level extends React.Component<{ level: ILevel }, LevelState> {
     state: LevelState = {}
 
+    componentDidMount() {
+        document.getElementById("game")!!.style.opacity = "1";
+    }
+
     render() {
         return (
             <div className="Level">
-                <div>{this.props.level.name.toUpperCase()}</div>
+                <div className="Level_title">{this.props.level.name.toUpperCase()}</div>
             </div>
         );
     }

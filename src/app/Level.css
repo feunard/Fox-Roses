@@ -1,0 +1,17 @@
+/**
+=
+=
+=
+ */
+
+.Level {
+  width: 1200px;
+}
+
+.Level_title {
+  font-size: 40px;
+  margin-top: -47px;
+  z-index: 99999;
+  color: #ffffff;
+  position: relative;
+}

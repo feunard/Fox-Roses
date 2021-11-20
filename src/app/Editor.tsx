@@ -1,6 +1,6 @@
 import type {MouseEvent} from "react";
 import * as React from 'react';
-import './Editor.scss';
+import './Editor.css';
 import {config, entityTypeList, EntityTypeType, eventList, GameEventType, IEntity} from "../game/config";
 import {game} from "../game/Game";
 import {animationsList, AnimationsType} from "../game/resources";

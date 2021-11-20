@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './App.scss';
+import './App.css';
 import {game} from "../game/Game";
 
 export class Title extends React.Component<{}, {}> {

@@ -1,11 +1,9 @@
-#game {
-  height: 600px;
-  background-image: linear-gradient(#1c1519, #3c2e37);
-}
+/**
+=
+=
+=
+ */
 
-#root {
-  height: 0px;
-}
 
 .overlay {
   background: #ffffff;
