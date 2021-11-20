@@ -8,6 +8,8 @@ export const images: { [key: string]: ImageSource } = {
     hero_jump: new ImageSource(require("../resources/hero_jump.png").default),
     hero_down: new ImageSource(require("../resources/hero_down.png").default),
     hero_attack: new ImageSource(require("../resources/hero_attack.png").default),
+    hero_attack_down: new ImageSource(require("../resources/hero_down_attack.png").default),
+    hero_attack_jump: new ImageSource(require("../resources/hero_jump_attack.png").default),
     rose: new ImageSource(require("../resources/rose.png").default),
     fox: new ImageSource(require("../resources/fox.png").default)
 }
@@ -53,6 +55,16 @@ export const bolt_sheet = SpriteSheet.fromImageSource({
 export const hero_attack_sheet = SpriteSheet.fromImageSource({
     image: images.hero_attack,
     grid: {...default_hero_grid, rows: 11}
+});
+
+export const hero_attack_down_sheet = SpriteSheet.fromImageSource({
+    image: images.hero_attack_down,
+    grid: {...default_hero_grid, rows: 7}
+});
+
+export const hero_attack_jump_sheet = SpriteSheet.fromImageSource({
+    image: images.hero_attack_jump,
+    grid: {...default_hero_grid, rows: 5}
 });
 
 export const hero_idle_sheet = SpriteSheet.fromImageSource({

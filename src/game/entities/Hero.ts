@@ -1,5 +1,6 @@
 import {Actor, Animation, CollisionType, Color, Engine, Shape, Side, vec, Vector} from 'excalibur';
 import {
+    hero_attack_down_sheet, hero_attack_jump_sheet,
     hero_attack_sheet,
     hero_down_sheet,
     hero_idle_sheet,
@@ -12,6 +13,7 @@ import {Keybinds} from "../Keybinds";
 import {Hitbox} from "./Hitbox";
 
 export class Hero extends Actor {
+    static NAME = "Hero";
 
     direction: Direction = Direction.RIGHT;
     animSit!: Animation;
@@ -19,6 +21,8 @@ export class Hero extends Actor {
     animJumpTop!: Animation;
     animJumpDown!: Animation;
     animAttack!: Animation;
+    animAttackDown!: Animation;
+    animAttackJump!: Animation;
     animRunLeft!: Animation;
     animRunRight!: Animation;
     hitboxHead: Hitbox;
@@ -40,7 +44,7 @@ export class Hero extends Actor {
             width: _width,
             height: _height,
             color: Color.Cyan,
-            name: 'Hero',
+            name: Hero.NAME,
             pos: initialPosition,
             collider: Shape.Box(_width - 16, _height * 2 - 32, Vector.Half, vec(0, 16)),
             collisionType: CollisionType.Active,
@@ -66,6 +70,12 @@ export class Hero extends Actor {
 
         this.animAttack = Animation.fromSpriteSheet(hero_attack_sheet, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 40);
         this.animAttack.scale = default_scale;
+
+        this.animAttackDown = Animation.fromSpriteSheet(hero_attack_down_sheet, [0, 1, 2, 3, 4, 5, 6], 70);
+        this.animAttackDown.scale = default_scale;
+
+        this.animAttackJump = Animation.fromSpriteSheet(hero_attack_jump_sheet, [0, 1, 2, 3, 4], 80);
+        this.animAttackJump.scale = default_scale;
 
         this.animJumpDown = Animation.fromSpriteSheet(hero_jump_sheet, [5, 6, 7], 500);
         this.animJumpDown.scale = default_scale;
@@ -179,20 +189,28 @@ export class Hero extends Actor {
 
             this.updateBoxCollider(52);
 
-            this.graphics.use(this.animSit);
+            if (!this.animSitLock)
+                this.graphics.use(this.animSit);
 
             if (kb.wasPressed("fire") && !this.cooldownFire) {
 
                 this.scene.engine.add(new Bolt(
-                    new Vector(this.pos.x, this.pos.y + this._height / 2),
+                    new Vector(this.pos.x, this.pos.y + this._height / 2 + 6),
                     this.direction
                 ))
 
+                this.graphics.use(this.animAttackDown);
                 this.cooldownFire = true;
+                this.animSitLock = true;
+
+                setTimeout(() => {
+                    this.animSitLock = false;
+                    this.animAttackDown.reset();
+                }, 440);
 
                 setTimeout(() => {
                     this.cooldownFire = false;
-                }, 1000);
+                }, 800);
             }
 
             if (kb.isHeld("left")) {
@@ -217,13 +235,14 @@ export class Hero extends Actor {
                 new Vector(this.pos.x, this.pos.y + this._height / 2 - 7),
                 this.direction
             ))
-            this.graphics.use(this.animAttack);
+            const anim = this.onGround ? this.animAttack : this.animAttackJump;
+            this.graphics.use(anim);
             this.animSitLock = true;
             this.cooldownFire = true;
 
             setTimeout(() => {
                 this.animSitLock = false;
-                this.animAttack.reset();
+                anim.reset();
             }, 440);
 
             setTimeout(() => {
