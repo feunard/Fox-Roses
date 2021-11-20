@@ -1,8 +1,7 @@
 import {Color, Engine, Loader, Physics, Vector} from "excalibur";
-import {images, sounds} from "../demo/resources";
-import {Level} from "../demo/level";
-import {Editor} from "./Editor";
-import {config, LevelConfig} from "./config";
+import {images, sounds} from "./resources";
+import {Level} from "./Level";
+import {config, ILevel} from "./config";
 
 export enum GameState {
     INTRO,
@@ -16,12 +15,13 @@ export enum GameState {
 export class Game {
 
     _cbs: ((s: GameState) => any)[] = [];
-    _cbsl: ((s: LevelConfig) => any)[] = [];
-    _state = GameState.INTRO;
+    _cbsl: ((s: ILevel) => any)[] = [];
+    _state = localStorage["GameState"] ? Number(localStorage["GameState"]) : GameState.INTRO;
     _levelId = 0;
+    preview: boolean = false;
 
     get level() {
-        return config.levels[this._levelId];
+        return config.levels[this._levelId] as ILevel;
     }
 
     loader = new Loader();
@@ -51,15 +51,18 @@ export class Game {
             this.loader.addResource(sounds[res]);
         }
 
-        this.engine.addScene('editor', new Editor());
         this.engine.addScene('level', new Level());
     }
 
     configure() {
         Physics.acc = new Vector(0, 800);
+
     }
 
     initialize() {
+        if (localStorage["DEBUG"]) {
+            this.engine.showDebug(true);
+        }
         return this.engine.start(this.loader);
     }
 
@@ -72,12 +75,21 @@ export class Game {
         this._cbs.forEach(cb => cb(s));
     }
 
-    onChangeLevel(cb: (s: LevelConfig) => any) {
+    onChangeLevel(cb: (s: ILevel) => any) {
         this._cbsl.push(cb);
     }
 
     onChangeState(cb: (s: GameState) => any) {
         this._cbs.push(cb);
+    }
+
+    test(id: number, entities: any) {
+        config.levels[id].entities = entities;
+        this.next(id);
+        this.preview = true;
+        this.engine.start();
+        this.engine.goToScene('level');
+        this.state = GameState.LEVEL;
     }
 
     start() {
@@ -86,11 +98,18 @@ export class Game {
     }
 
     editor() {
-        this.engine.goToScene('editor');
         this.state = GameState.EDITOR;
     }
 
     next(levelId = -1) {
+
+        if (this.preview) {
+            this.preview = false;
+            this.engine.stop();
+            this.state = GameState.EDITOR;
+            return;
+        }
+
         if (levelId > -1) {
             this._levelId = levelId;
         } else {

@@ -1,4 +1,4 @@
-import {ImageSource, Sound, SpriteSheet} from "excalibur";
+import {Animation, ImageSource, Sound, SpriteSheet} from "excalibur";
 
 export const images: { [key: string]: ImageSource } = {
     bolt: new ImageSource(require("../resources/bolt.png").default),
@@ -7,19 +7,38 @@ export const images: { [key: string]: ImageSource } = {
     hero_run: new ImageSource(require("../resources/hero_run.png").default),
     hero_jump: new ImageSource(require("../resources/hero_jump.png").default),
     hero_down: new ImageSource(require("../resources/hero_down.png").default),
-    hero_attack: new ImageSource(require("../resources/hero_attack.png").default)
+    hero_attack: new ImageSource(require("../resources/hero_attack.png").default),
+    rose: new ImageSource(require("../resources/rose.png").default),
+    fox: new ImageSource(require("../resources/fox.png").default)
 }
 
 export const sounds: { [key: string]: Sound } = {
     jump: new Sound(require('../resources/jump.wav').default)
 }
 
-const default_grid = {
+const default_hero_grid = {
     columns: 1,
     rows: 8,
     spriteWidth: 56,
     spriteHeight: 48
 };
+
+const default_grid = {
+    columns: 1,
+    rows: 1,
+    spriteWidth: 64,
+    spriteHeight: 64
+};
+
+export const fox_sheet = SpriteSheet.fromImageSource({
+    image: images.fox,
+    grid: default_grid
+});
+
+export const rose_sheet = SpriteSheet.fromImageSource({
+    image: images.rose,
+    grid: default_grid
+});
 
 export const bolt_sheet = SpriteSheet.fromImageSource({
     image: images.bolt,
@@ -33,31 +52,39 @@ export const bolt_sheet = SpriteSheet.fromImageSource({
 
 export const hero_attack_sheet = SpriteSheet.fromImageSource({
     image: images.hero_attack,
-    grid: {...default_grid, rows: 11}
+    grid: {...default_hero_grid, rows: 11}
 });
 
 export const hero_idle_sheet = SpriteSheet.fromImageSource({
     image: images.hero_idle,
-    grid: default_grid,
+    grid: default_hero_grid,
 });
 
 export const heroExias_idle_sheet = SpriteSheet.fromImageSource({
     image: images.heroExias_idle,
-    grid: default_grid,
+    grid: default_hero_grid,
 });
 
 export const hero_down_sheet = SpriteSheet.fromImageSource({
     image: images.hero_down,
-    grid: default_grid
+    grid: default_hero_grid
 });
 
 export const hero_run_sheet = SpriteSheet.fromImageSource({
     image: images.hero_run,
-    grid: default_grid
+    grid: default_hero_grid
 });
 
 export const hero_jump_sheet = SpriteSheet.fromImageSource({
     image: images.hero_jump,
-    grid: {...default_grid, rows: 12}
+    grid: {...default_hero_grid, rows: 12}
 });
 
+export const animations = {
+    bolt: Animation.fromSpriteSheet(bolt_sheet, [0, 1, 2, 3, 4], 60),
+    rose: Animation.fromSpriteSheet(rose_sheet, [0], 60),
+    fox: Animation.fromSpriteSheet(fox_sheet, [0], 60),
+}
+
+export type AnimationsType = keyof typeof animations;
+export const animationsList = Object.keys(animations);

@@ -44,6 +44,7 @@
   "dependencies": {
     "@excaliburjs/plugin-tiled": "^0.25.0",
     "gh-pages": "^3.2.3",
+    "node-sass": "^5.0.0",
     "surge": "^0.23.0"
   }
 }

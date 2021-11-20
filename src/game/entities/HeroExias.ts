@@ -1,6 +1,6 @@
 import * as ex from 'excalibur';
 import {Vector} from 'excalibur';
-import {heroExias_idle_sheet} from './resources';
+import {heroExias_idle_sheet} from '../resources';
 import {Hero} from "./Hero";
 
 export class HeroExias extends Hero {

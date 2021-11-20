@@ -1,13 +1,14 @@
 import * as React from 'react';
-import './App.css';
+import './App.scss';
 import {game, GameState} from "../game/Game";
 import {Intro} from "./Intro";
 import {Title} from "./Title";
 import {Editor} from "./Editor";
 import {End} from "./End";
-import {LevelConfig} from "../game/config";
+import {ILevel} from "../game/config";
+import {Level} from "./Level";
 
-class App extends React.Component<{}, { overlay: boolean; gameState: GameState; level: LevelConfig }> {
+class App extends React.Component<{}, { overlay: boolean; gameState: GameState; level: ILevel }> {
     state = {
         overlay: true,
         gameState: game.state,
@@ -34,17 +35,14 @@ class App extends React.Component<{}, { overlay: boolean; gameState: GameState; 
         const gs = this.state.gameState;
 
         if (gs === GameState.LEVEL) {
-            return <div>Level : {this.state.level.name}</div>;
-        }
-
-        if (gs === GameState.EDITOR) {
-            return <Editor/>
+            return <Level level={this.state.level}/>
         }
 
         return (
-            <div className={"overlay"}>
+            <div className={"overlay " + (gs === GameState.EDITOR ? "full" : "")}>
                 {gs === GameState.INTRO && <Intro/>}
                 {gs === GameState.TITLE && <Title/>}
+                {gs === GameState.EDITOR && <Editor/>}
                 {gs === GameState.END && <End/>}
             </div>
         );

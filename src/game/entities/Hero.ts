@@ -6,12 +6,10 @@ import {
     hero_jump_sheet,
     hero_run_sheet,
     sounds
-} from './resources';
+} from '../resources';
 import {Bolt, Direction} from "./Bolt";
-import {Keybinds} from "../game/Keybinds";
-import {Hitbox} from "../game/Hitbox";
-import {game} from "../game/Game";
-import {PreCollisionEvent} from "excalibur/build/dist/Events";
+import {Keybinds} from "../Keybinds";
+import {Hitbox} from "./Hitbox";
 
 export class Hero extends Actor {
 
@@ -34,7 +32,7 @@ export class Hero extends Actor {
     // canFly = true;
 
     constructor(
-        pos: Vector,
+        private initialPosition: Vector,
         private _height = 48,
         private _width = 56,
     ) {
@@ -43,7 +41,7 @@ export class Hero extends Actor {
             height: _height,
             color: Color.Cyan,
             name: 'Hero',
-            pos,
+            pos: initialPosition,
             collider: Shape.Box(_width - 16, _height * 2 - 32, Vector.Half, vec(0, 16)),
             collisionType: CollisionType.Active,
         });
@@ -54,16 +52,7 @@ export class Hero extends Actor {
         );
 
         this.addChild(this.hitboxHead);
-
         this.updateBoxCollider();
-
-        const precollision = (ev: PreCollisionEvent) => {
-            if (ev.other.name === "end") {
-                this.off("precollision", precollision);
-                game.next();
-            }
-        };
-        this.on("precollision", precollision)
     }
 
     get onGround(): boolean {
@@ -135,13 +124,13 @@ export class Hero extends Actor {
 
         // check if dead zone
 
-        if (this.pos.y > 1000) {
-            this.pos = new Vector(0, -200);
+        if (this.pos.y > 2000) {
+            this.pos = this.initialPosition;
             this.vel = new Vector(0, 0);
         }
 
         if (this.pos.y < -10000) {
-            this.pos = new Vector(0, -200);
+            this.pos = this.initialPosition;
             this.vel = new Vector(0, 0);
         }
 
@@ -158,7 +147,16 @@ export class Hero extends Actor {
         }
         this.handleLeftRight(kb);
         this.handleJump(kb);
+        this.handleFall(kb);
         this.handleIdle();
+    }
+
+    handleFall(kb: Keybinds) {
+        if (!this.onGround) {
+            if (kb.isHeld("down")) {
+                this.vel.y += 50;
+            }
+        }
     }
 
     handleSit(kb: Keybinds) {
@@ -230,7 +228,7 @@ export class Hero extends Actor {
 
             setTimeout(() => {
                 this.cooldownFire = false;
-            }, 1000);
+            }, 800);
 
             return true;
         }

@@ -1,6 +1,61 @@
 import {Input} from "excalibur";
+import {levels} from "./levels";
+import {AnimationsType} from "./resources";
 
-export type LevelConfig = typeof config["levels"][0];
+export const GameEvents = {
+    start: {},
+    end: {},
+    cam_back_1: {}
+}
+export const eventList = Object.keys(GameEvents);
+export type GameEventType = keyof typeof GameEvents;
+
+export const EntityTypes = {
+    floor: {},
+    event: {},
+    npc: {}
+}
+export const entityTypeList = Object.keys(EntityTypes);
+export type EntityTypeType = keyof typeof EntityTypes;
+
+export interface IEntityBase {
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+}
+
+export interface IEntityFloor extends IEntityBase {
+    type: "floor";
+    move?: {
+        y: number;
+        speed?: number;
+    }
+    physic?: boolean;
+}
+
+export interface IEntityNPC extends IEntityBase {
+    type: "npc";
+    name?: string;
+    dialogs?: string[];
+    animation: AnimationsType;
+}
+
+export interface IEntityEvent extends IEntityBase {
+    type: "event";
+    event: GameEventType;
+}
+
+export type IEntity =
+    IEntityEvent |
+    IEntityNPC |
+    IEntityFloor
+    ;
+
+export interface ILevel {
+    name: string;
+    entities: IEntity[];
+}
 
 export const config = {
     keybinds: {
@@ -20,7 +75,6 @@ export const config = {
             Input.Keys.Z
         ],
         down: [
-            Input.Keys.A,
             Input.Keys.Down,
             Input.Keys.S
         ],
@@ -29,6 +83,7 @@ export const config = {
             Input.Keys.Right
         ],
         jump: [
+            Input.Keys.Up,
             Input.Keys.Space,
             Input.Keys.Z,
             Input.Keys.W,
@@ -37,21 +92,5 @@ export const config = {
             Input.Keys.E,
         ]
     },
-    "levels": [
-        {
-            "name": "Test1",
-            start: [100, -200],
-            end: [0, -500],
-        },
-        {
-            "name": "Test2",
-            start: [100, -200],
-            end: [0, -600],
-        },
-        {
-            "name": "Test3",
-            start: [-100, -200],
-            end: [200, -400],
-        }
-    ]
+    levels: levels
 }
