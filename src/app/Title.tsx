@@ -30,7 +30,7 @@ export class Title extends React.Component<{}, {opacity: number}> {
         return (
             <div className="Title" style={{opacity: this.state.opacity}}>
                 <div>
-                    <img src={require("../resources/bg_fox.png").default} />
+                    <img src={require("../resources/bg_fox.png").default}  alt={"fox"}/>
                 </div>
                 <div className="Title_h1">
                     Fox & Roses
