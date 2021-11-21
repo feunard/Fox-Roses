@@ -93,5 +93,6 @@ export const config = {
             Input.Keys.E,
         ]
     },
-    levels: levels
+    levels: levels,
+    hero:0
 }

@@ -6,8 +6,7 @@ import {
     hero_down_sheet,
     hero_idle_sheet,
     hero_jump_sheet,
-    hero_run_sheet,
-    sounds
+    hero_run_sheet
 } from '../resources';
 import {Bolt, Direction} from "./Bolt";
 import {Keybinds} from "../Keybinds";
@@ -97,6 +96,10 @@ export class Hero extends Actor {
         this.animRunRight = Animation.fromSpriteSheet(hero_run_sheet, default_frame, default_duration);
         this.animRunRight.scale = default_scale;
 
+        this.register()
+    }
+
+    register(){
         // Register animations with actor
         this.graphics.add("idle", this.animIdle);
         this.graphics.add("left", this.animRunLeft);

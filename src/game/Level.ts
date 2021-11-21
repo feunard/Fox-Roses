@@ -1,11 +1,12 @@
 import {Hero} from './entities/Hero';
 import {Floor} from './entities/Floor';
 import {Actor, Engine, Scene, vec} from "excalibur";
-import {ILevel} from "./config";
+import {config, ILevel} from "./config";
 import {game} from "./Game";
 import {Event} from "./entities/Event";
 import {Graphic} from "./entities/Graphic";
 import {NPC} from "./entities/NPC";
+import {HeroExias} from "./entities/HeroExias";
 
 export class Level extends Scene {
     actor?: Actor;
@@ -19,7 +20,9 @@ export class Level extends Scene {
             }
             if (e.type === "event") {
                 if (e.event === "start") {
-                    this.actor = new Hero(vec(e.x + 32, e.y));
+                    this.actor = config.hero === 0
+                        ? new Hero(vec(e.x + 32, e.y))
+                        : new HeroExias(vec(e.x + 32, e.y));
                 }
                 if (e.event === "end") {
                     this.add(new Graphic(e, "rose"));

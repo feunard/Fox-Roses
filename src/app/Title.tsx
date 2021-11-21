@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './App.css';
 import {game} from "../game/Game";
+import {config} from "../game/config";
 
 export class Title extends React.Component<{}, {}> {
     state = {}
@@ -31,6 +32,8 @@ export class Title extends React.Component<{}, {}> {
                 }}>Continue
                 </button>
                 <button onClick={() => this.editor()}>Editor</button>
+                <button onClick={() =>config.hero=0}>Cara</button>
+                <button onClick={() =>config.hero=1}>Exias</button>
             </div>
         );
     }

@@ -1,9 +1,9 @@
-import {Animation, ImageSource, Sound, SpriteSheet} from "excalibur";
+import {Animation, ImageSource, SpriteSheet} from "excalibur";
 
 export const images: { [key: string]: ImageSource } = {
     bolt: new ImageSource(require("../resources/bolt.png").default),
     hero_idle: new ImageSource(require("../resources/hero_idle.png").default),
-    heroExias_idle: new ImageSource(require("../resources/Exias_idleV2.png").default),
+    heroExias_idle: new ImageSource(require("../resources/Exias_idleV4.png").default),
     hero_run: new ImageSource(require("../resources/hero_run.png").default),
     hero_jump: new ImageSource(require("../resources/hero_jump.png").default),
     hero_down: new ImageSource(require("../resources/hero_down.png").default),
