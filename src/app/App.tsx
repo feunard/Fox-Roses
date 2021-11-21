@@ -7,6 +7,7 @@ import {Editor} from "./Editor";
 import {End} from "./End";
 import {ILevel} from "../game/config";
 import {Level} from "./Level";
+import {Settings} from "./Settings";
 
 class App extends React.Component<{}, { overlay: boolean; gameState: GameState; level: ILevel }> {
     state = {
@@ -44,6 +45,7 @@ class App extends React.Component<{}, { overlay: boolean; gameState: GameState; 
                 {gs === GameState.TITLE && <Title/>}
                 {gs === GameState.EDITOR && <Editor/>}
                 {gs === GameState.END && <End/>}
+                {gs === GameState.SETTINGS && <Settings/>}
             </div>
         );
     }

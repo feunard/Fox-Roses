@@ -2,7 +2,7 @@ import type {MouseEvent} from "react";
 import * as React from 'react';
 import './Editor.css';
 import {config, entityTypeList, EntityTypeType, eventList, GameEventType, IEntity} from "../game/config";
-import {game} from "../game/Game";
+import {game, GameState} from "../game/Game";
 import {animationsList, AnimationsType} from "../game/resources";
 
 interface EditorState {
@@ -158,6 +158,7 @@ export class Editor extends React.Component<{}, EditorState> {
                             {e.type === "floor" && "floor"}
                             {e.type === "event" && e.event}
                             {e.type === "npc" && e.animation}
+
                             <div className="border top" onMouseDown={this.mouseDownBorder(e, "top")}/>
                             <div className="border bottom" onMouseDown={this.mouseDownBorder(e, "bottom")}/>
                             <div className="border left" onMouseDown={this.mouseDownBorder(e, "left")}/>
@@ -174,6 +175,11 @@ export class Editor extends React.Component<{}, EditorState> {
                         )}
                     </select>
                     {" | "}
+                    <button
+                        onClick={() => {
+                            game.state = GameState.TITLE;
+                        }}> Title
+                    </button>
                     <button
                         onClick={() => {
                             game.test(

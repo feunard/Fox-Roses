@@ -9,7 +9,8 @@ export enum GameState {
     CONTINUE,
     LEVEL,
     EDITOR,
-    END
+    END,
+    SETTINGS
 }
 
 export class Game {

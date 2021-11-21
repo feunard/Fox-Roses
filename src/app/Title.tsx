@@ -1,10 +1,9 @@
 import * as React from 'react';
-import './App.css';
-import {game} from "../game/Game";
-import {config} from "../game/config";
+import './Title.css';
+import {game, GameState} from "../game/Game";
 
-export class Title extends React.Component<{}, {}> {
-    state = {}
+export class Title extends React.Component<{}, {opacity: number}> {
+    state = {opacity: 0}
 
     componentDidMount() {
         setTimeout(async () => {
@@ -14,6 +13,9 @@ export class Title extends React.Component<{}, {}> {
                 console.error(e);
             }
         })
+        setTimeout(() => {
+            this.setState({opacity: 1})
+        }, 1000);
     }
 
     newGame() {
@@ -26,14 +28,21 @@ export class Title extends React.Component<{}, {}> {
 
     render() {
         return (
-            <div>
-                <button onClick={() => this.newGame()}>New Game</button>
-                <button onClick={() => {
-                }}>Continue
-                </button>
-                <button onClick={() => this.editor()}>Editor</button>
-                <button onClick={() =>config.hero=0}>Cara</button>
-                <button onClick={() =>config.hero=1}>Exias</button>
+            <div className="Title" style={{opacity: this.state.opacity}}>
+                <div>
+                    <img src={require("../resources/bg_fox.png").default} />
+                </div>
+                <div className="Title_h1">
+                    Fox & Roses
+                </div>
+                <div className="Title_menu">
+                    <button onClick={() => this.newGame()}>New Game</button>
+                    <button onClick={() => {
+                    }}>Continue
+                    </button>
+                    <button onClick={() => this.editor()}>Editor</button>
+                    <button onClick={() => game.state = GameState.SETTINGS}>Settings</button>
+                </div>
             </div>
         );
     }

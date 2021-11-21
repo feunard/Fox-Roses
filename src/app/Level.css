@@ -9,9 +9,10 @@
 }
 
 .Level_title {
+    font-weight: lighter;
     font-size: 40px;
-    margin-top: -47px;
-    z-index: 99999;
-    color: #ffffff;
     position: relative;
+    margin-top: -10px;
+    z-index: 99999;
+    color: #000000;
 }
