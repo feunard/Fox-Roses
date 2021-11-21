@@ -41,7 +41,7 @@ export class Game {
             this.loader.addResource(images[res]);
         }
         for (const res in sounds) {
-            this.loader.addResource(sounds[res]);
+            this.loader.addResource((sounds as any)[res]);
         }
 
         this.engine.addScene('level', new Level());

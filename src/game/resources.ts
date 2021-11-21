@@ -14,8 +14,8 @@ export const images: { [key: string]: ImageSource } = {
     fox: new ImageSource(require("../resources/fox.png").default)
 }
 
-export const sounds: { [key: string]: Sound } = {
-    jump: new Sound(require('../resources/jump.wav').default)
+export const sounds = {
+
 }
 
 const default_hero_grid = {

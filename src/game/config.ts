@@ -5,7 +5,8 @@ import {AnimationsType} from "./resources";
 export const GameEvents = {
     start: {},
     end: {},
-    cam_back_1: {}
+    cam_back_1: {},
+    cam_back_2: {}
 }
 export const eventList = Object.keys(GameEvents);
 export type GameEventType = keyof typeof GameEvents;

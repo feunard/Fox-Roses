@@ -2,7 +2,6 @@ import * as React from 'react';
 import './Intro.css';
 import {game, GameState} from "../game/Game";
 
-
 interface IntroState {
     opacity: number
 }

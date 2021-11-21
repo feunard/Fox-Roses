@@ -15,6 +15,9 @@ export class Event extends Trigger {
                     this.scene.camera.zoomOverTime(0.5, 2000);
                     this.scene.camera.rotation = 10;
                 }
+                if (e.event === "cam_back_2") {
+                    this.scene.camera.zoomOverTime(1.2, 2000);
+                }
                 if (e.event === "end") {
                     game.next();
                 }

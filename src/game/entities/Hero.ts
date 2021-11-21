@@ -1,6 +1,7 @@
 import {Actor, Animation, CollisionType, Color, Engine, Shape, Side, vec, Vector} from 'excalibur';
 import {
-    hero_attack_down_sheet, hero_attack_jump_sheet,
+    hero_attack_down_sheet,
+    hero_attack_jump_sheet,
     hero_attack_sheet,
     hero_down_sheet,
     hero_idle_sheet,
@@ -14,7 +15,8 @@ import {Hitbox} from "./Hitbox";
 
 export class Hero extends Actor {
     static NAME = "Hero";
-
+    // canFly = true;
+    private static COOLDOWN_FIRE: number = 500;
     direction: Direction = Direction.RIGHT;
     animSit!: Animation;
     animIdle!: Animation;
@@ -29,11 +31,10 @@ export class Hero extends Actor {
     doubleJump = false;
     sit = false;
     cooldownFire = false;
-    animSitLock = false;
 
     // canFireBolt = true;
     // canDoubleJump = true;
-    // canFly = true;
+    animSitLock = false;
 
     constructor(
         private initialPosition: Vector,
@@ -116,6 +117,8 @@ export class Hero extends Actor {
             this.animJumpDown.flipHorizontal = false
             this.animSit.flipHorizontal = false
             this.animAttack.flipHorizontal = false;
+            this.animAttackDown.flipHorizontal = false;
+            this.animAttackJump.flipHorizontal = false;
             this.direction = Direction.RIGHT;
         }
         if (direction === Direction.LEFT) {
@@ -124,6 +127,8 @@ export class Hero extends Actor {
             this.animJumpDown.flipHorizontal = true
             this.animSit.flipHorizontal = true
             this.animAttack.flipHorizontal = true;
+            this.animAttackDown.flipHorizontal = true;
+            this.animAttackJump.flipHorizontal = true;
             this.direction = Direction.LEFT;
         }
     }
@@ -210,7 +215,7 @@ export class Hero extends Actor {
 
                 setTimeout(() => {
                     this.cooldownFire = false;
-                }, 800);
+                }, Hero.COOLDOWN_FIRE);
             }
 
             if (kb.isHeld("left")) {
@@ -247,7 +252,7 @@ export class Hero extends Actor {
 
             setTimeout(() => {
                 this.cooldownFire = false;
-            }, 800);
+            }, Hero.COOLDOWN_FIRE);
 
             return true;
         }
@@ -272,11 +277,9 @@ export class Hero extends Actor {
             if (this.onGround) {
                 this.vel.y = -400;
                 this.doubleJump = true;
-                sounds.jump.play(.1);
             } else if (this.doubleJump) {
                 this.vel.y = -400;
                 this.doubleJump = false;
-                sounds.jump.play(.1);
             }
         }
     }
