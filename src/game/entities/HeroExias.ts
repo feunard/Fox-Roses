@@ -5,8 +5,8 @@ import {
     hero_attack_sheet,
     hero_down_sheet,
     hero_jump_sheet,
-    hero_run_sheet,
-    heroExias_idle_sheet
+    heroExias_idle_sheet,
+    heroExias_run_sheet
 } from '../resources';
 import {Hero} from "./Hero";
 
@@ -39,11 +39,11 @@ export class HeroExias extends Hero {
         this.animIdle = Animation.fromSpriteSheet(heroExias_idle_sheet, default_frame, 120);
         this.animIdle.scale = default_scale;
 
-        this.animRunLeft = Animation.fromSpriteSheet(hero_run_sheet, default_frame, default_duration);
+        this.animRunLeft = Animation.fromSpriteSheet(heroExias_run_sheet, default_frame, default_duration);
         this.animRunLeft.scale = default_scale;
         this.animRunLeft.flipHorizontal = true;
 
-        this.animRunRight = Animation.fromSpriteSheet(hero_run_sheet, default_frame, default_duration);
+        this.animRunRight = Animation.fromSpriteSheet(heroExias_run_sheet, default_frame, default_duration);
         this.animRunRight.scale = default_scale;
 
         // Register animations with actor
