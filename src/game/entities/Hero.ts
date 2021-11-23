@@ -6,7 +6,7 @@ import {
     hero_down_sheet,
     hero_idle_sheet,
     hero_jump_sheet,
-    hero_run_sheet, sounds
+    hero_run_sheet, rand, sounds
 } from '../resources';
 import {Bolt, Direction} from "./Bolt";
 import {Keybinds} from "../Keybinds";
@@ -305,9 +305,11 @@ export class Hero extends Actor {
     handleJump(kb: Keybinds) {
         if (kb.wasPressed("jump")) {
             if (this.onGround) {
+                (sounds as any)["jump_" + rand(3)].play(0.8);
                 this.vel.y = -400;
                 this.doubleJump = true;
             } else if (this.doubleJump) {
+                (sounds as any)["jump_" + rand(3)].play(0.6);
                 this.vel.y = -400;
                 this.doubleJump = false;
             }

@@ -23,7 +23,12 @@ export const sounds = {
     s2043: new Sound(require("../resources/audio/2043.wav").default),
     s2045: new Sound(require("../resources/audio/2045.wav").default),
     firebolt: new Sound(require("../resources/audio/firebolt.wav").default),
+    jump_0: new Sound(require("../resources/audio/1010100_03_cn.ogg").default),
+    jump_1: new Sound(require("../resources/audio/1010100_04_cn.ogg").default),
+    jump_2: new Sound(require("../resources/audio/1010100_05_cn.ogg").default),
 }
+
+export const rand = (x: 3) => Math.floor(Math.random() * x);
 
 const default_hero_grid = {
     columns: 1,
