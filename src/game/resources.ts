@@ -22,6 +22,7 @@ export const sounds = {
     sky: new Sound(require("../resources/audio/sky.mp3").default),
     s2043: new Sound(require("../resources/audio/2043.wav").default),
     s2045: new Sound(require("../resources/audio/2045.wav").default),
+    firebolt: new Sound(require("../resources/audio/firebolt.wav").default),
 }
 
 const default_hero_grid = {

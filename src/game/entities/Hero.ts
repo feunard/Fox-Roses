@@ -6,7 +6,7 @@ import {
     hero_down_sheet,
     hero_idle_sheet,
     hero_jump_sheet,
-    hero_run_sheet
+    hero_run_sheet, sounds
 } from '../resources';
 import {Bolt, Direction} from "./Bolt";
 import {Keybinds} from "../Keybinds";
@@ -235,6 +235,7 @@ export class Hero extends Actor {
                 this.graphics.use(this.animAttackDown);
                 this.cooldownFire = true;
                 this.animSitLock = true;
+                sounds.firebolt.play();
 
                 setTimeout(() => {
                     this.animSitLock = false;
@@ -272,6 +273,7 @@ export class Hero extends Actor {
             this.graphics.use(anim);
             this.animSitLock = true;
             this.cooldownFire = true;
+            sounds.firebolt.play();
 
             setTimeout(() => {
                 this.animSitLock = false;
