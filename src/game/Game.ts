@@ -1,4 +1,4 @@
-import {Color, Engine, Loader, Physics, Vector} from "excalibur";
+import {Color, DisplayMode, Engine, Loader, Physics, Vector} from "excalibur";
 import {images, sounds} from "./resources";
 import {Level} from "./Level";
 import {config, ILevel} from "./config";
@@ -21,9 +21,8 @@ export class Game {
     preview: boolean = false;
     loader = new Loader();
     engine = new Engine({
-        backgroundColor: Color.Transparent,
-        width: 1200,
-        height: 600,
+        displayMode: DisplayMode.FillScreen,
+        backgroundColor: Color.Black,
         suppressPlayButton: true,
         suppressConsoleBootMessage: true,
         antialiasing: true,
@@ -65,14 +64,22 @@ export class Game {
 
     configure() {
         Physics.acc = new Vector(0, 800);
-
     }
 
-    initialize() {
+    async initialize() {
+
         if (localStorage["DEBUG"]) {
             this.engine.showDebug(true);
         }
-        return this.engine.start(this.loader);
+
+        await this.engine.start(this.loader);
+
+        console.log("loaded")
+
+        if (this.cb) {
+            console.log("call ready")
+            this.cb();
+        }
     }
 
     onChangeLevel(cb: (s: ILevel) => any) {
@@ -92,17 +99,11 @@ export class Game {
         this.state = GameState.LEVEL;
     }
 
-    start() {
-        this.engine.goToScene('level');
-        this.state = GameState.LEVEL;
-    }
-
     editor() {
         this.state = GameState.EDITOR;
     }
 
     next(levelId = -1) {
-
         if (this.preview) {
             this.preview = false;
             this.engine.stop();
@@ -122,6 +123,33 @@ export class Game {
             this.state = GameState.END;
         } else {
             this._cbsl.forEach(cb => cb(this.level));
+        }
+    }
+
+    start() {
+        this.engine.goToScene('level');
+        this.state = GameState.LEVEL;
+    }
+
+    stop() {
+
+        this.engine.currentScene.actors.forEach(a => this.engine.currentScene.remove(a));
+        this.engine.currentScene.entities.forEach(a => this.engine.currentScene.remove(a));
+
+        this.engine.stop();
+        this.state = GameState.TITLE;
+    }
+
+    cb: any;
+
+    onReady(cb: any) {
+
+        this.cb = cb;
+
+        console.log("register ready")
+
+        if (this.loader.isLoaded()) {
+            cb();
         }
     }
 }

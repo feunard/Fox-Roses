@@ -9,6 +9,7 @@
     width: 100%;
     flex-direction: column;
     background: white;
+    overflow: auto;
 }
 
 .Editor_toolbar {
@@ -31,8 +32,8 @@
     background: black;
     overflow: auto;
     position: relative;
-    width: 4000px;
-    height: 2000px;
+    width: 10000px;
+    height: 100%;
 }
 
 @keyframes selected {

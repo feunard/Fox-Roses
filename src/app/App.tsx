@@ -17,13 +17,6 @@ class App extends React.Component<{}, { overlay: boolean; gameState: GameState; 
     }
 
     componentDidMount() {
-        setTimeout(async () => {
-            try {
-                await game.initialize();
-            } catch (e) {
-                console.error(e);
-            }
-        })
         game.onChangeLevel((level) => {
             this.setState({level});
         });

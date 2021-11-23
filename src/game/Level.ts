@@ -1,12 +1,13 @@
 import {Hero} from './entities/Hero';
 import {Floor} from './entities/Floor';
-import {Actor, Engine, Scene, vec} from "excalibur";
+import {Actor, Color, EmitterType, Engine, ParticleEmitter, Scene, vec, Vector} from "excalibur";
 import {config, ILevel} from "./config";
 import {game} from "./Game";
 import {Event} from "./entities/Event";
 import {Graphic} from "./entities/Graphic";
 import {NPC} from "./entities/NPC";
 import {HeroExias} from "./entities/HeroExias";
+import {foes} from "./entities/foes";
 
 export class Level extends Scene {
     actor?: Actor;
@@ -33,10 +34,39 @@ export class Level extends Scene {
             if (e.type === "npc") {
                 this.add(new NPC(e));
             }
+            if (e.type === "foe") {
+                this.add(new foes[e.name](e));
+            }
         }
 
-        if (this.actor)
+        if (this.actor) {
+            const emitter = new ParticleEmitter({
+                x: -1000,
+                y: 0,
+                width: 10000,
+                height: 1080,
+            });
+            emitter.emitterType = EmitterType.Rectangle;
+            emitter.radius = 5;
+            emitter.minVel = 0;
+            emitter.maxVel = 10;
+            emitter.minAngle = 0;
+            emitter.maxAngle = 6.2;
+            emitter.isEmitting = true;
+            emitter.emitRate = 300;
+            emitter.opacity = 0.8;
+            emitter.fadeFlag = true;
+            emitter.particleLife = 2376;
+            emitter.maxSize = 10;
+            emitter.minSize = 1;
+            emitter.startSize = 0;
+            emitter.endSize = 25;
+            emitter.acceleration = new Vector(1, 1);
+            emitter.beginColor = Color.Transparent;
+            emitter.endColor = Color.Transparent;
+            this.add(emitter);
             this.add(this.actor);
+        }
 
         this.camera.clearAllStrategies();
         if (this.actor) {

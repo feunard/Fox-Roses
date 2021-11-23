@@ -1,49 +1,92 @@
 import * as React from 'react';
+import './Stars.css';
 import './Title.css';
 import {game, GameState} from "../game/Game";
+import {sounds} from "../game/resources";
 
-export class Title extends React.Component<{}, {opacity: number}> {
+export class Title extends React.Component<{}, { opacity: number }> {
     state = {opacity: 0}
 
     componentDidMount() {
-        setTimeout(async () => {
-            try {
-                await game.initialize();
-            } catch (e) {
-                console.error(e);
-            }
-        })
         setTimeout(() => {
             this.setState({opacity: 1})
-        }, 1000);
+        }, 500);
+        sounds.sky.play();
     }
 
     newGame() {
+        sounds.s2045.play(0.5);
+        sounds.sky.stop();
         game.start();
     }
 
     editor() {
+        sounds.s2045.play();
+
+        sounds.sky.stop();
         game.editor();
     }
+
+    settings() {
+        sounds.s2045.play();
+
+        sounds.sky.stop();
+        game.state = GameState.SETTINGS
+    }
+
+    c: any;
 
     render() {
         return (
             <div className="Title" style={{opacity: this.state.opacity}}>
-                <div>
-                    <img src={require("../resources/bg_fox.png").default}  alt={"fox"}/>
-                </div>
-                <div className="Title_h1">
-                    Fox & Roses
-                </div>
-                <div className="Title_menu">
-                    <button onClick={() => this.newGame()}>New Game</button>
-                    <button onClick={() => {
-                    }}>Continue
+                <div id="stars"></div>
+                <div id="stars2"></div>
+                <div id="stars3"></div>
+                <div className={"Title_menu"} id="title">
+                    <button
+                        onMouseLeave={() => {
+                            sounds.s2043.stop()
+                        }}
+                        onMouseEnter={() => {
+                            sounds.s2043.play(0.2);
+
+                        }}
+                        onClick={() => this.newGame()}>New Game
                     </button>
-                    <button onClick={() => this.editor()}>Editor</button>
-                    <button onClick={() => game.state = GameState.SETTINGS}>Settings</button>
+                    <button
+                        onMouseLeave={() => {
+                            sounds.s2043.stop()
+                        }}
+                        onMouseEnter={() => {
+                            sounds.s2043.play(0.1);
+
+                        }}
+                        onClick={() => {
+                        }}>Continue
+                    </button>
+                    <button
+                        onMouseLeave={() => {
+                            sounds.s2043.stop()
+                        }}
+                        onMouseEnter={() => {
+                            sounds.s2043.play(.1);
+                        }}
+                        onClick={() => this.editor()}>Editor
+                    </button>
+                    <button
+                        onMouseLeave={() => {
+                            sounds.s2043.stop()
+                        }}
+                        onMouseEnter={() => {
+                            sounds.s2043.play(0.2);
+                        }}
+                        onClick={() => {
+                            this.settings()
+                        }}>Settings
+                    </button>
                 </div>
             </div>
         );
     }
+
 }

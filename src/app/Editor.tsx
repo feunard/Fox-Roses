@@ -3,13 +3,15 @@ import * as React from 'react';
 import './Editor.css';
 import {config, entityTypeList, EntityTypeType, eventList, GameEventType, IEntity} from "../game/config";
 import {game, GameState} from "../game/Game";
-import {animationsList, AnimationsType} from "../game/resources";
+import {animations, animationsList, AnimationsType} from "../game/resources";
+import {foes} from "../game/entities/foes";
 
 interface EditorState {
     entities: IEntity[];
     type: EntityTypeType;
     type_event: GameEventType;
     type_npc: AnimationsType;
+    type_foe: keyof typeof foes;
     selected?: IEntity;
     current: number;
 }
@@ -20,7 +22,8 @@ export class Editor extends React.Component<{}, EditorState> {
         entities: this.hardCopy(config.levels[0].entities),
         type: entityTypeList[0] as EntityTypeType,
         type_event: eventList[0] as GameEventType,
-        type_npc: animationsList[0] as AnimationsType
+        type_npc: animationsList[0] as AnimationsType,
+        type_foe: (Object.keys(foes)[0]) as keyof typeof foes
     }
 
     drag = "";
@@ -31,6 +34,18 @@ export class Editor extends React.Component<{}, EditorState> {
     e!: IEntity;
 
     history: string[] = [];
+
+    componentDidMount() {
+        game.onChangeLevel((l) => {
+            this.setState({
+                current: game._levelId,
+                entities: this.hardCopy(config.levels[game._levelId].entities),
+                type: entityTypeList[0] as EntityTypeType,
+                type_event: eventList[0] as GameEventType,
+                type_npc: animationsList[0] as AnimationsType
+            })
+        });
+    }
 
     hardCopy(obj: object) {
         return JSON.parse(JSON.stringify(obj));
@@ -158,6 +173,7 @@ export class Editor extends React.Component<{}, EditorState> {
                             {e.type === "floor" && "floor"}
                             {e.type === "event" && e.event}
                             {e.type === "npc" && e.animation}
+                            {e.type === "foe" && e.name}
 
                             <div className="border top" onMouseDown={this.mouseDownBorder(e, "top")}/>
                             <div className="border bottom" onMouseDown={this.mouseDownBorder(e, "bottom")}/>
@@ -219,6 +235,14 @@ export class Editor extends React.Component<{}, EditorState> {
                         <select
                             onChange={this.$("type_npc")}>
                             {animationsList.map((l, it) =>
+                                <option value={l} key={l}>{l.toUpperCase()}</option>
+                            )}
+                        </select>
+                    )}
+                    {this.state.type === "foe" && (
+                        <select
+                            onChange={this.$("type_foe")}>
+                            {Object.keys(foes).map((l, it) =>
                                 <option value={l} key={l}>{l.toUpperCase()}</option>
                             )}
                         </select>
@@ -291,7 +315,16 @@ export class Editor extends React.Component<{}, EditorState> {
     private onDoubleClick = (ev: MouseEvent<any>) => {
         this.saveHistory();
         console.log(ev);
-        const size = 64;
+        let size = 64;
+        if (this.state.type === "npc") {
+            size = animations[this.state.type_npc].height;
+        }
+        if (this.state.type === "foe") {
+            size = 48 * 2;
+            if (this.state.type_foe === "Mirror") {
+                size = 128;
+            }
+        }
         const e: any = {
             type: this.state.type as any,
             x: ev.pageX - size / 2,
@@ -306,6 +339,9 @@ export class Editor extends React.Component<{}, EditorState> {
             e.animation = this.state.type_npc;
             e.dialogs = [""];
             e.name = this.state.type_npc;
+        }
+        if (this.state.type === "foe") {
+            e.name = this.state.type_foe;
         }
         this.state.entities.push(e);
         this.forceUpdate();

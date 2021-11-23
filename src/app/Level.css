@@ -3,16 +3,55 @@
 =
 =
  */
-
-.Level {
-    width: 1200px;
+@keyframes fade {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.8;
+    }
 }
 
-.Level_title {
-    font-weight: lighter;
-    font-size: 40px;
-    position: relative;
-    margin-top: -10px;
-    z-index: 99999;
-    color: #000000;
+.Level_overlay {
+    animation: 4000ms linear infinite alternate fade;
+    background: radial-gradient(closest-side, rgba(0, 0, 0, 0.4), black, black);
+}
+
+.Level_dialog {
+    position: absolute;
+    bottom: 100px;
+    height: 128px;
+    left: 0;
+    background: black !important;
+    right: 0;
+    margin: auto;
+    width: 640px;
+    display: flex;
+    border-radius: 8px;
+    border: 1px solid white;
+}
+
+.Level_avatar, .Level_avatar img {
+    height: 100%;
+}
+
+.Level_dialog_content {
+    padding: 10px;
+}
+
+.Level_dialog_author {
+    color: orange;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 22px;
+    line-height: 20px;
+    padding: 0;
+    margin: 2px 0 16px;
+}
+
+.Level_dialog_message {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    color: whitesmoke;
 }

@@ -1,4 +1,4 @@
-import {Animation, ImageSource, SpriteSheet} from "excalibur";
+import {Animation, ImageSource, Sound, SpriteSheet} from "excalibur";
 
 export const images: { [key: string]: ImageSource } = {
     bolt: new ImageSource(require("../resources/bolt.png").default),
@@ -12,10 +12,17 @@ export const images: { [key: string]: ImageSource } = {
     hero_attack_down: new ImageSource(require("../resources/hero_down_attack.png").default),
     hero_attack_jump: new ImageSource(require("../resources/hero_jump_attack.png").default),
     rose: new ImageSource(require("../resources/rose.png").default),
-    fox: new ImageSource(require("../resources/fox.png").default)
+    fox: new ImageSource(require("../resources/fox.png").default),
+    mirror: new ImageSource(require("../resources/mirror.png").default),
+    mage: new ImageSource(require("../resources/skeleton_warrior.png").default),
+    war: new ImageSource(require("../resources/skeleton_mage.png").default)
 }
 
-export const sounds = {}
+export const sounds = {
+    sky: new Sound(require("../resources/audio/sky.mp3").default),
+    s2043: new Sound(require("../resources/audio/2043.wav").default),
+    s2045: new Sound(require("../resources/audio/2045.wav").default),
+}
 
 const default_hero_grid = {
     columns: 1,
@@ -30,6 +37,36 @@ const default_grid = {
     spriteWidth: 64,
     spriteHeight: 64
 };
+
+export const mage_sheet = SpriteSheet.fromImageSource({
+    image: images.mage,
+    grid: {
+        columns: 21,
+        rows: 5,
+        spriteWidth: 48,
+        spriteHeight: 48
+    }
+});
+
+export const war_sheet = SpriteSheet.fromImageSource({
+    image: images.war,
+    grid: {
+        columns: 21,
+        rows: 5,
+        spriteWidth: 48,
+        spriteHeight: 48
+    }
+});
+
+export const mirror_sheet = SpriteSheet.fromImageSource({
+    image: images.mirror,
+    grid: {
+        columns: 1,
+        rows: 7,
+        spriteWidth: 64,
+        spriteHeight: 128
+    }
+});
 
 export const fox_sheet = SpriteSheet.fromImageSource({
     image: images.fox,
@@ -100,6 +137,9 @@ export const animations = {
     bolt: Animation.fromSpriteSheet(bolt_sheet, [0, 1, 2, 3, 4], 60),
     rose: Animation.fromSpriteSheet(rose_sheet, [0], 60),
     fox: Animation.fromSpriteSheet(fox_sheet, [0], 60),
+    mirror: Animation.fromSpriteSheet(mirror_sheet, [2, 3, 4, 5, 6], 100),
+    war_idle: Animation.fromSpriteSheet(war_sheet, [0, 1, 2, 3, 4, 5, 6, 7], 100),
+    mage_idle: Animation.fromSpriteSheet(mage_sheet, [0, 1, 2, 3, 4, 5, 6, 7], 100),
 }
 
 export type AnimationsType = keyof typeof animations;

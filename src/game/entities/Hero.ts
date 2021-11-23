@@ -1,4 +1,4 @@
-import {Actor, Animation, CollisionType, Color, Engine, Shape, Side, vec, Vector} from 'excalibur';
+import {Actor, Animation, CollisionType, Color, Engine, Input, Shape, Side, vec, Vector} from 'excalibur';
 import {
     hero_attack_down_sheet,
     hero_attack_jump_sheet,
@@ -11,6 +11,7 @@ import {
 import {Bolt, Direction} from "./Bolt";
 import {Keybinds} from "../Keybinds";
 import {Hitbox} from "./Hitbox";
+import {game} from "../Game";
 
 export class Hero extends Actor {
     static NAME = "Hero";
@@ -99,7 +100,7 @@ export class Hero extends Actor {
         this.register()
     }
 
-    register(){
+    register() {
         // Register animations with actor
         this.graphics.add("idle", this.animIdle);
         this.graphics.add("left", this.animRunLeft);
@@ -136,6 +137,8 @@ export class Hero extends Actor {
         }
     }
 
+    wasOnGround = false;
+
     // After main update, once per frame execute this code
     onPreUpdate(engine: Engine, delta: number) {
         const kb = new Keybinds(engine);
@@ -156,6 +159,26 @@ export class Hero extends Actor {
 
         this.vel.x = 0;
 
+        if (!this.wasOnGround && this.onGround) {
+            this.wasOnGround = true;
+            if (kb.isHeld("down")) {
+                game.engine.currentScene.camera.shake(10, 10, 2)
+            }
+        }
+
+        if (engine.input.keyboard.isHeld(Input.Keys.Escape)) {
+            game.stop();
+        }
+        if (engine.input.keyboard.isHeld(Input.Keys.U)) {
+            game.engine.showDebug(true);
+        }
+        if (engine.input.keyboard.isHeld(Input.Keys.I)) {
+            game.engine.showDebug(false);
+        }
+        if (engine.input.keyboard.isHeld(Input.Keys.O)) {
+            game.engine.currentScene.camera.angularVelocity = 20000;
+        }
+
         if (this.handleSit(kb)) {
             return;
         }
@@ -167,6 +190,8 @@ export class Hero extends Actor {
         this.handleJump(kb);
         this.handleFall(kb);
         this.handleIdle();
+
+        this.wasOnGround = this.onGround;
     }
 
     handleFall(kb: Keybinds) {

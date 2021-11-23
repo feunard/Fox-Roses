@@ -1,6 +1,7 @@
 import {Input} from "excalibur";
 import {levels} from "./levels";
 import {AnimationsType} from "./resources";
+import {foes} from "./entities/foes";
 
 export const GameEvents = {
     start: {},
@@ -14,7 +15,8 @@ export type GameEventType = keyof typeof GameEvents;
 export const EntityTypes = {
     floor: {},
     event: {},
-    npc: {}
+    npc: {},
+    foe: {}
 }
 export const entityTypeList = Object.keys(EntityTypes);
 export type EntityTypeType = keyof typeof EntityTypes;
@@ -42,6 +44,11 @@ export interface IEntityNPC extends IEntityBase {
     animation: AnimationsType;
 }
 
+export interface IEntityFoe extends IEntityBase {
+    type: "foe";
+    name: keyof typeof foes;
+}
+
 export interface IEntityEvent extends IEntityBase {
     type: "event";
     event: GameEventType;
@@ -50,6 +57,7 @@ export interface IEntityEvent extends IEntityBase {
 export type IEntity =
     IEntityEvent |
     IEntityNPC |
+    IEntityFoe |
     IEntityFloor
     ;
 
@@ -94,5 +102,5 @@ export const config = {
         ]
     },
     levels: levels,
-    hero:0
+    hero: 0
 }
