@@ -38,7 +38,7 @@ export class Intro extends React.Component<{}, IntroState> {
 
         this.i = setInterval(() => {
             this.setState({progress: game.loader.progress * 100})
-        }, 1000);
+        }, 500);
 
         try {
             await game.initialize();
