@@ -38,7 +38,19 @@ export const levels = [{
             "y": 472,
             "width": 128,
             "height": 128,
-            "name": "Mirror"
+            "name": "Mirror",
+            "mirror_id": 1,
+            "mirror_to": 2,
+        },
+        {
+            "type": "foe",
+            "x": 800,
+            "y": 200,
+            "width": 128,
+            "height": 128,
+            "name": "Mirror",
+            "mirror_id": 2,
+            "mirror_to": 1,
         },
         {
             "type": "foe",
@@ -55,8 +67,11 @@ export const levels = [{
             "width": 64,
             "height": 64,
             "animation": "fox",
-            "dialogs": [
-                "This is Awesome"
+            "messages": [
+                {
+                    "author": "Renard",
+                    "content": "Ah, un visteur."
+                }
             ],
             "name": "fox"
         }

@@ -294,11 +294,11 @@ export class Editor extends React.Component<{}, EditorState> {
                         )}
                         {this.state.selected.type === "npc" && (
                             <input
-                                value={this.state.selected.name}
+                                value={this.state.selected.animation}
                                 onChange={(ev) => {
                                     if (this.state.selected && this.state.selected.type === "npc") {
                                         const selected = this.state.selected;
-                                        selected.name = ev.target.value;
+                                        selected.animation = ev.target.value as any;
                                         this.setState({
                                             selected
                                         });

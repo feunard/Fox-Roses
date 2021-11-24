@@ -16,7 +16,7 @@ import {game} from "../Game";
 export class Hero extends Actor {
     static NAME = "Hero";
     // canFly = true;
-    private static COOLDOWN_FIRE: number = 500;
+    private static COOLDOWN_FIRE: number = 200;
     direction: Direction = Direction.RIGHT;
     animSit!: Animation;
     animIdle!: Animation;
@@ -146,13 +146,11 @@ export class Hero extends Actor {
         // check if dead zone
 
         if (this.pos.y > 2000) {
-            this.pos = this.initialPosition;
-            this.vel = new Vector(0, 0);
+            this.dead();
         }
 
         if (this.pos.y < -10000) {
-            this.pos = this.initialPosition;
-            this.vel = new Vector(0, 0);
+            this.dead();
         }
 
         // Reset x velocity
@@ -328,6 +326,12 @@ export class Hero extends Actor {
         if (this.vel.y > 0) {
             this.graphics.use(this.animJumpDown);
         }
+    }
+
+    dead() {
+
+        this.pos = this.initialPosition;
+        this.vel = new Vector(0, 0);
     }
 }
 

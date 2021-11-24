@@ -1,8 +1,17 @@
 import {Actor, Animation, CollisionType, Engine, Vector} from "excalibur";
 import {bolt_sheet} from "../resources";
+import {BoundingBox} from "excalibur/build/dist/Collision/BoundingBox";
 
 export enum Direction {
     LEFT = -1, RIGHT = 1
+}
+
+export const contains = (big: BoundingBox, small: BoundingBox) => {
+    if (big.left > small.left) return false;
+    if (big.right < small.right) return false;
+    if (big.top > small.top) return false;
+    if (big.bottom < small.bottom) return false;
+    return true;
 }
 
 export class Bolt extends Actor {
@@ -14,6 +23,7 @@ export class Bolt extends Actor {
         private direction: Direction
     ) {
         super({
+            name: "bolt",
             pos,
             radius: 10,
             collisionType: CollisionType.Passive
@@ -31,6 +41,20 @@ export class Bolt extends Actor {
         this.on("collisionstart", (ev) => {
             if (ev.other.name.includes("floor")) {
                 this.kill();
+            }
+        });
+        this.on("precollision", (ev) => {
+            if (ev.other.name === "mage") {
+                if (ev.other.collider.bounds.contains(this.collider.bounds)) {
+                    this.kill();
+                    ev.other.kill();
+                }
+            }
+            if (ev.other.name === "war") {
+                if (this.collider.localBounds.getPoints().every(p => ev.other.collider.localBounds.contains(p))) {
+                    this.kill();
+                    ev.other.kill();
+                }
             }
         });
     }

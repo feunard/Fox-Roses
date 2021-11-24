@@ -16,8 +16,11 @@ export class Intro extends React.Component<{}, IntroState> {
         progress: 0,
     }
 
+    leaving = false;
     next = () => {
         if (this.state.loading) return;
+        if (this.leaving) return;
+        this.leaving = true;
         sounds.s2045.play();
         setTimeout(() => {
             game.state = GameState.TITLE

@@ -1,4 +1,4 @@
-import {Actor, CollisionType, Engine, vec} from "excalibur";
+import {Actor, CollisionType, Engine, Shape, vec, Vector} from "excalibur";
 import {animations} from "../../resources";
 import {IEntityFoe} from "../../config";
 
@@ -6,10 +6,17 @@ export class Mage extends Actor {
 
     constructor(e: IEntityFoe) {
         super({
+            name: "mage",
             pos: vec(e.x + e.width / 2, e.y + e.height / 2),
             width: e.width,
             height: e.height,
-            collisionType: CollisionType.Passive,
+            collisionType: CollisionType.Active,
+            collider: Shape.Box(
+                e.width - 48,
+                e.height - 32,
+                Vector.Half,
+                vec(10, 6)
+            ),
         });
     }
 

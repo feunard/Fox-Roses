@@ -14,8 +14,8 @@ export const images: { [key: string]: ImageSource } = {
     rose: new ImageSource(require("../resources/rose.png").default),
     fox: new ImageSource(require("../resources/fox.png").default),
     mirror: new ImageSource(require("../resources/mirror.png").default),
-    mage: new ImageSource(require("../resources/skeleton_warrior.png").default),
-    war: new ImageSource(require("../resources/skeleton_mage.png").default)
+    mage: new ImageSource(require("../resources/skeleton_mage.png").default),
+    war: new ImageSource(require("../resources/skeleton_warrior.png").default)
 }
 
 export const sounds = {

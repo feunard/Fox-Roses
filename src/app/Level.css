@@ -17,6 +17,37 @@
     background: radial-gradient(closest-side, rgba(0, 0, 0, 0.4), black, black);
 }
 
+.Level_dialog button {
+    position: absolute;
+    right: -64px;
+    top: 0;
+    bottom: 0;
+    color: white;
+    background: transparent;
+    text-indent: 3px;
+    border: 0;
+    cursor: pointer;
+}
+
+.Level_dialog button {
+    position: absolute;
+    right: -58px;
+    top: 0;
+    bottom: 0;
+    color: white;
+    background: transparent;
+    text-indent: 3px;
+    cursor: pointer;
+    transition: all 500ms linear;
+    border: 1px solid transparent;
+    font-weight: bold;
+}
+
+.Level_dialog button:hover {
+    border-radius: 8px;
+    border: 1px solid white;
+}
+
 .Level_dialog {
     position: absolute;
     bottom: 100px;
@@ -29,6 +60,15 @@
     display: flex;
     border-radius: 8px;
     border: 1px solid white;
+    transition: all 200ms ease-out;
+    opacity: 0;
+    transform: scale(0.9);
+
+}
+
+.Level_dialog.visible {
+    opacity: 1;
+    transform: scale(1);
 }
 
 .Level_avatar, .Level_avatar img {

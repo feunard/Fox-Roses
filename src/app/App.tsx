@@ -5,12 +5,19 @@ import {Intro} from "./Intro";
 import {Title} from "./Title";
 import {Editor} from "./Editor";
 import {End} from "./End";
-import {ILevel} from "../game/config";
+import {ILevel, IMessage} from "../game/config";
 import {Level} from "./Level";
 import {Settings} from "./Settings";
 
-class App extends React.Component<{}, { overlay: boolean; gameState: GameState; level: ILevel }> {
-    state = {
+interface AppState {
+    overlay: boolean;
+    gameState: GameState;
+    level: ILevel;
+    message?: IMessage;
+}
+
+class App extends React.Component<{}, AppState> {
+    state: AppState = {
         overlay: true,
         gameState: game.state,
         level: game.level,
@@ -23,13 +30,20 @@ class App extends React.Component<{}, { overlay: boolean; gameState: GameState; 
         game.onChangeState((gameState) => {
             this.setState({gameState});
         });
+        game.onDialog((message) => {
+            this.setState({message});
+        });
     }
 
     render() {
         const gs = this.state.gameState;
 
         if (gs === GameState.LEVEL) {
-            return <Level level={this.state.level}/>
+            return <Level
+                level={this.state.level}
+                message={this.state.message}
+                onNext={() => {this.setState({message: undefined})}}
+            />
         }
 
         return (

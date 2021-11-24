@@ -1,6 +1,7 @@
 import {Actor, CollisionType, Engine, vec} from "excalibur";
 import {IEntityNPC} from "../config";
 import {animations} from "../resources";
+import {game} from "../Game";
 
 
 export class NPC extends Actor {
@@ -17,11 +18,11 @@ export class NPC extends Actor {
     onInitialize(_engine: Engine) {
         super.onInitialize(_engine);
         let ok = false;
-        if (this.e.dialogs) {
+        if (this.e.messages) {
             this.on("precollision", (ev) => {
                 if (ev.other.name === "Hero" && !ok) {
                     ok = true;
-                    console.log(this.e.dialogs)
+                    game.dialog(this.e.messages[0])
                 }
             });
         }

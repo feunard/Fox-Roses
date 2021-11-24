@@ -1,7 +1,7 @@
 import {Color, DisplayMode, Engine, Loader, Physics, Vector} from "excalibur";
 import {images, sounds} from "./resources";
 import {Level} from "./Level";
-import {config, ILevel} from "./config";
+import {config, ILevel, IMessage} from "./config";
 
 export enum GameState {
     INTRO,
@@ -17,6 +17,7 @@ export class Game {
 
     _cbs: ((s: GameState) => any)[] = [];
     _cbsl: ((s: ILevel) => any)[] = [];
+    _cbsm: ((s: IMessage) => any)[] = [];
     _levelId = 0;
     preview: boolean = false;
     loader = new Loader();
@@ -141,6 +142,14 @@ export class Game {
     }
 
     cb: any;
+
+    dialog(message: IMessage) {
+        this._cbsm.forEach(c => c(message));
+    }
+
+    onDialog(cb: (o: IMessage) => any) {
+        this._cbsm.push(cb);
+    }
 
     onReady(cb: any) {
 

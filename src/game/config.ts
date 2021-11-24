@@ -39,14 +39,15 @@ export interface IEntityFloor extends IEntityBase {
 
 export interface IEntityNPC extends IEntityBase {
     type: "npc";
-    name?: string;
-    dialogs?: string[];
     animation: AnimationsType;
+    messages: IMessage[];
 }
 
 export interface IEntityFoe extends IEntityBase {
     type: "foe";
     name: keyof typeof foes;
+    mirror_id?: number;
+    mirror_to?: number;
 }
 
 export interface IEntityEvent extends IEntityBase {
@@ -60,6 +61,13 @@ export type IEntity =
     IEntityFoe |
     IEntityFloor
     ;
+
+export interface IMessage {
+    content: string;
+    author: string;
+    // icon
+    // sound
+}
 
 export interface ILevel {
     name: string;
