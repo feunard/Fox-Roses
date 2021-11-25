@@ -1,0 +1,41 @@
+import {ImageSource, Sound} from "excalibur";
+
+export const images = {
+    bolt: new ImageSource(require("./bolt.png").default),
+    hero_idle: new ImageSource(require("./hero_idle.png").default),
+    heroExias_idle: new ImageSource(require("./Exias_idleV4.png").default),
+    hero_run: new ImageSource(require("./hero_run.png").default),
+    heroExias_run: new ImageSource(require("./Exias_runningV2.png").default),
+    hero_jump: new ImageSource(require("./hero_jump.png").default),
+    hero_down: new ImageSource(require("./hero_down.png").default),
+    hero_attack: new ImageSource(require("./hero_attack.png").default),
+    hero_attack_down: new ImageSource(require("./hero_down_attack.png").default),
+    hero_attack_jump: new ImageSource(require("./hero_jump_attack.png").default),
+    rose: new ImageSource(require("./rose.png").default),
+    fox: new ImageSource(require("./fox.png").default),
+    mirror: new ImageSource(require("./mirror.png").default),
+    mage: new ImageSource(require("./skeleton_mage.png").default),
+    war: new ImageSource(require("./skeleton_warrior.png").default),
+    bubble: new ImageSource(require("./bubble.png").default),
+    avatar_fox: new ImageSource(require("./avatar/fox.png").default),
+}
+
+export const sounds = {
+    sky: new Sound(require("./audio/sky.mp3").default),
+    s2043: new Sound(require("./audio/2043.wav").default),
+    s2045: new Sound(require("./audio/2045.wav").default),
+    firebolt: new Sound(require("./audio/firebolt.wav").default),
+    jump_0: new Sound(require("./audio/1010100_03_cn.ogg").default),
+    jump_1: new Sound(require("./audio/1010100_04_cn.ogg").default),
+    jump_2: new Sound(require("./audio/1010100_05_cn.ogg").default),
+    fox_1: new Sound(require("./audio/357_01_en.ogg").default),
+    fox_2: new Sound(require("./audio/357_02_en.ogg").default),
+    fox_3: new Sound(require("./audio/357_03_en.ogg").default),
+    hero_dead: new Sound(require("./audio/500003_cn.ogg").default),
+    music_end: new Sound(require("./audio/end.ogg").default),
+    s264: new Sound(require("./audio/264.WAV").default),
+    s268: new Sound(require("./audio/268.WAV").default),
+    s272: new Sound(require("./audio/270.WAV").default),
+    s278: new Sound(require("./audio/278.WAV").default),
+    s279: new Sound(require("./audio/279.WAV").default),
+}

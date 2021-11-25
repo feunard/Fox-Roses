@@ -5,9 +5,11 @@ import {Intro} from "./Intro";
 import {Title} from "./Title";
 import {Editor} from "./Editor";
 import {End} from "./End";
-import {ILevel, IMessage} from "../game/config";
+import {ILevel, IMessage} from "../game/interfaces";
 import {Level} from "./Level";
 import {Settings} from "./Settings";
+import {Continue} from "./Continue";
+import {Begin} from "./Begin";
 
 interface AppState {
     overlay: boolean;
@@ -30,7 +32,7 @@ class App extends React.Component<{}, AppState> {
         game.onChangeState((gameState) => {
             this.setState({gameState});
         });
-        game.onDialog((message) => {
+        game.onMessage((message) => {
             this.setState({message});
         });
     }
@@ -42,7 +44,9 @@ class App extends React.Component<{}, AppState> {
             return <Level
                 level={this.state.level}
                 message={this.state.message}
-                onNext={() => {this.setState({message: undefined})}}
+                onNext={() => {
+                    game.next_message();
+                }}
             />
         }
 
@@ -53,6 +57,8 @@ class App extends React.Component<{}, AppState> {
                 {gs === GameState.EDITOR && <Editor/>}
                 {gs === GameState.END && <End/>}
                 {gs === GameState.SETTINGS && <Settings/>}
+                {gs === GameState.CONTINUE && <Continue/>}
+                {gs === GameState.BEGIN && <Begin/>}
             </div>
         );
     }

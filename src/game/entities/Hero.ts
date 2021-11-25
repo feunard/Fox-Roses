@@ -6,15 +6,18 @@ import {
     hero_down_sheet,
     hero_idle_sheet,
     hero_jump_sheet,
-    hero_run_sheet, rand, sounds
+    hero_run_sheet
 } from '../resources';
-import {Bolt, Direction} from "./Bolt";
+import {Bolt, Direction} from "./misc/Bolt";
 import {Keybinds} from "../Keybinds";
 import {Hitbox} from "./Hitbox";
 import {game} from "../Game";
+import {audio} from "../audio";
 
 export class Hero extends Actor {
-    static NAME = "Hero";
+
+    static NAME = "hero";
+
     // canFly = true;
     private static COOLDOWN_FIRE: number = 200;
     direction: Direction = Direction.RIGHT;
@@ -35,6 +38,12 @@ export class Hero extends Actor {
     // canFireBolt = true;
     // canDoubleJump = true;
     animSitLock = false;
+    wasOnGround = false;
+    audio_jump = audio.random(
+        "jump_0",
+        "jump_1",
+        "jump_2",
+    );
 
     constructor(
         private initialPosition: Vector,
@@ -137,16 +146,14 @@ export class Hero extends Actor {
         }
     }
 
-    wasOnGround = false;
-
     // After main update, once per frame execute this code
     onPreUpdate(engine: Engine, delta: number) {
         const kb = new Keybinds(engine);
 
         // check if dead zone
 
-        if (this.pos.y > 2000) {
-            this.dead();
+        if (this.pos.y > 4000) {
+            game.next();
         }
 
         if (this.pos.y < -10000) {
@@ -167,12 +174,7 @@ export class Hero extends Actor {
         if (engine.input.keyboard.isHeld(Input.Keys.Escape)) {
             game.stop();
         }
-        if (engine.input.keyboard.isHeld(Input.Keys.U)) {
-            game.engine.showDebug(true);
-        }
-        if (engine.input.keyboard.isHeld(Input.Keys.I)) {
-            game.engine.showDebug(false);
-        }
+
         if (engine.input.keyboard.isHeld(Input.Keys.O)) {
             game.engine.currentScene.camera.angularVelocity = 20000;
         }
@@ -228,12 +230,12 @@ export class Hero extends Actor {
                 this.scene.engine.add(new Bolt(
                     new Vector(this.pos.x, this.pos.y + this._height / 2 + 6),
                     this.direction
-                ))
+                ));
 
                 this.graphics.use(this.animAttackDown);
                 this.cooldownFire = true;
                 this.animSitLock = true;
-                sounds.firebolt.play();
+                audio.play("firebolt");
 
                 setTimeout(() => {
                     this.animSitLock = false;
@@ -271,7 +273,7 @@ export class Hero extends Actor {
             this.graphics.use(anim);
             this.animSitLock = true;
             this.cooldownFire = true;
-            sounds.firebolt.play();
+            audio.play("firebolt");
 
             setTimeout(() => {
                 this.animSitLock = false;
@@ -303,11 +305,11 @@ export class Hero extends Actor {
     handleJump(kb: Keybinds) {
         if (kb.wasPressed("jump")) {
             if (this.onGround) {
-                (sounds as any)["jump_" + rand(3)].play(0.8);
+                this.audio_jump.play();
                 this.vel.y = -400;
                 this.doubleJump = true;
             } else if (this.doubleJump) {
-                (sounds as any)["jump_" + rand(3)].play(0.6);
+                this.audio_jump.play();
                 this.vel.y = -400;
                 this.doubleJump = false;
             }

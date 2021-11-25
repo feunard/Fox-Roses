@@ -1,27 +1,20 @@
-import {IEntityEvent} from "../config";
+import {IEntityEvent} from "../interfaces";
 import {Trigger, vec} from "excalibur";
-import {game} from "../Game";
+import {events} from "../events";
+import {Hero} from "./Hero";
 
 export class Event extends Trigger {
-    constructor(private e: IEntityEvent) {
+    constructor(public config: IEntityEvent) {
         super({
-            pos: vec(e.x + e.width / 2, e.y + e.height / 2),
-            width: e.width,
-            height: e.height,
-            repeat: 1,
-            filter: (a) => a?.name === "Hero",
-            action: () => {
-                if (e.event === "cam_back_1") {
-                    this.scene.camera.zoomOverTime(0.5, 2000);
-                    this.scene.camera.rotation = 10;
-                }
-                if (e.event === "cam_back_2") {
-                    this.scene.camera.zoomOverTime(1.2, 2000);
-                }
-                if (e.event === "end") {
-                    game.next();
-                }
-            }
+            pos: vec(
+                config.x + config.width / 2,
+                config.y + config.height / 2
+            ),
+            width: config.width,
+            height: config.height,
+            repeat: config.repeat || 1,
+            filter: (a) => a?.name === Hero.NAME,
+            action: () => events[config.event](this)
         });
     }
 }

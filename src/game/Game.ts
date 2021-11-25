@@ -1,7 +1,9 @@
 import {Color, DisplayMode, Engine, Loader, Physics, Vector} from "excalibur";
-import {images, sounds} from "./resources";
+import {images, sounds} from "../resources";
 import {Level} from "./Level";
-import {config, ILevel, IMessage} from "./config";
+import {config} from "./config";
+import {ILevel, IMessage} from "./interfaces";
+import {audio} from "./audio";
 
 export enum GameState {
     INTRO,
@@ -10,15 +12,17 @@ export enum GameState {
     LEVEL,
     EDITOR,
     END,
-    SETTINGS
+    SETTINGS,
+    BEGIN
 }
 
 export class Game {
 
-    _cbs: ((s: GameState) => any)[] = [];
-    _cbsl: ((s: ILevel) => any)[] = [];
-    _cbsm: ((s: IMessage) => any)[] = [];
-    _levelId = 0;
+    messages: IMessage[] = [];
+    callbacksChangeState: ((s: GameState) => any)[] = [];
+    callbacksChangeLevel: ((s: ILevel) => any)[] = [];
+    callbacksOnMessage: ((s?: IMessage) => any)[] = [];
+    levelId = 0;
     preview: boolean = false;
     loader = new Loader();
     engine = new Engine({
@@ -29,6 +33,11 @@ export class Game {
         antialiasing: true,
         canvasElementId: "game"
     });
+    internalState = localStorage["GameState"]
+        ? Number(localStorage["GameState"])
+        : GameState.INTRO;
+    message_timer: any = null;
+    message_delay_default = 1000 * 5;//ms
 
     constructor() {
         this.configure();
@@ -42,61 +51,61 @@ export class Game {
             this.loader.addResource(images[res]);
         }
         for (const res in sounds) {
-            this.loader.addResource((sounds as any)[res]);
+            this.loader.addResource(sounds[res]);
         }
 
         this.engine.addScene('level', new Level());
     }
 
-    _state = localStorage["GameState"] ? Number(localStorage["GameState"]) : GameState.INTRO;
-
     get state(): GameState {
-        return this._state;
+        return this.internalState;
     }
 
     set state(s: GameState) {
-        this._state = s;
-        this._cbs.forEach(cb => cb(s));
+        this.internalState = s;
+        this.callbacksChangeState.forEach(cb => cb(s));
     }
 
     get level() {
-        return config.levels[this._levelId] as ILevel;
+        return config.levels[this.levelId] as ILevel;
     }
 
+    callbackIsReady: () => any = () => 0;
+
     configure() {
+        console.log("game::configure");
         Physics.acc = new Vector(0, 800);
     }
 
     async initialize() {
-
-        if (localStorage["DEBUG"]) {
-            this.engine.showDebug(true);
-        }
+        console.log("game::initialize")
 
         await this.engine.start(this.loader);
 
-        console.log("loaded")
+        console.log("game::initialize START=OK")
 
-        if (this.cb) {
-            console.log("call ready")
-            this.cb();
+        if (this.callbackIsReady) {
+            this.callbackIsReady();
         }
     }
 
     onChangeLevel(cb: (s: ILevel) => any) {
-        this._cbsl.push(cb);
+        this.callbacksChangeLevel.push(cb);
     }
 
     onChangeState(cb: (s: GameState) => any) {
-        this._cbs.push(cb);
+        this.callbacksChangeState.push(cb);
     }
 
     test(id: number, entities: any) {
+        console.log("game::test", id, entities);
         config.levels[id].entities = entities;
+
         this.next(id);
         this.preview = true;
         this.engine.start();
         this.engine.goToScene('level');
+
         this.state = GameState.LEVEL;
     }
 
@@ -105,7 +114,10 @@ export class Game {
     }
 
     next(levelId = -1) {
+        console.log("game::next_level");
+
         if (this.preview) {
+            console.log("game::next_level as preview: abort & back to editor");
             this.preview = false;
             this.engine.stop();
             this.state = GameState.EDITOR;
@@ -113,50 +125,78 @@ export class Game {
         }
 
         if (levelId > -1) {
-            this._levelId = levelId;
+            console.log("game::next_level (set one)");
+            this.levelId = levelId;
         } else {
-            this._levelId += 1;
+            console.log("game::next_level (inc +1)");
+            this.levelId += 1;
         }
 
-        if (this._levelId === config.levels.length) {
-            this._levelId = 0;
+        if (this.levelId === config.levels.length) {
+            console.log("game::next_level game is over");
+            this.levelId = 0;
             this.engine.stop();
             this.state = GameState.END;
         } else {
-            this._cbsl.forEach(cb => cb(this.level));
+            console.log("game::next_level notify");
+            this.callbacksChangeLevel.forEach(cb => cb(this.level));
         }
     }
 
-    start() {
+    start(levelId = 0) {
+        this.next(levelId);
         this.engine.goToScene('level');
+        this.engine.start();
         this.state = GameState.LEVEL;
     }
 
     stop() {
-
-        this.engine.currentScene.actors.forEach(a => this.engine.currentScene.remove(a));
-        this.engine.currentScene.entities.forEach(a => this.engine.currentScene.remove(a));
-
+        this.preview = false;
+        (this.engine.currentScene as Level).clear();
         this.engine.stop();
+        audio.stop();
         this.state = GameState.TITLE;
     }
 
-    cb: any;
+    next_message() {
+        clearTimeout(this.message_timer);
+        this.message_timer = null;
 
-    dialog(message: IMessage) {
-        this._cbsm.forEach(c => c(message));
+        if (!this.messages.length) {
+            this.callbacksOnMessage.forEach(c => c());
+            return;
+        }
+
+        const message = this.messages[0];
+        console.log("game::next_message broadcast", message)
+        this.callbacksOnMessage.forEach(c => c(message));
+        this.messages.shift();
+
+        if (message.sound) {
+            audio.play(message.sound);
+        }
+
+        this.message_timer = setTimeout(() => {
+            this.message_timer = null;
+            console.log("game::next_message auto-next delay")
+            this.next_message();
+        }, 10 * 1000);
     }
 
-    onDialog(cb: (o: IMessage) => any) {
-        this._cbsm.push(cb);
+    add_message(message: IMessage) {
+        console.log("game::add_message", message)
+        this.messages.push(message);
+        if (!this.message_timer) {
+            this.next_message();
+        }
+    }
+
+    onMessage(cb: (message?: IMessage) => any) {
+        this.callbacksOnMessage.push(cb);
     }
 
     onReady(cb: any) {
-
-        this.cb = cb;
-
-        console.log("register ready")
-
+        this.callbackIsReady = cb;
         if (this.loader.isLoaded()) {
             cb();
         }

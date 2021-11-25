@@ -7,3 +7,7 @@ export const foes = {
     Mirror,
     War
 }
+
+export const foes_keys = Object.keys(foes);
+
+export type keyof_typeof_foes = keyof typeof foes;

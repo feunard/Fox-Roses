@@ -2,39 +2,39 @@ import * as React from 'react';
 import './Stars.css';
 import './Title.css';
 import {game, GameState} from "../game/Game";
-import {sounds} from "../game/resources";
+import {audio} from "../game/audio";
 
 export class Title extends React.Component<{}, { opacity: number }> {
     state = {opacity: 0}
+    c: any;
 
     componentDidMount() {
         setTimeout(() => {
             this.setState({opacity: 1})
         }, 500);
-        sounds.sky.play();
+        audio.playMusic("sky");
     }
 
-    newGame() {
-        sounds.s2045.play(0.5);
-        sounds.sky.stop();
-        game.start();
+    new_game() {
+        audio.stop();
+        audio.play("s2045");
+        game.state = GameState.BEGIN
+
+    }
+
+    continue() {
+        game.state = GameState.CONTINUE
     }
 
     editor() {
-        sounds.s2045.play();
-
-        sounds.sky.stop();
+        audio.stop();
+        audio.play("s2045");
         game.editor();
     }
 
     settings() {
-        sounds.s2045.play();
-
-        sounds.sky.stop();
         game.state = GameState.SETTINGS
     }
-
-    c: any;
 
     render() {
         return (
@@ -44,45 +44,20 @@ export class Title extends React.Component<{}, { opacity: number }> {
                 <div id="stars3"></div>
                 <div className={"Title_menu"} id="title">
                     <button
-                        onMouseLeave={() => {
-                            sounds.s2043.stop()
-                        }}
-                        onMouseEnter={() => {
-                            sounds.s2043.play(0.2);
-
-                        }}
-                        onClick={() => this.newGame()}>New Game
+                        onClick={() => this.new_game()}>Nouvelle Partie
                     </button>
                     <button
-                        onMouseLeave={() => {
-                            sounds.s2043.stop()
-                        }}
-                        onMouseEnter={() => {
-                            sounds.s2043.play(0.1);
-
-                        }}
                         onClick={() => {
-                        }}>Continue
+                            this.continue();
+                        }}>Continuer
                     </button>
                     <button
-                        onMouseLeave={() => {
-                            sounds.s2043.stop()
-                        }}
-                        onMouseEnter={() => {
-                            sounds.s2043.play(.1);
-                        }}
-                        onClick={() => this.editor()}>Editor
+                        onClick={() => this.editor()}>Editeur
                     </button>
                     <button
-                        onMouseLeave={() => {
-                            sounds.s2043.stop()
-                        }}
-                        onMouseEnter={() => {
-                            sounds.s2043.play(0.2);
-                        }}
                         onClick={() => {
                             this.settings()
-                        }}>Settings
+                        }}>Options
                     </button>
                 </div>
             </div>

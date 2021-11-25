@@ -1,6 +1,6 @@
 import {Actor, CollisionType, Engine, Shape, vec, Vector} from "excalibur";
 import {animations} from "../../resources";
-import {IEntityFoe} from "../../config";
+import {IEntityFoe} from "../../interfaces";
 
 export class Mage extends Actor {
 

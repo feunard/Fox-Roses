@@ -1,19 +1,18 @@
 import {Actor, CollisionType, Color, Engine, Shape, vec} from 'excalibur';
-import type {IEntityFloor} from "../config";
+import {IEntityFloor} from "../../interfaces";
 
 export class Floor extends Actor {
-    static n = 0;
     dir = -1;
 
     constructor(
         private e: IEntityFloor
     ) {
         super({
-            name: 'floor_' + (Floor.n++),
+            name: 'floor',
             pos: vec(e.x + e.width / 2, e.y + e.height / 2),
             collider: Shape.Box(e.width, e.height),
             collisionType: e.physic ? CollisionType.Active : CollisionType.Fixed,
-            color: Color.White,
+            color: Color.fromHex(e.color || "ffffff"),
             width: e.width,
             height: e.height,
         });

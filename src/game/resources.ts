@@ -1,47 +1,49 @@
-import {Animation, ImageSource, Sound, SpriteSheet} from "excalibur";
+import {Animation, AnimationStrategy, SpriteSheet} from "excalibur";
+import {images} from "../resources";
 
-export const images: { [key: string]: ImageSource } = {
-    bolt: new ImageSource(require("../resources/bolt.png").default),
-    hero_idle: new ImageSource(require("../resources/hero_idle.png").default),
-    heroExias_idle: new ImageSource(require("../resources/Exias_idleV4.png").default),
-    hero_run: new ImageSource(require("../resources/hero_run.png").default),
-    heroExias_run: new ImageSource(require("../resources/Exias_runningV2.png").default),
-    hero_jump: new ImageSource(require("../resources/hero_jump.png").default),
-    hero_down: new ImageSource(require("../resources/hero_down.png").default),
-    hero_attack: new ImageSource(require("../resources/hero_attack.png").default),
-    hero_attack_down: new ImageSource(require("../resources/hero_down_attack.png").default),
-    hero_attack_jump: new ImageSource(require("../resources/hero_jump_attack.png").default),
-    rose: new ImageSource(require("../resources/rose.png").default),
-    fox: new ImageSource(require("../resources/fox.png").default),
-    mirror: new ImageSource(require("../resources/mirror.png").default),
-    mage: new ImageSource(require("../resources/skeleton_mage.png").default),
-    war: new ImageSource(require("../resources/skeleton_warrior.png").default)
-}
+/**
+ *
+ * @param image
+ * @param spriteWidth
+ * @param spriteHeight
+ * @param columns
+ * @param rows
+ */
 
-export const sounds = {
-    sky: new Sound(require("../resources/audio/sky.mp3").default),
-    s2043: new Sound(require("../resources/audio/2043.wav").default),
-    s2045: new Sound(require("../resources/audio/2045.wav").default),
-    firebolt: new Sound(require("../resources/audio/firebolt.wav").default),
-    jump_0: new Sound(require("../resources/audio/1010100_03_cn.ogg").default),
-    jump_1: new Sound(require("../resources/audio/1010100_04_cn.ogg").default),
-    jump_2: new Sound(require("../resources/audio/1010100_05_cn.ogg").default),
-}
+export const sheet = (
+    image: keyof typeof images,
+    spriteWidth: number = 0,
+    spriteHeight: number = 0,
+    columns: number = 1,
+    rows: number = 1,
+) => SpriteSheet.fromImageSource({
+    image: images[image],
+    grid: {
+        columns,
+        rows,
+        spriteWidth: !spriteWidth ? images[image].width : spriteWidth,
+        spriteHeight: !spriteHeight ? images[image].height : spriteHeight
+    }
+});
 
-export const rand = (x: 3) => Math.floor(Math.random() * x);
+/**
+ *
+ * @param x
+ */
+
+export const rand = (x: number) => Math.floor(Math.random() * x);
+
+// ===
+// ===
+// ===
+// ===
+// ===
 
 const default_hero_grid = {
     columns: 1,
     rows: 8,
     spriteWidth: 56,
     spriteHeight: 48
-};
-
-const default_grid = {
-    columns: 1,
-    rows: 1,
-    spriteWidth: 64,
-    spriteHeight: 64
 };
 
 export const mage_sheet = SpriteSheet.fromImageSource({
@@ -72,16 +74,6 @@ export const mirror_sheet = SpriteSheet.fromImageSource({
         spriteWidth: 64,
         spriteHeight: 128
     }
-});
-
-export const fox_sheet = SpriteSheet.fromImageSource({
-    image: images.fox,
-    grid: default_grid
-});
-
-export const rose_sheet = SpriteSheet.fromImageSource({
-    image: images.rose,
-    grid: default_grid
 });
 
 export const bolt_sheet = SpriteSheet.fromImageSource({
@@ -141,12 +133,13 @@ export const hero_jump_sheet = SpriteSheet.fromImageSource({
 
 export const animations = {
     bolt: Animation.fromSpriteSheet(bolt_sheet, [0, 1, 2, 3, 4], 60),
-    rose: Animation.fromSpriteSheet(rose_sheet, [0], 60),
-    fox: Animation.fromSpriteSheet(fox_sheet, [0], 60),
+    rose: Animation.fromSpriteSheet(sheet("rose"), [0], 100),
+    fox: Animation.fromSpriteSheet(sheet("fox", 64, 64, 1, 4), [0, 1, 2, 3], 600, AnimationStrategy.PingPong),
     mirror: Animation.fromSpriteSheet(mirror_sheet, [2, 3, 4, 5, 6], 100),
     war_idle: Animation.fromSpriteSheet(war_sheet, [0, 1, 2, 3, 4, 5, 6, 7], 100),
     mage_idle: Animation.fromSpriteSheet(mage_sheet, [0, 1, 2, 3, 4, 5, 6, 7], 100),
+    bubble: Animation.fromSpriteSheet(sheet("bubble"), [0], 100),
 }
 
-export type AnimationsType = keyof typeof animations;
-export const animationsList = Object.keys(animations);
+export type keyof_typeof_animations = keyof typeof animations;
+export const animations_keys = Object.keys(animations);

@@ -1,19 +1,22 @@
 import {Hero} from './entities/Hero';
-import {Floor} from './entities/Floor';
+import {Floor} from './entities/misc/Floor';
 import {Actor, Color, EmitterType, Engine, ParticleEmitter, Scene, vec, Vector} from "excalibur";
-import {config, ILevel} from "./config";
+import {ILevel} from "./interfaces";
 import {game} from "./Game";
 import {Event} from "./entities/Event";
-import {Graphic} from "./entities/Graphic";
 import {NPC} from "./entities/NPC";
 import {HeroExias} from "./entities/HeroExias";
 import {foes} from "./entities/foes";
+import {config} from "./config";
+import {audio} from "./audio";
 
 export class Level extends Scene {
-    actor?: Actor;
 
     build(level: ILevel) {
-        console.log("BUILD", level)
+        console.log("level::build", level)
+
+        let actor: Actor | null = null;
+
         for (const e of level.entities) {
             if (e.type === "floor") {
                 const floor = new Floor(e);
@@ -21,12 +24,9 @@ export class Level extends Scene {
             }
             if (e.type === "event") {
                 if (e.event === "start") {
-                    this.actor = config.hero === 0
+                    actor = config.hero === 0
                         ? new Hero(vec(e.x + 32, e.y))
                         : new HeroExias(vec(e.x + 32, e.y));
-                }
-                if (e.event === "end") {
-                    this.add(new Graphic(e, "rose"));
                 }
                 const end = new Event(e);
                 this.add(end);
@@ -39,7 +39,7 @@ export class Level extends Scene {
             }
         }
 
-        if (this.actor) {
+        if (actor) {
             const emitter = new ParticleEmitter({
                 x: -1000,
                 y: 0,
@@ -65,27 +65,48 @@ export class Level extends Scene {
             emitter.beginColor = Color.Transparent;
             emitter.endColor = Color.Transparent;
             this.add(emitter);
-            this.add(this.actor);
+            this.add(actor);
         }
 
         this.camera.clearAllStrategies();
-        if (this.actor) {
-            this.camera.strategy.elasticToActor(this.actor, 0.05, 0.1);
+
+        if (actor) {
+            this.camera.strategy.elasticToActor(actor, 0.05, 0.1);
         }
 
         this.camera.zoom = 0.1;
         this.camera.zoomOverTime(1, 2000);
+
+        if (level.music) {
+            audio.playMusic(level.music as any, true);
+        }
     }
 
     onInitialize(engine: Engine) {
-        console.log("onInitialize", engine)
+        console.log("level::onInitialize", engine)
 
         this.build(game.level);
 
         game.onChangeLevel((level) => {
-            this.actors.forEach(a => this.remove(a));
-            this.entities.forEach(a => this.remove(a));
+            this.clear();
             this.build(level);
         });
+    }
+
+    onActivate(_oldScene: Scene, _newScene: Scene) {
+        super.onActivate(_oldScene, _newScene);
+        console.log("level::onActivate", _oldScene, _newScene)
+    }
+
+    onDeactivate(_oldScene: Scene, _newScene: Scene) {
+        super.onDeactivate(_oldScene, _newScene);
+        console.log("level::onDeactivate", _oldScene, _newScene)
+    }
+
+    clear() {
+        console.log("level::clear entities")
+        this.entities.forEach(a => this.remove(a));
+        this.actors.forEach(a => this.contains(a) && this.remove(a));
+        this.triggers.forEach(a => this.remove(a));
     }
 }

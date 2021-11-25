@@ -1,5 +1,5 @@
 import {Actor, Animation, CollisionType, Engine, Vector} from "excalibur";
-import {bolt_sheet} from "../resources";
+import {bolt_sheet} from "../../resources";
 import {BoundingBox} from "excalibur/build/dist/Collision/BoundingBox";
 
 export enum Direction {

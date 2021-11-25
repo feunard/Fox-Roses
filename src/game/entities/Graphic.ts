@@ -1,11 +1,11 @@
 import {Actor, CollisionType, vec} from "excalibur";
-import {IEntity} from "../config";
-import {animations, AnimationsType} from "../resources";
+import {IEntity} from "../interfaces";
+import {animations, keyof_typeof_animations} from "../resources";
 
 export class Graphic extends Actor {
     constructor(
         private e: IEntity,
-        private type?: AnimationsType,
+        private type?: keyof_typeof_animations,
     ) {
         super({
             pos: vec(e.x + e.width / 2, e.y + e.height / 2),

@@ -1,80 +1,12 @@
 import {Input} from "excalibur";
 import {levels} from "./levels";
-import {AnimationsType} from "./resources";
-import {foes} from "./entities/foes";
-
-export const GameEvents = {
-    start: {},
-    end: {},
-    cam_back_1: {},
-    cam_back_2: {}
-}
-export const eventList = Object.keys(GameEvents);
-export type GameEventType = keyof typeof GameEvents;
-
-export const EntityTypes = {
-    floor: {},
-    event: {},
-    npc: {},
-    foe: {}
-}
-export const entityTypeList = Object.keys(EntityTypes);
-export type EntityTypeType = keyof typeof EntityTypes;
-
-export interface IEntityBase {
-    x: number;
-    y: number;
-    width: number;
-    height: number;
-}
-
-export interface IEntityFloor extends IEntityBase {
-    type: "floor";
-    move?: {
-        y: number;
-        speed?: number;
-    }
-    physic?: boolean;
-}
-
-export interface IEntityNPC extends IEntityBase {
-    type: "npc";
-    animation: AnimationsType;
-    messages: IMessage[];
-}
-
-export interface IEntityFoe extends IEntityBase {
-    type: "foe";
-    name: keyof typeof foes;
-    mirror_id?: number;
-    mirror_to?: number;
-}
-
-export interface IEntityEvent extends IEntityBase {
-    type: "event";
-    event: GameEventType;
-}
-
-export type IEntity =
-    IEntityEvent |
-    IEntityNPC |
-    IEntityFoe |
-    IEntityFloor
-    ;
-
-export interface IMessage {
-    content: string;
-    author: string;
-    // icon
-    // sound
-}
-
-export interface ILevel {
-    name: string;
-    entities: IEntity[];
-}
 
 export const config = {
+    // --
+    levels: levels,
+    // --
+    hero: 0,
+    // --
     keybinds: {
         sit: [
             Input.Keys.S,
@@ -109,6 +41,33 @@ export const config = {
             Input.Keys.E,
         ]
     },
-    levels: levels,
-    hero: 0
+    //
+    hair_color: 0,
+    music: 1,
+    sound: 1,
+    currentLevel: 0,
+    canFirebolt: false,
+    canDoubleJump: false,
+}
+
+export type typeof_config = typeof config;
+export type keyof_typeof_config = keyof typeof config;
+
+if (localStorage.getItem("$config")) {
+    try {
+        const obj = JSON.parse(localStorage.getItem("$config") || "{}");
+        Object.assign(config, obj);
+        console.log("config::load config loader")
+    } catch (e) {
+        console.log("config::load error bad format")
+        localStorage.removeItem("$config");
+    }
+}
+
+export const config_set = (c: Partial<typeof_config>) => {
+    Object.assign(config, c);
+    localStorage.setItem("$config", JSON.stringify({
+        ...config,
+        levels: undefined
+    }));
 }

@@ -1,5 +1,5 @@
 import {Actor, CollisionType, Engine, vec} from "excalibur";
-import {IEntityNPC} from "../config";
+import {IEntityNPC} from "../interfaces";
 import {animations} from "../resources";
 import {game} from "../Game";
 
@@ -20,9 +20,9 @@ export class NPC extends Actor {
         let ok = false;
         if (this.e.messages) {
             this.on("precollision", (ev) => {
-                if (ev.other.name === "Hero" && !ok) {
+                if (ev.other.name === "hero" && !ok) {
                     ok = true;
-                    game.dialog(this.e.messages[0])
+                    this.e.messages.forEach(m => game.add_message(m));
                 }
             });
         }

@@ -1,30 +1,26 @@
 import type {MouseEvent} from "react";
 import * as React from 'react';
 import './Editor.css';
-import {config, entityTypeList, EntityTypeType, eventList, GameEventType, IEntity} from "../game/config";
+import {config} from "../game/config";
+import {entities_keys, keyof_typeof_entities} from "../game/entities";
+import {IEntity} from "../game/interfaces";
 import {game, GameState} from "../game/Game";
-import {animations, animationsList, AnimationsType} from "../game/resources";
-import {foes} from "../game/entities/foes";
+import {animations, animations_keys, keyof_typeof_animations} from "../game/resources";
+import {foes, foes_keys, keyof_typeof_foes} from "../game/entities/foes";
+import {events_keys, keyof_typeof_events} from "../game/events";
 
 interface EditorState {
     entities: IEntity[];
-    type: EntityTypeType;
-    type_event: GameEventType;
-    type_npc: AnimationsType;
-    type_foe: keyof typeof foes;
+    type: keyof_typeof_entities;
+    type_event: keyof_typeof_events;
+    type_npc: keyof_typeof_animations;
+    type_foe: keyof_typeof_foes;
     selected?: IEntity;
     current: number;
 }
 
 export class Editor extends React.Component<{}, EditorState> {
-    state: EditorState = {
-        current: 0,
-        entities: this.hardCopy(config.levels[0].entities),
-        type: entityTypeList[0] as EntityTypeType,
-        type_event: eventList[0] as GameEventType,
-        type_npc: animationsList[0] as AnimationsType,
-        type_foe: (Object.keys(foes)[0]) as keyof typeof foes
-    }
+    state: EditorState = this.createState();
 
     drag = "";
     x = 0;
@@ -35,19 +31,19 @@ export class Editor extends React.Component<{}, EditorState> {
 
     history: string[] = [];
 
-    componentDidMount() {
-        game.onChangeLevel((l) => {
-            this.setState({
-                current: game._levelId,
-                entities: this.hardCopy(config.levels[game._levelId].entities),
-                type: entityTypeList[0] as EntityTypeType,
-                type_event: eventList[0] as GameEventType,
-                type_npc: animationsList[0] as AnimationsType
-            })
-        });
+    createState(): EditorState {
+        return {
+            current: game.levelId,
+            entities: this.copy(config.levels[game.levelId].entities),
+            type: entities_keys[0] as keyof_typeof_entities,
+            type_event: events_keys[0] as keyof_typeof_events,
+            type_npc: animations_keys[0] as keyof_typeof_animations,
+            type_foe: foes_keys[0] as keyof_typeof_foes,
+            selected: undefined
+        }
     }
 
-    hardCopy(obj: object) {
+    copy(obj: object) {
         return JSON.parse(JSON.stringify(obj));
     }
 
@@ -219,14 +215,14 @@ export class Editor extends React.Component<{}, EditorState> {
                     {" | "}
                     <select
                         onChange={this.$("type")}>
-                        {entityTypeList.map((l, it) =>
+                        {entities_keys.map((l, it) =>
                             <option value={l} key={l}>{l.toUpperCase()}</option>
                         )}
                     </select>
                     {this.state.type === "event" && (
                         <select
                             onChange={this.$("type_event")}>
-                            {eventList.map((l, it) =>
+                            {events_keys.map((l, it) =>
                                 <option value={l} key={l}>{l.toUpperCase()}</option>
                             )}
                         </select>
@@ -234,7 +230,7 @@ export class Editor extends React.Component<{}, EditorState> {
                     {this.state.type === "npc" && (
                         <select
                             onChange={this.$("type_npc")}>
-                            {animationsList.map((l, it) =>
+                            {animations_keys.map((l, it) =>
                                 <option value={l} key={l}>{l.toUpperCase()}</option>
                             )}
                         </select>
@@ -276,21 +272,39 @@ export class Editor extends React.Component<{}, EditorState> {
                                         }
                                     }
                                 }}/>
+                                <input
+                                    type={"color"}
+                                    value={this.state.selected.color || "#ffffff"}
+                                    onChange={(ev) => {
+                                        const s = this.state.selected;
+                                        if (s && s.type === "floor") {
+                                            const v = ev.target.value;
+                                            if (!v) {
+                                                delete s.color;
+                                            } else {
+                                                s.color = v;
+                                                this.forceUpdate();
+                                            }
+                                        }
+                                    }}/>
                             </>
                         )}
                         {this.state.selected.type === "event" && (
-                            <select
-                                onChange={(ev) => {
-                                    const s = this.state.selected;
-                                    if (s && s.type === "event") {
-                                        s.event = ev.target.value as GameEventType;
-                                        this.forceUpdate();
-                                    }
-                                }}>
-                                {eventList.map((l, it) =>
-                                    <option value={l} key={l}>{l.toUpperCase()}</option>
-                                )}
-                            </select>
+                            <>
+                                <select
+                                    onChange={(ev) => {
+                                        const s = this.state.selected;
+                                        if (s && s.type === "event") {
+                                            s.event = ev.target.value as keyof_typeof_events;
+                                            this.forceUpdate();
+                                        }
+                                    }}>
+                                    {events_keys.map((l, it) =>
+                                        <option value={l} key={l}>{l.toUpperCase()}</option>
+                                    )}
+                                </select>
+
+                            </>
                         )}
                         {this.state.selected.type === "npc" && (
                             <input
@@ -305,6 +319,49 @@ export class Editor extends React.Component<{}, EditorState> {
                                     }
                                 }}
                             />
+                        )}
+                        {(this.state.selected.type === "foe" || this.state.selected.type === "event") && (
+                            <>
+                                <input
+                                    placeholder="data1"
+                                    value={this.state.selected.data1 || ""}
+                                    onChange={(ev) => {
+                                        const selected = this.state.selected;
+                                        if (selected && (selected.type === "foe" || selected.type === "event")) {
+                                            selected.data1 = ev.target.value;
+                                            this.setState({
+                                                selected
+                                            });
+                                        }
+                                    }}
+                                />
+                                <input
+                                    placeholder="data2"
+                                    value={this.state.selected.data2 || ""}
+                                    onChange={(ev) => {
+                                        const selected = this.state.selected;
+                                        if (selected && (selected.type === "foe" || selected.type === "event")) {
+                                            selected.data2 = ev.target.value;
+                                            this.setState({
+                                                selected
+                                            });
+                                        }
+                                    }}
+                                />
+                                <input
+                                    placeholder="data3"
+                                    value={this.state.selected.data3 || ""}
+                                    onChange={(ev) => {
+                                        const selected = this.state.selected;
+                                        if (selected && (selected.type === "foe" || selected.type === "event")) {
+                                            selected.data3 = ev.target.value;
+                                            this.setState({
+                                                selected
+                                            });
+                                        }
+                                    }}
+                                />
+                            </>
                         )}
                     </div>
                 )}

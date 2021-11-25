@@ -1,7 +1,7 @@
 import {Actor, CollisionType, Engine, Shape, vec, Vector} from "excalibur";
 import {animations} from "../../resources";
-import {IEntityFoe} from "../../config";
 import {Hero} from "../Hero";
+import {IEntityFoe} from "../../interfaces";
 
 export class Mirror extends Actor {
 
@@ -26,16 +26,15 @@ export class Mirror extends Actor {
         this.graphics.add("idle", animations.mirror);
         this.graphics.use("idle");
 
-
         const names = [Hero.NAME, "bolt", "mage", "war"]
 
         this.on("precollision", (ev) => {
             if (names.includes(ev.other.name) && !(ev.other as any)["$lock"]) {
                 if (this.collider.bounds.contains(ev.other.collider.bounds)) {
-                    if (this.e.mirror_to) {
+                    if (this.e.data2) {
                         const target = _engine.currentScene.actors.find(e =>
                             e.name === "mirror" &&
-                            (e as Mirror).e.mirror_id === this.e.mirror_to);
+                            (e as Mirror).e.data1 === this.e.data2);
                         if (target) {
                             (ev.other as any)["$lock"] = true;
                             setTimeout(() => {
