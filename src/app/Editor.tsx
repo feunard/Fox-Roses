@@ -1,7 +1,7 @@
 import type {MouseEvent} from "react";
 import * as React from 'react';
 import './Editor.css';
-import {config} from "../game/config";
+import {config, config_set} from "../game/config";
 import {entities_keys, keyof_typeof_entities} from "../game/entities";
 import {IEntity, ILevel} from "../game/interfaces";
 import {game, GameState} from "../game/Game";
@@ -201,6 +201,16 @@ export class Editor extends React.Component<{}, EditorState> {
                     {" | "}
                     <button
                         onClick={() => {
+                            const save = {
+                                ...this.state.level,
+                                entities: this.state.entities,
+                            };
+                            const levels = config.levels;
+                            levels[game.levelId] = save;
+                            config_set({
+                                levels
+                            })
+                            navigator.clipboard.writeText(JSON.stringify(save, null, "  "))
                             game.test(
                                 this.state.current,
                                 this.state.entities);
@@ -209,11 +219,16 @@ export class Editor extends React.Component<{}, EditorState> {
                     {" | "}
                     <button
                         onClick={() => {
-                            navigator.clipboard.writeText(JSON.stringify({
+                            const save = {
                                 ...this.state.level,
                                 entities: this.state.entities,
-                            }, null, "  "))
-                            console.log(JSON.stringify(this.state.entities, null, "  "))
+                            };
+                            const levels = config.levels;
+                            levels[game.levelId] = save;
+                            config_set({
+                                levels
+                            })
+                            navigator.clipboard.writeText(JSON.stringify(save, null, "  "))
                         }}>♕ Export
                     </button>
                     <button
@@ -272,18 +287,42 @@ export class Editor extends React.Component<{}, EditorState> {
                         </button>
                         {this.state.selected.type === "floor" && (
                             <>
-                                <input onChange={(ev) => {
-                                    const s = this.state.selected;
-                                    if (s && s.type === "floor") {
-                                        const v = ev.target.value;
-                                        if (!v) {
-                                            delete s.move;
-                                        } else {
-                                            s.move = s.move || {y: 0};
+                                <input
+                                    value={this.state.selected?.move?.y || 0}
+                                    onChange={(ev) => {
+                                        const s = this.state.selected;
+                                        if (s && s.type === "floor") {
+                                            const v = ev.target.value;
+                                            s.move = s.move || {y: 0, x: 0, speed: 0};
                                             s.move.y = Number(v);
+                                            this.forceUpdate();
                                         }
-                                    }
-                                }}/>
+                                    }}
+                                />
+                                <input
+                                    value={this.state.selected?.move?.x || 0}
+                                    onChange={(ev) => {
+                                        const s = this.state.selected;
+                                        if (s && s.type === "floor") {
+                                            const v = ev.target.value;
+                                            s.move = s.move || {y: 0, x: 0, speed: 0};
+                                            s.move.x = Number(v);
+                                            this.forceUpdate();
+                                        }
+                                    }}
+                                />
+                                <input
+                                    value={this.state.selected?.move?.speed || 0}
+                                    onChange={(ev) => {
+                                        const s = this.state.selected;
+                                        if (s && s.type === "floor") {
+                                            const v = ev.target.value;
+                                            s.move = s.move || {y: 0, x: 0, speed: 0};
+                                            s.move.speed = Number(v);
+                                            this.forceUpdate();
+                                        }
+                                    }}
+                                />
                                 <input
                                     type={"color"}
                                     value={this.state.selected.color || "#ffffff"}

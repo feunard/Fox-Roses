@@ -14,6 +14,7 @@ export interface IEntityFloor extends IEntityBase {
     type: "floor";
     move?: {
         y: number;
+        x: number;
         speed?: number;
     }
     physic?: boolean;

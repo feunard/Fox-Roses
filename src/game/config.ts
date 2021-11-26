@@ -49,6 +49,16 @@ export const config = {
     canFirebolt: false,
     canDoubleJump: false,
     canSpeed: false,
+    roses: [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+    ]
 }
 
 export type typeof_config = typeof config;
@@ -67,8 +77,5 @@ if (localStorage.getItem("$config")) {
 
 export const config_set = (c: Partial<typeof_config>) => {
     Object.assign(config, c);
-    localStorage.setItem("$config", JSON.stringify({
-        ...config,
-        levels: undefined
-    }));
+    localStorage.setItem("$config", JSON.stringify(config));
 }

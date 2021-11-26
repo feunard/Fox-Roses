@@ -18,6 +18,7 @@ export const images = {
     war: new ImageSource(require("./skeleton_warrior.png").default),
     bubble: new ImageSource(require("./bubble.png").default),
     avatar_fox: new ImageSource(require("./avatar/fox.png").default),
+    crystal: new ImageSource(require("./red_crystal.png").default),
 }
 
 export const sounds = {
@@ -38,4 +39,5 @@ export const sounds = {
     s272: new Sound(require("./audio/270.WAV").default),
     s278: new Sound(require("./audio/278.WAV").default),
     s279: new Sound(require("./audio/279.WAV").default),
+    transi: new Sound(require("./audio/transi.wav").default),
 }

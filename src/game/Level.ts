@@ -84,7 +84,7 @@ export class Level extends Scene {
 
     onInitialize(engine: Engine) {
         console.log("level::onInitialize", engine)
-
+        this.clear()
         this.build(game.level);
 
         game.onChangeLevel((level) => {

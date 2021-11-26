@@ -13,7 +13,6 @@ export class Hitbox extends Actor {
         });
         this.on("precollision", (ev) => {
             if (ev.other?.name.includes("floor") && ev.side === this.side) {
-                console.log("LOCK", ev.other.name)
                 this.contact = ev.other.name;
             }
         });

@@ -402,8 +402,63 @@
       "type": "floor",
       "x": 3344,
       "y": 568,
-      "width": 544,
+      "width": 832,
       "height": 64
+    },
+    {
+      "type": "foe",
+      "x": 3256,
+      "y": 344,
+      "width": 96,
+      "height": 96,
+      "name": "Spawn"
+    },
+    {
+      "type": "floor",
+      "x": 3408,
+      "y": 392,
+      "width": 64,
+      "height": 208
+    },
+    {
+      "type": "floor",
+      "x": 3447,
+      "y": 336,
+      "width": 64,
+      "height": 272
+    },
+    {
+      "type": "floor",
+      "x": 3480,
+      "y": 264,
+      "width": 64,
+      "height": 176
+    },
+    {
+      "type": "floor",
+      "x": 3552,
+      "y": 264,
+      "width": 64,
+      "height": 16,
+      "move": {
+        "y": 0,
+        "x": 400,
+        "speed": 0
+      }
+    },
+    {
+      "type": "floor",
+      "x": 3968,
+      "y": 256,
+      "width": 144,
+      "height": 112
+    },
+    {
+      "type": "floor",
+      "x": 4024,
+      "y": 304,
+      "width": 24,
+      "height": 272
     }
   ]
 }

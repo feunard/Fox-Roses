@@ -3,6 +3,7 @@ import './Continue.css';
 import {game, GameState} from "../game/Game";
 import {levels} from "../game/levels";
 import {audio} from "../game/audio";
+import {config} from "../game/config";
 
 interface IContinueState {
 
@@ -22,7 +23,7 @@ export class Continue extends React.Component<{}, IContinueState> {
                     }}>
                         <span className="left">Chapitre {i + 1} - {l.name}</span>
                         <span className="right">
-                            3 / 3
+                            {config.roses[i]} / 3
                         </span>
                     </button>
                 )}

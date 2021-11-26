@@ -45,9 +45,10 @@ export class Hero extends Actor {
         "jump_1",
         "jump_2",
     );
+    spawn: Vector;
 
     constructor(
-        private initialPosition: Vector,
+        position: Vector,
         private _height = 48,
         private _width = 56,
     ) {
@@ -56,14 +57,15 @@ export class Hero extends Actor {
             height: _height,
             color: Color.Cyan,
             name: Hero.NAME,
-            pos: initialPosition,
+            pos: position,
             collider: Shape.Box(_width - 16, _height * 2 - 32, Vector.Half, vec(0, 16)),
             collisionType: CollisionType.Active,
         });
 
+        this.spawn = position;
         this.hitboxHead = new Hitbox(
-            Shape.Box(_width - 16 - 4, _height * 2 - 32 - 32, Vector.Half, vec(0, 0)),
-            Side.Top
+            Shape.Box(_width - 16 - 4, _height * 2 - 32 - 32, Vector.Half, vec(0, -4)),
+            Side.Bottom
         );
 
         this.addChild(this.hitboxHead);
@@ -290,14 +292,15 @@ export class Hero extends Actor {
     }
 
     handleLeftRight(kb: Keybinds) {
+        const speed = config.canSpeed ? 400 : 250;
         if (kb.isHeld("left")) {
-            this.vel.x = -300;
+            this.vel.x = -speed;
             this.flip(Direction.LEFT);
             this.graphics.use("left");
         }
 
         if (kb.isHeld("right")) {
-            this.vel.x = 300;
+            this.vel.x = speed;
             this.flip(Direction.RIGHT);
             this.graphics.use("right");
         }
@@ -332,8 +335,7 @@ export class Hero extends Actor {
     }
 
     dead() {
-
-        this.pos = this.initialPosition;
+        this.pos = this.spawn;
         this.vel = new Vector(0, 0);
     }
 }
