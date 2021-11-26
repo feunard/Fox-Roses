@@ -14,7 +14,7 @@
       "type": "floor",
       "x": -1000,
       "y": 600,
-      "width": 10000,
+      "width": 8000,
       "height": 8
     },
     {
@@ -175,13 +175,6 @@
       "height": 64
     },
     {
-      "type": "floor",
-      "x": 2120,
-      "y": 560,
-      "width": 64,
-      "height": 32
-    },
-    {
       "type": "event",
       "x": 1816,
       "y": 344,
@@ -265,65 +258,9 @@
       "height": 96
     },
     {
-      "type": "floor",
-      "x": 8912,
-      "y": 432,
-      "width": 120,
-      "height": 248
-    },
-    {
-      "type": "floor",
-      "x": 8776,
-      "y": 496,
-      "width": 152,
-      "height": 112
-    },
-    {
-      "type": "floor",
-      "x": 8720,
-      "y": 560,
-      "width": 64,
-      "height": 64
-    },
-    {
-      "type": "floor",
-      "x": 8760,
-      "y": 584,
-      "width": 168,
-      "height": 64
-    },
-    {
-      "type": "floor",
-      "x": 9129,
-      "y": 328,
-      "width": 64,
-      "height": 400
-    },
-    {
-      "type": "floor",
-      "x": 8960,
-      "y": 656,
-      "width": 64,
-      "height": 144
-    },
-    {
-      "type": "floor",
-      "x": 9144,
-      "y": 232,
-      "width": 24,
-      "height": 552
-    },
-    {
-      "type": "floor",
-      "x": 8952,
-      "y": 360,
-      "width": 40,
-      "height": 152
-    },
-    {
       "type": "event",
-      "x": 8656,
-      "y": 344,
+      "x": 5952,
+      "y": 352,
       "width": 112,
       "height": 360,
       "event": "dialog",
@@ -444,7 +381,7 @@
       "move": {
         "y": 0,
         "x": 300,
-        "speed": 200
+        "speed": 100
       }
     },
     {
@@ -546,14 +483,6 @@
       "height": 232
     },
     {
-      "type": "foe",
-      "x": 5240,
-      "y": 504,
-      "width": 96,
-      "height": 96,
-      "name": "Spawn"
-    },
-    {
       "type": "floor",
       "x": 4992,
       "y": 360,
@@ -562,8 +491,8 @@
     },
     {
       "type": "npc",
-      "x": 4792,
-      "y": 304,
+      "x": 4624,
+      "y": 248,
       "width": 64,
       "height": 64,
       "animation": "fox",
@@ -573,83 +502,72 @@
       "name": "fox"
     },
     {
-      "type": "npc",
-      "x": 5104,
-      "y": 384,
-      "width": 392,
-      "height": 64,
-      "animation": "fox",
-      "dialogs": [
-        ""
-      ],
-      "name": "fox"
+      "type": "floor",
+      "x": 5400,
+      "y": 408,
+      "width": 64,
+      "height": 112
     },
     {
-      "type": "npc",
-      "x": 5416,
-      "y": 568,
-      "width": 232,
-      "height": 64,
-      "animation": "fox",
-      "dialogs": [
-        ""
-      ],
-      "name": "fox"
+      "type": "floor",
+      "x": 5736,
+      "y": 456,
+      "width": 64,
+      "height": 200
     },
     {
-      "type": "npc",
-      "x": 7816,
+      "type": "floor",
+      "x": 5776,
       "y": 496,
-      "width": 432,
-      "height": 128,
-      "animation": "fox",
-      "dialogs": [
-        ""
-      ],
-      "name": "fox"
+      "width": 208,
+      "height": 144
     },
     {
-      "type": "npc",
-      "x": 7536,
+      "type": "floor",
+      "x": 6368,
       "y": 544,
-      "width": 528,
+      "width": 408,
+      "height": 96
+    },
+    {
+      "type": "floor",
+      "x": 7186,
+      "y": 400,
+      "width": 64,
+      "height": 248
+    },
+    {
+      "type": "floor",
+      "x": 6944,
+      "y": 504,
+      "width": 72,
+      "height": 144
+    },
+    {
+      "type": "floor",
+      "x": 6720,
+      "y": 560,
+      "width": 240,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 5328,
+      "y": 408,
+      "width": 64,
+      "height": 24,
+      "move": {
+        "y": 200,
+        "x": 0,
+        "speed": 0
+      }
+    },
+    {
+      "type": "npc",
+      "x": 7040,
+      "y": 368,
+      "width": 64,
       "height": 64,
-      "animation": "fox",
-      "dialogs": [
-        ""
-      ],
-      "name": "fox"
-    },
-    {
-      "type": "npc",
-      "x": 5632,
-      "y": 520,
-      "width": 64,
-      "height": 152,
-      "animation": "fox",
-      "dialogs": [
-        ""
-      ],
-      "name": "fox"
-    },
-    {
-      "type": "npc",
-      "x": 7480,
-      "y": 488,
-      "width": 64,
-      "height": 160,
-      "animation": "fox",
-      "dialogs": [
-        ""
-      ],
-      "name": "fox"
-    },
-    {
-      "type": "npc",
-      "x": 7424,
-      "y": 536,
-      "width": 64,
-      "height": 72,
       "animation": "fox",
       "dialogs": [
         ""

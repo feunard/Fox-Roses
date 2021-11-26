@@ -1,6 +1,6 @@
-export const level_7 = {
-    name: "Infini",
-    entities: [
+{
+    "name": "Kstore & Acidpop",
+    "entities": [
         {
             "type": "floor",
             "x": 0,
@@ -13,7 +13,7 @@ export const level_7 = {
             "type": "floor",
             "x": -1000,
             "y": 600,
-            "width": 10000,
+            "width": 5000,
             "height": 8
         },
         {

@@ -233,6 +233,12 @@ export class Editor extends React.Component<{}, EditorState> {
                     </button>
                     <button
                         onClick={() => {
+                            localStorage.removeItem("$config");
+                            window.location.href = "/";
+                        }}> Reset
+                    </button>
+                    <button
+                        onClick={() => {
                             if (this.history.length) {
                                 this.setState({entities: JSON.parse(this.history[0])})
                                 this.history.splice(0, 1);

@@ -59,10 +59,6 @@ export const dialogs = {
         {
             ...fox,
             content: "Il est peut être un peu plus bas. On va sauter dans le vide."
-        },
-        {
-            ...fox,
-            content: "J'espère juste qu'on ne va pas rencontrer l'ogre."
         }
     ]
 }
