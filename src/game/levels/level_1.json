@@ -480,6 +480,181 @@
       "data2": "10",
       "data3": "500",
       "data4": "boom"
+    },
+    {
+      "type": "floor",
+      "x": 4040,
+      "y": 344,
+      "width": 112,
+      "height": 240
+    },
+    {
+      "type": "foe",
+      "x": 4136,
+      "y": 504,
+      "width": 472,
+      "height": 96,
+      "name": "DeadlyArea"
+    },
+    {
+      "type": "floor",
+      "x": 4600,
+      "y": 432,
+      "width": 264,
+      "height": 176
+    },
+    {
+      "type": "floor",
+      "x": 4232,
+      "y": 400,
+      "width": 104,
+      "height": 48
+    },
+    {
+      "type": "floor",
+      "x": 4424,
+      "y": 408,
+      "width": 104,
+      "height": 40
+    },
+    {
+      "type": "floor",
+      "x": 4840,
+      "y": 472,
+      "width": 160,
+      "height": 128
+    },
+    {
+      "type": "floor",
+      "x": 4952,
+      "y": 208,
+      "width": 64,
+      "height": 208
+    },
+    {
+      "type": "floor",
+      "x": 4992,
+      "y": 136,
+      "width": 48,
+      "height": 232
+    },
+    {
+      "type": "floor",
+      "x": 4920,
+      "y": 87,
+      "width": 64,
+      "height": 232
+    },
+    {
+      "type": "foe",
+      "x": 5240,
+      "y": 504,
+      "width": 96,
+      "height": 96,
+      "name": "Spawn"
+    },
+    {
+      "type": "floor",
+      "x": 4992,
+      "y": 360,
+      "width": 216,
+      "height": 40
+    },
+    {
+      "type": "npc",
+      "x": 4792,
+      "y": 304,
+      "width": 64,
+      "height": 64,
+      "animation": "fox",
+      "dialogs": [
+        ""
+      ],
+      "name": "fox"
+    },
+    {
+      "type": "npc",
+      "x": 5104,
+      "y": 384,
+      "width": 392,
+      "height": 64,
+      "animation": "fox",
+      "dialogs": [
+        ""
+      ],
+      "name": "fox"
+    },
+    {
+      "type": "npc",
+      "x": 5416,
+      "y": 568,
+      "width": 232,
+      "height": 64,
+      "animation": "fox",
+      "dialogs": [
+        ""
+      ],
+      "name": "fox"
+    },
+    {
+      "type": "npc",
+      "x": 7816,
+      "y": 496,
+      "width": 432,
+      "height": 128,
+      "animation": "fox",
+      "dialogs": [
+        ""
+      ],
+      "name": "fox"
+    },
+    {
+      "type": "npc",
+      "x": 7536,
+      "y": 544,
+      "width": 528,
+      "height": 64,
+      "animation": "fox",
+      "dialogs": [
+        ""
+      ],
+      "name": "fox"
+    },
+    {
+      "type": "npc",
+      "x": 5632,
+      "y": 520,
+      "width": 64,
+      "height": 152,
+      "animation": "fox",
+      "dialogs": [
+        ""
+      ],
+      "name": "fox"
+    },
+    {
+      "type": "npc",
+      "x": 7480,
+      "y": 488,
+      "width": 64,
+      "height": 160,
+      "animation": "fox",
+      "dialogs": [
+        ""
+      ],
+      "name": "fox"
+    },
+    {
+      "type": "npc",
+      "x": 7424,
+      "y": 536,
+      "width": 64,
+      "height": 72,
+      "animation": "fox",
+      "dialogs": [
+        ""
+      ],
+      "name": "fox"
     }
   ]
 }
