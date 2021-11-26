@@ -33,6 +33,9 @@ export class Level extends React.Component<ILevelProps, LevelState> {
                         </button>
                         <button onClick={() => game.state = GameState.TITLE}>menu</button>
                     </div>
+                    <div className="Level_bar_middle">
+                        Chapitre {game.levelId + 1} - {game.level.name}
+                    </div>
                     <div className="Level_bar_right">
                         <button onClick={() => {
                             audio.toggleVolume()

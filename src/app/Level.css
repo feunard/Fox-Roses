@@ -43,13 +43,23 @@
 }
 
 .Level_bar_left {
-    flex: 1;
     justify-content: left;
     align-items: center;
+    margin-left: 4px;
+    margin-top: 4px;
+}
+
+.Level_bar_middle {
+    flex: 1 1;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: white;
 }
 
 .Level_bar_right {
-
+    margin-right: 4px;
+    margin-top: 4px;
 }
 
 .Level_overlay {
@@ -128,7 +138,7 @@
     color: orange;
     font-weight: bold;
     text-transform: uppercase;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 20px;
     padding: 0;
     margin: 2px 0 16px;
@@ -137,6 +147,6 @@
 .Level_dialog_message {
     padding: 0;
     margin: 0;
-    font-size: 16px;
+    font-size: 20px;
     color: whitesmoke;
 }

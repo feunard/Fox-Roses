@@ -1,0 +1,41 @@
+
+.Continue {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.Continue button.select {
+    border-radius: 8px;
+    width: 320px;
+    padding: 16px;
+    text-align: left;
+    background: transparent;
+    color: rgba(245, 245, 245, 0.5);
+    border: 1px solid rgba(245, 245, 245, 0.5);
+    margin: 8px;
+    cursor: pointer;
+    transition: all 400ms ease;
+    display: flex;
+}
+
+.Continue .left {
+    flex: 1;
+}
+
+.Continue button.select:hover {
+    color: white;
+    border: 1px solid white;
+}
+
+.Continue button {
+    width: 320px;
+    padding: 16px;
+    background: transparent;
+    color: whitesmoke;
+    border: 0;
+    margin: 8px;
+    cursor: pointer;
+}

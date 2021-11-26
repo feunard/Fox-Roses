@@ -13,13 +13,14 @@ import {Keybinds} from "../Keybinds";
 import {Hitbox} from "./Hitbox";
 import {game} from "../Game";
 import {audio} from "../audio";
+import {config} from "../config";
 
 export class Hero extends Actor {
 
     static NAME = "hero";
 
     // canFly = true;
-    private static COOLDOWN_FIRE: number = 200;
+    private static COOLDOWN_FIRE: number = 700;
     direction: Direction = Direction.RIGHT;
     animSit!: Animation;
     animIdle!: Animation;
@@ -156,8 +157,8 @@ export class Hero extends Actor {
             game.next();
         }
 
-        if (this.pos.y < -10000) {
-            this.dead();
+        if (this.pos.y < -2000) {
+            game.next();
         }
 
         // Reset x velocity
@@ -225,7 +226,7 @@ export class Hero extends Actor {
             if (!this.animSitLock)
                 this.graphics.use(this.animSit);
 
-            if (kb.wasPressed("fire") && !this.cooldownFire) {
+            if (kb.wasPressed("fire") && !this.cooldownFire && config.canFirebolt) {
 
                 this.scene.engine.add(new Bolt(
                     new Vector(this.pos.x, this.pos.y + this._height / 2 + 6),
@@ -264,7 +265,7 @@ export class Hero extends Actor {
     }
 
     handleFire(kb: Keybinds) {
-        if (kb.wasPressed("fire") && !this.cooldownFire) {
+        if (kb.wasPressed("fire") && !this.cooldownFire && config.canFirebolt) {
             this.scene.engine.add(new Bolt(
                 new Vector(this.pos.x, this.pos.y + this._height / 2 - 7),
                 this.direction
@@ -308,7 +309,7 @@ export class Hero extends Actor {
                 this.audio_jump.play();
                 this.vel.y = -400;
                 this.doubleJump = true;
-            } else if (this.doubleJump) {
+            } else if (this.doubleJump && config.canDoubleJump) {
                 this.audio_jump.play();
                 this.vel.y = -400;
                 this.doubleJump = false;

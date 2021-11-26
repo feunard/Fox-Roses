@@ -32,6 +32,7 @@ export interface IEntityFoe extends IEntityBase {
     data1?: string;
     data2?: string;
     data3?: string;
+    data4?: string;
 }
 
 export interface IEntityEvent extends IEntityBase {
@@ -42,6 +43,7 @@ export interface IEntityEvent extends IEntityBase {
     data1?: string;
     data2?: string;
     data3?: string;
+    data4?: string;
 }
 
 export type IEntity =

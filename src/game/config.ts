@@ -48,6 +48,7 @@ export const config = {
     currentLevel: 0,
     canFirebolt: false,
     canDoubleJump: false,
+    canSpeed: false,
 }
 
 export type typeof_config = typeof config;

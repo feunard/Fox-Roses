@@ -50,11 +50,14 @@ class App extends React.Component<{}, AppState> {
             />
         }
 
+        if (gs === GameState.EDITOR) {
+            return <Editor/>;
+        }
+
         return (
-            <div className={"overlay " + (gs === GameState.EDITOR ? "full" : "")}>
+            <div className={"overlay"}>
                 {gs === GameState.INTRO && <Intro/>}
                 {gs === GameState.TITLE && <Title/>}
-                {gs === GameState.EDITOR && <Editor/>}
                 {gs === GameState.END && <End/>}
                 {gs === GameState.SETTINGS && <Settings/>}
                 {gs === GameState.CONTINUE && <Continue/>}

@@ -103,7 +103,7 @@ export class Game {
 
         this.next(id);
         this.preview = true;
-        this.engine.start();
+        this.engine.start(this.loader);
         this.engine.goToScene('level');
 
         this.state = GameState.LEVEL;
@@ -180,7 +180,7 @@ export class Game {
             this.message_timer = null;
             console.log("game::next_message auto-next delay")
             this.next_message();
-        }, 10 * 1000);
+        }, this.message_delay_default);
     }
 
     add_message(message: IMessage) {

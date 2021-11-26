@@ -3,13 +3,14 @@ import * as React from 'react';
 import './Editor.css';
 import {config} from "../game/config";
 import {entities_keys, keyof_typeof_entities} from "../game/entities";
-import {IEntity} from "../game/interfaces";
+import {IEntity, ILevel} from "../game/interfaces";
 import {game, GameState} from "../game/Game";
 import {animations, animations_keys, keyof_typeof_animations} from "../game/resources";
 import {foes, foes_keys, keyof_typeof_foes} from "../game/entities/foes";
 import {events_keys, keyof_typeof_events} from "../game/events";
 
 interface EditorState {
+    level: ILevel;
     entities: IEntity[];
     type: keyof_typeof_entities;
     type_event: keyof_typeof_events;
@@ -34,6 +35,7 @@ export class Editor extends React.Component<{}, EditorState> {
     createState(): EditorState {
         return {
             current: game.levelId,
+            level: config.levels[game.levelId],
             entities: this.copy(config.levels[game.levelId].entities),
             type: entities_keys[0] as keyof_typeof_entities,
             type_event: events_keys[0] as keyof_typeof_events,
@@ -138,10 +140,14 @@ export class Editor extends React.Component<{}, EditorState> {
                 className="Editor"
                 onMouseUp={this.mouseUp}
                 onMouseMove={this.mouseMove}
+
             >
+                <style>
+                    {"body { overflow: auto !important }"}
+                </style>
                 <div
-                    className="Editor_area"
                     onDoubleClick={this.onDoubleClick}
+                    className="Editor_area"
                 >
                     {this.state.entities.map((e, i) => (
                         <div
@@ -192,6 +198,7 @@ export class Editor extends React.Component<{}, EditorState> {
                             game.state = GameState.TITLE;
                         }}> Title
                     </button>
+                    {" | "}
                     <button
                         onClick={() => {
                             game.test(
@@ -199,8 +206,13 @@ export class Editor extends React.Component<{}, EditorState> {
                                 this.state.entities);
                         }}>☢ Test
                     </button>
+                    {" | "}
                     <button
                         onClick={() => {
+                            navigator.clipboard.writeText(JSON.stringify({
+                                ...this.state.level,
+                                entities: this.state.entities,
+                            }, null, "  "))
                             console.log(JSON.stringify(this.state.entities, null, "  "))
                         }}>♕ Export
                     </button>
@@ -355,6 +367,19 @@ export class Editor extends React.Component<{}, EditorState> {
                                         const selected = this.state.selected;
                                         if (selected && (selected.type === "foe" || selected.type === "event")) {
                                             selected.data3 = ev.target.value;
+                                            this.setState({
+                                                selected
+                                            });
+                                        }
+                                    }}
+                                />
+                                <input
+                                    placeholder="data3"
+                                    value={this.state.selected.data4 || ""}
+                                    onChange={(ev) => {
+                                        const selected = this.state.selected;
+                                        if (selected && (selected.type === "foe" || selected.type === "event")) {
+                                            selected.data4 = ev.target.value;
                                             this.setState({
                                                 selected
                                             });

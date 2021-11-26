@@ -18,7 +18,7 @@ export class AudioManager {
         if (this.volume > 0) {
             this.setVolume(0);
         } else {
-            this.setVolume(1);
+            this.setVolume(0.6);
         }
     }
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './Intro.css';
+import './Continue.css';
 import {game, GameState} from "../game/Game";
 import {levels} from "../game/levels";
 import {audio} from "../game/audio";
@@ -15,11 +15,16 @@ export class Continue extends React.Component<{}, IContinueState> {
         return (
             <div className="Continue">
                 {levels.map((l, i) =>
-                    <button key={l.name} onClick={() => {
+                    <button className="select" key={l.name} onClick={() => {
                         audio.stop();
                         audio.play("s2045");
                         game.start(i);
-                    }}>Niveau ${i} : {l.name}</button>
+                    }}>
+                        <span className="left">Chapitre {i + 1} - {l.name}</span>
+                        <span className="right">
+                            3 / 3
+                        </span>
+                    </button>
                 )}
                 <button onClick={() => game.state = GameState.TITLE}>Back</button>
             </div>
