@@ -14,6 +14,7 @@ import {Hitbox} from "./Hitbox";
 import {game} from "../Game";
 import {audio} from "../audio";
 import {config} from "../config";
+import {FloorAware} from "./misc/Floor";
 
 export class Hero extends Actor {
 
@@ -47,6 +48,7 @@ export class Hero extends Actor {
     );
     spawn: Vector;
     vel_default = vec(0, 0);
+    floor = new FloorAware(this);
 
     constructor(
         position: Vector,
@@ -171,7 +173,8 @@ export class Hero extends Actor {
         if (!this.wasOnGround && this.onGround) {
             this.wasOnGround = true;
             if (kb.isHeld("down")) {
-                game.engine.currentScene.camera.shake(10, 10, 2)
+                audio.play("hit_light")
+                game.engine.currentScene.camera.shake(10, 10, 200)
             }
         }
 
@@ -188,12 +191,12 @@ export class Hero extends Actor {
         }
 
         this.handleFire(kb);
+        this.handleLeftRight(kb);
 
         if (this.animSitLock) {
             return this.end();
         }
 
-        this.handleLeftRight(kb);
         this.handleJump(kb);
         this.handleFall(kb);
         this.handleIdle();
@@ -203,6 +206,7 @@ export class Hero extends Actor {
     end() {
         this.vel.x += this.vel_default.x;
         this.vel.y += this.vel_default.y;
+        this.floor.update();
         this.wasOnGround = this.onGround;
         this.vel_default = vec(0, 0);
     }
@@ -306,13 +310,15 @@ export class Hero extends Actor {
         if (kb.isHeld("left")) {
             this.vel.x = -speed;
             this.flip(Direction.LEFT);
-            this.graphics.use("left");
+            if (!this.animSitLock)
+                this.graphics.use("left");
         }
 
         if (kb.isHeld("right")) {
             this.vel.x = speed;
             this.flip(Direction.RIGHT);
-            this.graphics.use("right");
+            if (!this.animSitLock)
+                this.graphics.use("right");
         }
     }
 
@@ -346,6 +352,8 @@ export class Hero extends Actor {
 
     dead() {
         this.pos = this.spawn;
+        audio.play("hero_dead");
+        this.scene.camera.shake(20, 20, 1000);
         this.vel = new Vector(0, 0);
     }
 }

@@ -4,13 +4,13 @@ import {game} from "../game/Game";
 import {LevelMessage} from "./LevelMessage";
 import {audio} from "../game/audio";
 import {config_set} from "../game/config";
+import {sleep} from "../game/sleep";
 
 interface BeginState {
     opacity: number;
     message: string;
 }
 
-const sleep = async (ms: number) => await new Promise((r) => setTimeout(r, ms));
 
 export class Begin extends React.Component<{}, BeginState> {
     state: BeginState = {

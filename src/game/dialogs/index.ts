@@ -8,7 +8,7 @@ export const dialogs = {
     fox1: [
         {
             ...fox,
-            "content": "Oh, encore un visteur tombé du ciel. Je ne m'en lasse pas."
+            "content": "Oh, encore un visteur tombé du ciel."
         },
         {
             ...fox,
@@ -40,15 +40,15 @@ export const dialogs = {
     level1_fox5: [
         {
             ...fox,
-            content: "Bon, tu es dans l'onirisme. Tes rêves."
+            content: "Tu es dans l'onirisme. Tes rêves en gros."
         },
         {
             ...fox,
-            content: "Rigolo, tu as l'air consciente. Mais tu ne peux pas te réveiller, hein ?"
+            content: "Rigolo, tu as l'air consciente. Mais tu ne peux pas te réveiller."
         },
         {
             ...fox,
-            content: "Tu es bloquée dans cette noirceur, avec moi. Hé !"
+            content: "Tu es bloquée dans cette noirceur, avec moi."
         }
     ],
     level1_fox_end: [

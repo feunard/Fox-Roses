@@ -1,8 +1,10 @@
 import {Actor, CollisionType, Engine, Shape, vec, Vector} from "excalibur";
 import {animations} from "../../resources";
 import {IEntityFoe} from "../../interfaces";
+import {FloorAware} from "../misc/Floor";
 
 export class War extends Actor {
+    floor = new FloorAware(this);
 
     constructor(e: IEntityFoe) {
         super({
@@ -28,5 +30,11 @@ export class War extends Actor {
 
         this.graphics.add("idle", animations.war_idle);
         this.graphics.use("idle");
+    }
+
+    onPreUpdate(_engine: Engine, _delta: number) {
+        super.onPreUpdate(_engine, _delta);
+        this.vel.x = 0;
+        this.floor.update();
     }
 }

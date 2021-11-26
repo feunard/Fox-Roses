@@ -2,8 +2,10 @@ import {Actor, CollisionType, Engine, Shape, vec, Vector} from "excalibur";
 import {animations} from "../../resources";
 import {Hero} from "../Hero";
 import {IEntityFoe} from "../../interfaces";
+import {FloorAware} from "../misc/Floor";
 
 export class Mirror extends Actor {
+    floor = new FloorAware(this);
 
     constructor(public e: IEntityFoe) {
         super({
@@ -46,5 +48,11 @@ export class Mirror extends Actor {
                 }
             }
         });
+    }
+
+    onPreUpdate(_engine: Engine, _delta: number) {
+        super.onPreUpdate(_engine, _delta);
+        this.vel.x = 0;
+        this.floor.update();
     }
 }

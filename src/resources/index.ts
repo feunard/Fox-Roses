@@ -40,4 +40,7 @@ export const sounds = {
     s278: new Sound(require("./audio/278.WAV").default),
     s279: new Sound(require("./audio/279.WAV").default),
     transi: new Sound(require("./audio/transi.wav").default),
+    crystal: new Sound(require("./audio/crystal.wav").default),
+    boom: new Sound(require("./audio/boom.wav").default),
+    hit_light: new Sound(require("./audio/hit_light.wav").default),
 }

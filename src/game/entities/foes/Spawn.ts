@@ -36,7 +36,7 @@ export class Spawn extends Actor {
                     const e = (ev.other as Hero);
                     if (!e.spawn.equals(this.pos)) {
                         (ev.other as Hero).spawn = this.pos;
-                        audio.play("s2045");
+                        audio.play("crystal");
                         this.graphics.use("enabled");
                     }
                 }
