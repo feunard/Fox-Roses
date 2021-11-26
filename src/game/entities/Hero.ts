@@ -46,6 +46,7 @@ export class Hero extends Actor {
         "jump_2",
     );
     spawn: Vector;
+    vel_default = vec(0, 0);
 
     constructor(
         position: Vector,
@@ -183,18 +184,27 @@ export class Hero extends Actor {
         }
 
         if (this.handleSit(kb)) {
-            return;
+            return this.end();
         }
+
         this.handleFire(kb);
+
         if (this.animSitLock) {
-            return;
+            return this.end();
         }
+
         this.handleLeftRight(kb);
         this.handleJump(kb);
         this.handleFall(kb);
         this.handleIdle();
+        this.end()
+    }
 
+    end() {
+        this.vel.x += this.vel_default.x;
+        this.vel.y += this.vel_default.y;
         this.wasOnGround = this.onGround;
+        this.vel_default = vec(0, 0);
     }
 
     handleFall(kb: Keybinds) {
