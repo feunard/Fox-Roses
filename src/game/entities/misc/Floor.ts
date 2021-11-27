@@ -76,7 +76,9 @@ export class Floor extends Actor {
                         this.dir = -1;
                     }
                 }
-                this.vel.y = (this.e.move.speed || 100) * this.dir;
+                if (!this.e.move.hero || this.actors.length) {
+                    this.vel.y = (this.e.move.speed || 100) * this.dir;
+                }
                 if (this.vel.y > 0) {
                     for (const a of this.actors) {
                         a.floor.vel_default.y += (this.e.move.speed || 100) * this.dir;

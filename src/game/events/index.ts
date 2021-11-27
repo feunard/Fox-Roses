@@ -7,6 +7,7 @@ import {unlock_doublejump} from "./unlock_doublejump";
 import {unlock_speed} from "./unlock_speed";
 import {unlock_firebolt} from "./unlock_firebolt";
 import {shake} from "./shake";
+import {the_end} from "./the_end";
 
 export const events = {
     camera_back,
@@ -17,7 +18,8 @@ export const events = {
     unlock_doublejump,
     unlock_firebolt,
     unlock_speed,
-    shake
+    shake,
+    the_end
 }
 
 export const events_keys = Object.keys(events);

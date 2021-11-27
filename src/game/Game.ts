@@ -22,7 +22,7 @@ export class Game {
     callbacksChangeState: ((s: GameState) => any)[] = [];
     callbacksChangeLevel: ((s: ILevel) => any)[] = [];
     callbacksOnMessage: ((s?: IMessage) => any)[] = [];
-    levelId = 0;
+    levelId = localStorage["GameLevel"] ? Number(localStorage["GameLevel"]) : 0;
     preview: boolean = false;
     loader = new Loader();
     engine = new Engine({

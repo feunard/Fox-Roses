@@ -16,6 +16,7 @@ export interface IEntityFloor extends IEntityBase {
         y: number;
         x: number;
         speed?: number;
+        hero?: boolean;
     }
     physic?: boolean;
     color?: string;
@@ -64,5 +65,6 @@ export interface IMessage {
 export interface ILevel {
     name: string;
     music?: string;
+    full?: boolean;
     entities: IEntity[];
 }

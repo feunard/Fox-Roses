@@ -1,5 +1,6 @@
 {
     "name": "Réveil",
+    "full": true,
     "entities": [
         {
             "type": "floor",
@@ -11,18 +12,104 @@
         },
         {
             "type": "floor",
-            "x": -1000,
-            "y": 600,
-            "width": 1000,
+            "x": 0,
+            "y": 3864,
+            "width": 1016,
             "height": 8
         },
         {
             "type": "event",
             "event": "start",
-            "x": 400,
-            "y": -1000,
+            "x": 80,
+            "y": 3456,
             "width": 64,
             "height": 64
+        },
+        {
+            "type": "floor",
+            "x": 1016,
+            "y": 3864,
+            "width": 688,
+            "height": 64,
+            "move": {
+                "y": -5000,
+                "x": 0,
+                "speed": 50,
+                "hero": true
+            }
+        },
+        {
+            "type": "event",
+            "x": 936,
+            "y": 3640,
+            "width": 856,
+            "height": 64,
+            "event": "play_music",
+            "data1": "music_end"
+        },
+        {
+            "type": "event",
+            "x": 1040,
+            "y": 3840,
+            "width": 648,
+            "height": 48,
+            "event": "shake",
+            "data1": "10",
+            "data2": "10",
+            "data3": "1000",
+            "data4": "boom"
+        },
+        {
+            "type": "floor",
+            "x": 992,
+            "y": -168,
+            "width": 24,
+            "height": 3928,
+            "color": "#ffffff"
+        },
+        {
+            "type": "floor",
+            "x": 1704,
+            "y": -112,
+            "width": 24,
+            "height": 4040,
+            "color": "#ffffff"
+        },
+        {
+            "type": "event",
+            "x": 944,
+            "y": 3544,
+            "width": 824,
+            "height": 80,
+            "event": "dialog",
+            "data1": "end"
+        },
+        {
+            "type": "event",
+            "x": 856,
+            "y": 608,
+            "width": 1000,
+            "height": 64,
+            "event": "the_end"
+        },
+        {
+            "type": "floor",
+            "x": 816,
+            "y": 3168,
+            "width": 176,
+            "height": 64
+        },
+        {
+            "type": "npc",
+            "x": 904,
+            "y": 3080,
+            "width": 64,
+            "height": 64,
+            "animation": "fox",
+            "dialogs": [
+                ""
+            ],
+            "name": "fox"
         }
     ]
 }

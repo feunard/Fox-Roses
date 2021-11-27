@@ -43,8 +43,8 @@ export class Level extends Scene {
             const emitter = new ParticleEmitter({
                 x: -1000,
                 y: 0,
-                width: 10000,
-                height: 1080,
+                width: level.full ? 4000 : 10000,
+                height: level.full ? 10000 : 1000,
             });
             emitter.emitterType = EmitterType.Rectangle;
             emitter.radius = 5;

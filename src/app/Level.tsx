@@ -25,6 +25,7 @@ export class Level extends React.Component<ILevelProps, LevelState> {
     render() {
         return (
             <div className="Level">
+                <div className="Level_white"/>
                 <div className="Level_bar">
                     <div className="Level_bar_left">
                         <button onClick={() => {

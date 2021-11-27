@@ -32,6 +32,17 @@ export class Editor extends React.Component<{}, EditorState> {
 
     history: string[] = [];
 
+    changeLevel = () => {
+        this.setState(this.createState())
+    }
+
+    componentDidMount() {
+        game.onChangeLevel(this.changeLevel);
+    }
+
+    componentWillUnmount() {
+    }
+
     createState(): EditorState {
         return {
             current: game.levelId,
@@ -185,9 +196,11 @@ export class Editor extends React.Component<{}, EditorState> {
                     ))}
                 </div>
                 <div className="Editor_toolbar">
-                    <select onChange={(ev) => {
-                        game.next(Number(ev.target.value));
-                    }}>
+                    <select
+                        value={game.levelId}
+                        onChange={(ev) => {
+                            game.next(Number(ev.target.value));
+                        }}>
                         {config.levels.map((l, it) =>
                             <option value={String(it)} key={it}>L{it + 1}</option>
                         )}
@@ -248,14 +261,14 @@ export class Editor extends React.Component<{}, EditorState> {
                     {" | "}
                     <select
                         onChange={this.$("type")}>
-                        {entities_keys.map((l, it) =>
+                        {entities_keys.map((l) =>
                             <option value={l} key={l}>{l.toUpperCase()}</option>
                         )}
                     </select>
                     {this.state.type === "event" && (
                         <select
                             onChange={this.$("type_event")}>
-                            {events_keys.map((l, it) =>
+                            {events_keys.map((l) =>
                                 <option value={l} key={l}>{l.toUpperCase()}</option>
                             )}
                         </select>
@@ -263,7 +276,7 @@ export class Editor extends React.Component<{}, EditorState> {
                     {this.state.type === "npc" && (
                         <select
                             onChange={this.$("type_npc")}>
-                            {animations_keys.map((l, it) =>
+                            {animations_keys.map((l) =>
                                 <option value={l} key={l}>{l.toUpperCase()}</option>
                             )}
                         </select>
@@ -271,7 +284,7 @@ export class Editor extends React.Component<{}, EditorState> {
                     {this.state.type === "foe" && (
                         <select
                             onChange={this.$("type_foe")}>
-                            {Object.keys(foes).map((l, it) =>
+                            {Object.keys(foes).map((l) =>
                                 <option value={l} key={l}>{l.toUpperCase()}</option>
                             )}
                         </select>
@@ -344,6 +357,17 @@ export class Editor extends React.Component<{}, EditorState> {
                                             }
                                         }
                                     }}/>
+                                <input type={"checkbox"}
+                                       value={String(this.state.selected.move?.hero || false)}
+                                       onChange={(ev) => {
+                                           const s = this.state.selected;
+                                           if (s && s.type === "floor") {
+                                               s.move = s.move || {y: 0, x: 0, speed: 0};
+                                               s.move.hero = ev.target.checked;
+                                               this.forceUpdate();
+                                           }
+                                       }}
+                                />
                             </>
                         )}
                         {this.state.selected.type === "event" && (
@@ -356,7 +380,7 @@ export class Editor extends React.Component<{}, EditorState> {
                                             this.forceUpdate();
                                         }
                                     }}>
-                                    {events_keys.map((l, it) =>
+                                    {events_keys.map((l) =>
                                         <option value={l} key={l}>{l.toUpperCase()}</option>
                                     )}
                                 </select>

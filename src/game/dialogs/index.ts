@@ -68,5 +68,27 @@ export const dialogs = {
             ...fox,
             content: "Il est peut être un peu plus bas. On va sauter dans le vide."
         }
+    ],
+    end: [
+        {
+            ...fox,
+            content: "Nous y sommes enfin."
+        },
+        {
+            ...fox,
+            content: "Arrivé en haut, tu pourras te réveiller comme promis."
+        },
+        {
+            ...fox,
+            content: "Bon bah, c'était sympathique cette petite aventure ensemble."
+        },
+        {
+            ...fox,
+            content: "N'oublie pas de dormir, j'espère qu'on se reverra."
+        },
+        {
+            ...fox,
+            content: "Tu vas me manquer..."
+        }
     ]
 }

@@ -1,16 +1,19 @@
 import * as React from 'react';
-import './App.css';
+import './End.css';
 import {game, GameState} from "../game/Game";
 
 export class End extends React.Component<{}, {}> {
 
+    componentDidMount() {
+        setTimeout(() => {
+            game.state = GameState.TITLE;
+        }, 85 * 1000)
+    }
+
     render() {
         return (
-            <div>
+            <div className="End">
                 The End.
-                <button onClick={() => {
-                    game.state = GameState.TITLE;
-                }}>back to title</button>
             </div>
         );
     }
