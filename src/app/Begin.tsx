@@ -35,12 +35,9 @@ export class Begin extends React.Component<{}, BeginState> {
         audio.play("s268");
         this.setState({message: "Il y a quelqu'un ?"})
         await sleep(3000);
-        audio.play("s264");
+        audio.play("s270");
         this.setState({message: "Je suis entrain de tomber ?"})
-        await sleep(5000);
-        audio.play("s272");
-        this.setState({message: "Hey !?!"})
-        await sleep(1000);
+        await sleep(3000);
         this.setState({opacity: 0})
         await sleep(1000);
         game.start();

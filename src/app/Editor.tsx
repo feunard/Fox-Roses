@@ -200,6 +200,7 @@ export class Editor extends React.Component<{}, EditorState> {
                         value={game.levelId}
                         onChange={(ev) => {
                             game.next(Number(ev.target.value));
+                            localStorage.setItem("GameLevel", ev.target.value)
                         }}>
                         {config.levels.map((l, it) =>
                             <option value={String(it)} key={it}>L{it + 1}</option>
@@ -468,7 +469,7 @@ export class Editor extends React.Component<{}, EditorState> {
         console.log(ev);
         let size = 64;
         if (this.state.type === "npc") {
-            size = animations[this.state.type_npc].height;
+            size = animations[this.state.type_npc].height || 64;
         }
         if (this.state.type === "foe") {
             size = 48 * 2;

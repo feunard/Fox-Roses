@@ -141,6 +141,11 @@ export const animations = {
     bubble: Animation.fromSpriteSheet(sheet("bubble"), [0], 100),
     crystal_red: Animation.fromSpriteSheet(sheet("crystal", 64, 64, 2, 4), [0, 2, 4, 6], 600),
     crystal_blue: Animation.fromSpriteSheet(sheet("crystal", 64, 64, 2, 4), [1, 3, 5, 7], 600),
+
+    shrek: Animation.fromSpriteSheet(sheet("shrek"), [0], 100),
+    acidpop: Animation.fromSpriteSheet(sheet("acidpop"), [0], 100),
+    kstore: Animation.fromSpriteSheet(sheet("kstore"), [0], 100),
+    dragon_idle: Animation.fromSpriteSheet(sheet("dragon", 128, 64, 1, 6), [0, 1, 2, 3, 4, 5], 500),
 }
 
 export type keyof_typeof_animations = keyof typeof animations;

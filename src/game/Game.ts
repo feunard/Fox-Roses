@@ -114,6 +114,7 @@ export class Game {
     }
 
     next(levelId = -1) {
+        audio.stop();
         console.log("game::next_level");
 
         if (this.preview) {
