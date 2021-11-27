@@ -126,54 +126,6 @@
         },
         {
             "type": "npc",
-            "x": 2272,
-            "y": 536,
-            "width": 64,
-            "height": 64,
-            "animation": "dragon_idle",
-            "dialogs": [
-                ""
-            ],
-            "name": "dragon_idle"
-        },
-        {
-            "type": "npc",
-            "x": 2480,
-            "y": 568,
-            "width": 0,
-            "height": 0,
-            "animation": "kstore",
-            "dialogs": [
-                ""
-            ],
-            "name": "kstore"
-        },
-        {
-            "type": "npc",
-            "x": 2592,
-            "y": 568,
-            "width": 0,
-            "height": 0,
-            "animation": "acidpop",
-            "dialogs": [
-                ""
-            ],
-            "name": "acidpop"
-        },
-        {
-            "type": "npc",
-            "x": 2712,
-            "y": 568,
-            "width": 0,
-            "height": 0,
-            "animation": "shrek",
-            "dialogs": [
-                ""
-            ],
-            "name": "shrek"
-        },
-        {
-            "type": "npc",
             "x": 2392,
             "y": 320,
             "width": 64,
@@ -183,6 +135,62 @@
                 ""
             ],
             "name": "fox"
+        },
+        {
+            "type": "event",
+            "x": 2968,
+            "y": 536,
+            "width": 64,
+            "height": 64,
+            "event": "start"
+        },
+        {
+            "type": "npc",
+            "x": 2376,
+            "y": 472,
+            "width": 128,
+            "height": 128,
+            "animation": "shrek",
+            "dialogs": [
+                ""
+            ],
+            "name": "shrek"
+        },
+        {
+            "type": "npc",
+            "x": 2664,
+            "y": 504,
+            "width": 96,
+            "height": 96,
+            "animation": "kstore",
+            "dialogs": [
+                ""
+            ],
+            "name": "kstore"
+        },
+        {
+            "type": "npc",
+            "x": 3152,
+            "y": 344,
+            "width": 256,
+            "height": 256,
+            "animation": "dragon_idle",
+            "dialogs": [
+                ""
+            ],
+            "name": "dragon_idle"
+        },
+        {
+            "type": "npc",
+            "x": 2784,
+            "y": 536,
+            "width": 64,
+            "height": 64,
+            "animation": "acidpop",
+            "dialogs": [
+                ""
+            ],
+            "name": "acidpop"
         }
     ]
 }

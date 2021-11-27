@@ -469,7 +469,10 @@ export class Editor extends React.Component<{}, EditorState> {
         console.log(ev);
         let size = 64;
         if (this.state.type === "npc") {
-            size = animations[this.state.type_npc].height || 64;
+            const sizes = {
+                acidpop: 64, kstore: 96, dragon_idle: 256, shrek: 128
+            }
+            size = sizes[this.state.type_npc] || animations[this.state.type_npc].height || 128;
         }
         if (this.state.type === "foe") {
             size = 48 * 2;

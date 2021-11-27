@@ -27,8 +27,13 @@ export class NPC extends Actor {
             });
         }
         if (this.e.animation) {
-            if (this.e.animation !== "fox") {
+            if (this.e.animation === "dragon_idle") {
+                animations[this.e.animation].scale = vec(4, 4);
+            } else if (this.e.animation === "shrek") {
                 animations[this.e.animation].scale = vec(2, 2);
+            } else if (this.e.animation === "kstore") {
+                animations[this.e.animation].scale = vec(1.5, 1.5);
+            } else {
             }
             this.graphics.add("default", animations[this.e.animation]);
             this.graphics.use("default");
