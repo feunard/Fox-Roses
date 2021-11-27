@@ -3,13 +3,15 @@ import {Mage} from "./Mage";
 import {War} from "./War";
 import {Spawn} from "./Spawn";
 import {DeadlyArea} from "./DeadlyArea";
+import {Block} from "./Block";
 
 export const foes = {
     Mage,
     Mirror,
     War,
     Spawn,
-    DeadlyArea
+    DeadlyArea,
+    Block,
 }
 
 export const foes_keys = Object.keys(foes);

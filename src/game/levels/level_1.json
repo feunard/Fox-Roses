@@ -1,6 +1,6 @@
 {
   "name": "Rêve",
-  "music": "",
+  "music": "music_1",
   "entities": [
     {
       "type": "floor",
@@ -510,16 +510,16 @@
     },
     {
       "type": "floor",
-      "x": 5736,
-      "y": 456,
+      "x": 5800,
+      "y": 400,
       "width": 64,
-      "height": 200
+      "height": 256
     },
     {
       "type": "floor",
-      "x": 5776,
+      "x": 5824,
       "y": 496,
-      "width": 208,
+      "width": 152,
       "height": 144
     },
     {
@@ -557,7 +557,7 @@
       "width": 64,
       "height": 24,
       "move": {
-        "y": 200,
+        "y": 100,
         "x": 0,
         "speed": 0
       }
@@ -573,6 +573,46 @@
         ""
       ],
       "name": "fox"
+    },
+    {
+      "type": "event",
+      "x": 3088,
+      "y": 184,
+      "width": 104,
+      "height": 296,
+      "event": "dialog",
+      "data1": "level1_fox6"
+    },
+    {
+      "type": "event",
+      "x": 4796,
+      "y": 152,
+      "width": 64,
+      "height": 312,
+      "event": "dialog",
+      "data1": "level1_fox7"
+    },
+    {
+      "type": "foe",
+      "x": 5464,
+      "y": 464,
+      "width": 56,
+      "height": 136,
+      "name": "Block"
+    },
+    {
+      "type": "floor",
+      "x": 5648,
+      "y": 560,
+      "width": 160,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 5224,
+      "y": 560,
+      "width": 64,
+      "height": 64
     }
   ]
 }

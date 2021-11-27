@@ -43,4 +43,5 @@ export const sounds = {
     crystal: new Sound(require("./audio/crystal.wav").default),
     boom: new Sound(require("./audio/boom.wav").default),
     hit_light: new Sound(require("./audio/hit_light.wav").default),
+    music_1: new Sound(require("./audio/crystalsong.mp3").default),
 }

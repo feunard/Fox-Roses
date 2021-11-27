@@ -3,6 +3,7 @@ const fox = {
     "sound": "s278",
     "author": "Renard",
 }
+const _fox = (content: string) => ({...fox, content})
 
 export const dialogs = {
     fox1: [
@@ -50,6 +51,13 @@ export const dialogs = {
             ...fox,
             content: "Tu es bloquée dans cette noirceur, avec moi."
         }
+    ],
+    level1_fox6: [
+        _fox("Les crystaux de rêves sont utiles pour revenir si tu es perdu."),
+        _fox("Par exemple, ne va pas dans les bulles de cauchemard."),
+    ],
+    level1_fox7: [
+        _fox("L'ascenceur est face. Bouge la caisse pour passer."),
     ],
     level1_fox_end: [
         {

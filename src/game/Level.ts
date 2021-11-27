@@ -35,7 +35,7 @@ export class Level extends Scene {
                 this.add(new NPC(e));
             }
             if (e.type === "foe") {
-                this.add(new foes[e.name](e));
+                this.add(new foes[e.name](e as any));
             }
         }
 
