@@ -31,10 +31,12 @@ export class NPC extends Actor {
         if (this.e.animation === "rose" && game.levelId === 2) {
             this.on("precollision", (ev) => {
                 if (this.collider.bounds.contains(ev.other.collider.bounds)) {
-                    dialogs.l3_loot.forEach(m => game.add_message(m as any));
-                    config_set({
-                        dragonRose: true
-                    });
+                    if (!config.dragonRose) {
+                        dialogs.l3_loot.forEach(m => game.add_message(m as any));
+                        config_set({
+                            dragonRose: true
+                        });
+                    }
                 }
             });
         }

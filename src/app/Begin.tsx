@@ -31,13 +31,13 @@ export class Begin extends React.Component<{}, BeginState> {
         await sleep(1000);
         audio.play("s264");
         this.setState({message: "Mais où est-ce que je suis ?"})
-        await sleep(5000);
+        await sleep(4000);
         audio.play("s268");
         this.setState({message: "Il y a quelqu'un ?"})
-        await sleep(3000);
+        await sleep(2000);
         audio.play("s270");
         this.setState({message: "Je suis entrain de tomber ?"})
-        await sleep(3000);
+        await sleep(2000);
         this.setState({opacity: 0})
         await sleep(1000);
         game.start();
