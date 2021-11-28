@@ -44,7 +44,7 @@ export class NPC extends Actor {
             this.on("precollision", (ev) => {
                 if (this.collider.bounds.contains(ev.other.collider.bounds)) {
                     if (config.dragonRose) {
-                        dialogs.l3_loot.forEach(m => game.add_message(m as any));
+                        dialogs.l3_loot_after.forEach(m => game.add_message(m as any));
                         config_set({
                             canDoubleJump: true,
                             dragonRose: false

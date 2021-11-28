@@ -211,9 +211,11 @@ export class Game {
         }
 
         this.message_timer = setTimeout(() => {
-            console.log("game::next_message auto-next delay")
-            this.next_message();
-            this.message_timer = null;
+            if (this.message_timer) {
+                console.log("game::next_message auto-next delay")
+                this.next_message();
+                this.message_timer = null;
+            }
         }, this.message_delay_default);
     }
 
