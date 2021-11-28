@@ -36,6 +36,7 @@ export class NPC extends Actor {
                         config_set({
                             dragonRose: true
                         });
+                        this.kill();
                     }
                 }
             });

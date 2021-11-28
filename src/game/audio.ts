@@ -18,7 +18,7 @@ export class AudioManager {
         if (this.volume > 0) {
             this.setVolume(0);
         } else {
-            this.setVolume(0.6);
+            this.setVolume(0.5);
         }
     }
 
@@ -29,8 +29,11 @@ export class AudioManager {
     }
 
     toggleMusicVolume() {
-        if (this.volumeMusic) this.setMusicVolume(0);
-        else this.setMusicVolume(1);
+        if (this.volumeMusic) {
+            this.setMusicVolume(0);
+        } else {
+            this.setMusicVolume(0.5);
+        }
     }
 
     setMusicVolume(volume: number) {

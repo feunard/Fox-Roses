@@ -43,8 +43,8 @@ export const config = {
     },
     //
     hair_color: 0,
-    music: 1,
-    sound: 1,
+    music: 0.5,
+    sound: 0.5,
     currentLevel: 0,
     canFirebolt: false,
     canDoubleJump: false,

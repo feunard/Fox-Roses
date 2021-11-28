@@ -39,19 +39,464 @@
     },
     {
       "type": "event",
-      "x": 884,
-      "y": 345,
+      "x": 1904,
+      "y": 16,
       "width": 136,
-      "height": 320,
+      "height": 224,
       "event": "unlock_speed"
     },
     {
-      "type": "foe",
-      "x": 1200,
+      "type": "floor",
+      "x": 3888,
+      "y": 496,
+      "width": 128,
+      "height": 176
+    },
+    {
+      "type": "floor",
+      "x": 3920,
       "y": 416,
+      "width": 64,
+      "height": 280
+    },
+    {
+      "type": "floor",
+      "x": 3384,
+      "y": 392,
+      "width": 120,
+      "height": 208
+    },
+    {
+      "type": "floor",
+      "x": 3312,
+      "y": 440,
+      "width": 248,
+      "height": 216
+    },
+    {
+      "type": "floor",
+      "x": 2692,
+      "y": 456,
+      "width": 24,
+      "height": 152
+    },
+    {
+      "type": "floor",
+      "x": 4184,
+      "y": 344,
+      "width": 40,
+      "height": 376
+    },
+    {
+      "type": "floor",
+      "x": 4144,
+      "y": 264,
+      "width": 64,
+      "height": 272
+    },
+    {
+      "type": "floor",
+      "x": 4096,
+      "y": 288,
+      "width": 216,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 4272,
+      "y": 256,
+      "width": 64,
+      "height": 128
+    },
+    {
+      "type": "floor",
+      "x": 4192,
+      "y": 496,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 2496,
+      "y": 414,
+      "width": 200,
+      "height": 192
+    },
+    {
+      "type": "floor",
+      "x": 1552,
+      "y": 520,
+      "width": 232,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 1760,
+      "y": 464,
+      "width": 64,
+      "height": 144
+    },
+    {
+      "type": "floor",
+      "x": 1592,
+      "y": 440,
+      "width": 64,
+      "height": 176
+    },
+    {
+      "type": "floor",
+      "x": 1648,
+      "y": 480,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 2440,
+      "y": 472,
+      "width": 64,
+      "height": 128
+    },
+    {
+      "type": "foe",
+      "x": 2712,
+      "y": 504,
+      "width": 600,
+      "height": 96,
+      "name": "DeadlyArea"
+    },
+    {
+      "type": "floor",
+      "x": 656,
+      "y": 536,
+      "width": 176,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 1736,
+      "y": 192,
+      "width": 248,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 1968,
+      "y": 208,
+      "width": 144,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 2192,
+      "y": 440,
+      "width": 160,
+      "height": 16,
+      "move": {
+        "y": -300,
+        "x": 0,
+        "speed": 0
+      }
+    },
+    {
+      "type": "npc",
+      "x": 240,
+      "y": 472,
+      "width": 128,
+      "height": 128,
+      "animation": "shrek",
+      "dialogs": [
+        ""
+      ],
+      "name": "shrek"
+    },
+    {
+      "type": "npc",
+      "x": 1816,
+      "y": 64,
+      "width": 128,
+      "height": 128,
+      "animation": "shrek",
+      "dialogs": [
+        ""
+      ],
+      "name": "shrek"
+    },
+    {
+      "type": "floor",
+      "x": 1712,
+      "y": 136,
+      "width": 64,
+      "height": 144
+    },
+    {
+      "type": "floor",
+      "x": 1536,
+      "y": 552,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "npc",
+      "x": 3920,
+      "y": 352,
+      "width": 64,
+      "height": 64,
+      "animation": "acidpop",
+      "dialogs": [
+        ""
+      ],
+      "name": "acidpop"
+    },
+    {
+      "type": "npc",
+      "x": 3824,
+      "y": 400,
       "width": 96,
       "height": 96,
-      "name": "Spawner"
+      "animation": "kstore",
+      "dialogs": [
+        ""
+      ],
+      "name": "kstore"
+    },
+    {
+      "type": "npc",
+      "x": 4112,
+      "y": 136,
+      "width": 128,
+      "height": 128,
+      "animation": "shrek",
+      "dialogs": [
+        ""
+      ],
+      "name": "shrek"
+    },
+    {
+      "type": "npc",
+      "x": 4256,
+      "y": 384,
+      "width": 256,
+      "height": 256,
+      "animation": "dragon_idle",
+      "dialogs": [
+        ""
+      ],
+      "name": "dragon_idle"
+    },
+    {
+      "type": "floor",
+      "x": 4224,
+      "y": 640,
+      "width": 296,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 3776,
+      "y": 496,
+      "width": 136,
+      "height": 112
+    },
+    {
+      "type": "floor",
+      "x": 3728,
+      "y": 552,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 3400,
+      "y": 296,
+      "width": 48,
+      "height": 112
+    },
+    {
+      "type": "floor",
+      "x": 1808,
+      "y": 552,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 1132,
+      "y": 112,
+      "width": 40,
+      "height": 496
+    },
+    {
+      "type": "floor",
+      "x": 792,
+      "y": 152,
+      "width": 40,
+      "height": 448
+    },
+    {
+      "type": "floor",
+      "x": 896,
+      "y": 400,
+      "width": 240,
+      "height": 40
+    },
+    {
+      "type": "floor",
+      "x": 816,
+      "y": 200,
+      "width": 512,
+      "height": 48
+    },
+    {
+      "type": "floor",
+      "x": 1392,
+      "y": -120,
+      "width": 64,
+      "height": 664
+    },
+    {
+      "type": "floor",
+      "x": 1160,
+      "y": 384,
+      "width": 320,
+      "height": 64
+    },
+    {
+      "type": "foe",
+      "x": 968,
+      "y": 272,
+      "width": 128,
+      "height": 128,
+      "name": "Mirror",
+      "data1": "4"
+    },
+    {
+      "type": "foe",
+      "x": 1184,
+      "y": 256,
+      "width": 128,
+      "height": 128,
+      "name": "Mirror",
+      "data2": "456",
+      "data1": "8"
+    },
+    {
+      "type": "foe",
+      "x": 1176,
+      "y": 72,
+      "width": 128,
+      "height": 128,
+      "name": "Mirror",
+      "data2": "2"
+    },
+    {
+      "type": "foe",
+      "x": 952,
+      "y": 72,
+      "width": 128,
+      "height": 128,
+      "name": "Mirror",
+      "data2": "1"
+    },
+    {
+      "type": "foe",
+      "x": 960,
+      "y": 472,
+      "width": 128,
+      "height": 128,
+      "name": "Mirror",
+      "data1": "56",
+      "data2": "45"
+    },
+    {
+      "type": "foe",
+      "x": 1192,
+      "y": 472,
+      "width": 128,
+      "height": 128,
+      "name": "Mirror",
+      "data1": "1"
+    },
+    {
+      "type": "foe",
+      "x": 656,
+      "y": 408,
+      "width": 128,
+      "height": 128,
+      "name": "Mirror",
+      "data1": "2",
+      "data2": "4"
+    },
+    {
+      "type": "floor",
+      "x": 1360,
+      "y": 344,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 776,
+      "y": 624,
+      "width": 64,
+      "height": 272
+    },
+    {
+      "type": "floor",
+      "x": 712,
+      "y": 888,
+      "width": 976,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 1494,
+      "y": 624,
+      "width": 64,
+      "height": 288
+    },
+    {
+      "type": "foe",
+      "x": 888,
+      "y": 760,
+      "width": 128,
+      "height": 128,
+      "name": "Mirror",
+      "data2": "8"
+    },
+    {
+      "type": "foe",
+      "x": 1104,
+      "y": 760,
+      "width": 128,
+      "height": 128,
+      "name": "Mirror",
+      "data2": "56"
+    },
+    {
+      "type": "foe",
+      "x": 1296,
+      "y": 760,
+      "width": 128,
+      "height": 128,
+      "name": "Mirror",
+      "data1": "45"
+    },
+    {
+      "type": "foe",
+      "x": 1904,
+      "y": 504,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 2544,
+      "y": 320,
+      "width": 96,
+      "height": 96,
+      "name": "Spawn"
     }
   ]
 }
