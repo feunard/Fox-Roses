@@ -302,7 +302,7 @@ export class Hero extends Actor {
     handleFire(kb: Keybinds) {
         if (kb.wasPressed("fire") && !this.cooldownFire && config.canFirebolt) {
             this.scene.engine.add(new Bolt(
-                new Vector(this.pos.x, this.pos.y + this._height / 2 - 7),
+                new Vector(this.pos.x, this.pos.y + this._height / 2 - 13),
                 this.direction
             ))
             const anim = this.onGround ? this.animAttack : this.animAttackJump;

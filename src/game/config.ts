@@ -49,6 +49,7 @@ export const config = {
     canFirebolt: false,
     canDoubleJump: false,
     canSpeed: false,
+    dragonRose: false,
     roses: [
         0,
         0,
@@ -82,3 +83,5 @@ export const config_set = (c: Partial<typeof_config>) => {
     Object.assign(config, c);
     localStorage.setItem("$config", JSON.stringify(config));
 }
+
+window["config_set"] = config_set;

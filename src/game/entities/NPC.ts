@@ -2,6 +2,8 @@ import {Actor, CollisionType, Engine, vec} from "excalibur";
 import {IEntityNPC} from "../interfaces";
 import {animations} from "../resources";
 import {game} from "../Game";
+import {dialogs} from "../dialogs";
+import {config, config_set} from "../config";
 
 
 export class NPC extends Actor {
@@ -23,6 +25,29 @@ export class NPC extends Actor {
                 if (ev.other.name === "hero" && !ok) {
                     ok = true;
                     this.e.messages.forEach(m => game.add_message(m));
+                }
+            });
+        }
+        if (this.e.animation === "rose" && game.levelId === 2) {
+            this.on("precollision", (ev) => {
+                if (ev.other.collider.bounds.contains(this.collider.bounds)) {
+                    dialogs.l3_loot.forEach(m => game.add_message(m as any));
+                    config_set({
+                        dragonRose: true
+                    });
+                }
+            });
+        }
+        if (this.e.animation === "dragon_idle" && game.levelId === 2) {
+            this.on("precollision", (ev) => {
+                if (ev.other.collider.bounds.contains(this.collider.bounds)) {
+                    if (config.dragonRose) {
+                        dialogs.l3_loot.forEach(m => game.add_message(m as any));
+                        config_set({
+                            canDoubleJump: true,
+                            dragonRose: false
+                        });
+                    }
                 }
             });
         }

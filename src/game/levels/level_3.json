@@ -75,10 +75,10 @@
     },
     {
       "type": "floor",
-      "x": 1070,
-      "y": 16,
+      "x": 1064,
+      "y": -128,
       "width": 64,
-      "height": 136
+      "height": 344
     },
     {
       "type": "floor",
@@ -90,7 +90,7 @@
     {
       "type": "floor",
       "x": 1624,
-      "y": 336,
+      "y": 344,
       "width": 64,
       "height": 64
     },
@@ -99,14 +99,14 @@
       "x": 1680,
       "y": 192,
       "width": 64,
-      "height": 240
+      "height": 328
     },
     {
       "type": "floor",
       "x": 1744,
       "y": 192,
       "width": 528,
-      "height": 104
+      "height": 64
     },
     {
       "type": "floor",
@@ -138,7 +138,7 @@
       "type": "floor",
       "x": 4224,
       "y": 120,
-      "width": 2024,
+      "width": 1072,
       "height": 64
     },
     {
@@ -435,10 +435,10 @@
     },
     {
       "type": "floor",
-      "x": 5444,
-      "y": 544,
+      "x": 5240,
+      "y": 464,
       "width": 64,
-      "height": 64
+      "height": 152
     },
     {
       "type": "foe",
@@ -450,24 +450,24 @@
     },
     {
       "type": "floor",
-      "x": 4456,
-      "y": 544,
+      "x": 4312,
+      "y": 528,
       "width": 64,
       "height": 136
     },
     {
       "type": "floor",
-      "x": 4696,
-      "y": 544,
-      "width": 64,
+      "x": 4440,
+      "y": 440,
+      "width": 368,
       "height": 64
     },
     {
       "type": "floor",
       "x": 4944,
-      "y": 544,
+      "y": 344,
       "width": 64,
-      "height": 64
+      "height": 256
     },
     {
       "type": "floor",
@@ -610,6 +610,625 @@
       "type": "foe",
       "x": 6736,
       "y": 216,
+      "width": 96,
+      "height": 96,
+      "name": "Mage"
+    },
+    {
+      "type": "floor",
+      "x": 600,
+      "y": 584,
+      "width": 176,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 1464,
+      "y": 520,
+      "width": 64,
+      "height": 112
+    },
+    {
+      "type": "foe",
+      "x": 896,
+      "y": 504,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 1120,
+      "y": 504,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 2080,
+      "y": 480,
+      "width": 96,
+      "height": 96,
+      "name": "Mage"
+    },
+    {
+      "type": "foe",
+      "x": 2080,
+      "y": 408,
+      "width": 96,
+      "height": 96,
+      "name": "Mage"
+    },
+    {
+      "type": "foe",
+      "x": 2080,
+      "y": 336,
+      "width": 96,
+      "height": 96,
+      "name": "Mage"
+    },
+    {
+      "type": "floor",
+      "x": 1288,
+      "y": 560,
+      "width": 112,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 2112,
+      "y": 576,
+      "width": 64,
+      "height": 48
+    },
+    {
+      "type": "floor",
+      "x": 1400,
+      "y": 560,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "foe",
+      "x": 648,
+      "y": 488,
+      "width": 96,
+      "height": 96,
+      "name": "Spawn"
+    },
+    {
+      "type": "foe",
+      "x": 2080,
+      "y": 256,
+      "width": 96,
+      "height": 96,
+      "name": "Mage"
+    },
+    {
+      "type": "floor",
+      "x": 2176,
+      "y": 488,
+      "width": 64,
+      "height": 120
+    },
+    {
+      "type": "floor",
+      "x": 2240,
+      "y": 456,
+      "width": 208,
+      "height": 152
+    },
+    {
+      "type": "floor",
+      "x": 2435,
+      "y": 200,
+      "width": 64,
+      "height": 400
+    },
+    {
+      "type": "floor",
+      "x": 2488,
+      "y": 424,
+      "width": 152,
+      "height": 176
+    },
+    {
+      "type": "foe",
+      "x": 2288,
+      "y": 328,
+      "width": 128,
+      "height": 128,
+      "name": "Mirror",
+      "data1": "2",
+      "data2": "1"
+    },
+    {
+      "type": "foe",
+      "x": 2512,
+      "y": 296,
+      "width": 128,
+      "height": 128,
+      "name": "Mirror",
+      "data1": "1",
+      "data2": "2"
+    },
+    {
+      "type": "floor",
+      "x": 2672,
+      "y": 520,
+      "width": 64,
+      "height": 88
+    },
+    {
+      "type": "floor",
+      "x": 2616,
+      "y": 544,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 2728,
+      "y": 544,
+      "width": 104,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 2823,
+      "y": 566,
+      "width": 392,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 2704,
+      "y": 184,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 2752,
+      "y": 208,
+      "width": 336,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 3064,
+      "y": 184,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 3464,
+      "y": 544,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 3504,
+      "y": 560,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 2880,
+      "y": 472,
+      "width": 48,
+      "height": 112
+    },
+    {
+      "type": "floor",
+      "x": 2968,
+      "y": 240,
+      "width": 32,
+      "height": 96
+    },
+    {
+      "type": "floor",
+      "x": 3560,
+      "y": 472,
+      "width": 32,
+      "height": 136
+    },
+    {
+      "type": "floor",
+      "x": 3592,
+      "y": 544,
+      "width": 72,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 3664,
+      "y": 544,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "foe",
+      "x": 3616,
+      "y": 448,
+      "width": 96,
+      "height": 96,
+      "name": "Spawn"
+    },
+    {
+      "type": "floor",
+      "x": 3864,
+      "y": 328,
+      "width": 32,
+      "height": 136
+    },
+    {
+      "type": "floor",
+      "x": 4232,
+      "y": 312,
+      "width": 40,
+      "height": 128
+    },
+    {
+      "type": "floor",
+      "x": 3976,
+      "y": 360,
+      "width": 32,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 4120,
+      "y": 352,
+      "width": 32,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 4640,
+      "y": 88,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 5112,
+      "y": 80,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "foe",
+      "x": 4720,
+      "y": 24,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 4480,
+      "y": 24,
+      "width": 96,
+      "height": 96,
+      "name": "Spawner"
+    },
+    {
+      "type": "foe",
+      "x": 5184,
+      "y": 24,
+      "width": 96,
+      "height": 96,
+      "name": "Spawner"
+    },
+    {
+      "type": "floor",
+      "x": 5400,
+      "y": 80,
+      "width": 520,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 5864,
+      "y": 104,
+      "width": 120,
+      "height": 64
+    },
+    {
+      "type": "foe",
+      "x": 6368,
+      "y": 24,
+      "width": 96,
+      "height": 96,
+      "name": "Spawn"
+    },
+    {
+      "type": "foe",
+      "x": 6960,
+      "y": 432,
+      "width": 104,
+      "height": 168,
+      "name": "DeadlyArea"
+    },
+    {
+      "type": "foe",
+      "x": 5288,
+      "y": 472,
+      "width": 232,
+      "height": 128,
+      "name": "DeadlyArea"
+    },
+    {
+      "type": "floor",
+      "x": 4904,
+      "y": 512,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 4824,
+      "y": 304,
+      "width": 208,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 4616,
+      "y": 184,
+      "width": 40,
+      "height": 296
+    },
+    {
+      "type": "floor",
+      "x": 4624,
+      "y": 344,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "foe",
+      "x": 4600,
+      "y": 504,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 4824,
+      "y": 208,
+      "width": 96,
+      "height": 96,
+      "name": "Mage"
+    },
+    {
+      "type": "foe",
+      "x": 4936,
+      "y": 208,
+      "width": 96,
+      "height": 96,
+      "name": "Mage"
+    },
+    {
+      "type": "foe",
+      "x": 5000,
+      "y": 512,
+      "width": 256,
+      "height": 96,
+      "name": "DeadlyArea"
+    },
+    {
+      "type": "foe",
+      "x": 4456,
+      "y": 312,
+      "width": 128,
+      "height": 128,
+      "name": "Mirror",
+      "data2": "1"
+    },
+    {
+      "type": "foe",
+      "x": 1888,
+      "y": 504,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "floor",
+      "x": 2816,
+      "y": 240,
+      "width": 24,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 3016,
+      "y": 232,
+      "width": 24,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 8304,
+      "y": 384,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 8376,
+      "y": 384,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 8304,
+      "y": 528,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 8376,
+      "y": 528,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 8376,
+      "y": 456,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 8448,
+      "y": 384,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 8520,
+      "y": 384,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 8520,
+      "y": 456,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 8520,
+      "y": 528,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 8448,
+      "y": 528,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 8504,
+      "y": 280,
+      "width": 40,
+      "height": 120
+    },
+    {
+      "type": "floor",
+      "x": 8488,
+      "y": 352,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 7360,
+      "y": 256,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "foe",
+      "x": 7952,
+      "y": 208,
+      "width": 96,
+      "height": 96,
+      "name": "Mage"
+    },
+    {
+      "type": "floor",
+      "x": 9128,
+      "y": 16,
+      "width": 32,
+      "height": 464
+    },
+    {
+      "type": "floor",
+      "x": 1784,
+      "y": 160,
+      "width": 128,
+      "height": 64
+    },
+    {
+      "type": "foe",
+      "x": 1920,
+      "y": 96,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 2480,
+      "y": 88,
+      "width": 360,
+      "height": 96,
+      "name": "DeadlyArea"
+    },
+    {
+      "type": "floor",
+      "x": 2392,
+      "y": 120,
+      "width": 88,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 2768,
+      "y": 80,
+      "width": 96,
+      "height": 80
+    },
+    {
+      "type": "floor",
+      "x": 2432,
+      "y": 80,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 3384,
+      "y": 72,
+      "width": 64,
+      "height": 96
+    },
+    {
+      "type": "floor",
+      "x": 3352,
+      "y": 16,
+      "width": 64,
+      "height": 152
+    },
+    {
+      "type": "floor",
+      "x": 5632,
+      "y": -80,
+      "width": 64,
+      "height": 256
+    },
+    {
+      "type": "foe",
+      "x": 5520,
+      "y": -16,
       "width": 96,
       "height": 96,
       "name": "Mage"

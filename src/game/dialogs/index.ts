@@ -61,7 +61,7 @@ export const dialogs = {
         $fox("Avant ça, utilise Z pour sauter les obstacles."),
     ],
     fox4: [
-        $fox("Tu peux aussi d'accroupir avec la touche S."),
+        $fox("Tu peux aussi t'accroupir avec la touche S."),
     ],
     level1_fox5: [
         $fox("Tu es dans tes rêves."),
@@ -69,7 +69,7 @@ export const dialogs = {
         $fox("Pas de panique, il y a un ascenceur onirique à côté."),
     ],
     level1_fox6: [
-        $fox("Un crystal ! Utile pour revenir si tu meurs."),
+        $fox("Un crystal ! Tu reviendras ici si tu fais une bétise."),
     ],
     level1_fox7: [
         $fox("L'ascenceur est juste en face. Bouge la caisse rouge pour passer."),
@@ -79,7 +79,7 @@ export const dialogs = {
         $fox("Il est peut être un peu plus bas. On va devoir sauter."),
     ],
     l2_1: [
-        $fox("Qu'est ce que c'est passé ici ?!? Ce n'est pas normal."),
+        $fox("Qu'est ce qui c'est passé ici ?!? Ce n'est pas normal."),
         $kstore("A l'aide !"),
         $fox("Vite, quelqu'un appel à l'aide."),
     ],
@@ -107,6 +107,21 @@ export const dialogs = {
         $kstore("C'est pour ça qu'on doit le vaincre, mais il est trop fort pour nous."),
         $fox("Oh, mais j'ai un ami qui peut faire ça. Il habite juste en bas."),
         $kstore("Allons-y."),
+    ],
+    l3_loot: [
+        $chest("Vous obtenez une rose des rêves."),
+        $dragon("Parfait, reviens me donner la rose."),
+        $acidpop("Pourquoi une rose ?"),
+        $fox("Je ne sais pas, il va nous expliquer.")
+    ],
+    l3_loot_after: [
+        $dragon("Ah... merci. Je voulais voir une dernière fois une rose de rêve."),
+        $dragon("Réveuse, je suis vieux, je vais bientôt partir, mais je peux encore t'aider."),
+        $chest("Vous obtenez des ailes de dragon. Vous pouvez sauter 2 fois de suite."),
+        $dragon("Avec mes ailes, tu pourras atteindre des nouveaux endroits."),
+        $kstore("Mais on fait comment pour Escamort ? Nous avions besoin de vous."),
+        $dragon("La rêveuse va s'en charger. Je vais veiller sur elle le temps qu'il me reste."),
+        $fox("C'est de la folie, Sindra."),
     ],
     //
     end: [
