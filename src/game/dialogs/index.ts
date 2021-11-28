@@ -78,21 +78,6 @@ export const dialogs = {
         $fox("Je comprends pas. L'ascenseur devait être ici !"),
         $fox("Il est peut être un peu plus bas. On va devoir sauter."),
     ],
-    end: [
-        $fox("Nous y sommes... enfin."),
-        $fox("Arrivé en haut, tu pourras te réveiller."),
-        $fox("Quand a nous, il ne reste plus qu'à se dire aurevoir."),
-        $acidpop("Aurevoir rêveuse !"),
-        $kstore("Aurevoir."),
-        $fox("Ce n'est pas un adieu, on restera dans ta tête."),
-        $fox("Mais pour combien de temps ?"),
-        $shrek("Et mes cadeaux..."),
-        $dragon("Je les brûle tes cadeaux !"),
-        $shrek("Aurevoir rêveuse..."),
-        $dragon("Bon reveil."),
-        $fox("Reviens vite."),
-    ],
-
     l2_1: [
         $fox("Qu'est ce que c'est passé ici ?!? Ce n'est pas normal."),
         $kstore("A l'aide !"),
@@ -121,9 +106,23 @@ export const dialogs = {
         $acidpop("Escamort l'a volé. Il veut l'utiliser pour son armée."),
         $kstore("C'est pour ça qu'on doit le vaincre, mais il est trop fort pour nous."),
         $fox("Oh, mais j'ai un ami qui peut faire ça. Il habite juste en bas."),
-        $kstore("Allons-y alors."),
+        $kstore("Allons-y."),
     ],
-
+    //
+    end: [
+        $fox("Nous y sommes... enfin."),
+        $fox("Arrivé en haut, tu pourras te réveiller."),
+        $fox("Quand a nous, il ne reste plus qu'à se dire aurevoir."),
+        $acidpop("Aurevoir rêveuse !"),
+        $kstore("Aurevoir."),
+        $fox("Ce n'est pas un adieu, on restera dans ta tête."),
+        $fox("Mais pour combien de temps ?"),
+        $shrek("Et mes cadeaux..."),
+        $dragon("Je les brûle tes cadeaux !"),
+        $shrek("Aurevoir rêveuse..."),
+        $dragon("Bon reveil."),
+        $fox("Reviens vite."),
+    ],
     //
     loot_firebolt: $chest("Vous obtenez un parchemin de boule de feu. Appuyez sur E pour lancer des flammes."),
     loot_doublejump: $chest("Vous obtenez des ailes de dragon. Vous pouvez sauter 2 fois de suite."),

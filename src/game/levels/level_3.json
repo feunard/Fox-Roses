@@ -14,7 +14,7 @@
       "type": "floor",
       "x": -1000,
       "y": 600,
-      "width": 8000,
+      "width": 10000,
       "height": 32
     },
     {
@@ -39,11 +39,580 @@
     },
     {
       "type": "event",
-      "x": 884,
-      "y": 345,
+      "x": 7432,
+      "y": 320,
       "width": 136,
       "height": 320,
       "event": "unlock_doublejump"
+    },
+    {
+      "type": "floor",
+      "x": 784,
+      "y": 432,
+      "width": 424,
+      "height": 40
+    },
+    {
+      "type": "floor",
+      "x": 664,
+      "y": 320,
+      "width": 200,
+      "height": 40
+    },
+    {
+      "type": "floor",
+      "x": 760,
+      "y": 176,
+      "width": 248,
+      "height": 152
+    },
+    {
+      "type": "floor",
+      "x": 872,
+      "y": 136,
+      "width": 520,
+      "height": 48
+    },
+    {
+      "type": "floor",
+      "x": 1070,
+      "y": 16,
+      "width": 64,
+      "height": 136
+    },
+    {
+      "type": "floor",
+      "x": 1200,
+      "y": 376,
+      "width": 64,
+      "height": 96
+    },
+    {
+      "type": "floor",
+      "x": 1624,
+      "y": 336,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 1680,
+      "y": 192,
+      "width": 64,
+      "height": 240
+    },
+    {
+      "type": "floor",
+      "x": 1744,
+      "y": 192,
+      "width": 528,
+      "height": 104
+    },
+    {
+      "type": "floor",
+      "x": 3200,
+      "y": 528,
+      "width": 280,
+      "height": 72
+    },
+    {
+      "type": "npc",
+      "x": 3224,
+      "y": 272,
+      "width": 256,
+      "height": 256,
+      "animation": "dragon_idle",
+      "dialogs": [
+        ""
+      ],
+      "name": "dragon_idle"
+    },
+    {
+      "type": "floor",
+      "x": 2184,
+      "y": 152,
+      "width": 1720,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 4224,
+      "y": 120,
+      "width": 2024,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 7320,
+      "y": 224,
+      "width": 64,
+      "height": 176
+    },
+    {
+      "type": "floor",
+      "x": 7368,
+      "y": 304,
+      "width": 928,
+      "height": 72
+    },
+    {
+      "type": "floor",
+      "x": 8160,
+      "y": 288,
+      "width": 64,
+      "height": 408
+    },
+    {
+      "type": "floor",
+      "x": 8232,
+      "y": 384,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 8232,
+      "y": 456,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 8232,
+      "y": 528,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 9048,
+      "y": 416,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 9072,
+      "y": 320,
+      "width": 64,
+      "height": 280
+    },
+    {
+      "type": "floor",
+      "x": 8928,
+      "y": 520,
+      "width": 64,
+      "height": 128
+    },
+    {
+      "type": "floor",
+      "x": 8880,
+      "y": 480,
+      "width": 64,
+      "height": 232
+    },
+    {
+      "type": "foe",
+      "x": 3712,
+      "y": 56,
+      "width": 96,
+      "height": 96,
+      "name": "Spawn"
+    },
+    {
+      "type": "foe",
+      "x": 3888,
+      "y": 400,
+      "width": 368,
+      "height": 144,
+      "name": "DeadlyArea"
+    },
+    {
+      "type": "floor",
+      "x": 7584,
+      "y": 552,
+      "width": 224,
+      "height": 64
+    },
+    {
+      "type": "npc",
+      "x": 7632,
+      "y": 424,
+      "width": 128,
+      "height": 128,
+      "animation": "rose",
+      "dialogs": [
+        ""
+      ],
+      "name": "rose"
+    },
+    {
+      "type": "floor",
+      "x": 8680,
+      "y": 544,
+      "width": 216,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 9136,
+      "y": 536,
+      "width": 408,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 9120,
+      "y": 480,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 7800,
+      "y": 336,
+      "width": 64,
+      "height": 136
+    },
+    {
+      "type": "floor",
+      "x": 7824,
+      "y": 448,
+      "width": 64,
+      "height": 200
+    },
+    {
+      "type": "floor",
+      "x": 7944,
+      "y": 504,
+      "width": 64,
+      "height": 24
+    },
+    {
+      "type": "floor",
+      "x": 7944,
+      "y": 440,
+      "width": 64,
+      "height": 24
+    },
+    {
+      "type": "floor",
+      "x": 8008,
+      "y": 456,
+      "width": 16,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 8024,
+      "y": 440,
+      "width": 64,
+      "height": 24
+    },
+    {
+      "type": "floor",
+      "x": 8024,
+      "y": 504,
+      "width": 64,
+      "height": 24
+    },
+    {
+      "type": "floor",
+      "x": 8088,
+      "y": 456,
+      "width": 16,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 7928,
+      "y": 456,
+      "width": 24,
+      "height": 64
+    },
+    {
+      "type": "foe",
+      "x": 7928,
+      "y": 504,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "npc",
+      "x": 9192,
+      "y": 280,
+      "width": 256,
+      "height": 256,
+      "animation": "dragon_idle",
+      "dialogs": [
+        ""
+      ],
+      "name": "dragon_idle"
+    },
+    {
+      "type": "npc",
+      "x": 8864,
+      "y": 384,
+      "width": 96,
+      "height": 96,
+      "animation": "kstore",
+      "dialogs": [
+        ""
+      ],
+      "name": "kstore"
+    },
+    {
+      "type": "npc",
+      "x": 8808,
+      "y": 480,
+      "width": 64,
+      "height": 64,
+      "animation": "acidpop",
+      "dialogs": [
+        ""
+      ],
+      "name": "acidpop"
+    },
+    {
+      "type": "npc",
+      "x": 9024,
+      "y": 232,
+      "width": 64,
+      "height": 64,
+      "animation": "fox",
+      "dialogs": [
+        ""
+      ],
+      "name": "fox"
+    },
+    {
+      "type": "floor",
+      "x": 9144,
+      "y": 592,
+      "width": 64,
+      "height": 136
+    },
+    {
+      "type": "floor",
+      "x": 9168,
+      "y": 696,
+      "width": 200,
+      "height": 64
+    },
+    {
+      "type": "npc",
+      "x": 9208,
+      "y": 568,
+      "width": 128,
+      "height": 128,
+      "animation": "shrek",
+      "dialogs": [
+        ""
+      ],
+      "name": "shrek"
+    },
+    {
+      "type": "floor",
+      "x": 6520,
+      "y": 80,
+      "width": 400,
+      "height": 40
+    },
+    {
+      "type": "floor",
+      "x": 7104,
+      "y": 160,
+      "width": 40,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 5504,
+      "y": 448,
+      "width": 168,
+      "height": 152
+    },
+    {
+      "type": "floor",
+      "x": 5444,
+      "y": 544,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "foe",
+      "x": 5536,
+      "y": 352,
+      "width": 96,
+      "height": 96,
+      "name": "Spawn"
+    },
+    {
+      "type": "floor",
+      "x": 4456,
+      "y": 544,
+      "width": 64,
+      "height": 136
+    },
+    {
+      "type": "floor",
+      "x": 4696,
+      "y": 544,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 4944,
+      "y": 544,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 6128,
+      "y": 528,
+      "width": 224,
+      "height": 24
+    },
+    {
+      "type": "floor",
+      "x": 6872,
+      "y": 528,
+      "width": 64,
+      "height": 72
+    },
+    {
+      "type": "floor",
+      "x": 6128,
+      "y": 472,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 6352,
+      "y": 480,
+      "width": 48,
+      "height": 72
+    },
+    {
+      "type": "floor",
+      "x": 6736,
+      "y": 496,
+      "width": 40,
+      "height": 40
+    },
+    {
+      "type": "floor",
+      "x": 6232,
+      "y": 120,
+      "width": 312,
+      "height": 24
+    },
+    {
+      "type": "floor",
+      "x": 6960,
+      "y": 368,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 6912,
+      "y": 312,
+      "width": 64,
+      "height": 288
+    },
+    {
+      "type": "floor",
+      "x": 6712,
+      "y": 312,
+      "width": 200,
+      "height": 64
+    },
+    {
+      "type": "foe",
+      "x": 6320,
+      "y": 336,
+      "width": 32,
+      "height": 192,
+      "name": "Block"
+    },
+    {
+      "type": "foe",
+      "x": 6680,
+      "y": 312,
+      "width": 32,
+      "height": 216,
+      "name": "Block"
+    },
+    {
+      "type": "floor",
+      "x": 5792,
+      "y": 368,
+      "width": 256,
+      "height": 24
+    },
+    {
+      "type": "floor",
+      "x": 5656,
+      "y": 520,
+      "width": 64,
+      "height": 88
+    },
+    {
+      "type": "floor",
+      "x": 6448,
+      "y": 560,
+      "width": 40,
+      "height": 48
+    },
+    {
+      "type": "floor",
+      "x": 6536,
+      "y": 528,
+      "width": 240,
+      "height": 24
+    },
+    {
+      "type": "floor",
+      "x": 6536,
+      "y": 488,
+      "width": 56,
+      "height": 40
+    },
+    {
+      "type": "floor",
+      "x": 6424,
+      "y": 328,
+      "width": 64,
+      "height": 32
+    },
+    {
+      "type": "foe",
+      "x": 6408,
+      "y": 232,
+      "width": 96,
+      "height": 96,
+      "name": "Mage"
+    },
+    {
+      "type": "foe",
+      "x": 5840,
+      "y": 504,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 6736,
+      "y": 216,
+      "width": 96,
+      "height": 96,
+      "name": "Mage"
     }
   ]
 }
