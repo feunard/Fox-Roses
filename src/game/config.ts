@@ -67,7 +67,7 @@ export type keyof_typeof_config = keyof typeof config;
 if (localStorage.getItem("$config")) {
     try {
         const obj = JSON.parse(localStorage.getItem("$config") || "{}");
-        if (!localStorage.getItem("GameState")) {
+        if (localStorage.getItem("GameState") !== "4") {
             delete obj["levels"];
         }
         Object.assign(config, obj);

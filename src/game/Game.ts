@@ -107,7 +107,7 @@ export class Game {
         this.next(id);
         this.preview = true;
         this.engine.start(this.loader);
-        this.engine.goToScene('level');
+        this.engine.goToScene('level' + id);
 
         this.state = GameState.LEVEL;
     }
@@ -140,6 +140,8 @@ export class Game {
         }
 
         if (this.levelId === config.levels.length) {
+            config.roses[this.levelId] = 1;
+            config_set(config);
             console.log("game::next_level game is over");
             this.levelId = 0;
             this.engine.stop();
@@ -152,7 +154,7 @@ export class Game {
 
     start(levelId = 0) {
         this.next(levelId);
-        this.engine.goToScene('level');
+        this.engine.goToScene('level' + levelId);
         this.engine.start();
         this.state = GameState.LEVEL;
     }
