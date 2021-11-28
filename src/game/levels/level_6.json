@@ -1,6 +1,6 @@
 {
-  "name": "Kstore & Acidpop",
-  "music": "music_army",
+  "name": "Escamort",
+  "music": "music_boss",
   "entities": [
     {
       "type": "floor",
@@ -14,7 +14,7 @@
       "type": "floor",
       "x": -1000,
       "y": 600,
-      "width": 8000,
+      "width": 5000,
       "height": 8
     },
     {
@@ -36,14 +36,6 @@
       "data2": "10",
       "data3": "500",
       "data4": "boom"
-    },
-    {
-      "type": "event",
-      "x": 884,
-      "y": 345,
-      "width": 136,
-      "height": 320,
-      "event": "unlock_firebolt"
     }
   ]
 }

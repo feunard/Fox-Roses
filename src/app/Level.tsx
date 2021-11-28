@@ -50,7 +50,6 @@ export class Level extends React.Component<ILevelProps, LevelState> {
                 </div>
                 <div className="Level_overlay overlay"/>
                 <div
-                    onClick={() => this.props.onNext()}
                     className={"Level_dialog " + (this.props.message ? " visible" : "")}>
                     <div className="Level_avatar">
                         {this.props.message && images[this.props.message?.icon as any] &&

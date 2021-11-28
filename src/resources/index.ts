@@ -2,6 +2,7 @@ import {ImageSource, Sound} from "excalibur";
 
 export const images = {
     bolt: new ImageSource(require("./bolt.png").default),
+    bolt2: new ImageSource(require("./bolt2.png").default),
     hero_idle: new ImageSource(require("./hero_idle.png").default),
     heroExias_idle: new ImageSource(require("./Exias_idleV4.png").default),
     hero_run: new ImageSource(require("./hero_run.png").default),
@@ -61,5 +62,8 @@ export const sounds = {
     //
     music_1: new Sound(require("./audio/crystalsong.mp3").default),
     music_army: new Sound(require("./audio/music_army.ogg").default),
-    music_end: new Sound(require("./audio/end.ogg").default),
+    music_dragon: new Sound(require("./audio/music_dragon.mp3").default),
+    music_soldier: new Sound(require("./audio/music_soldier.ogg").default),
+    music_boss: new Sound(require("./audio/music_boss.mp3").default),
+    music_end: new Sound(require("./audio/music_end.ogg").default),
 }

@@ -23,7 +23,7 @@ export class Continue extends React.Component<{}, IContinueState> {
                     }}>
                         <span className="left">Chapitre {i + 1} - {l.name}</span>
                         <span className="right">
-                            {config.roses[i]} / 3
+                            {config.roses[i] * 6} / 6
                         </span>
                     </button>
                 )}

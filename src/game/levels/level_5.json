@@ -1,6 +1,6 @@
 {
-  "name": "Kstore & Acidpop",
-  "music": "music_army",
+  "name": "Army",
+  "music": "music_soldier",
   "entities": [
     {
       "type": "floor",
@@ -36,14 +36,6 @@
       "data2": "10",
       "data3": "500",
       "data4": "boom"
-    },
-    {
-      "type": "event",
-      "x": 884,
-      "y": 345,
-      "width": 136,
-      "height": 320,
-      "event": "unlock_firebolt"
     }
   ]
 }

@@ -1,115 +1,212 @@
 {
-    "name": "Réveil",
-    "full": true,
-    "entities": [
-        {
-            "type": "floor",
-            "x": 0,
-            "y": -1000,
-            "width": 32,
-            "height": 5000,
-            "color": "000000"
-        },
-        {
-            "type": "floor",
-            "x": 0,
-            "y": 3864,
-            "width": 1016,
-            "height": 8
-        },
-        {
-            "type": "event",
-            "event": "start",
-            "x": 80,
-            "y": 3456,
-            "width": 64,
-            "height": 64
-        },
-        {
-            "type": "floor",
-            "x": 1016,
-            "y": 3864,
-            "width": 688,
-            "height": 64,
-            "move": {
-                "y": -5000,
-                "x": 0,
-                "speed": 50,
-                "hero": true
-            }
-        },
-        {
-            "type": "event",
-            "x": 936,
-            "y": 3640,
-            "width": 856,
-            "height": 64,
-            "event": "play_music",
-            "data1": "music_end"
-        },
-        {
-            "type": "event",
-            "x": 1040,
-            "y": 3840,
-            "width": 648,
-            "height": 48,
-            "event": "shake",
-            "data1": "10",
-            "data2": "10",
-            "data3": "1000",
-            "data4": "boom"
-        },
-        {
-            "type": "floor",
-            "x": 992,
-            "y": -168,
-            "width": 24,
-            "height": 3928,
-            "color": "#ffffff"
-        },
-        {
-            "type": "floor",
-            "x": 1704,
-            "y": -112,
-            "width": 24,
-            "height": 4040,
-            "color": "#ffffff"
-        },
-        {
-            "type": "event",
-            "x": 944,
-            "y": 3544,
-            "width": 824,
-            "height": 80,
-            "event": "dialog",
-            "data1": "end"
-        },
-        {
-            "type": "event",
-            "x": 856,
-            "y": 608,
-            "width": 1000,
-            "height": 64,
-            "event": "the_end"
-        },
-        {
-            "type": "floor",
-            "x": 816,
-            "y": 3168,
-            "width": 176,
-            "height": 64
-        },
-        {
-            "type": "npc",
-            "x": 904,
-            "y": 3080,
-            "width": 64,
-            "height": 64,
-            "animation": "fox",
-            "dialogs": [
-                ""
-            ],
-            "name": "fox"
-        }
-    ]
+  "name": "Réveil",
+  "full": true,
+  "entities": [
+    {
+      "type": "floor",
+      "x": 0,
+      "y": -1000,
+      "width": 32,
+      "height": 5000,
+      "color": "000000"
+    },
+    {
+      "type": "floor",
+      "x": 0,
+      "y": 3864,
+      "width": 1016,
+      "height": 8
+    },
+    {
+      "type": "event",
+      "event": "start",
+      "x": 80,
+      "y": 3456,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 1016,
+      "y": 3864,
+      "width": 688,
+      "height": 64,
+      "move": {
+        "y": -5000,
+        "x": 0,
+        "speed": 50,
+        "hero": true
+      }
+    },
+    {
+      "type": "event",
+      "x": 936,
+      "y": 3640,
+      "width": 856,
+      "height": 64,
+      "event": "play_music",
+      "data1": "music_end"
+    },
+    {
+      "type": "event",
+      "x": 1040,
+      "y": 3840,
+      "width": 648,
+      "height": 48,
+      "event": "shake",
+      "data1": "10",
+      "data2": "10",
+      "data3": "1000",
+      "data4": "boom"
+    },
+    {
+      "type": "floor",
+      "x": 992,
+      "y": -168,
+      "width": 24,
+      "height": 3928,
+      "color": "#ffffff"
+    },
+    {
+      "type": "floor",
+      "x": 1704,
+      "y": -112,
+      "width": 24,
+      "height": 4040,
+      "color": "#ffffff"
+    },
+    {
+      "type": "event",
+      "x": 944,
+      "y": 3544,
+      "width": 824,
+      "height": 80,
+      "event": "dialog",
+      "data1": "end"
+    },
+    {
+      "type": "event",
+      "x": 856,
+      "y": 608,
+      "width": 1000,
+      "height": 64,
+      "event": "the_end"
+    },
+    {
+      "type": "floor",
+      "x": 816,
+      "y": 3168,
+      "width": 176,
+      "height": 64
+    },
+    {
+      "type": "npc",
+      "x": 904,
+      "y": 3080,
+      "width": 64,
+      "height": 64,
+      "animation": "fox",
+      "dialogs": [
+        ""
+      ],
+      "name": "fox"
+    },
+    {
+      "type": "floor",
+      "x": 760,
+      "y": 2408,
+      "width": 232,
+      "height": 48
+    },
+    {
+      "type": "npc",
+      "x": 888,
+      "y": 2312,
+      "width": 96,
+      "height": 96,
+      "animation": "kstore",
+      "dialogs": [
+        ""
+      ],
+      "name": "kstore"
+    },
+    {
+      "type": "npc",
+      "x": 808,
+      "y": 2344,
+      "width": 64,
+      "height": 64,
+      "animation": "acidpop",
+      "dialogs": [
+        ""
+      ],
+      "name": "acidpop"
+    },
+    {
+      "type": "npc",
+      "x": 1744,
+      "y": 2016,
+      "width": 128,
+      "height": 128,
+      "animation": "shrek",
+      "dialogs": [
+        ""
+      ],
+      "name": "shrek"
+    },
+    {
+      "type": "npc",
+      "x": 1728,
+      "y": 1256,
+      "width": 256,
+      "height": 256,
+      "animation": "dragon_idle",
+      "dialogs": [
+        ""
+      ],
+      "name": "dragon_idle"
+    },
+    {
+      "type": "floor",
+      "x": 1712,
+      "y": 1512,
+      "width": 344,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 1704,
+      "y": 1552,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 1728,
+      "y": 2144,
+      "width": 216,
+      "height": 16
+    },
+    {
+      "type": "floor",
+      "x": 872,
+      "y": 2440,
+      "width": 64,
+      "height": 104
+    },
+    {
+      "type": "floor",
+      "x": 920,
+      "y": 2504,
+      "width": 72,
+      "height": 40
+    },
+    {
+      "type": "floor",
+      "x": 1904,
+      "y": 2120,
+      "width": 64,
+      "height": 64
+    }
+  ]
 }

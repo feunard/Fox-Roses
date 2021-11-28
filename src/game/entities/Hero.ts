@@ -1,4 +1,4 @@
-import {Actor, Animation, CollisionType, Color, Engine, Input, Shape, Side, vec, Vector} from 'excalibur';
+import {Actor, Animation, CollisionType, Color, Engine, Entity, Input, Shape, Side, vec, Vector} from 'excalibur';
 import {
     hero_attack_down_sheet,
     hero_attack_jump_sheet,
@@ -49,6 +49,7 @@ export class Hero extends Actor {
     spawn: Vector;
     vel_default = vec(0, 0);
     floor = new FloorAware(this);
+    smash: Entity | null = null;
 
     constructor(
         position: Vector,
@@ -113,6 +114,14 @@ export class Hero extends Actor {
         this.animRunRight.scale = default_scale;
 
         this.register()
+
+        const smash_list = ["mage", "war"]
+
+        this.on("precollision", (ev) => {
+            if (ev.side === Side.Bottom && smash_list.includes(ev.other.name)) {
+                this.smash = ev.other;
+            }
+        })
     }
 
     register() {
@@ -169,14 +178,18 @@ export class Hero extends Actor {
         // Reset x velocity
 
         this.vel.x = 0;
-
         if (!this.wasOnGround && this.onGround) {
             this.wasOnGround = true;
             if (kb.isHeld("down")) {
                 audio.play("hit_light")
                 game.engine.currentScene.camera.shake(10, 10, 200)
+                if (this.smash) {
+                    this.smash.kill();
+                }
             }
         }
+
+        this.smash = null;
 
         if (engine.input.keyboard.isHeld(Input.Keys.Escape)) {
             game.stop();

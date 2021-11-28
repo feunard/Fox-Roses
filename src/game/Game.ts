@@ -1,7 +1,7 @@
 import {Color, DisplayMode, Engine, Loader, Physics, Vector} from "excalibur";
 import {images, sounds} from "../resources";
 import {Level} from "./Level";
-import {config} from "./config";
+import {config, config_set} from "./config";
 import {ILevel, IMessage} from "./interfaces";
 import {audio} from "./audio";
 
@@ -129,6 +129,8 @@ export class Game {
             console.log("game::next_level (set one)");
             this.levelId = levelId;
         } else {
+            config.roses[this.levelId] = 1;
+            config_set(config);
             console.log("game::next_level (inc +1)");
             this.levelId += 1;
         }

@@ -253,6 +253,19 @@ export class Editor extends React.Component<{}, EditorState> {
                     </button>
                     <button
                         onClick={() => {
+                            localStorage.setItem("GameState", "4");
+                            window.location.href = "/";
+                        }}> dev
+                    </button>
+                    <button
+                        onClick={() => {
+                            localStorage.removeItem("GameState");
+                            localStorage.removeItem("GameLevel");
+                            window.location.href = "/";
+                        }}> nodev
+                    </button>
+                    <button
+                        onClick={() => {
                             if (this.history.length) {
                                 this.setState({entities: JSON.parse(this.history[0])})
                                 this.history.splice(0, 1);
@@ -470,7 +483,10 @@ export class Editor extends React.Component<{}, EditorState> {
         let size = 64;
         if (this.state.type === "npc") {
             const sizes = {
-                acidpop: 64, kstore: 96, dragon_idle: 256, shrek: 128
+                acidpop: 64,
+                kstore: 96,
+                dragon_idle: 256,
+                shrek: 128
             }
             size = sizes[this.state.type_npc] || animations[this.state.type_npc].height || 128;
         }

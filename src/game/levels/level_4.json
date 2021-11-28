@@ -1,6 +1,6 @@
 {
-  "name": "Kstore & Acidpop",
-  "music": "music_army",
+  "name": "Cadeau",
+  "music": "music_1",
   "entities": [
     {
       "type": "floor",
@@ -14,7 +14,7 @@
       "type": "floor",
       "x": -1000,
       "y": 600,
-      "width": 8000,
+      "width": 5000,
       "height": 8
     },
     {
@@ -43,7 +43,7 @@
       "y": 345,
       "width": 136,
       "height": 320,
-      "event": "unlock_firebolt"
+      "event": "unlock_speed"
     }
   ]
 }

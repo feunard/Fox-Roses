@@ -1,49 +1,43 @@
-const fox = {
-    "icon": "avatar_fox",
-    "sound": "s278",
-    "author": "Renard",
-}
-const $fox = (content: string) => ({
+export const $fox = (content: string) => ({
     "icon": "avatar_fox",
     "sound": "s278",
     "author": "Renard", content
 })
-const $shrek = (content: string) => ({
+export const $shrek = (content: string) => ({
     "icon": "avatar_shrek",
     "sound": "s279",
     "author": "Shrek", content
 })
-const $acidpop = (content: string) => ({
+export const $acidpop = (content: string) => ({
     "icon": "avatar_acidpop",
     "sound": "s270",
     "author": "Acidpop",
     content
 })
-const $kstore = (content: string) => ({
+export const $kstore = (content: string) => ({
     "icon": "avatar_kstore",
     "sound": "s268",
     "author": "Kstore",
     content
 })
-const $dragon = (content: string) => ({
+export const $dragon = (content: string) => ({
     "icon": "avatar_dragon",
     "sound": "s283",
     "author": "Sindragoseur",
     content
 })
-const $skeleton = (content: string) => ({
+export const $skeleton = (content: string) => ({
     "icon": "avatar_skeleton",
     "sound": "s281",
     "author": "Escamort",
     content
 })
-const $chest = (content: string) => ({
+export const $chest = (content: string) => ({
     "icon": "avatar_chest",
     "sound": "s2045",
     "author": "~ ! ~",
     content
 })
-
 
 export const dialogs = {
     test: [
@@ -55,90 +49,53 @@ export const dialogs = {
         $skeleton("Je suis Escamort & ceci est un test !"),
         $chest("Vous venez de terminer le test !"),
     ],
-
     fox1: [
-        {
-            ...fox,
-            "content": "Oh, encore un visteur tombé du ciel."
-        },
-        {
-            ...fox,
-            "content": "Essaye d'aller à droite avec la touche D/Droite."
-        }
+        $fox("Hey, c'est rare de voir quelqu'un tomber ici."),
+        $fox("Essaye d'aller à droite avec la touche D pour voir ?")
     ],
     fox2: [
-        {
-            ...fox,
-            "content": "Non, je t'ai dit d'aller à droite, pas à gauche."
-        }
+        $fox("Non, je t'ai dit d'aller à droite, pas à gauche.")
     ],
     fox3: [
-        {
-            ...fox,
-            "content": "Bien. Peut être que tu te demandes où tu es ?"
-        },
-        {
-            ...fox,
-            "content": "Avant de répondre, utilise Z/Haut pour sauter les obstacles."
-        }
+        $fox("Peut être que tu te demandes où tu es ?"),
+        $fox("Avant ça, utilise Z pour sauter les obstacles."),
     ],
     fox4: [
-        {
-            ...fox,
-            content: "Ah, tu peux aussi d'accroupir avec la touche S/Bas. Même si tu viens de sauter."
-        }
+        $fox("Tu peux aussi d'accroupir avec la touche S."),
     ],
-    level1$fox5: [
-        {
-            ...fox,
-            content: "Tu es dans l'onirisme. Tes rêves en gros."
-        },
-        {
-            ...fox,
-            content: "Rigolo, tu as l'air consciente. Mais tu ne peux pas te réveiller."
-        },
-        {
-            ...fox,
-            content: "Tu es bloquée dans cette noirceur, avec moi."
-        }
+    level1_fox5: [
+        $fox("Tu es dans tes rêves."),
+        $fox("Tu es consciente mais tu ne peux pas te réveiller."),
+        $fox("Pas de panique, il y a un ascenceur onirique à côté."),
     ],
-    level1$fox6: [
-        $fox("Les crystaux de rêves sont utiles pour revenir si tu es perdu."),
-        $fox("Par exemple, ne va pas dans les bulles de cauchemard."),
+    level1_fox6: [
+        $fox("Un crystal ! Utile pour revenir si tu es perdu."),
+        $fox("Par exemple, si tu vas dans des bulles de cauchemard."),
     ],
-    level1$fox7: [
-        $fox("L'ascenceur est face. Bouge la caisse pour passer."),
+    level1_fox7: [
+        $fox("L'ascenceur est juste en face. Bouge la caisse pour passer."),
+        $fox("Tu rêves trop profondément pour te reveiller, il faut qu'on monte."),
     ],
-    level1$fox_end: [
-        {
-            ...fox,
-            content: "Je comprends pas. L'ascenseur devait être ici."
-        },
-        {
-            ...fox,
-            content: "Il est peut être un peu plus bas. On va sauter dans le vide."
-        }
+    level1_fox_end: [
+        $fox("Je comprends pas. L'ascenseur devait être ici !"),
+        $fox("Il est peut être un peu plus bas. On va devoir sauter."),
     ],
     end: [
-        {
-            ...fox,
-            content: "Nous y sommes enfin."
-        },
-        {
-            ...fox,
-            content: "Arrivé en haut, tu pourras te réveiller comme promis."
-        },
-        {
-            ...fox,
-            content: "Bon bah, c'était sympathique cette petite aventure ensemble."
-        },
-        {
-            ...fox,
-            content: "N'oublie pas de dormir, j'espère qu'on se reverra."
-        },
-        {
-            ...fox,
-            content: "Tu vas me manquer..."
-        }
-    ]
+        $fox("Nous y sommes... enfin."),
+        $fox("Arrivé en haut, tu pourras te réveiller."),
+        $fox("Quand a nous, il ne reste plus qu'à se dire aurevoir."),
+        $acidpop("Aurevoir rêveuse !"),
+        $kstore("Aurevoir."),
+        $fox("Ce n'est pas un adieu, on restera dans ta tête."),
+        $fox("Mais pour combien de temps ?"),
+        $shrek("Et mes cadeaux..."),
+        $dragon("Je les brûle tes cadeaux !"),
+        $shrek("Aurevoir rêveuse..."),
+        $dragon("Bon reveil."),
+        $fox("Reviens vite."),
+    ],
+    //
+    loot_firebolt: $chest("Vous obtenez un parchemin de boule de feu. Appuyez sur E pour lancer des flammes."),
+    loot_doublejump: $chest("Vous obtenez des ailes de dragon. Vous pouvez sauter 2 fois de suite."),
+    loot_speed: $chest("Vous obtenez des chaussures de sport Balancica. Vous courrez maintenant plus vite."),
 }
