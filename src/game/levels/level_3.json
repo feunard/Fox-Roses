@@ -38,14 +38,6 @@
       "data4": "boom"
     },
     {
-      "type": "event",
-      "x": 7432,
-      "y": 320,
-      "width": 136,
-      "height": 320,
-      "event": "unlock_doublejump"
-    },
-    {
       "type": "floor",
       "x": 784,
       "y": 432,
@@ -889,16 +881,16 @@
     },
     {
       "type": "floor",
-      "x": 4640,
+      "x": 4592,
       "y": 88,
-      "width": 64,
+      "width": 104,
       "height": 64
     },
     {
       "type": "floor",
-      "x": 5112,
+      "x": 5032,
       "y": 80,
-      "width": 64,
+      "width": 120,
       "height": 64
     },
     {
@@ -1232,6 +1224,34 @@
       "width": 96,
       "height": 96,
       "name": "Mage"
+    },
+    {
+      "type": "floor",
+      "x": 32,
+      "y": 136,
+      "width": 112,
+      "height": 24
+    },
+    {
+      "type": "floor",
+      "x": 56,
+      "y": 472,
+      "width": 40,
+      "height": 288
+    },
+    {
+      "type": "floor",
+      "x": 0,
+      "y": 504,
+      "width": 80,
+      "height": 40
+    },
+    {
+      "type": "floor",
+      "x": 80,
+      "y": 16,
+      "width": 40,
+      "height": 160
     }
   ]
 }
