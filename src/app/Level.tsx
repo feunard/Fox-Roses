@@ -55,7 +55,7 @@ export class Level extends React.Component<ILevelProps, LevelState> {
                 <div
                     onClick={() => {
                         if (game.levelId !== 6) {
-                            game.next_message();
+                            // game.next_message();
                         }
                     }}
                     className={"Level_dialog " + (this.props.message ? " visible" : "")}>

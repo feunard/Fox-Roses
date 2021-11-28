@@ -1171,8 +1171,8 @@
       "type": "foe",
       "x": 2480,
       "y": 88,
-      "width": 360,
-      "height": 96,
+      "width": 256,
+      "height": 64,
       "name": "DeadlyArea"
     },
     {
@@ -1184,14 +1184,14 @@
     },
     {
       "type": "floor",
-      "x": 2768,
-      "y": 80,
+      "x": 2736,
+      "y": 72,
       "width": 96,
       "height": 80
     },
     {
       "type": "floor",
-      "x": 2432,
+      "x": 2416,
       "y": 80,
       "width": 64,
       "height": 64
@@ -1259,6 +1259,20 @@
       "y": 168,
       "width": 32,
       "height": 200
+    },
+    {
+      "type": "floor",
+      "x": 7112,
+      "y": 480,
+      "width": 64,
+      "height": 120
+    },
+    {
+      "type": "floor",
+      "x": 7216,
+      "y": 552,
+      "width": 64,
+      "height": 64
     }
   ]
 }
