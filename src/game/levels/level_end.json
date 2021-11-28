@@ -40,9 +40,9 @@
     },
     {
       "type": "event",
-      "x": 936,
+      "x": 992,
       "y": 3640,
-      "width": 856,
+      "width": 792,
       "height": 64,
       "event": "play_music",
       "data1": "music_end"
@@ -77,9 +77,9 @@
     },
     {
       "type": "event",
-      "x": 944,
+      "x": 992,
       "y": 3544,
-      "width": 824,
+      "width": 776,
       "height": 80,
       "event": "dialog",
       "data1": "end"
@@ -207,6 +207,18 @@
       "y": 2120,
       "width": 64,
       "height": 64
+    },
+    {
+      "type": "npc",
+      "x": 1440,
+      "y": 3736,
+      "width": 128,
+      "height": 128,
+      "animation": "rose",
+      "dialogs": [
+        ""
+      ],
+      "name": "rose"
     }
   ]
 }
