@@ -117,6 +117,7 @@ export class Game {
     }
 
     next(levelId = -1) {
+        this.stop_messages();
         audio.stop();
         console.log("game::next_level");
 
@@ -165,6 +166,12 @@ export class Game {
         this.engine.stop();
         audio.stop();
         this.state = GameState.TITLE;
+    }
+
+    stop_messages() {
+        clearTimeout(this.message_timer);
+        this.messages = [];
+        this.callbacksOnMessage.forEach(c => c());
     }
 
     next_message() {

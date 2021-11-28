@@ -76,8 +76,10 @@ export class Hero extends Actor {
         this.updateBoxCollider();
     }
 
+    onFloor = false;
+
     get onGround(): boolean {
-        return this.vel.y === 0;
+        return this.vel.y === 0 && this.onFloor;
     }
 
     onInitialize(engine: Engine) {
@@ -120,6 +122,9 @@ export class Hero extends Actor {
         this.on("precollision", (ev) => {
             if (ev.side === Side.Bottom && smash_list.includes(ev.other.name)) {
                 this.smash = ev.other;
+            }
+            if (ev.side === Side.Bottom) {
+                this.onFloor = true;
             }
         })
     }
@@ -213,7 +218,7 @@ export class Hero extends Actor {
         this.handleJump(kb);
         this.handleFall(kb);
         this.handleIdle();
-        this.end()
+        this.end();
     }
 
     end() {
@@ -221,6 +226,7 @@ export class Hero extends Actor {
         this.vel.y += this.vel_default.y;
         this.floor.update();
         this.wasOnGround = this.onGround;
+        this.onFloor = false;
         this.vel_default = vec(0, 0);
     }
 
