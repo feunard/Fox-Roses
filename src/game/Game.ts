@@ -141,6 +141,9 @@ export class Game {
             config_set(config);
             console.log("game::next_level (inc +1)");
             this.levelId += 1;
+            this.engine.currentScene.entities.forEach(a => this.engine.currentScene.remove(a));
+            this.engine.currentScene.actors.forEach(a => this.engine.currentScene.contains(a) && this.engine.currentScene.remove(a));
+            this.engine.currentScene.triggers.forEach(a => this.engine.currentScene.remove(a));
             this.engine.goToScene('level' + this.levelId);
         }
 

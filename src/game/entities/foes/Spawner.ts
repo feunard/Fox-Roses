@@ -25,6 +25,7 @@ export class Spawner extends Actor {
         this.graphics.add("idle", animations.mirror);
         this.graphics.use("idle");
         this.clock = setInterval(() => {
+            console.log("toto")
             this.scene.engine.add(new War(
                 {
                     ...this.e
@@ -33,6 +34,9 @@ export class Spawner extends Actor {
         }, this.e.data1
             ? Number(this.e.data1)
             : 4000);
+        this.on("exit", () => {
+            clearInterval(this.clock);
+        })
     }
 
     onPreKill(_scene: Scene) {
