@@ -205,7 +205,7 @@ export class Game {
             this.message_timer = null;
             console.log("game::next_message auto-next delay")
             this.next_message();
-        }, this.message_delay_default);
+        }, 2000 + message.content.length * 50);
     }
 
     add_message(message: IMessage) {

@@ -345,7 +345,7 @@
     },
     {
       "type": "foe",
-      "x": 3256,
+      "x": 3216,
       "y": 344,
       "width": 96,
       "height": 96,
@@ -612,6 +612,34 @@
       "x": 5224,
       "y": 560,
       "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 3040,
+      "y": 184,
+      "width": 360,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 3040,
+      "y": 80,
+      "width": 64,
+      "height": 112
+    },
+    {
+      "type": "floor",
+      "x": 2856,
+      "y": 96,
+      "width": 376,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 3176,
+      "y": 200,
+      "width": 192,
       "height": 64
     }
   ]

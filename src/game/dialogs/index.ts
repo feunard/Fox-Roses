@@ -69,12 +69,10 @@ export const dialogs = {
         $fox("Pas de panique, il y a un ascenceur onirique à côté."),
     ],
     level1_fox6: [
-        $fox("Un crystal ! Utile pour revenir si tu es perdu."),
-        $fox("Par exemple, si tu vas dans des bulles de cauchemard."),
+        $fox("Un crystal ! Utile pour revenir si tu meurs."),
     ],
     level1_fox7: [
-        $fox("L'ascenceur est juste en face. Bouge la caisse pour passer."),
-        $fox("Tu rêves trop profondément pour te reveiller, il faut qu'on monte."),
+        $fox("L'ascenceur est juste en face. Bouge la caisse rouge pour passer."),
     ],
     level1_fox_end: [
         $fox("Je comprends pas. L'ascenseur devait être ici !"),

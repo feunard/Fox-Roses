@@ -379,7 +379,7 @@
     },
     {
       "type": "floor",
-      "x": 1776,
+      "x": 1800,
       "y": 520,
       "width": 192,
       "height": 24,
@@ -418,9 +418,9 @@
     {
       "type": "floor",
       "x": 2248,
-      "y": 240,
+      "y": 96,
       "width": 48,
-      "height": 144
+      "height": 288
     },
     {
       "type": "floor",
@@ -459,14 +459,6 @@
       "y": 304,
       "width": 112,
       "height": 32
-    },
-    {
-      "type": "foe",
-      "x": 1464,
-      "y": 552,
-      "width": 48,
-      "height": 48,
-      "name": "Block"
     },
     {
       "type": "floor",
@@ -1173,6 +1165,13 @@
       "y": 80,
       "width": 32,
       "height": 120
+    },
+    {
+      "type": "floor",
+      "x": 1706,
+      "y": 566,
+      "width": 64,
+      "height": 64
     }
   ]
 }
