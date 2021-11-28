@@ -45,9 +45,9 @@
     },
     {
       "type": "event",
-      "x": 408,
+      "x": 328,
       "y": 496,
-      "width": 96,
+      "width": 264,
       "height": 128,
       "event": "dialog",
       "data1": "fox1",
@@ -408,9 +408,9 @@
     },
     {
       "type": "event",
-      "x": 384,
+      "x": 328,
       "y": 536,
-      "width": 144,
+      "width": 264,
       "height": 88,
       "event": "shake",
       "data1": "10",

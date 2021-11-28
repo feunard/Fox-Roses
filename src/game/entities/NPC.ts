@@ -30,7 +30,7 @@ export class NPC extends Actor {
         }
         if (this.e.animation === "rose" && game.levelId === 2) {
             this.on("precollision", (ev) => {
-                if (ev.other.collider.bounds.contains(this.collider.bounds)) {
+                if (this.collider.bounds.contains(ev.other.collider.bounds)) {
                     dialogs.l3_loot.forEach(m => game.add_message(m as any));
                     config_set({
                         dragonRose: true
@@ -40,7 +40,7 @@ export class NPC extends Actor {
         }
         if (this.e.animation === "dragon_idle" && game.levelId === 2) {
             this.on("precollision", (ev) => {
-                if (ev.other.collider.bounds.contains(this.collider.bounds)) {
+                if (this.collider.bounds.contains(ev.other.collider.bounds)) {
                     if (config.dragonRose) {
                         dialogs.l3_loot.forEach(m => game.add_message(m as any));
                         config_set({
@@ -62,7 +62,6 @@ export class NPC extends Actor {
             }
             this.graphics.add("default", animations[this.e.animation]);
             this.graphics.use("default");
-
         }
     }
 }

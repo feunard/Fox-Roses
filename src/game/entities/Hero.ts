@@ -170,6 +170,8 @@ export class Hero extends Actor {
     onPreUpdate(engine: Engine, delta: number) {
         const kb = new Keybinds(engine);
 
+        const coef = Math.floor(delta / 16 * 100) / 100;
+
         // check if dead zone
 
         if (this.pos.y > 4000) {
@@ -204,18 +206,18 @@ export class Hero extends Actor {
             game.engine.currentScene.camera.angularVelocity = 20000;
         }
 
-        if (this.handleSit(kb)) {
+        if (this.handleSit(kb, coef)) {
             return this.end();
         }
 
         this.handleFire(kb);
-        this.handleLeftRight(kb);
+        this.handleLeftRight(kb, coef);
 
         if (this.animSitLock) {
             return this.end();
         }
 
-        this.handleJump(kb);
+        this.handleJump(kb, coef);
         this.handleFall(kb);
         this.handleIdle();
         this.end();
@@ -238,7 +240,7 @@ export class Hero extends Actor {
         }
     }
 
-    handleSit(kb: Keybinds) {
+    handleSit(kb: Keybinds, coef: number) {
 
         if (kb.isHeld("sit")) {
             if (this.onGround) {
@@ -284,12 +286,12 @@ export class Hero extends Actor {
             }
 
             if (kb.isHeld("left")) {
-                this.vel.x = -50;
+                this.vel.x = -50 * coef;
                 this.flip(Direction.LEFT);
             }
 
             if (kb.isHeld("right")) {
-                this.vel.x = 50;
+                this.vel.x = 50 * coef;
                 this.flip(Direction.RIGHT);
             }
 
@@ -324,32 +326,32 @@ export class Hero extends Actor {
         }
     }
 
-    handleLeftRight(kb: Keybinds) {
+    handleLeftRight(kb: Keybinds, coef: number) {
         const speed = config.canSpeed ? 400 : 250;
         if (kb.isHeld("left")) {
-            this.vel.x = -speed;
+            this.vel.x = -speed * coef;
             this.flip(Direction.LEFT);
             if (!this.animSitLock)
                 this.graphics.use("left");
         }
 
         if (kb.isHeld("right")) {
-            this.vel.x = speed;
+            this.vel.x = speed * coef;
             this.flip(Direction.RIGHT);
             if (!this.animSitLock)
                 this.graphics.use("right");
         }
     }
 
-    handleJump(kb: Keybinds) {
+    handleJump(kb: Keybinds, coef: number) {
         if (kb.wasPressed("jump")) {
             if (this.onGround) {
                 this.audio_jump.play();
-                this.vel.y = -400;
+                this.vel.y = -400 * coef;
                 this.doubleJump = true;
             } else if (this.doubleJump && config.canDoubleJump) {
                 this.audio_jump.play();
-                this.vel.y = -400;
+                this.vel.y = -400 * coef;
                 this.doubleJump = false;
             }
         }
