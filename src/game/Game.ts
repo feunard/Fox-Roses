@@ -54,6 +54,9 @@ export class Game {
             this.loader.addResource(sounds[res]);
         }
 
+        config.levels.forEach((_, i) => {
+            this.engine.addScene('level' + i, new Level());
+        })
         this.engine.addScene('level', new Level());
     }
 
@@ -133,6 +136,7 @@ export class Game {
             config_set(config);
             console.log("game::next_level (inc +1)");
             this.levelId += 1;
+            this.engine.goToScene('level' + this.levelId);
         }
 
         if (this.levelId === config.levels.length) {
