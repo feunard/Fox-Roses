@@ -67,8 +67,9 @@ export class AudioManager {
         const list = k.map(_ => sounds[_]);
         return {
             play() {
-                list[rand(list.length)].play(self.volume);
-                list[rand(list.length)].volume = self.volume;
+                const i = rand(list.length);
+                list[i].play(self.volume);
+                list[i].volume = self.volume;
             }
         }
     }
