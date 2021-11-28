@@ -28,16 +28,16 @@ export class NPC extends Actor {
                 }
             });
         }
-        if (this.e.animation === "rose" && game.levelId === 2) {
+        if (this.e.animation === "rose") {
             this.on("precollision", (ev) => {
                 if (this.collider.bounds.contains(ev.other.collider.bounds)) {
-                    if (!config.dragonRose) {
+                    if (!config.dragonRose && game.levelId === 2) {
                         dialogs.l3_loot.forEach(m => game.add_message(m as any));
                         config_set({
                             dragonRose: true
                         });
-                        this.kill();
                     }
+                    this.kill();
                 }
             });
         }

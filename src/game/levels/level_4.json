@@ -200,7 +200,7 @@
     },
     {
       "type": "npc",
-      "x": 240,
+      "x": 504,
       "y": 472,
       "width": 128,
       "height": 128,
@@ -497,6 +497,44 @@
       "width": 96,
       "height": 96,
       "name": "Spawn"
+    },
+    {
+      "type": "floor",
+      "x": 648,
+      "y": 200,
+      "width": 168,
+      "height": 64
+    },
+    {
+      "type": "npc",
+      "x": 656,
+      "y": 72,
+      "width": 128,
+      "height": 128,
+      "animation": "rose",
+      "dialogs": [
+        ""
+      ],
+      "name": "rose"
+    },
+    {
+      "type": "floor",
+      "x": 3541,
+      "y": 507,
+      "width": 64,
+      "height": 104
+    },
+    {
+      "type": "npc",
+      "x": 3992,
+      "y": 248,
+      "width": 64,
+      "height": 64,
+      "animation": "fox",
+      "dialogs": [
+        ""
+      ],
+      "name": "fox"
     }
   ]
 }
