@@ -44,6 +44,14 @@
       "width": 136,
       "height": 320,
       "event": "unlock_speed"
+    },
+    {
+      "type": "foe",
+      "x": 1200,
+      "y": 416,
+      "width": 96,
+      "height": 96,
+      "name": "Spawner"
     }
   ]
 }

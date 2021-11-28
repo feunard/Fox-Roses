@@ -128,6 +128,9 @@ export class Game {
         if (this.preview) {
             console.log("game::next_level as preview: abort & back to editor");
             this.preview = false;
+            this.engine.currentScene.entities.forEach(a => this.engine.currentScene.remove(a));
+            this.engine.currentScene.actors.forEach(a => this.engine.currentScene.contains(a) && this.engine.currentScene.remove(a));
+            this.engine.currentScene.triggers.forEach(a => this.engine.currentScene.remove(a));
             this.engine.stop();
             this.state = GameState.EDITOR;
             return;
