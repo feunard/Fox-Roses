@@ -47,6 +47,10 @@ export class Bolt extends Actor {
                 ev.other.kill();
             }
         }
+        if (ev.other.name === "bolt2") {
+            this.kill();
+            ev.other.kill();
+        }
     }
 
     onInitialize(_engine: Engine) {
