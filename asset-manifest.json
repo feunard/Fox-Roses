@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "./static/css/main.672e810e.chunk.css",
-    "main.js": "./static/js/main.8742c32b.chunk.js",
-    "main.js.map": "./static/js/main.8742c32b.chunk.js.map",
+    "main.js": "./static/js/main.eaa4759a.chunk.js",
+    "main.js.map": "./static/js/main.eaa4759a.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.ee863279.js",
     "runtime-main.js.map": "./static/js/runtime-main.ee863279.js.map",
-    "static/js/2.daabe06d.chunk.js": "./static/js/2.daabe06d.chunk.js",
-    "static/js/2.daabe06d.chunk.js.map": "./static/js/2.daabe06d.chunk.js.map",
+    "static/js/2.c1671c48.chunk.js": "./static/js/2.c1671c48.chunk.js",
+    "static/js/2.c1671c48.chunk.js.map": "./static/js/2.c1671c48.chunk.js.map",
     "index.html": "./index.html",
     "static/css/main.672e810e.chunk.css.map": "./static/css/main.672e810e.chunk.css.map",
-    "static/js/2.daabe06d.chunk.js.LICENSE.txt": "./static/js/2.daabe06d.chunk.js.LICENSE.txt",
+    "static/js/2.c1671c48.chunk.js.LICENSE.txt": "./static/js/2.c1671c48.chunk.js.LICENSE.txt",
     "static/media/1010100_03_cn.ogg": "./static/media/1010100_03_cn.fad41b39.ogg",
     "static/media/1010100_04_cn.ogg": "./static/media/1010100_04_cn.3c4be470.ogg",
     "static/media/1010100_05_cn.ogg": "./static/media/1010100_05_cn.b07c5c83.ogg",
@@ -31,11 +31,14 @@
     "static/media/crystal.wav": "./static/media/crystal.48a851e0.wav",
     "static/media/crystalsong.mp3": "./static/media/crystalsong.8faffe47.mp3",
     "static/media/dragon.png": "./static/media/dragon.1dae8c4f.png",
-    "static/media/end.ogg": "./static/media/end.83f64ac0.ogg",
     "static/media/firebolt.wav": "./static/media/firebolt.aa2b8c80.wav",
     "static/media/fox.png": "./static/media/fox.0c9e151f.png",
     "static/media/hit_light.wav": "./static/media/hit_light.019bc13f.wav",
     "static/media/music_army.ogg": "./static/media/music_army.d2f290af.ogg",
+    "static/media/music_boss.mp3": "./static/media/music_boss.b4549ebb.mp3",
+    "static/media/music_dragon.mp3": "./static/media/music_dragon.67419357.mp3",
+    "static/media/music_end.ogg": "./static/media/music_end.83f64ac0.ogg",
+    "static/media/music_soldier.ogg": "./static/media/music_soldier.b66cdb28.ogg",
     "static/media/skeleton.png": "./static/media/skeleton.f9142637.png",
     "static/media/skeleton_mage.png": "./static/media/skeleton_mage.ac4dad0d.png",
     "static/media/skeleton_warrior.png": "./static/media/skeleton_warrior.5b01bcd1.png",
@@ -45,8 +48,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.ee863279.js",
-    "static/js/2.daabe06d.chunk.js",
+    "static/js/2.c1671c48.chunk.js",
     "static/css/main.672e810e.chunk.css",
-    "static/js/main.8742c32b.chunk.js"
+    "static/js/main.eaa4759a.chunk.js"
   ]
 }
