@@ -55,8 +55,6 @@ export class Bolt extends Actor {
         this.graphics.add("bolt", this.anim);
         this.graphics.use("bolt");
 
-        console.log("fire!")
-
         setTimeout(() => {
             this.kill();
         }, 4000);

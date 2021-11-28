@@ -50,7 +50,7 @@ export const dialogs = {
         $chest("Vous venez de terminer le test !"),
     ],
     fox1: [
-        $fox("Hey, c'est rare de voir quelqu'un tomber ici."),
+        $fox("C'est rare de voir quelqu'un tomber ici."),
         $fox("Essaye d'aller à droite avec la touche D pour voir ?")
     ],
     fox2: [
@@ -94,6 +94,38 @@ export const dialogs = {
         $dragon("Bon reveil."),
         $fox("Reviens vite."),
     ],
+
+    l2_1: [
+        $fox("Qu'est ce que c'est passé ici ?!? Ce n'est pas normal."),
+        $kstore("A l'aide !"),
+        $fox("Vite, quelqu'un appel à l'aide."),
+    ],
+    l2_2: [
+        $kstore("Ah, vous tombez à pic."),
+        $fox("Ecrase le monstre en sautant dessus avec la touche S."),
+    ],
+    l2_3: [
+        $kstore("Merci. Je cherchais ma soeur mais un squelette m'a attaqué."),
+        $fox("On va la retrouver. Mais, pourquoi il y a des squelettes partout ?"),
+        $kstore("Escamort, c'est lui derrière cette armée. Il est entrain de détruire les rêves."),
+    ],
+    l2_4: [
+        $kstore("Les miroirs peuvent te téléporter si tu restes devant. Attention."),
+        $fox("Je deteste les miroirs...")
+    ],
+    l2_5: [
+        $acidpop("Kstore! J'avais si peur. Qui sont les gens avec toi ?"),
+        $fox("Je suis Renard et voici Réveuse, elle vient de tomber du ciel."),
+        $kstore("Merci à vous, prennez ce parchemin et sortez nous de là."),
+    ],
+    l2_6: [
+        $fox("Nous cherchons l'ascenseur onirique pour réveiller la rêveuse."),
+        $acidpop("Escamort l'a volé. Il veut l'utiliser pour son armée."),
+        $kstore("C'est pour ça qu'on doit le vaincre, mais il est trop fort pour nous."),
+        $fox("Oh, mais j'ai un ami qui peut faire ça. Il habite juste en bas."),
+        $kstore("Allons-y alors."),
+    ],
+
     //
     loot_firebolt: $chest("Vous obtenez un parchemin de boule de feu. Appuyez sur E pour lancer des flammes."),
     loot_doublejump: $chest("Vous obtenez des ailes de dragon. Vous pouvez sauter 2 fois de suite."),

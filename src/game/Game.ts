@@ -37,7 +37,7 @@ export class Game {
         ? Number(localStorage["GameState"])
         : GameState.INTRO;
     message_timer: any = null;
-    message_delay_default = 1000 * 5;//ms
+    message_delay_default = 1000 * 4;//ms
 
     constructor() {
         this.configure();
@@ -65,6 +65,9 @@ export class Game {
     }
 
     set state(s: GameState) {
+        if (this.internalState === GameState.LEVEL && s !== GameState.LEVEL) {
+            this.stop_messages();
+        }
         this.internalState = s;
         this.callbacksChangeState.forEach(cb => cb(s));
     }
@@ -107,6 +110,7 @@ export class Game {
         this.next(id);
         this.preview = true;
         this.engine.start(this.loader);
+        this.engine.goToScene('level');
         this.engine.goToScene('level' + id);
 
         this.state = GameState.LEVEL;
@@ -161,6 +165,10 @@ export class Game {
     }
 
     stop() {
+        if (this.preview) {
+            window.location.href = "/";
+            return;
+        }
         this.preview = false;
         (this.engine.currentScene as Level).clear();
         this.engine.stop();
@@ -169,6 +177,7 @@ export class Game {
     }
 
     stop_messages() {
+        console.log("game::clear_messages");
         clearTimeout(this.message_timer);
         this.messages = [];
         this.callbacksOnMessage.forEach(c => c());

@@ -37,7 +37,7 @@ export class Editor extends React.Component<{}, EditorState> {
     }
 
     componentDidMount() {
-        game.onChangeLevel(this.changeLevel);
+        //game.onChangeLevel(this.changeLevel);
     }
 
     componentWillUnmount() {

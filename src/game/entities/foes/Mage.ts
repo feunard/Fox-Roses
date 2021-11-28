@@ -74,7 +74,6 @@ export class Mage extends Actor {
     onPreUpdate(_engine: Engine, _delta: number) {
         super.onPreUpdate(_engine, _delta);
 
-
         if (this.pos.y > 10000) {
             this.kill();
         }

@@ -39,11 +39,1140 @@
     },
     {
       "type": "event",
-      "x": 884,
-      "y": 345,
-      "width": 136,
-      "height": 320,
+      "x": 5160,
+      "y": 448,
+      "width": 64,
+      "height": 184,
       "event": "unlock_firebolt"
+    },
+    {
+      "type": "floor",
+      "x": 680,
+      "y": 424,
+      "width": 984,
+      "height": 40
+    },
+    {
+      "type": "floor",
+      "x": 208,
+      "y": 608,
+      "width": 56,
+      "height": 216
+    },
+    {
+      "type": "floor",
+      "x": 680,
+      "y": 240,
+      "width": 64,
+      "height": 184
+    },
+    {
+      "type": "floor",
+      "x": 744,
+      "y": 240,
+      "width": 928,
+      "height": 40
+    },
+    {
+      "type": "floor",
+      "x": 264,
+      "y": 784,
+      "width": 2336,
+      "height": 40
+    },
+    {
+      "type": "foe",
+      "x": 756,
+      "y": 328,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 912,
+      "y": 328,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 1104,
+      "y": 328,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 296,
+      "y": 688,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 504,
+      "y": 688,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 776,
+      "y": 688,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 1016,
+      "y": 688,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 1160,
+      "y": 688,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 1344,
+      "y": 688,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 1552,
+      "y": 688,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 1792,
+      "y": 688,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 1296,
+      "y": 328,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "floor",
+      "x": 1632,
+      "y": 288,
+      "width": 32,
+      "height": 192
+    },
+    {
+      "type": "floor",
+      "x": 1616,
+      "y": 168,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "foe",
+      "x": 1496,
+      "y": 296,
+      "width": 128,
+      "height": 128,
+      "name": "Mirror"
+    },
+    {
+      "type": "foe",
+      "x": 2008,
+      "y": 656,
+      "width": 128,
+      "height": 128,
+      "name": "Mirror"
+    },
+    {
+      "type": "floor",
+      "x": 2511,
+      "y": 552,
+      "width": 40,
+      "height": 528
+    },
+    {
+      "type": "foe",
+      "x": 2160,
+      "y": 688,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 2360,
+      "y": 688,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "floor",
+      "x": 112,
+      "y": 968,
+      "width": 2520,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 96,
+      "y": 798,
+      "width": 40,
+      "height": 320
+    },
+    {
+      "type": "foe",
+      "x": 184,
+      "y": 872,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 376,
+      "y": 872,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 560,
+      "y": 872,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 784,
+      "y": 872,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 960,
+      "y": 872,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 1128,
+      "y": 872,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 1336,
+      "y": 872,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 1536,
+      "y": 872,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 1720,
+      "y": 872,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 1936,
+      "y": 872,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 2160,
+      "y": 872,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 1472,
+      "y": 144,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 1272,
+      "y": 144,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 1096,
+      "y": 144,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 912,
+      "y": 144,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "floor",
+      "x": 680,
+      "y": 168,
+      "width": 32,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 788,
+      "y": 542,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 1776,
+      "y": 520,
+      "width": 192,
+      "height": 24,
+      "move": {
+        "y": -200,
+        "x": 0,
+        "speed": 0
+      }
+    },
+    {
+      "type": "floor",
+      "x": 2040,
+      "y": 303,
+      "width": 40,
+      "height": 304
+    },
+    {
+      "type": "npc",
+      "x": 2064,
+      "y": 440,
+      "width": 96,
+      "height": 96,
+      "animation": "kstore",
+      "dialogs": [
+        ""
+      ],
+      "name": "kstore"
+    },
+    {
+      "type": "floor",
+      "x": 2200,
+      "y": 360,
+      "width": 256,
+      "height": 104
+    },
+    {
+      "type": "floor",
+      "x": 2248,
+      "y": 240,
+      "width": 48,
+      "height": 144
+    },
+    {
+      "type": "floor",
+      "x": 2448,
+      "y": 280,
+      "width": 48,
+      "height": 200
+    },
+    {
+      "type": "foe",
+      "x": 2320,
+      "y": 264,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 2192,
+      "y": 504,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 2008,
+      "y": 208,
+      "width": 96,
+      "height": 96,
+      "name": "Spawn"
+    },
+    {
+      "type": "floor",
+      "x": 2000,
+      "y": 304,
+      "width": 112,
+      "height": 32
+    },
+    {
+      "type": "foe",
+      "x": 1464,
+      "y": 552,
+      "width": 48,
+      "height": 48,
+      "name": "Block"
+    },
+    {
+      "type": "floor",
+      "x": 2080,
+      "y": 536,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 2496,
+      "y": 328,
+      "width": 104,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 2544,
+      "y": 504,
+      "width": 88,
+      "height": 96
+    },
+    {
+      "type": "floor",
+      "x": 2880,
+      "y": 464,
+      "width": 64,
+      "height": 56
+    },
+    {
+      "type": "floor",
+      "x": 2912,
+      "y": 496,
+      "width": 288,
+      "height": 24
+    },
+    {
+      "type": "foe",
+      "x": 2880,
+      "y": 520,
+      "width": 112,
+      "height": 80,
+      "name": "DeadlyArea"
+    },
+    {
+      "type": "foe",
+      "x": 2504,
+      "y": 232,
+      "width": 96,
+      "height": 96,
+      "name": "Spawner"
+    },
+    {
+      "type": "floor",
+      "x": 2272,
+      "y": 440,
+      "width": 64,
+      "height": 72
+    },
+    {
+      "type": "floor",
+      "x": 2392,
+      "y": 552,
+      "width": 136,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 3200,
+      "y": 408,
+      "width": 64,
+      "height": 192
+    },
+    {
+      "type": "floor",
+      "x": 3352,
+      "y": 408,
+      "width": 216,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 3656,
+      "y": 400,
+      "width": 144,
+      "height": 208
+    },
+    {
+      "type": "floor",
+      "x": 3400,
+      "y": 200,
+      "width": 96,
+      "height": 40
+    },
+    {
+      "type": "foe",
+      "x": 3400,
+      "y": 104,
+      "width": 96,
+      "height": 96,
+      "name": "Spawner"
+    },
+    {
+      "type": "foe",
+      "x": 3256,
+      "y": 512,
+      "width": 400,
+      "height": 96,
+      "name": "DeadlyArea"
+    },
+    {
+      "type": "foe",
+      "x": 3680,
+      "y": 304,
+      "width": 96,
+      "height": 96,
+      "name": "Spawn"
+    },
+    {
+      "type": "foe",
+      "x": 4328,
+      "y": 472,
+      "width": 128,
+      "height": 128,
+      "name": "Mirror",
+      "data2": "1"
+    },
+    {
+      "type": "foe",
+      "x": 4176,
+      "y": 192,
+      "width": 128,
+      "height": 128,
+      "name": "Mirror",
+      "data1": "1"
+    },
+    {
+      "type": "floor",
+      "x": 4200,
+      "y": 320,
+      "width": 376,
+      "height": 32
+    },
+    {
+      "type": "foe",
+      "x": 3976,
+      "y": 504,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "floor",
+      "x": 4552,
+      "y": 232,
+      "width": 64,
+      "height": 384
+    },
+    {
+      "type": "floor",
+      "x": 4848,
+      "y": 280,
+      "width": 48,
+      "height": 48
+    },
+    {
+      "type": "floor",
+      "x": 4800,
+      "y": 304,
+      "width": 392,
+      "height": 56
+    },
+    {
+      "type": "npc",
+      "x": 2160,
+      "y": 288,
+      "width": 64,
+      "height": 64,
+      "animation": "fox",
+      "dialogs": [
+        ""
+      ],
+      "name": "fox"
+    },
+    {
+      "type": "npc",
+      "x": 4832,
+      "y": 440,
+      "width": 64,
+      "height": 64,
+      "animation": "fox",
+      "dialogs": [
+        ""
+      ],
+      "name": "fox"
+    },
+    {
+      "type": "npc",
+      "x": 4616,
+      "y": 536,
+      "width": 64,
+      "height": 64,
+      "animation": "acidpop",
+      "dialogs": [
+        ""
+      ],
+      "name": "acidpop"
+    },
+    {
+      "type": "npc",
+      "x": 4664,
+      "y": 504,
+      "width": 96,
+      "height": 96,
+      "animation": "kstore",
+      "dialogs": [
+        ""
+      ],
+      "name": "kstore"
+    },
+    {
+      "type": "floor",
+      "x": 5152,
+      "y": 80,
+      "width": 64,
+      "height": 424
+    },
+    {
+      "type": "floor",
+      "x": 5232,
+      "y": 584,
+      "width": 64,
+      "height": 32
+    },
+    {
+      "type": "floor",
+      "x": 5184,
+      "y": 440,
+      "width": 520,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 5704,
+      "y": 584,
+      "width": 64,
+      "height": 168
+    },
+    {
+      "type": "floor",
+      "x": 5656,
+      "y": 616,
+      "width": 64,
+      "height": 112
+    },
+    {
+      "type": "floor",
+      "x": 5600,
+      "y": 616,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "foe",
+      "x": 5304,
+      "y": 504,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 3408,
+      "y": 312,
+      "width": 96,
+      "height": 96,
+      "name": "Mage"
+    },
+    {
+      "type": "foe",
+      "x": 6112,
+      "y": 504,
+      "width": 96,
+      "height": 96,
+      "name": "Mage"
+    },
+    {
+      "type": "floor",
+      "x": 5824,
+      "y": 528,
+      "width": 64,
+      "height": 128
+    },
+    {
+      "type": "floor",
+      "x": 5992,
+      "y": 440,
+      "width": 464,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 5992,
+      "y": 264,
+      "width": 64,
+      "height": 184
+    },
+    {
+      "type": "floor",
+      "x": 5640,
+      "y": 256,
+      "width": 64,
+      "height": 184
+    },
+    {
+      "type": "floor",
+      "x": 5728,
+      "y": 288,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 5816,
+      "y": 288,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 5904,
+      "y": 288,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 5584,
+      "y": 352,
+      "width": 520,
+      "height": 16
+    },
+    {
+      "type": "foe",
+      "x": 6304,
+      "y": 504,
+      "width": 96,
+      "height": 96,
+      "name": "Mage"
+    },
+    {
+      "type": "floor",
+      "x": 6784,
+      "y": 552,
+      "width": 64,
+      "height": 56
+    },
+    {
+      "type": "floor",
+      "x": 6832,
+      "y": 480,
+      "width": 168,
+      "height": 160
+    },
+    {
+      "type": "floor",
+      "x": 7113,
+      "y": 304,
+      "width": 64,
+      "height": 416
+    },
+    {
+      "type": "npc",
+      "x": 6936,
+      "y": 416,
+      "width": 64,
+      "height": 64,
+      "animation": "acidpop",
+      "dialogs": [
+        ""
+      ],
+      "name": "acidpop"
+    },
+    {
+      "type": "npc",
+      "x": 6840,
+      "y": 384,
+      "width": 96,
+      "height": 96,
+      "animation": "kstore",
+      "dialogs": [
+        ""
+      ],
+      "name": "kstore"
+    },
+    {
+      "type": "npc",
+      "x": 7024,
+      "y": 296,
+      "width": 64,
+      "height": 64,
+      "animation": "fox",
+      "dialogs": [
+        ""
+      ],
+      "name": "fox"
+    },
+    {
+      "type": "floor",
+      "x": 6696,
+      "y": 520,
+      "width": 104,
+      "height": 104
+    },
+    {
+      "type": "floor",
+      "x": 6640,
+      "y": 552,
+      "width": 104,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 5608,
+      "y": 256,
+      "width": 488,
+      "height": 24
+    },
+    {
+      "type": "floor",
+      "x": 5640,
+      "y": 192,
+      "width": 1032,
+      "height": 32
+    },
+    {
+      "type": "floor",
+      "x": 6576,
+      "y": 152,
+      "width": 32,
+      "height": 456
+    },
+    {
+      "type": "floor",
+      "x": 6512,
+      "y": 552,
+      "width": 64,
+      "height": 24,
+      "move": {
+        "y": -100,
+        "x": 0,
+        "speed": 0
+      }
+    },
+    {
+      "type": "foe",
+      "x": 6120,
+      "y": 312,
+      "width": 128,
+      "height": 128,
+      "name": "Mirror",
+      "data2": "5",
+      "data1": "4"
+    },
+    {
+      "type": "foe",
+      "x": 5416,
+      "y": 312,
+      "width": 128,
+      "height": 128,
+      "name": "Mirror",
+      "data1": "5",
+      "data2": "4"
+    },
+    {
+      "type": "floor",
+      "x": 5248,
+      "y": 408,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "foe",
+      "x": 5232,
+      "y": 312,
+      "width": 96,
+      "height": 96,
+      "name": "Mage",
+      "data2": "132"
+    },
+    {
+      "type": "foe",
+      "x": 5808,
+      "y": 432,
+      "width": 96,
+      "height": 96,
+      "name": "Spawn"
+    },
+    {
+      "type": "floor",
+      "x": 5856,
+      "y": 144,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "foe",
+      "x": 6120,
+      "y": 96,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 6288,
+      "y": 96,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "foe",
+      "x": 4968,
+      "y": 208,
+      "width": 96,
+      "height": 96,
+      "name": "War"
+    },
+    {
+      "type": "floor",
+      "x": 6592,
+      "y": 376,
+      "width": 64,
+      "height": 296
+    },
+    {
+      "type": "floor",
+      "x": 6568,
+      "y": 608,
+      "width": 352,
+      "height": 56
+    },
+    {
+      "type": "floor",
+      "x": 7160,
+      "y": 328,
+      "width": 64,
+      "height": 304
+    },
+    {
+      "type": "floor",
+      "x": 7216,
+      "y": 504,
+      "width": 152,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 7208,
+      "y": 136,
+      "width": 64,
+      "height": 376
+    },
+    {
+      "type": "npc",
+      "x": 7272,
+      "y": 376,
+      "width": 128,
+      "height": 128,
+      "animation": "shrek",
+      "dialogs": [
+        ""
+      ],
+      "name": "shrek"
+    },
+    {
+      "type": "floor",
+      "x": 4488,
+      "y": 272,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 4568,
+      "y": 192,
+      "width": 176,
+      "height": 40
+    },
+    {
+      "type": "floor",
+      "x": 4136,
+      "y": 320,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 3784,
+      "y": 504,
+      "width": 64,
+      "height": 144
+    },
+    {
+      "type": "floor",
+      "x": 4496,
+      "y": 440,
+      "width": 64,
+      "height": 216
+    },
+    {
+      "type": "floor",
+      "x": 2936,
+      "y": 440,
+      "width": 272,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 2992,
+      "y": 376,
+      "width": 64,
+      "height": 80
+    },
+    {
+      "type": "event",
+      "x": 680,
+      "y": 448,
+      "width": 64,
+      "height": 176,
+      "event": "dialog",
+      "data1": "l2_1"
+    },
+    {
+      "type": "floor",
+      "x": 5000,
+      "y": 488,
+      "width": 64,
+      "height": 128
+    },
+    {
+      "type": "floor",
+      "x": 4896,
+      "y": 544,
+      "width": 64,
+      "height": 72
+    },
+    {
+      "type": "event",
+      "x": 1911,
+      "y": 135,
+      "width": 136,
+      "height": 192,
+      "event": "dialog",
+      "data1": "l2_2"
+    },
+    {
+      "type": "event",
+      "x": 2320,
+      "y": 440,
+      "width": 120,
+      "height": 176,
+      "event": "dialog",
+      "data1": "l2_3"
+    },
+    {
+      "type": "event",
+      "x": 3736,
+      "y": 184,
+      "width": 64,
+      "height": 240,
+      "event": "dialog",
+      "data1": "l2_4"
+    },
+    {
+      "type": "event",
+      "x": 4576,
+      "y": 304,
+      "width": 232,
+      "height": 56,
+      "event": "dialog",
+      "data1": "l2_5"
+    },
+    {
+      "type": "event",
+      "x": 5656,
+      "y": 8,
+      "width": 64,
+      "height": 192,
+      "event": "dialog",
+      "data1": "l2_6"
+    },
+    {
+      "type": "floor",
+      "x": 6768,
+      "y": 24,
+      "width": 64,
+      "height": 120
+    },
+    {
+      "type": "floor",
+      "x": 6812,
+      "y": 80,
+      "width": 32,
+      "height": 120
     }
   ]
 }

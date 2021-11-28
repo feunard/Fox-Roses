@@ -102,7 +102,7 @@ export class Hero extends Actor {
         this.animJumpTop = Animation.fromSpriteSheet(hero_jump_sheet, [1, 2, 3, 4], 500);
         this.animJumpTop.scale = default_scale;
 
-        this.animSit = Animation.fromSpriteSheet(hero_down_sheet, [5, 6, 7, 8], default_duration);
+        this.animSit = Animation.fromSpriteSheet(hero_down_sheet, [6, 7], default_duration);
         this.animSit.scale = default_scale;
 
         this.animIdle = Animation.fromSpriteSheet(hero_idle_sheet, default_frame, default_duration);

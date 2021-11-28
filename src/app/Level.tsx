@@ -2,7 +2,7 @@ import * as React from 'react';
 import "./Level.css";
 import {ILevel, IMessage} from "../game/interfaces";
 import {LevelMessage} from "./LevelMessage";
-import {game, GameState} from "../game/Game";
+import {game} from "../game/Game";
 import {audio} from "../game/audio";
 import {images} from "../resources";
 
@@ -22,6 +22,10 @@ export class Level extends React.Component<ILevelProps, LevelState> {
         document.getElementById("game")!!.style.opacity = "1";
     }
 
+    componentWillUnmount() {
+        game.stop_messages();
+    }
+
     render() {
         return (
             <div className="Level">
@@ -32,7 +36,10 @@ export class Level extends React.Component<ILevelProps, LevelState> {
                             game.engine.toggleDebug();
                         }}>debug
                         </button>
-                        <button onClick={() => game.state = GameState.TITLE}>menu</button>
+                        <button onClick={() => {
+                            game.stop();
+                        }}>menu
+                        </button>
                     </div>
                     <div className="Level_bar_middle">
                         Chapitre {game.levelId + 1} - {game.level.name}

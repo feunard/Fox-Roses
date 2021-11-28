@@ -18,12 +18,35 @@ export class FloorAware {
 export interface IFloorAware {
     floor: FloorAware;
 }
+export class MoveActor extends Actor {
+    actors: IFloorAware[] = [];
 
-export class Floor extends Actor {
+    watch_list = [Hero.NAME, "mirror", "mage", "war"];
+
+    watch_actors() {
+        this.on("precollision", (ev) => {
+            if (this.watch_list.includes(ev.other.name)) {
+                this.actors.push(ev.other as any);
+            }
+        })
+    }
+
+    move_y(speed: number) {
+        for (const a of this.actors) {
+            a.floor.vel_default.y += speed;
+        }
+    }
+
+    move_x(speed: number) {
+        for (const a of this.actors) {
+            a.floor.vel_default.x += speed;
+        }
+    }
+}
+
+export class Floor extends MoveActor {
     dir = -1;
     pos_initial: Vector;
-
-    actors: IFloorAware[] = [];
 
     constructor(
         private e: IEntityFloor
@@ -48,13 +71,7 @@ export class Floor extends Actor {
         super.onInitialize(_engine);
 
         if (this.e.move?.x || this.e.move?.y) {
-
-            const names = [Hero.NAME, "mirror", "mage", "war"]
-            this.on("precollision", (ev) => {
-                if (names.includes(ev.other.name)) {
-                    this.actors.push(ev.other as any);
-                }
-            })
+            this.watch_actors();
         }
     }
 
@@ -80,9 +97,7 @@ export class Floor extends Actor {
                     this.vel.y = (this.e.move.speed || 100) * this.dir;
                 }
                 if (this.vel.y > 0) {
-                    for (const a of this.actors) {
-                        a.floor.vel_default.y += (this.e.move.speed || 100) * this.dir;
-                    }
+                    this.move_y((this.e.move.speed || 100) * this.dir);
                 }
             }
             if (this.e.move.x) {
@@ -102,9 +117,7 @@ export class Floor extends Actor {
                     }
                 }
                 this.vel.x = (this.e.move.speed || 100) * this.dir;
-                for (const a of this.actors) {
-                    a.floor.vel_default.x += (this.e.move.speed || 100) * this.dir;
-                }
+                this.move_x((this.e.move.speed || 100) * this.dir);
             }
             this.actors = [];
         }

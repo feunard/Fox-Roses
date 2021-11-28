@@ -1,15 +1,16 @@
-import {Actor, Animation, CollisionType, Engine, Scene, Shape, Side, vec, Vector} from "excalibur";
+import {Animation, CollisionType, Engine, Scene, Shape, Side, vec, Vector} from "excalibur";
 import {animations} from "../../resources";
 import {IEntityFoe} from "../../interfaces";
-import {FloorAware} from "../misc/Floor";
+import {FloorAware, MoveActor} from "../misc/Floor";
 import {Direction} from "../misc/Bolt";
 import {Hero} from "../Hero";
 
-export class War extends Actor {
+export class War extends MoveActor {
     floor = new FloorAware(this);
     direction = 0;
     attack!: Animation;
     lock = false;
+    watch_list = [Hero.NAME];
 
     constructor(private e: IEntityFoe) {
         super({
@@ -66,6 +67,11 @@ export class War extends Actor {
                     }, 500);
                 }
             }
+            if (ev.side === Side.Top) {
+                if (this.watch_list.includes(ev.other.name)) {
+                    this.actors.push(ev.other as any);
+                }
+            }
         })
     }
 
@@ -86,9 +92,12 @@ export class War extends Actor {
 
         this.vel.x = 0;
 
-        this.vel.x += (this.e.data1
+        const speed = (this.e.data1
             ? Number(this.e.data1)
-            : 100 * this.direction)
+            : 100 * this.direction);
+        this.vel.x += speed;
+
+        this.move_x(speed);
 
         if (!this.lock) {
             if (this.vel.x > 0 || this.vel.x < 0) {
@@ -98,6 +107,7 @@ export class War extends Actor {
             }
         }
 
+        this.actors = [];
         this.floor.update();
     }
 }
