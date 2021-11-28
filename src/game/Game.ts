@@ -37,7 +37,7 @@ export class Game {
         ? Number(localStorage["GameState"])
         : GameState.INTRO;
     message_timer: any = null;
-    message_delay_default = 1000 * 4;//ms
+    message_delay_default = 1000 * 5;//ms
 
     constructor() {
         this.configure();
