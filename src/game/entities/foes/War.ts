@@ -10,6 +10,7 @@ export class War extends MoveActor {
     direction = 0;
     attack!: Animation;
     lock = false;
+    target = false;
     watch_list = [Hero.NAME];
 
     constructor(private e: IEntityFoe) {
@@ -58,12 +59,23 @@ export class War extends MoveActor {
                     walk.flipHorizontal = this.direction !== Direction.RIGHT;
                     attack.flipHorizontal = this.direction !== Direction.RIGHT;
                 }
-                if (ev.other.name === "hero" && !this.lock) {
+                if (ev.other.name === "hero" && !this.lock && (
+                    (ev.side === Side.Left && this.direction === Direction.LEFT) ||
+                    (ev.side === Side.Right && this.direction === Direction.RIGHT)
+                )
+                ) {
+                    if (this.target) {
+                        this.target = false;
+                        (ev.other as Hero).dead();
+                    }
                     this.lock = true;
                     this.graphics.use("attack");
                     setTimeout(() => {
+                        if (this.target) {
+                            (ev.other as Hero).dead();
+                        }
+                        this.target = true;
                         this.lock = false;
-                        (ev.other as Hero).dead();
                     }, 500);
                 }
             }
@@ -72,7 +84,7 @@ export class War extends MoveActor {
                     this.actors.push(ev.other as any);
                 }
             }
-        })
+        });
     }
 
     onPreKill(_scene: Scene) {
