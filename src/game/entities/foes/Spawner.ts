@@ -25,7 +25,6 @@ export class Spawner extends Actor {
         this.graphics.add("idle", animations.mirror);
         this.graphics.use("idle");
         this.clock = setInterval(() => {
-            console.log("toto")
             this.scene.engine.add(new War(
                 {
                     ...this.e

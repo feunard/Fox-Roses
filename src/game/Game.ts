@@ -185,15 +185,18 @@ export class Game {
     stop_messages() {
         console.log("game::clear_messages");
         clearTimeout(this.message_timer);
+        this.message_timer = null;
         this.messages = [];
         this.callbacksOnMessage.forEach(c => c());
     }
 
     next_message() {
+        console.log("game::next_message")
         clearTimeout(this.message_timer);
         this.message_timer = null;
 
         if (!this.messages.length) {
+            console.log("game::next_message callbacksOnMessage empty")
             this.callbacksOnMessage.forEach(c => c());
             return;
         }
@@ -208,9 +211,9 @@ export class Game {
         }
 
         this.message_timer = setTimeout(() => {
-            this.message_timer = null;
             console.log("game::next_message auto-next delay")
             this.next_message();
+            this.message_timer = null;
         }, this.message_delay_default);
     }
 

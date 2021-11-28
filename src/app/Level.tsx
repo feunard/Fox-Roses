@@ -22,10 +22,6 @@ export class Level extends React.Component<ILevelProps, LevelState> {
         document.getElementById("game")!!.style.opacity = "1";
     }
 
-    componentWillUnmount() {
-        game.stop_messages();
-    }
-
     render() {
         return (
             <div className="Level">
