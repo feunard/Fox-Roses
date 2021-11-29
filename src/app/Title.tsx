@@ -39,9 +39,9 @@ export class Title extends React.Component<{}, { opacity: number }> {
     render() {
         return (
             <div className="Title" style={{opacity: this.state.opacity}}>
-                <div id="stars"></div>
-                <div id="stars2"></div>
-                <div id="stars3"></div>
+                <div id="stars"/>
+                <div id="stars2"/>
+                <div id="stars3"/>
                 <div className={"Title_menu"} id="title">
                     <button
                         onClick={() => this.new_game()}>Nouvelle Partie
@@ -53,11 +53,6 @@ export class Title extends React.Component<{}, { opacity: number }> {
                     </button>
                     <button
                         onClick={() => this.editor()}>Editeur
-                    </button>
-                    <button
-                        onClick={() => {
-                            this.settings()
-                        }}>Options
                     </button>
                 </div>
             </div>
