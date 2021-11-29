@@ -33,7 +33,7 @@ export class Level extends React.Component<ILevelProps, LevelState> {
                         }}>debug
                         </button>
                         <button onClick={() => {
-                            window.location.href = "/"
+                            window.location.reload();
                         }}>menu
                         </button>
                     </div>

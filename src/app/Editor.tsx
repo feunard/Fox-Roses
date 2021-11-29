@@ -202,7 +202,7 @@ export class Editor extends React.Component<{}, EditorState> {
                         onChange={(ev) => {
                             localStorage.setItem("GameLevel", ev.target.value)
                             localStorage.setItem("GameState", "4");
-                            window.location.href = "/";
+                            window.location.reload();
                         }}>
                         {config.levels.map((l, it) =>
                             <option value={String(it)} key={it}>L{it + 1}</option>
@@ -247,7 +247,7 @@ export class Editor extends React.Component<{}, EditorState> {
                             localStorage.removeItem("GameState");
                             localStorage.removeItem("GameLevel");
                             localStorage.removeItem("$config");
-                            window.location.href = "/";
+                            window.location.reload();
                         }}> Reset & Quit
                     </button>
                     {" | "}

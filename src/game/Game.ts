@@ -205,7 +205,7 @@ export class Game {
 
     stop() {
         if (this.preview) {
-            window.location.href = "/";
+            window.location.reload();
             return;
         }
         this.preview = false;
