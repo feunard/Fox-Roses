@@ -12,6 +12,7 @@ export class War extends MoveActor {
     lock = false;
     target = false;
     watch_list = [Hero.NAME];
+    timeout: any = null;
 
     constructor(private e: IEntityFoe) {
         super({
@@ -59,27 +60,29 @@ export class War extends MoveActor {
                     walk.flipHorizontal = this.direction !== Direction.RIGHT;
                     attack.flipHorizontal = this.direction !== Direction.RIGHT;
                 }
-                if (ev.other.name === "hero" && !this.lock && (
-                    (ev.side === Side.Left && this.direction === Direction.LEFT) ||
-                    (ev.side === Side.Right && this.direction === Direction.RIGHT)
-                )
-                ) {
-                    if (this.target) {
-                        this.target = false;
-                        (ev.other as Hero).dead();
-                    }
-                    this.lock = true;
-                    this.graphics.use("attack");
-                    setTimeout(() => {
+                if (ev.other.name === "hero" && !this.lock) {
+                    if ((ev.side === Side.Left && this.direction === Direction.LEFT) ||
+                        (ev.side === Side.Right && this.direction === Direction.RIGHT)) {
+
                         if (this.target) {
+                            this.target = false;
                             (ev.other as Hero).dead();
                         }
-                        this.target = true;
-                        this.lock = false;
-                    }, 500);
+
+                        this.lock = true;
+                        this.graphics.use("attack");
+
+                        this.timeout = setTimeout(() => {
+                            this.timeout = null;
+                            if (this.target) {
+                                (ev.other as Hero).dead();
+                            }
+                            this.target = true;
+                            this.lock = false;
+                        }, 500);
+                    }
                 }
-            }
-            if (ev.side === Side.Top) {
+            } else if (ev.side === Side.Top) {
                 if (this.watch_list.includes(ev.other.name)) {
                     this.actors.push(ev.other as any);
                 }
@@ -89,6 +92,7 @@ export class War extends MoveActor {
 
     onPreKill(_scene: Scene) {
         super.onPreKill(_scene);
+        clearTimeout(this.timeout);
     }
 
     onPreUpdate(_engine: Engine, _delta: number) {
@@ -107,8 +111,8 @@ export class War extends MoveActor {
         const speed = (this.e.data1
             ? Number(this.e.data1)
             : 100 * this.direction);
-        this.vel.x += speed;
 
+        this.vel.x += speed;
         this.move_x(speed);
 
         if (!this.lock) {
