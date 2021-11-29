@@ -21,7 +21,7 @@
       "type": "event",
       "event": "start",
       "x": 400,
-      "y": -800,
+      "y": -1000,
       "width": 64,
       "height": 64
     },
@@ -39,10 +39,10 @@
     },
     {
       "type": "event",
-      "x": 1904,
-      "y": 16,
+      "x": 1632,
+      "y": -344,
       "width": 136,
-      "height": 224,
+      "height": 584,
       "event": "unlock_speed"
     },
     {
@@ -68,7 +68,7 @@
     },
     {
       "type": "floor",
-      "x": 3312,
+      "x": 3344,
       "y": 440,
       "width": 248,
       "height": 216
@@ -161,7 +161,7 @@
       "type": "foe",
       "x": 2712,
       "y": 504,
-      "width": 600,
+      "width": 632,
       "height": 96,
       "name": "DeadlyArea"
     },
@@ -212,8 +212,8 @@
     },
     {
       "type": "npc",
-      "x": 1816,
-      "y": 64,
+      "x": 1472,
+      "y": 96,
       "width": 128,
       "height": 128,
       "animation": "shrek",
@@ -224,10 +224,10 @@
     },
     {
       "type": "floor",
-      "x": 1712,
-      "y": 136,
-      "width": 64,
-      "height": 144
+      "x": 1440,
+      "y": 224,
+      "width": 376,
+      "height": 32
     },
     {
       "type": "floor",
@@ -535,6 +535,54 @@
         ""
       ],
       "name": "fox"
+    },
+    {
+      "type": "event",
+      "x": 424,
+      "y": 296,
+      "width": 232,
+      "height": 408,
+      "event": "dialog",
+      "data1": "l4_1"
+    },
+    {
+      "type": "npc",
+      "x": 560,
+      "y": 376,
+      "width": 64,
+      "height": 64,
+      "animation": "fox",
+      "dialogs": [
+        ""
+      ],
+      "name": "fox"
+    },
+    {
+      "type": "event",
+      "x": 1920,
+      "y": 240,
+      "width": 64,
+      "height": 408,
+      "event": "dialog",
+      "data1": "l4_2"
+    },
+    {
+      "type": "event",
+      "x": 1696,
+      "y": -232,
+      "width": 64,
+      "height": 512,
+      "event": "dialog",
+      "data1": "l4_3"
+    },
+    {
+      "type": "event",
+      "x": 3384,
+      "y": -8,
+      "width": 120,
+      "height": 328,
+      "event": "dialog",
+      "data1": "l4_4"
     }
   ]
 }

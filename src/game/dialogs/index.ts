@@ -142,6 +142,62 @@ export const dialogs = {
         $dragon("La rêveuse va s'en charger. Je vais veiller sur elle le temps qu'il me reste."),
         $fox("C'est de la folie, Sindra."),
     ],
+    l4_1: [
+        $shrek("Shrek, content. Shrek, cadeau."),
+        $fox("Mais, on ne veut pas de tes cadeaux !"),
+        $acidpop("Peut être qu'on devrait accepter son cadeau."),
+        $shrek("Cadeaux..."),
+    ],
+    l4_2: [
+        $fox("Oh non, on ne peut pas traverser, Rêveuse ne va pas assez vite."),
+    ],
+    l4_3: [
+        $shrek("Shrek content, Shrek cadeau"),
+        $acidpop("Mais c'est trop bien."),
+        $fox("Peut être qu'on peut accepter ses cadeaux du moment qu'il nous dérange pas."),
+    ],
+    l4_4: [
+        $dragon("Les amis, le répère d'Escamort est juste en dessous."),
+        $kstore("Nous sommes tous prêt."),
+        $shrek("Shrek, cadeau."),
+    ],
+    l5_1: [
+        $skeleton("Misérable, pathétique. Je vais vous spoiler la fin. Vous allez tous mourir."),
+        $fox("Il a l'air en colère."),
+        $skeleton("La secte du symbol infini est trop forte. Vous ne pouvez rien faire."),
+    ],
+    l5_3: [
+        $skeleton("L'infini est la seule solution, l'éternité est la seule approche !"),
+    ],
+    l5_4: [
+        $skeleton("Gloire au symbol infini, les rêves n'ont pas de fin !"),
+        $fox("Tout à une fin Escamort, la tienne arrive bientôt."),
+    ],
+    l5_2: [
+        $skeleton("Non, mais c'est impossible. Comment avez vous pu atteindre cet endroit ?"),
+        $fox("En sautant peut être ?"),
+        $skeleton("Je dois battre en retraite."),
+        $kstore("Suivons le !"),
+    ],
+    l6_0: [
+        $skeleton("VOUS NE PASSEREZ PAS !"),
+    ],
+    l6_1: [
+        $kstore("C'était lui ? Mais il est nul."),
+        $skeleton("AHAH, ET BIEN NON. MISERABLE."),
+    ],
+    l6_2: [
+        $acidpop("Cette fois ci, c'était bien lui."),
+        $skeleton("AHAH, JE SUIS INFINI. PATHETIQUE."),
+    ],
+    l6_3: [
+        $shrek("Escamort cadeau mort."),
+        $skeleton("AHAH, NON, JE M'EN BRANLE DE TES CADEAUX."),
+    ],
+    l6_4: [
+        $dragon("C'est terminé."),
+        $fox("Vite, l'ascenseur onirique est en bas !"),
+    ],
     //
     end: [
         $fox("Nous y sommes... enfin."),

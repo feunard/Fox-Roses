@@ -21,7 +21,7 @@
       "type": "event",
       "event": "start",
       "x": 400,
-      "y": -800,
+      "y": -1000,
       "width": 64,
       "height": 64
     },
@@ -1171,6 +1171,13 @@
       "x": 1706,
       "y": 566,
       "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 6456,
+      "y": 584,
+      "width": 48,
       "height": 64
     }
   ]

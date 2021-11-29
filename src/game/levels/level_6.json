@@ -21,7 +21,7 @@
       "type": "event",
       "event": "start",
       "x": 400,
-      "y": -800,
+      "y": -1000,
       "width": 64,
       "height": 64
     },
@@ -325,7 +325,7 @@
       "x": 1080,
       "y": 208,
       "width": 64,
-      "height": 64
+      "height": 40
     },
     {
       "type": "floor",
@@ -438,8 +438,8 @@
     },
     {
       "type": "npc",
-      "x": 1080,
-      "y": 296,
+      "x": 2736,
+      "y": 376,
       "width": 64,
       "height": 64,
       "animation": "acidpop",
@@ -612,8 +612,8 @@
     },
     {
       "type": "npc",
-      "x": 3352,
-      "y": 160,
+      "x": 3792,
+      "y": 152,
       "width": 128,
       "height": 128,
       "animation": "shrek",
@@ -896,15 +896,6 @@
     },
     {
       "type": "foe",
-      "x": 6888,
-      "y": 168,
-      "width": 96,
-      "height": 96,
-      "name": "Mage",
-      "data2": ""
-    },
-    {
-      "type": "foe",
       "x": 2032,
       "y": 504,
       "width": 96,
@@ -1013,6 +1004,51 @@
       "y": 0,
       "width": 1288,
       "height": 24
+    },
+    {
+      "type": "event",
+      "x": 632,
+      "y": 248,
+      "width": 64,
+      "height": 208,
+      "event": "dialog",
+      "data1": "l6_0"
+    },
+    {
+      "type": "event",
+      "x": 1328,
+      "y": 480,
+      "width": 64,
+      "height": 144,
+      "event": "dialog",
+      "data1": "l6_1"
+    },
+    {
+      "type": "event",
+      "x": 2728,
+      "y": 448,
+      "width": 64,
+      "height": 192,
+      "event": "dialog",
+      "data1": "l6_2"
+    },
+    {
+      "type": "event",
+      "x": 3904,
+      "y": 320,
+      "width": 64,
+      "height": 128,
+      "event": "dialog",
+      "data1": "l6_3"
+    },
+    {
+      "type": "event",
+      "x": 6064,
+      "y": -112,
+      "width": 216,
+      "height": 408,
+      "event": "dialog",
+      "data1": "l6_4"
     }
   ]
 }
