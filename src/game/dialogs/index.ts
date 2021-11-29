@@ -99,7 +99,7 @@ export const dialogs = {
     ],
     l2_5: [
         $acidpop("Kstore! J'avais si peur. Qui sont les gens avec toi ?"),
-        $fox("Je suis Renard et voici Réveuse, elle vient de tomber du ciel."),
+        $fox("Je suis Renard et voici Rêveuse, elle vient de tomber du ciel."),
         $kstore("Merci à vous, prenez ce parchemin et sortez nous de là."),
     ],
     l2_6: [
@@ -109,6 +109,24 @@ export const dialogs = {
         $fox("Oh, mais j'ai un ami qui peut faire ça. Il habite juste en bas."),
         $kstore("Allons-y."),
     ],
+    l3_1: [
+        $fox("J'ai un ami dragon, il réside pas loin d'ici."),
+        $kstore("Un dragon ?!?"),
+        $fox("Tous les dragons ne sont pas méchants, madame."),
+    ],
+    l3_2: [
+        $dragon("Renard... Fripouille. Que viens-tu faire ici avec tes amis ?"),
+        $fox("Nous avons besoin de toi. Escamort fabrique une armée pour détruire les rêves."),
+        $dragon("Qui est la jeune fille avec toi ?"),
+        $fox("Rêveuse, elle dort trop profondément pour se réveiller."),
+        $dragon("Une rêveuse, parfait. Allez me cherche une rose des rêves et je vous aiderai."),
+    ],
+    l3_3: [
+        $kstore("Il y a encore un pallier avant d'être chez Escamort."),
+        $shrek("Vous voulez un cadeau ?"),
+        $fox("Qui vient de parler ?"),
+        $shrek("Shrek, cadeau ?"),
+    ],
     l3_loot: [
         $chest("Vous obtenez une rose des rêves."),
         $dragon("Parfait, reviens me donner la rose."),
@@ -117,7 +135,7 @@ export const dialogs = {
     ],
     l3_loot_after: [
         $dragon("Ah... merci. Je voulais voir une dernière fois une rose de rêve."),
-        $dragon("Réveuse, je suis vieux, je vais bientôt partir, mais je peux encore t'aider."),
+        $dragon("Rêveuse, je suis vieux, je vais bientôt partir, mais je peux encore t'aider."),
         $chest("Vous obtenez des ailes de dragon. Vous pouvez sauter 2 fois de suite."),
         $dragon("Avec mes ailes, tu pourras atteindre des nouveaux endroits."),
         $kstore("Mais on fait comment pour Escamort ? Nous avions besoin de vous."),
