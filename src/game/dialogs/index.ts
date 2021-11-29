@@ -64,8 +64,7 @@ export const dialogs = {
         $fox("Tu peux aussi t'accroupir avec la touche S."),
     ],
     level1_fox5: [
-        $fox("Tu es dans tes rêves."),
-        $fox("Tu es consciente mais tu ne peux pas te réveiller."),
+        $fox("Tu es dans tes rêves mais tu ne peux pas te réveiller"),
         $fox("Pas de panique, il y a un ascenceur onirique à côté."),
     ],
     level1_fox6: [
@@ -84,9 +83,9 @@ export const dialogs = {
         $fox("Vite, quelqu'un appel à l'aide."),
     ],
     l2_2: [
-        $kstore("Ah, vous tombez à pic."),
+        $kstore("Ah, vous tombez à pic. Un mort-vivant me bloque."),
         $fox("Ecrase le monstre en sautant dessus avec la touche S enfoncée."),
-        $fox("Ecrase le monstre en sautant dessus avec la touche S enfoncée."),
+        $kstore("Oui, saute d'en haut et appuie bien sur S."),
     ],
     l2_3: [
         $kstore("Merci. Je cherchais ma soeur mais un squelette m'a attaqué."),
@@ -195,8 +194,8 @@ export const dialogs = {
         $skeleton("AHAH, NON, JE M'EN BRANLE DE TES CADEAUX."),
     ],
     l6_4: [
-        $dragon("C'est terminé."),
-        $fox("Vite, l'ascenseur onirique est en bas !"),
+        $dragon("C'est terminé. C'est le moment de dire une phrase clichée que vous aimez."),
+        $fox("J’en ai pas spécialement de phrase que j’aime bien."),
     ],
     //
     end: [

@@ -1388,6 +1388,42 @@
       "y": 120,
       "width": 64,
       "height": 1176
+    },
+    {
+      "type": "event",
+      "x": 528,
+      "y": 224,
+      "width": 272,
+      "height": 392,
+      "event": "dialog",
+      "data1": "l5_1"
+    },
+    {
+      "type": "event",
+      "x": 7920,
+      "y": 248,
+      "width": 312,
+      "height": 360,
+      "event": "dialog",
+      "data1": "l5_2"
+    },
+    {
+      "type": "event",
+      "x": 4832,
+      "y": 736,
+      "width": 128,
+      "height": 192,
+      "event": "dialog",
+      "data1": "l5_4"
+    },
+    {
+      "type": "event",
+      "x": 2056,
+      "y": 72,
+      "width": 432,
+      "height": 400,
+      "event": "dialog",
+      "data1": "l5_3"
     }
   ]
 }
