@@ -34,7 +34,7 @@ export class Begin extends React.Component<{}, BeginState> {
         await sleep(4000);
         audio.play("s268");
         this.setState({message: "Il y a quelqu'un ?"})
-        await sleep(2000);
+        await sleep(3000);
         audio.play("s270");
         this.setState({message: "Je suis entrain de tomber ?"})
         await sleep(2000);

@@ -57,8 +57,7 @@ export const dialogs = {
         $fox("Non, je t'ai dit d'aller à droite, pas à gauche.")
     ],
     fox3: [
-        $fox("Peut être que tu te demandes où tu es ?"),
-        $fox("Avant ça, utilise Z pour sauter les obstacles."),
+        $fox("Utilise Z pour sauter les obstacles."),
     ],
     fox4: [
         $fox("Tu peux aussi t'accroupir avec la touche S."),
