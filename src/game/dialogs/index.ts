@@ -149,7 +149,7 @@ export const dialogs = {
         $fox("Oh non, on ne peut pas traverser, Rêveuse ne va pas assez vite."),
     ],
     l4_3: [
-        $shrek("Shrek content, Shrek cadeau"),
+        $shrek("Shrek content, Shrek cadeau."),
         $acidpop("Mais c'est trop bien."),
         $fox("Peut être qu'on peut accepter ses cadeaux du moment qu'il nous dérange pas."),
     ],
