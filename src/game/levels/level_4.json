@@ -329,9 +329,9 @@
     {
       "type": "floor",
       "x": 792,
-      "y": 152,
+      "y": -376,
       "width": 40,
-      "height": 448
+      "height": 976
     },
     {
       "type": "floor",
@@ -504,18 +504,6 @@
       "y": 200,
       "width": 168,
       "height": 64
-    },
-    {
-      "type": "npc",
-      "x": 656,
-      "y": 72,
-      "width": 128,
-      "height": 128,
-      "animation": "rose",
-      "dialogs": [
-        ""
-      ],
-      "name": "rose"
     },
     {
       "type": "floor",
