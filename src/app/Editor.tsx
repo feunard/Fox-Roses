@@ -37,6 +37,7 @@ export class Editor extends React.Component<{}, EditorState> {
     }
 
     componentDidMount() {
+        localStorage.setItem("GameState", "4");
         //game.onChangeLevel(this.changeLevel);
     }
 
@@ -199,19 +200,14 @@ export class Editor extends React.Component<{}, EditorState> {
                     <select
                         value={game.levelId}
                         onChange={(ev) => {
-                            game.next(Number(ev.target.value));
                             localStorage.setItem("GameLevel", ev.target.value)
+                            localStorage.setItem("GameState", "4");
+                            window.location.href = "/";
                         }}>
                         {config.levels.map((l, it) =>
                             <option value={String(it)} key={it}>L{it + 1}</option>
                         )}
                     </select>
-                    {" | "}
-                    <button
-                        onClick={() => {
-                            game.state = GameState.TITLE;
-                        }}> Title
-                    </button>
                     {" | "}
                     <button
                         onClick={() => {
@@ -243,34 +239,25 @@ export class Editor extends React.Component<{}, EditorState> {
                                 levels
                             })
                             navigator.clipboard.writeText(JSON.stringify(save, null, "  "))
-                        }}>♕ Export
+                        }}>♕ Save
                     </button>
-                    <button
-                        onClick={() => {
-                            localStorage.removeItem("$config");
-                            window.location.href = "/";
-                        }}> Reset
-                    </button>
-                    <button
-                        onClick={() => {
-                            localStorage.setItem("GameState", "4");
-                            window.location.href = "/";
-                        }}> dev
-                    </button>
+                    {" | "}
                     <button
                         onClick={() => {
                             localStorage.removeItem("GameState");
                             localStorage.removeItem("GameLevel");
+                            localStorage.removeItem("$config");
                             window.location.href = "/";
-                        }}> nodev
+                        }}> Reset & Quit
                     </button>
+                    {" | "}
                     <button
                         onClick={() => {
                             if (this.history.length) {
                                 this.setState({entities: JSON.parse(this.history[0])})
                                 this.history.splice(0, 1);
                             }
-                        }}>☇ Back
+                        }}>☇ Cancel
                     </button>
                     {" | "}
                     <select

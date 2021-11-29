@@ -3,7 +3,10 @@
 =
 =
  */
-
+.text {
+    user-select: none;
+    cursor: default;
+}
 
 .overlay {
     background: black;

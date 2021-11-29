@@ -26,8 +26,7 @@ export class LevelMessage extends React.Component<ILevelMessageProps, ILevelMess
     timer() {
         this.clock = setInterval(() => {
             this.tick();
-        }, 50);
-        this.tick();
+        }, 32);
     }
 
     tick() {
@@ -49,8 +48,8 @@ export class LevelMessage extends React.Component<ILevelMessageProps, ILevelMess
 
     render() {
         return (
-            <span>
-                {this.props.content}
+            <span className={"text"}>
+                {this.state.content_parts}
             </span>
         );
     }

@@ -69,7 +69,7 @@ export const dialogs = {
         $fox("Pas de panique, il y a un ascenceur onirique à côté."),
     ],
     level1_fox6: [
-        $fox("Un crystal ! Tu reviendras ici si tu fais une bétise."),
+        $fox("Un crystal ! Tu reviendras ici si tu fais une bêtise."),
     ],
     level1_fox7: [
         $fox("L'ascenceur est juste en face. Bouge la caisse rouge pour passer."),
@@ -95,12 +95,12 @@ export const dialogs = {
     ],
     l2_4: [
         $kstore("Les miroirs peuvent te téléporter si tu restes devant. Attention."),
-        $fox("Je deteste les miroirs...")
+        $fox("Je déteste les miroirs.")
     ],
     l2_5: [
         $acidpop("Kstore! J'avais si peur. Qui sont les gens avec toi ?"),
         $fox("Je suis Renard et voici Réveuse, elle vient de tomber du ciel."),
-        $kstore("Merci à vous, prennez ce parchemin et sortez nous de là."),
+        $kstore("Merci à vous, prenez ce parchemin et sortez nous de là."),
     ],
     l2_6: [
         $fox("Nous cherchons l'ascenseur onirique pour réveiller la rêveuse."),
