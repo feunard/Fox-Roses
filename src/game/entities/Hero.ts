@@ -236,7 +236,7 @@ export class Hero extends Actor {
     handleFall(kb: Keybinds) {
         if (!this.onGround) {
             if (kb.isHeld("down")) {
-                this.vel.y += 50;
+                this.vel.y += 40;
             }
         }
     }
@@ -348,11 +348,11 @@ export class Hero extends Actor {
         if (kb.wasPressed("jump")) {
             if (this.onGround) {
                 this.audio_jump.play();
-                this.vel.y = -400 * coef;
+                this.vel.y = -450 * coef;
                 this.doubleJump = true;
             } else if (this.doubleJump && config.canDoubleJump) {
                 this.audio_jump.play();
-                this.vel.y = -400 * coef;
+                this.vel.y = -450 * coef;
                 this.doubleJump = false;
             }
         }
