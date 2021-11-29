@@ -1299,7 +1299,7 @@
       "type": "event",
       "x": 616,
       "y": 360,
-      "width": 64,
+      "width": 152,
       "height": 224,
       "event": "dialog",
       "data1": "l3_1"

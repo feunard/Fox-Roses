@@ -219,6 +219,7 @@ export class Game {
         console.log("game::clear_messages");
         clearTimeout(this.message_timer);
         this.message_timer = null;
+        this.message_lock = false;
         this.messages = [];
         this.callbacksOnMessage.forEach(c => c());
     }
