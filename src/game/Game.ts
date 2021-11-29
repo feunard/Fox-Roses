@@ -223,19 +223,22 @@ export class Game {
         this.callbacksOnMessage.forEach(c => c());
     }
 
+    message_lock = false;
+
     next_message() {
         console.log("game::next_message")
+
         clearTimeout(this.message_timer);
         this.message_timer = null;
 
         if (!this.messages.length) {
-            console.log("game::next_message callbacksOnMessage empty")
+            console.log("game::next_message broadcast callbacksOnMessage empty")
             this.callbacksOnMessage.forEach(c => c());
             return;
         }
 
         const message = this.messages[0];
-        console.log("game::next_message broadcast", message)
+        console.log("game::next_message broadcast", message.content)
         this.callbacksOnMessage.forEach(c => c(message));
         this.messages.shift();
 
@@ -243,17 +246,25 @@ export class Game {
             audio.play(message.sound);
         }
 
+        console.log("game::next_message message_lock ON")
+        this.message_lock = true;
         this.message_timer = setTimeout(() => {
             console.log("game::next_message auto-next delay")
-            this.next_message();
             this.message_timer = null;
+            console.log("game::next_message message_lock OFF")
+            this.message_lock = false;
+            console.log("game::next_message trigger next_message")
+            this.next_message();
         }, this.message_delay_default);
     }
 
     add_message(message: IMessage) {
-        console.log("game::add_message", message)
+        console.log("game::add_message", message.content)
+        const isEmpty = !this.messages.length;
         this.messages.push(message);
-        if (!this.message_timer) {
+
+        if (!this.message_lock && isEmpty) {
+            console.log("game::add_message trigger next_message")
             this.next_message();
         }
     }

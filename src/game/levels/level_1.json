@@ -55,23 +55,23 @@
     },
     {
       "type": "floor",
-      "x": 1152,
-      "y": 512,
-      "width": 64,
-      "height": 120
+      "x": 1096,
+      "y": 544,
+      "width": 96,
+      "height": 88
     },
     {
       "type": "floor",
       "x": 1200,
-      "y": 496,
+      "y": 528,
       "width": 64,
       "height": 64
     },
     {
       "type": "floor",
-      "x": 1248,
+      "x": 1224,
       "y": 504,
-      "width": 72,
+      "width": 88,
       "height": 16
     },
     {
@@ -84,25 +84,25 @@
     {
       "type": "event",
       "x": 1024,
-      "y": 416,
+      "y": 328,
       "width": 64,
-      "height": 232,
+      "height": 320,
       "event": "dialog",
       "data1": "fox3"
     },
     {
       "type": "floor",
-      "x": 1424,
-      "y": 544,
+      "x": 1376,
+      "y": 312,
       "width": 40,
       "height": 216
     },
     {
       "type": "floor",
-      "x": 1440,
-      "y": 584,
+      "x": 1488,
+      "y": 552,
       "width": 64,
-      "height": 64
+      "height": 96
     },
     {
       "type": "floor",
@@ -127,8 +127,8 @@
     },
     {
       "type": "floor",
-      "x": 1816,
-      "y": 488,
+      "x": 1800,
+      "y": 496,
       "width": 40,
       "height": 96
     },
@@ -268,9 +268,9 @@
     },
     {
       "type": "event",
-      "x": 2200,
+      "x": 2184,
       "y": 424,
-      "width": 80,
+      "width": 96,
       "height": 192,
       "event": "dialog",
       "data1": "level1_fox5"
@@ -640,6 +640,48 @@
       "x": 3176,
       "y": 200,
       "width": 192,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 1736,
+      "y": 224,
+      "width": 32,
+      "height": 160
+    },
+    {
+      "type": "floor",
+      "x": 1272,
+      "y": 130,
+      "width": 800,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 1304,
+      "y": 368,
+      "width": 64,
+      "height": 128
+    },
+    {
+      "type": "floor",
+      "x": 1256,
+      "y": 432,
+      "width": 40,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 1528,
+      "y": 576,
+      "width": 248,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 1744,
+      "y": 184,
+      "width": 16,
       "height": 64
     }
   ]
