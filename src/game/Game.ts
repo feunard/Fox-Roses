@@ -247,6 +247,11 @@ export class Game {
             audio.play(message.sound);
         }
 
+        let delay = this.message_delay_default;
+        if (message.content.length > 55) {
+            delay += 2000;
+        }
+
         console.log("game::next_message message_lock ON")
         this.message_lock = true;
         this.message_timer = setTimeout(() => {
@@ -256,7 +261,7 @@ export class Game {
             this.message_lock = false;
             console.log("game::next_message trigger next_message")
             this.next_message();
-        }, this.message_delay_default);
+        }, delay);
     }
 
     add_message(message: IMessage) {

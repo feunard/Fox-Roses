@@ -833,13 +833,13 @@
       "type": "floor",
       "x": 3592,
       "y": 544,
-      "width": 72,
+      "width": 128,
       "height": 64
     },
     {
       "type": "floor",
-      "x": 3664,
-      "y": 544,
+      "x": 3616,
+      "y": 592,
       "width": 64,
       "height": 64
     },
