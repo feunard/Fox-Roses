@@ -1148,9 +1148,9 @@
     {
       "type": "floor",
       "x": 7800,
-      "y": 735,
+      "y": 720,
       "width": 48,
-      "height": 752
+      "height": 760
     },
     {
       "type": "floor",
@@ -1195,14 +1195,6 @@
       "width": 80,
       "height": 184,
       "name": "Block"
-    },
-    {
-      "type": "event",
-      "x": 6112,
-      "y": 1344,
-      "width": 72,
-      "height": 64,
-      "event": "start"
     },
     {
       "type": "floor",
@@ -1362,17 +1354,17 @@
     {
       "type": "floor",
       "x": 8024,
-      "y": 544,
+      "y": 552,
       "width": 48,
-      "height": 256
+      "height": 240
     },
     {
       "type": "foe",
-      "x": 9200,
+      "x": 9208,
       "y": 632,
       "width": 96,
       "height": 96,
-      "name": "War"
+      "name": "Mage"
     },
     {
       "type": "foe",
@@ -1380,15 +1372,22 @@
       "y": 584,
       "width": 96,
       "height": 96,
-      "name": "War"
+      "name": "Mage"
     },
     {
       "type": "foe",
-      "x": 9584,
+      "x": 9592,
       "y": 520,
       "width": 96,
       "height": 96,
-      "name": "War"
+      "name": "Mage"
+    },
+    {
+      "type": "floor",
+      "x": 9880,
+      "y": 120,
+      "width": 64,
+      "height": 1176
     }
   ]
 }
