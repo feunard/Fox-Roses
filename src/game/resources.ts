@@ -165,6 +165,8 @@ export const animations = {
     bubble: Animation.fromSpriteSheet(sheet("bubble"), [0], 100),
     crystal_red: Animation.fromSpriteSheet(sheet("crystal", 64, 64, 2, 4), [0, 2, 4, 6], 600),
     crystal_blue: Animation.fromSpriteSheet(sheet("crystal", 64, 64, 2, 4), [1, 3, 5, 7], 600),
+    inf1: Animation.fromSpriteSheet(sheet("inf1"), [0], 100),
+    inf2: Animation.fromSpriteSheet(sheet("inf2"), [0], 100),
 
     shrek: Animation.fromSpriteSheet(sheet("shrek"), [0], 100),
     acidpop: Animation.fromSpriteSheet(sheet("acidpop"), [0], 100),

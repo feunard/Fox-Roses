@@ -170,7 +170,8 @@ export class Hero extends Actor {
     onPreUpdate(engine: Engine, delta: number) {
         const kb = new Keybinds(engine);
 
-        const coef = Math.floor(delta / 16 * 100) / 100;
+        //const coef = Math.floor(delta / 16 * 100) / 100;
+        const coef = 1;
 
         // check if dead zone
 

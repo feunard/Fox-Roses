@@ -8,9 +8,11 @@ import {unlock_speed} from "./unlock_speed";
 import {unlock_firebolt} from "./unlock_firebolt";
 import {shake} from "./shake";
 import {the_end} from "./the_end";
+import {camera_zoom} from "./camera_zoom";
 
 export const events = {
     camera_back,
+    camera_zoom,
     start,
     set_hair_color,
     play_music,

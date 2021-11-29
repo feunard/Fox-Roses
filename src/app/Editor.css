@@ -13,8 +13,10 @@
     left: 64px;
     right: 64px;
     background: white;
+    z-index: 999999;
     border-radius: 8px;
     padding: 4px 16px;
+    box-shadow: 0 2px 2px black;
 }
 
 .Editor_area_container {

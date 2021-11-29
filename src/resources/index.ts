@@ -24,6 +24,8 @@ export const images = {
     kstore: new ImageSource(require("./kstore.png").default),
     acidpop: new ImageSource(require("./acidpop.png").default),
     shrek: new ImageSource(require("./shrek.png").default),
+    inf1: new ImageSource(require("./inf1.png").default),
+    inf2: new ImageSource(require("./inf2.png").default),
     //
     avatar_fox: new ImageSource(require("./avatar/fox.png").default),
     avatar_xiao: new ImageSource(require("./avatar/xiao.png").default),
