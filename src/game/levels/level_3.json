@@ -427,9 +427,9 @@
     },
     {
       "type": "floor",
-      "x": 5240,
+      "x": 5224,
       "y": 464,
-      "width": 64,
+      "width": 72,
       "height": 152
     },
     {
@@ -949,9 +949,9 @@
     },
     {
       "type": "foe",
-      "x": 5288,
+      "x": 5296,
       "y": 472,
-      "width": 232,
+      "width": 216,
       "height": 128,
       "name": "DeadlyArea"
     },
@@ -964,10 +964,10 @@
     },
     {
       "type": "floor",
-      "x": 4824,
-      "y": 304,
-      "width": 208,
-      "height": 64
+      "x": 4840,
+      "y": 336,
+      "width": 192,
+      "height": 48
     },
     {
       "type": "floor",
@@ -993,8 +993,8 @@
     },
     {
       "type": "foe",
-      "x": 4824,
-      "y": 208,
+      "x": 4840,
+      "y": 240,
       "width": 96,
       "height": 96,
       "name": "Mage"
@@ -1002,17 +1002,17 @@
     {
       "type": "foe",
       "x": 4936,
-      "y": 208,
+      "y": 240,
       "width": 96,
       "height": 96,
       "name": "Mage"
     },
     {
       "type": "foe",
-      "x": 5000,
+      "x": 5008,
       "y": 512,
-      "width": 256,
-      "height": 96,
+      "width": 216,
+      "height": 88,
       "name": "DeadlyArea"
     },
     {
@@ -1277,9 +1277,9 @@
     {
       "type": "floor",
       "x": 4984,
-      "y": 424,
-      "width": 72,
-      "height": 88
+      "y": 432,
+      "width": 88,
+      "height": 56
     }
   ]
 }
