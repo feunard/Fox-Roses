@@ -82,7 +82,7 @@
     },
     {
       "type": "foe",
-      "x": 756,
+      "x": 880,
       "y": 328,
       "width": 96,
       "height": 96,
@@ -90,7 +90,7 @@
     },
     {
       "type": "foe",
-      "x": 912,
+      "x": 984,
       "y": 328,
       "width": 96,
       "height": 96,
@@ -181,7 +181,7 @@
       "x": 1632,
       "y": 288,
       "width": 32,
-      "height": 192
+      "height": 224
     },
     {
       "type": "floor",
@@ -366,9 +366,9 @@
     {
       "type": "floor",
       "x": 680,
-      "y": 168,
+      "y": 104,
       "width": 32,
-      "height": 64
+      "height": 120
     },
     {
       "type": "floor",
@@ -410,9 +410,9 @@
     },
     {
       "type": "floor",
-      "x": 2200,
+      "x": 2248,
       "y": 360,
-      "width": 256,
+      "width": 200,
       "height": 104
     },
     {
@@ -513,7 +513,7 @@
     },
     {
       "type": "floor",
-      "x": 2200,
+      "x": 2192,
       "y": 440,
       "width": 128,
       "height": 72
@@ -633,8 +633,8 @@
     },
     {
       "type": "npc",
-      "x": 2160,
-      "y": 288,
+      "x": 2144,
+      "y": 304,
       "width": 64,
       "height": 64,
       "animation": "fox",
@@ -1086,9 +1086,9 @@
     },
     {
       "type": "event",
-      "x": 680,
+      "x": 616,
       "y": 448,
-      "width": 64,
+      "width": 128,
       "height": 176,
       "event": "dialog",
       "data1": "l2_1"
@@ -1179,6 +1179,49 @@
       "y": 584,
       "width": 48,
       "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 2224,
+      "y": 352,
+      "width": 64,
+      "height": 16
+    },
+    {
+      "type": "floor",
+      "x": 952,
+      "y": 448,
+      "width": 104,
+      "height": 104
+    },
+    {
+      "type": "floor",
+      "x": 1200,
+      "y": 544,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 1496,
+      "y": 552,
+      "width": 56,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 1328,
+      "y": 456,
+      "width": 40,
+      "height": 88
+    },
+    {
+      "type": "foe",
+      "x": 752,
+      "y": 296,
+      "width": 128,
+      "height": 128,
+      "name": "Mirror"
     }
   ]
 }
