@@ -167,12 +167,12 @@ export const dialogs = {
         $skeleton("L'infini est la seule solution, l'éternité est la seule approche !"),
     ],
     l5_4: [
-        $skeleton("Gloire au symbol infini, les rêves n'ont pas de fin !"),
+        $skeleton("Gloire au symbol infini, les rêves n'auront plus de fin."),
         $fox("Tout à une fin Escamort, la tienne arrive bientôt."),
     ],
     l5_2: [
         $skeleton("Non, mais c'est impossible. Comment avez vous pu atteindre cet endroit ?"),
-        $fox("En sautant peut être ?"),
+        $fox("En sautant peut-être ?"),
         $skeleton("Je dois battre en retraite."),
         $kstore("Suivons le !"),
     ],
