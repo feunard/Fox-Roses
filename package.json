@@ -1,45 +1,25 @@
 {
-  "name": "fox",
-  "version": "0.1.0",
+  "name": "fox-and-roses",
+  "version": "1.0.0",
   "private": true,
-  "homepage": "./",
-  "productName": "Fox&Roses",
-  "main": "build/electron.js",
-  "author": "Feunard",
-  "description": "Fox&Roses ~ by Feunard",
-  "devDependencies": {
-    "@types/node": "^16.11.5",
-    "@types/react": "^17.0.32",
-    "@types/react-dom": "^17.0.10",
-    "cra-template-typescript": "1.1.2",
-    "excalibur": "^0.25.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "surge": "^0.23.0",
-    "typescript": "^4.2.0"
-  },
+  "description": "",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "parcel serve ./index.html",
+    "build": "parcel build ./index.html --dist-dir ./build --public-url ./",
     "predeploy": "npm run build",
     "deploy": "surge build --domain https://fox-roses.surge.sh"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/react": "^17.0.32",
+    "@types/react-dom": "^17.0.10",
+    "excalibur": "0.25.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "typescript": "4.5.2"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "parcel": "2.0.1"
   }
 }
