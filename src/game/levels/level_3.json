@@ -450,9 +450,9 @@
     {
       "type": "floor",
       "x": 4440,
-      "y": 440,
-      "width": 368,
-      "height": 64
+      "y": 456,
+      "width": 352,
+      "height": 48
     },
     {
       "type": "floor",
@@ -478,9 +478,9 @@
     {
       "type": "floor",
       "x": 6128,
-      "y": 488,
-      "width": 64,
-      "height": 40
+      "y": 496,
+      "width": 56,
+      "height": 32
     },
     {
       "type": "floor",
@@ -491,7 +491,7 @@
     },
     {
       "type": "floor",
-      "x": 6736,
+      "x": 6752,
       "y": 496,
       "width": 40,
       "height": 40
@@ -519,9 +519,9 @@
     },
     {
       "type": "floor",
-      "x": 6712,
+      "x": 6752,
       "y": 312,
-      "width": 200,
+      "width": 160,
       "height": 64
     },
     {
@@ -534,7 +534,7 @@
     },
     {
       "type": "foe",
-      "x": 6680,
+      "x": 6720,
       "y": 312,
       "width": 32,
       "height": 216,
@@ -544,7 +544,7 @@
       "type": "floor",
       "x": 5800,
       "y": 392,
-      "width": 256,
+      "width": 216,
       "height": 24
     },
     {
@@ -565,7 +565,7 @@
       "type": "floor",
       "x": 6536,
       "y": 528,
-      "width": 240,
+      "width": 256,
       "height": 24
     },
     {
@@ -600,7 +600,7 @@
     },
     {
       "type": "foe",
-      "x": 6736,
+      "x": 6752,
       "y": 216,
       "width": 96,
       "height": 96,
@@ -960,14 +960,14 @@
       "x": 4904,
       "y": 512,
       "width": 64,
-      "height": 64
+      "height": 88
     },
     {
       "type": "floor",
       "x": 4840,
       "y": 336,
       "width": 192,
-      "height": 48
+      "height": 32
     },
     {
       "type": "floor",
@@ -979,7 +979,7 @@
     {
       "type": "floor",
       "x": 4624,
-      "y": 344,
+      "y": 352,
       "width": 64,
       "height": 64
     },
@@ -1018,7 +1018,7 @@
     {
       "type": "foe",
       "x": 4456,
-      "y": 312,
+      "y": 328,
       "width": 128,
       "height": 128,
       "name": "Mirror",
@@ -1280,6 +1280,28 @@
       "y": 432,
       "width": 88,
       "height": 56
+    },
+    {
+      "type": "event",
+      "x": 5680,
+      "y": 456,
+      "width": 64,
+      "height": 64,
+      "event": "start"
+    },
+    {
+      "type": "floor",
+      "x": 6000,
+      "y": 552,
+      "width": 64,
+      "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 5976,
+      "y": 416,
+      "width": 64,
+      "height": 24
     }
   ]
 }
