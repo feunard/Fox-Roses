@@ -61,7 +61,7 @@ export class Bolt extends Actor {
 
         setTimeout(() => {
             this.kill();
-        }, 4000);
+        }, 800);
 
         this.on("collisionstart", (ev) => {
             if (ev.other.name.includes("floor")) {
