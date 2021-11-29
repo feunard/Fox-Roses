@@ -979,9 +979,9 @@
     {
       "type": "floor",
       "x": 4624,
-      "y": 352,
-      "width": 64,
-      "height": 64
+      "y": 368,
+      "width": 72,
+      "height": 48
     },
     {
       "type": "foe",
