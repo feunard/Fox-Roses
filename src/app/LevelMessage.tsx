@@ -20,13 +20,13 @@ export class LevelMessage extends React.Component<ILevelMessageProps, ILevelMess
     clock: any = null;
 
     componentDidMount() {
-        //this.timer();
+        this.timer();
     }
 
     timer() {
         this.clock = setInterval(() => {
             this.tick();
-        }, 1000);
+        }, 50);
         this.tick();
     }
 
@@ -34,17 +34,17 @@ export class LevelMessage extends React.Component<ILevelMessageProps, ILevelMess
         if (this.props.content !== "") {
             if (this.props.content !== this.content_to_display) {
                 this.content_to_display = this.props.content;
-                this.content_it = 50;
+                this.content_it = 1;
                 this.setState({content_parts: this.content_to_display.slice(0, this.content_it)})
             } else {
-                this.content_it += 50;
+                this.content_it += 1;
                 this.setState({content_parts: this.content_to_display.slice(0, this.content_it)})
             }
         }
     }
 
     componentWillUnmount() {
-        // clearInterval(this.clock);
+        clearInterval(this.clock);
     }
 
     render() {
