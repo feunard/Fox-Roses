@@ -207,18 +207,6 @@
       "y": 2120,
       "width": 64,
       "height": 64
-    },
-    {
-      "type": "npc",
-      "x": 1440,
-      "y": 3736,
-      "width": 128,
-      "height": 128,
-      "animation": "rose",
-      "dialogs": [
-        ""
-      ],
-      "name": "rose"
     }
   ]
 }
