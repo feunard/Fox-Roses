@@ -157,7 +157,7 @@ export const dialogs = {
         $fox("Peut être qu'on peut accepter ses cadeaux du moment qu'il nous dérange pas."),
     ],
     l4_4: [
-        $dragon("Les amis, le répère d'Escamort est juste en dessous."),
+        $dragon("Les amis, le repère d'Escamort est juste en dessous."),
         $kstore("Nous sommes tous prêt."),
         $shrek("Shrek, cadeau."),
     ],
