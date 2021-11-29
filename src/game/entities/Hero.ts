@@ -348,11 +348,11 @@ export class Hero extends Actor {
         if (kb.wasPressed("jump")) {
             if (this.onGround) {
                 this.audio_jump.play();
-                this.vel.y = -450 * coef;
+                this.vel.y = -420 * coef;
                 this.doubleJump = true;
             } else if (this.doubleJump && config.canDoubleJump) {
                 this.audio_jump.play();
-                this.vel.y = -450 * coef;
+                this.vel.y = -420 * coef;
                 this.doubleJump = false;
             }
         }
