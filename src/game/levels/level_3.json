@@ -1282,14 +1282,6 @@
       "height": 56
     },
     {
-      "type": "event",
-      "x": 5680,
-      "y": 456,
-      "width": 64,
-      "height": 64,
-      "event": "start"
-    },
-    {
       "type": "floor",
       "x": 6000,
       "y": 552,
