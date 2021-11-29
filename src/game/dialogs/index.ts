@@ -194,6 +194,7 @@ export const dialogs = {
         $skeleton("AHAH, NON, JE M'EN BRANLE DE TES CADEAUX."),
     ],
     l6_4: [
+        $skeleton("Je ne .... aaaarrrrrrgghhhhhhhh."),
         $dragon("C'est terminé. C'est le moment de dire une phrase clichée que vous aimez."),
         $fox("J’en ai pas spécialement de phrase que j’aime bien."),
     ],
