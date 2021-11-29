@@ -83,8 +83,7 @@ export const dialogs = {
     ],
     l2_2: [
         $kstore("Ah, vous tombez à pic. Un mort-vivant me bloque."),
-        $fox("Ecrase le monstre en sautant dessus avec la touche S enfoncée."),
-        $kstore("Oui, saute d'en haut et appuie bien sur S."),
+        $fox("Ecrase le monstre en sautant sur sa tête avec la touche S enfoncée."),
     ],
     l2_3: [
         $kstore("Merci. Je cherchais ma soeur mais un squelette m'a attaqué."),
