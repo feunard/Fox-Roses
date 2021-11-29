@@ -567,13 +567,13 @@
     },
     {
       "type": "foe",
-      "x": 5840,
+      "x": 5912,
       "y": 192,
       "width": 96,
       "height": 96,
       "name": "Mage",
       "data2": "",
-      "data1": "1500"
+      "data1": "1800"
     },
     {
       "type": "floor",
