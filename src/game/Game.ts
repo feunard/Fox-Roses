@@ -38,7 +38,6 @@ export class Game {
         : GameState.INTRO;
     message_timer: any = null;
     message_delay_default = 1000 * 5;//ms
-
     current_count_dead = 0;
     current_startAt = 0;
 

@@ -9,3 +9,8 @@
     align-items: center;
     justify-content: center;
 }
+
+.End .text {
+    opacity: 0;
+    transition: all 4s ease;
+}
