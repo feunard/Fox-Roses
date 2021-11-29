@@ -20,28 +20,37 @@ export class LevelMessage extends React.Component<ILevelMessageProps, ILevelMess
     clock: any = null;
 
     componentDidMount() {
+        //this.timer();
+    }
+
+    timer() {
         this.clock = setInterval(() => {
-            if (this.props.content !== "") {
-                if (this.props.content !== this.content_to_display) {
-                    this.content_to_display = this.props.content;
-                    this.content_it = 1;
-                    this.setState({content_parts: this.content_to_display.slice(0, this.content_it)})
-                } else {
-                    this.content_it += 1;
-                    this.setState({content_parts: this.content_to_display.slice(0, this.content_it)})
-                }
+            this.tick();
+        }, 1000);
+        this.tick();
+    }
+
+    tick() {
+        if (this.props.content !== "") {
+            if (this.props.content !== this.content_to_display) {
+                this.content_to_display = this.props.content;
+                this.content_it = 50;
+                this.setState({content_parts: this.content_to_display.slice(0, this.content_it)})
+            } else {
+                this.content_it += 50;
+                this.setState({content_parts: this.content_to_display.slice(0, this.content_it)})
             }
-        }, 50)
+        }
     }
 
     componentWillUnmount() {
-        clearInterval(this.clock);
+        // clearInterval(this.clock);
     }
 
     render() {
         return (
             <span>
-                {this.state.content_parts}
+                {this.props.content}
             </span>
         );
     }
