@@ -1321,6 +1321,42 @@
       "height": 296,
       "event": "dialog",
       "data1": "l3_2"
+    },
+    {
+      "type": "npc",
+      "x": 3112,
+      "y": 344,
+      "width": 64,
+      "height": 64,
+      "animation": "fox",
+      "dialogs": [
+        ""
+      ],
+      "name": "fox"
+    },
+    {
+      "type": "npc",
+      "x": 3040,
+      "y": 472,
+      "width": 96,
+      "height": 96,
+      "animation": "kstore",
+      "dialogs": [
+        ""
+      ],
+      "name": "kstore"
+    },
+    {
+      "type": "npc",
+      "x": 2968,
+      "y": 504,
+      "width": 64,
+      "height": 64,
+      "animation": "acidpop",
+      "dialogs": [
+        ""
+      ],
+      "name": "acidpop"
     }
   ]
 }

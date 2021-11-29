@@ -116,7 +116,7 @@ export const dialogs = {
         $fox("Nous avons besoin de toi. Escamort fabrique une armée pour détruire les rêves."),
         $dragon("Qui est la jeune fille avec toi ?"),
         $fox("Rêveuse, elle dort trop profondément pour se réveiller."),
-        $dragon("Une rêveuse, parfait. Allez me cherche une rose des rêves et je vous aiderai."),
+        $dragon("Parfait. Allez me cherche une rose des rêves et on verra."),
     ],
     l3_3: [
         $kstore("Il y a encore un pallier avant d'être chez Escamort."),
