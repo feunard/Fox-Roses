@@ -77,9 +77,9 @@ export const dialogs = {
         $fox("Il est peut être un peu plus bas. On va devoir sauter."),
     ],
     l2_1: [
-        $fox("Qu'est ce qui c'est passé ici ?!? Ce n'est pas normal."),
+        $fox("Qu'est ce qu'il s'est passé ici ?!? Ce n'est pas normal."),
         $kstore("A l'aide !"),
-        $fox("Vite, quelqu'un appel à l'aide."),
+        $fox("Vite, quelqu'un appelle à l'aide."),
     ],
     l2_2: [
         $kstore("Ah, vous tombez à pic. Un mort-vivant me bloque."),
@@ -116,7 +116,7 @@ export const dialogs = {
         $fox("Nous avons besoin de toi. Escamort fabrique une armée pour détruire les rêves."),
         $dragon("Qui est la jeune fille avec toi ?"),
         $fox("Rêveuse, elle dort trop profondément pour se réveiller."),
-        $dragon("Parfait. Allez me cherche une rose des rêves et on verra."),
+        $dragon("Parfait. Allez me chercher une rose des rêves et on verra."),
     ],
     l3_3: [
         $kstore("Il y a encore un pallier avant d'être chez Escamort."),
@@ -134,8 +134,8 @@ export const dialogs = {
         $dragon("Ah... merci. Je voulais voir une dernière fois une rose de rêve."),
         $dragon("Rêveuse, je suis vieux, je vais bientôt partir, mais je peux encore t'aider."),
         $chest("Vous obtenez des ailes de dragon. Vous pouvez sauter 2 fois de suite."),
-        $dragon("Avec mes ailes, tu pourras atteindre des nouveaux endroits."),
-        $kstore("Mais on fait comment pour Escamort ? Nous avions besoin de vous."),
+        $dragon("Avec mes ailes, tu pourras atteindre de nouveaux endroits."),
+        $kstore("Mais on fait comment pour Escamort ? Nous avons besoin de vous."),
         $dragon("La rêveuse va s'en charger. Je vais veiller sur elle le temps qu'il me reste."),
         $fox("C'est de la folie, Sindra."),
     ],
@@ -154,8 +154,8 @@ export const dialogs = {
         $fox("Peut être qu'on peut accepter ses cadeaux du moment qu'il nous dérange pas."),
     ],
     l4_4: [
-        $dragon("Les amis, le repère d'Escamort est juste en dessous."),
-        $kstore("Nous sommes tous prêt."),
+        $dragon("Les amis, le repaire d'Escamort est juste en dessous."),
+        $kstore("Nous sommes tous prêts."),
         $shrek("Shrek, cadeau."),
     ],
     l5_1: [
@@ -167,12 +167,12 @@ export const dialogs = {
         $skeleton("L'infini est la seule solution, l'éternité est la seule approche !"),
     ],
     l5_4: [
-        $skeleton("Gloire au symbol infini, les rêves n'auront plus de fin."),
-        $fox("Tout à une fin Escamort, la tienne arrive bientôt."),
+        $skeleton("Gloire au symbol infini, les rêves n'ont pas de fin !"),
+        $fox("Tout a une fin Escamort, la tienne arrive bientôt."),
     ],
     l5_2: [
         $skeleton("Non, mais c'est impossible. Comment avez vous pu atteindre cet endroit ?"),
-        $fox("En sautant peut-être ?"),
+        $fox("En sautant peut être ?"),
         $skeleton("Je dois battre en retraite."),
         $kstore("Suivons le !"),
     ],
@@ -200,19 +200,19 @@ export const dialogs = {
     end: [
         $fox("Nous y sommes... enfin."),
         $fox("Arrivé en haut, tu pourras te réveiller."),
-        $fox("Quand a nous, il ne reste plus qu'à se dire aurevoir."),
-        $acidpop("Aurevoir rêveuse !"),
-        $kstore("Aurevoir."),
+        $fox("Quand a nous, il ne reste plus qu'à se dire au revoir."),
+        $acidpop("Au revoir rêveuse !"),
+        $kstore("Au revoir."),
         $fox("Ce n'est pas un adieu, on restera dans ta tête."),
         $fox("Mais pour combien de temps ?"),
         $shrek("Et mes cadeaux..."),
         $dragon("Je les brûle tes cadeaux !"),
-        $shrek("Aurevoir rêveuse..."),
+        $shrek("Au revoir rêveuse..."),
         $dragon("Bon reveil."),
         $fox("Reviens vite."),
     ],
     //
     loot_firebolt: $chest("Vous obtenez un parchemin de boule de feu. Appuyez sur E pour lancer des flammes."),
     loot_doublejump: $chest("Vous obtenez des ailes de dragon. Vous pouvez sauter 2 fois de suite."),
-    loot_speed: $chest("Vous obtenez des chaussures de sport Balancica. Vous courrez maintenant plus vite."),
+    loot_speed: $chest("Vous obtenez des chaussures de sport Balancica. Vous courez maintenant plus vite."),
 }
