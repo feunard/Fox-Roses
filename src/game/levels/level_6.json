@@ -46,7 +46,7 @@
     },
     {
       "type": "foe",
-      "x": 1408,
+      "x": 1216,
       "y": 504,
       "width": 96,
       "height": 96,
@@ -343,10 +343,10 @@
     },
     {
       "type": "floor",
-      "x": 1360,
-      "y": -256,
+      "x": 1344,
+      "y": -560,
       "width": 16,
-      "height": 464
+      "height": 808
     },
     {
       "type": "floor",
@@ -901,7 +901,7 @@
       "width": 96,
       "height": 96,
       "name": "Mage",
-      "data2": "800"
+      "data2": ""
     },
     {
       "type": "foe",
@@ -1006,6 +1006,13 @@
       "y": 312,
       "width": 128,
       "height": 64
+    },
+    {
+      "type": "floor",
+      "x": 624,
+      "y": 0,
+      "width": 1288,
+      "height": 24
     }
   ]
 }

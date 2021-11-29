@@ -176,11 +176,11 @@ export class Hero extends Actor {
         // check if dead zone
 
         if (this.pos.y > 4000) {
-            game.next();
+            game.end_of_level();
         }
 
         if (this.pos.y < -2000) {
-            game.next();
+            game.end_of_level();
         }
 
         // Reset x velocity
@@ -373,6 +373,7 @@ export class Hero extends Actor {
     }
 
     dead() {
+        game.current_count_dead += 1;
         this.pos = this.spawn;
         audio.play("hero_dead");
         this.scene.camera.shake(20, 20, 1000);

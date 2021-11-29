@@ -39,6 +39,9 @@ export class Game {
     message_timer: any = null;
     message_delay_default = 1000 * 5;//ms
 
+    current_count_dead = 0;
+    current_startAt = 0;
+
     constructor() {
         this.configure();
 
@@ -120,7 +123,37 @@ export class Game {
         this.state = GameState.EDITOR;
     }
 
+    end_of_level() {
+        const now = Date.now();
+        const i = this.levelId;
+        const actual_cd = config.count_dead[i];
+        const actual_timer = config.timers[i];
+        const cd = this.current_count_dead;
+        const timer = (now - this.current_startAt) / 1000;
+
+        if (actual_cd === -1 || actual_cd > cd) {
+            const count_dead = config.count_dead;
+            count_dead[i] = cd;
+            config_set({
+                count_dead,
+            });
+        }
+
+        if (actual_timer === -1 || actual_timer > timer) {
+            const timers = config.timers;
+            timers[i] = timer;
+            config_set({
+                timers,
+            });
+        }
+
+        this.current_count_dead = 0;
+        this.current_startAt = 0;
+        this.next();
+    }
+
     next(levelId = -1) {
+        this.current_count_dead = 0;
         this.stop_messages();
         audio.stop();
         console.log("game::next_level");
@@ -158,6 +191,7 @@ export class Game {
             this.engine.stop();
             this.state = GameState.END;
         } else {
+            this.current_startAt = Date.now();
             console.log("game::next_level notify");
             this.callbacksChangeLevel.forEach(cb => cb(this.level));
         }

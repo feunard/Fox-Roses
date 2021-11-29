@@ -33,7 +33,7 @@ export class Level extends React.Component<ILevelProps, LevelState> {
                         }}>debug
                         </button>
                         <button onClick={() => {
-                            game.stop();
+                            window.location.href = "/"
                         }}>menu
                         </button>
                     </div>
